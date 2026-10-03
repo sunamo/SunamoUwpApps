@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Maybe will be desirable IWindowOpener
-/// </summary>
 public interface IUserControl  //: IPanel
 {
     string Title { get; }

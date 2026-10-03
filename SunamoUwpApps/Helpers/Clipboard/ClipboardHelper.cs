@@ -1,3 +1,5 @@
+namespace apps.Helpers.Clipboard;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace apps;
     public static class ClipboardHelperApps2
     {
         public static event Action<object, object> ContentChanged;

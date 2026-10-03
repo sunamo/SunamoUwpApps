@@ -1,4 +1,4 @@
-﻿namespace SunamoUwpApps._sunamo;
+﻿namespace apps._public;
 
 public abstract partial class AppDataBase<StorageFolder, StorageFile> : IAppDataBase<StorageFolder, StorageFile>
 {

@@ -1,3 +1,5 @@
+namespace apps.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,10 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace apps;
-    /// <summary>
-    /// Has inner command classes which execute methods in SelectorHelper
-    /// </summary>
     public class SelectorHelperListViewCommands
     {
         public RemoveOneCommand RemoveOneCmd

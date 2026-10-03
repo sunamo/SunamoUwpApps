@@ -1,3 +1,5 @@
+namespace apps.Helpers.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,11 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps;
-    /// <summary>
-    /// Whole file commented, uncomment for SunamoYouTube
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class ComboBoxEnumHelperWithCustomLabels<T> : ComboBoxEnumHelperBase<T>
     {
         Dictionary<string, string> d = null;

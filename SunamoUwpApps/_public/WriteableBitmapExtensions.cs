@@ -1,9 +1,9 @@
+namespace apps._public;
+
 using System.Runtime.InteropServices.WindowsRuntime;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Graphics.Imaging;
 using Windows.Storage.Streams;
-
-namespace SunamoUwpApps._sunamo;
 
 /// <summary>Mode of access to the pixels of a bitmap.</summary>
 public enum ReadWriteMode

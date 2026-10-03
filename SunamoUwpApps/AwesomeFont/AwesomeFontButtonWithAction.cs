@@ -1,3 +1,5 @@
+namespace apps.AwesomeFont;
+
 using apps;
 using System;
 using System.Collections.Generic;
@@ -7,10 +9,6 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.AwesomeFont;
-    /// <summary>
-    /// Button s obrázkem z AwesomeFont
-    /// </summary>
     class AwesomeFontButtonWithAction : ButtonWithAction
     {
         public void InitAwesomeFontButtonWithAction(bool visible, double width, double height, VoidObject action, string otf, Brush fg, object idObject)

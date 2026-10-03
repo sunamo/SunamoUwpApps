@@ -1,3 +1,5 @@
+namespace apps.Data;
+
 using Microsoft.UI.Xaml;
 using Windows.UI.Text;
 using Microsoft.UI.Xaml.Documents;

@@ -1,4 +1,6 @@
-﻿using apps;
+﻿namespace apps.UniversalWebControl;
+
+using apps;
 using apps.AwesomeFont;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,6 @@ using Microsoft.UI.Xaml;
 using System.Windows.Input;
 using Microsoft.UI.Xaml.Controls;
 
-namespace UniversalWebControl;
-    /// <summary>
-    /// Interaction logic for SunamoBrowserControls.xaml
-    /// </summary>
     public partial class SunamoBrowserControls : UserControl
     {
         public event VoidVoid BackButtonClick;
@@ -45,7 +43,7 @@ namespace UniversalWebControl;
 
         private void SunamoBrowserControls_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-             Initialize(SunamoUwpApps._sunamo.RL.l, "");
+             Initialize(apps._public.RL.l, "");
         }
 
         public event VoidUri NewUriEntered;

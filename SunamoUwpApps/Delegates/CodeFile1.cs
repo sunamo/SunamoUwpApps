@@ -1,3 +1,5 @@
+namespace apps.Delegates;
+
 using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI;

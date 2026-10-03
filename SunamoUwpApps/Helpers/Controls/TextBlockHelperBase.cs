@@ -1,3 +1,5 @@
+namespace apps.Helpers.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
-    // TODO: adatp to ITextBlockHelperBase, In desktop I have two classes derived already from this
     public class TextBlockHelperBase : ITextBlockHelperBase<FontWeight, Italic, Inline, Bold, Run, InlineUIContainer, FontArgs>
     {
         protected List<MeasureStringArgs> texts = new List<MeasureStringArgs>();

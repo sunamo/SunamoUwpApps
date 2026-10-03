@@ -1,3 +1,5 @@
+namespace apps.AwesomeFont;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,12 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace apps.AwesomeFont;
-    /// <summary>
-    /// Všechno ve verzi 4.4
-    /// Parsed from css
-    /// Obsahuje číselné symboly všech ikon, zde se nepoužívá, ale na sunamo.cz při hledání ano
-    /// </summary>
     public enum FontAwesomeIcon
     {
         None = 0,

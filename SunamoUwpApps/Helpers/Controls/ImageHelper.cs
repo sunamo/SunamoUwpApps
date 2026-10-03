@@ -1,3 +1,5 @@
+namespace apps.Helpers.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps;
-    /// <summary>
-    /// ms-appx:/// - where the app is installed
-    /// ms-appdata - application with
-    /// </summary>
     public static class ImageHelper
     {
         /// <summary>

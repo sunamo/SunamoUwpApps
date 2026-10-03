@@ -1,3 +1,5 @@
+namespace apps.Converters;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
 
-namespace apps;
     public  class StringDoubleConverter : IValueConverter
     {
 

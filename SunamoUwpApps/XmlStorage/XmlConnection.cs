@@ -1,3 +1,5 @@
+namespace apps.XmlStorage;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,6 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Storage;
 
-namespace apps.XmlStorage;
     public class XmlConnection
     {
         Type type = typeof(XmlConnection);

@@ -1,3 +1,5 @@
+namespace apps.Helpers.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps;
     public abstract class ComboBoxEnumHelperBase<T> : ComboBoxHelperBase<T>
     {
         public ComboBoxEnumHelperBase(ComboBox cb) : base(cb)

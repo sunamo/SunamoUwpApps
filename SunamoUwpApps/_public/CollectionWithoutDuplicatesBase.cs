@@ -1,11 +1,7 @@
-﻿using System.Diagnostics;
+﻿namespace apps._public;
 
-namespace SunamoUwpApps._sunamo;
+using System.Diagnostics;
 
-/// <summary>
-/// Base class for collections that automatically prevent duplicate items.
-/// </summary>
-/// <typeparam name="T">The type of items in the collection.</typeparam>
 public abstract class CollectionWithoutDuplicatesBase<T>
 {
     /// <summary>

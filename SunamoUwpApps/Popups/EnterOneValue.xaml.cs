@@ -1,3 +1,5 @@
+namespace apps.Popups;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,8 +15,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using apps;
 
-
-namespace apps;
     public sealed partial class EnterOneValue : UserControl, IPopupResponsive, IPopupEvents<EnterOneValueEventArgs>
     {
         Langs l = Langs.cs;

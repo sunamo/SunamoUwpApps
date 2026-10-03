@@ -1,5 +1,4 @@
-// variables names: ok
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
 public interface IIdentificator
 {

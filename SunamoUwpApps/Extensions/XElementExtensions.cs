@@ -1,7 +1,9 @@
+namespace apps.Extensions;
+
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-namespace apps;
+
     public static class XElementExtensions
     {
 static Type type = typeof(XElementExtensions);

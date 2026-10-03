@@ -1,3 +1,5 @@
+namespace apps.Helpers.Resources;
+
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -6,9 +8,6 @@ using Windows.Storage.Streams;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-/// <summary>
-/// Posloupnost je BitmapImage (sealed) -> BitmapSource (abstract) -> ImageSource (abstract)
-/// </summary>
 public static class BitmapImageHelper
     {
         public static BitmapImage MsAppx(string relPath)

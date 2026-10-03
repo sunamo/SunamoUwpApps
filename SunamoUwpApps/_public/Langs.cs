@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Language identifiers.
-/// </summary>
 public enum Langs
 {
     #region For easy copying to other files

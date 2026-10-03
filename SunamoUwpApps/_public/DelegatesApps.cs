@@ -1,8 +1,7 @@
+namespace apps._public;
+
 using Microsoft.Web.WebView2.Core;
 
-namespace SunamoUwpApps._sunamo;
-
-/// <summary>Delegate taking a string and returning a string.</summary>
 public delegate string StringString(string s);
 /// <summary>Delegate taking a generic value and returning void.</summary>
 public delegate void VoidT<T>(T t);
@@ -28,7 +27,7 @@ public delegate void LoadCompletedEventHandler(object sender, CoreWebView2Naviga
 public delegate void UriEventHandler(object sender, UriEventArgs e);
 
 /// <summary>Event data carrying a Uri.</summary>
-public class UriEventArgs : EventArgs
+public class UriEventArgs : System.EventArgs
 {
     /// <summary>The carried address.</summary>
     public Uri Uri { get; }

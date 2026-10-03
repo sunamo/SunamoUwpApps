@@ -1,4 +1,4 @@
-
+namespace apps;
 
 using System;
 using System.IO;
@@ -12,7 +12,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps;
     public static class Pictures 
     {
 

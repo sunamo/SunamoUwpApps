@@ -1,6 +1,6 @@
+namespace apps;
+
 using apps;
-// cant be, then would be StorageFile 2x
-//using sunamo.Data;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,11 +11,6 @@ using Windows.Storage;
 using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
 
-//namespace apps
-//{
-/// <summary>
-/// Must be FSApps because is used many methods from FSApps
-/// </summary>
 public static class FSApps //: IAsync
 {
     public static FileExceptions folderExc = FileExceptions.None;

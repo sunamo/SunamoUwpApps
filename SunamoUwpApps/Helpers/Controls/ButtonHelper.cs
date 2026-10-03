@@ -1,3 +1,5 @@
+namespace apps.Helpers.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,6 @@ using System.Windows.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps.Helpers;
     public static class ButtonHelper
     {
         public static Button Get(Orientation orientation, object content, RoutedEventHandler eh)

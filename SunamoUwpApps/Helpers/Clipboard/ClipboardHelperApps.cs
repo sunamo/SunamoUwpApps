@@ -1,4 +1,6 @@
-﻿using System;
+﻿namespace apps.Helpers.Clipboard;
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -9,15 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
-
-// if app isnt STA, raise exception
-//using System.Windows;
-// if app isnt STA, return empty. 
-//using System.Windows;
-/// <summary>
-/// Use here only managed method! I could avoid reinstall Windows (RepairJpn). Use only managed also for working with formats.
-/// Use in ClipboardAsync and ClipboardHelperWinStd only System.Windows.Forms, not System.Windows which have very similar interface.
-/// </summary>
 public class ClipboardHelperApps : IClipboardHelperApps
 {
 static Type type = typeof(ClipboardHelperApps);

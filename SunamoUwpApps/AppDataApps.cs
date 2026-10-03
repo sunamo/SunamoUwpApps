@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,12 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Search;
-namespace apps;
-    /// <summary>
-    /// Dont use async, but only async. Then I can use same signature in apps and wpf
-    /// Path in UWP apps is quite different:
-    /// C:\Users\n\AppData\Local\Packages\ecffba09-1695-4048-b61e-3419da53e92a_2rg71m35gnwm0\LocalState\sunamo\App1\Data
-    /// </summary>
+
     public class AppDataApps : AppDataAppsAbstractBase<StorageFolder, StorageFile>, IAsync
     {
 static Type type = typeof(AppDataApps);

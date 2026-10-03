@@ -1,3 +1,5 @@
+namespace apps.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,14 +9,9 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps;
-    /// <summary>
-    /// Interaction logic for SelectImageFile.xaml
-    /// </summary>
     public partial class SelectImageFile : UserControl, IAsync
     {
         public SelectImageFile()

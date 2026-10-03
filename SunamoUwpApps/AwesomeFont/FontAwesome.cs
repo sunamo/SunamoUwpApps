@@ -1,3 +1,5 @@
+namespace apps.AwesomeFont;
+
 using apps;
 using System;
 using System.Collections.Generic;
@@ -8,12 +10,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.AwesomeFont;
-    /// <summary>
-    /// Vrací a nastavuje ikonku FontAwesomeIcon do instance DependencyObject
-    /// Pokud je font family fonts/fontawesome-webfont.ttf#FontAwesome , dává se do Text &#x a pak f09b; , dohromady tedy &#xf09b;
-    /// Pokud je font family ms-appx:///Assets/FontAwesome.otf#FontAwesome , dává se do Text \u a pak f09b , dohromady tedy \uf09b (bez středníku na konci!)
-    /// </summary>
     public static class FontAwesome
     {
         public static FontAwesomeIcon GetSymbol(DependencyObject dp)

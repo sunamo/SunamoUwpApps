@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Interface for building text output with append and undo capabilities.
-/// </summary>
 public interface ITextBuilder
 {
     /// <summary>

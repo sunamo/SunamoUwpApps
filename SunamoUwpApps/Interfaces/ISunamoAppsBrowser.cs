@@ -1,4 +1,5 @@
-using Microsoft.UI.Xaml.Controls;
+namespace apps.Interfaces;
+
 using Microsoft.UI.Xaml.Controls;
 
 public interface ISunamoAppsBrowser<T> : ISunamoBrowser<T>

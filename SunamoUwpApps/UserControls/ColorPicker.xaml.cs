@@ -1,3 +1,5 @@
+namespace apps.UserControls;
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,7 +15,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-namespace apps;
+
     public sealed partial class ColorPicker : UserControl
     {
 static Type type = typeof(ColorPicker);

@@ -1,3 +1,5 @@
+namespace apps.XmlStorage;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Globalization;
 using Windows.Storage;
 using System.IO;
 using Windows.Storage.Streams;
-namespace apps.XmlStorage;
+
     public static class XmlLayer //: IAsync
     {
 static Type type = typeof(XmlLayer);

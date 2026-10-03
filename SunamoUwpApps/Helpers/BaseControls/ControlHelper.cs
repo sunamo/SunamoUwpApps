@@ -1,3 +1,5 @@
+namespace apps.Helpers.BaseControls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-namespace apps;
+
     public static class ControlHelper
     {
 static Type type = typeof(ControlHelper);

@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +13,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
     public static class WpfControlGenerator
     {
         public static StackPanel VerticalColoredList(List<ILogMessage<Color, StorageFile>> c)

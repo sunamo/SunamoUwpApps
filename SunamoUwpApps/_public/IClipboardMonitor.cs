@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Interface for clipboard monitoring operations.
-/// </summary>
 public interface IClipboardMonitor
 {
     /// <summary>

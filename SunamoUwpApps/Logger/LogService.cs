@@ -1,3 +1,5 @@
+﻿namespace apps.Logger;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -5,17 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-
-#if WINDOWS_UWP
-
 using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
-#elif !WINDOWS_UWP
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
-#endif
 
-namespace apps;
     public class LogService : LogServiceAbstract<Color, StorageFile>, IAsync
     {
 static Type type = typeof(LogService);

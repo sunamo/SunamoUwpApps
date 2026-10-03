@@ -1,3 +1,5 @@
+namespace apps.Data;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,6 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps.Data;
     public class BitmapImageWithStorageFile
     {
         public StorageFile path = null;

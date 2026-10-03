@@ -1,3 +1,5 @@
+namespace apps.Interfaces;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.UI.Xaml;
 
-namespace apps;
     public interface ISunamoAsyncCommandBase
     {
         void RaiseCanExecuteChanged(bool canExecute);

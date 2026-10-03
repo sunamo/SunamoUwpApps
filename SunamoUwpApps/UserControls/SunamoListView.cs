@@ -1,3 +1,5 @@
+namespace apps.UserControls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +10,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-
-namespace apps;
-    /// <summary>
-    /// Tento gridview pracuje s řádky v obsahu i hlavičce které je grid
-    /// </summary>
     public class SunamoListView : ListView
     {
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)

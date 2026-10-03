@@ -1,3 +1,5 @@
+namespace apps.Popups;
+
 using apps.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,11 +9,6 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
-    /// <summary>
-    /// Have events OK and Cancel
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
     public interface IPopupEvents<T>
     {
         event VoidT<T> ClickCancel;

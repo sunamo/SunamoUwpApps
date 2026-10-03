@@ -1,3 +1,5 @@
+namespace apps.Data;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,6 @@ using Windows.UI.Text;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
     public class MeasureStringArgs : FontArgs
     {
         public MeasureStringArgs(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text)

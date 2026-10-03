@@ -1,3 +1,5 @@
+namespace apps.UniversalWebControl;
+
 using apps;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-namespace UniversalWebControl;
+
     public sealed partial class OpenInControl : UserControl
     {
 static Type type = typeof(OpenInControl);

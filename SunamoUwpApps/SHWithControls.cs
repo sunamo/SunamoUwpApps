@@ -1,3 +1,5 @@
+namespace apps;
+
 using Microsoft.UI.Xaml;
 using System.Collections.Generic;
 using System.Text;

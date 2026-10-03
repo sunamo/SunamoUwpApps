@@ -1,3 +1,5 @@
+namespace apps.Helpers.DataHolderControls;
+
 using apps.AwesomeFont;
 using apps;
 using System;
@@ -12,8 +14,6 @@ using Windows.System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
-
-namespace apps.Helpers;
 
     public abstract class SelectorHelper<T, U> : SelectorHelper where T : IIdentificator
     {

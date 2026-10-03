@@ -1,4 +1,4 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
 public interface ISimpleConverterT<TOutput, TInput>
 {

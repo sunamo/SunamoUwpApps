@@ -1,3 +1,5 @@
+namespace apps.Popups;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +15,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.Popups;
     public sealed partial class YesNoDialog : UserControl, IPopupResponsive, IPopupEvents<YesNoDialogEventArgs>
     {
         //Langs l = apps.Essential.WpfApp.l;

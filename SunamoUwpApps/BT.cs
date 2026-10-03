@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Streams;
 
-namespace apps;
     public static class BufferHelper //: IAsync
     {
         public static IBuffer ConvertFromStringToBuffer(String str)

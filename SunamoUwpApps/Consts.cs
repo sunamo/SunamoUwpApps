@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 
-namespace apps;
     public static class Consts
     {
         public static readonly Size dialogSize = new Size(1024, 256);

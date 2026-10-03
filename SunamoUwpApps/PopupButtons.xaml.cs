@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,8 +14,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
-namespace apps;
+
     public sealed partial class PopupButtons : UserControl
     {
 static Type type = typeof(PopupButtons);

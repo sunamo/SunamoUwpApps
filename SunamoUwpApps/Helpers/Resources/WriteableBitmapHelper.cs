@@ -1,3 +1,5 @@
+namespace apps.Helpers.Resources;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +13,6 @@ using Windows.Storage.Streams;
 using Windows.UI;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps.Helpers.Resources;
     public static class WriteableBitmapHelper 
     {
         public static IRandomAccessStream EncodeWriteableBitmap(WriteableBitmap bmp, IRandomAccessStream writeStream, Guid encoderId)

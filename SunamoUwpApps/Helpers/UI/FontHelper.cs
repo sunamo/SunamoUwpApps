@@ -1,3 +1,5 @@
+namespace apps.Helpers.UI;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,6 @@ using Windows.Foundation;
 using Windows.UI.Text;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
     public static class FontHelper
     {
         public static List<string> DivideStringToRows(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text, Size maxSize)

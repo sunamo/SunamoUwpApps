@@ -1,3 +1,5 @@
+namespace apps.UserControls;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,9 +16,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
-
-namespace apps.UserControls;
     public sealed partial class LogUC : UserControl, IUserControl, IKeysHandler
     {
         public LogUC()

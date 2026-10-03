@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,10 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace apps;
-    /// <summary>
-    /// Zde to vždy vytváří nějaký soubor, pro jednoduché zjištění použij třídu KnownFolders
-    /// </summary>
     public class KnownFoldersPaths
     {
         private StorageFolder GetStorageFileOfKnownFolder(StorageFolder storageFolder)

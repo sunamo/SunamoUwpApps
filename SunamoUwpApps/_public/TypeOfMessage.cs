@@ -1,9 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-///     Error/Warning are in tbLastErrorOrWarning, other in tbLastOtherMessage
-///     Musí být zde kvůli cl které je withoutDep
-/// </summary>
 public enum TypeOfMessage
 {
     /// <summary>

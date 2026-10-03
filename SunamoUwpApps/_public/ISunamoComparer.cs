@@ -1,5 +1,5 @@
-#define ASYNC
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
+
 
 public interface ISunamoComparer<T>
 {

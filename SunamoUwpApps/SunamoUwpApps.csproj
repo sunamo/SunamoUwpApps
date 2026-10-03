@@ -10,7 +10,7 @@
     <Platforms>x86;x64;ARM64</Platforms>
     <ImplicitUsings>disable</ImplicitUsings>
     <DefineConstants>$(DefineConstants);WINDOWS_UWP;NETFX_CORE</DefineConstants>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <Description>Helpers, popups and controls from the legacy UWP apps library, ported to WinUI 3</Description>

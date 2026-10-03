@@ -1,3 +1,5 @@
+namespace apps.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,10 +16,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps;
-    /// <summary>
-    /// ListView který spolupracuje se třídou SelectorView
-    /// </summary>
     public sealed partial class SelectorHelperListViewUC : UserControl
     {
         public SelectorHelperListViewUC()

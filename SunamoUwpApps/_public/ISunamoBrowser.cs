@@ -1,14 +1,7 @@
-using HtmlAgilityPack;
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Interface for browser control operations.
-/// The Control class depends on the type of target application.
-/// Used in:
-/// - SunamoCef/CefBrowser
-/// - WebSunamo/SunamoBrowser
-/// - UniversalWebControl/SunamoBrowser
-/// </summary>
+using HtmlAgilityPack;
+
 public interface ISunamoBrowser
 {
     /// <summary>

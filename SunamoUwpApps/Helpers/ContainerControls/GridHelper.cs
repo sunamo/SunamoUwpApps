@@ -1,3 +1,5 @@
+namespace apps.Helpers.ContainerControls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,6 @@ using apps;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps;
     public static class GridHelper
     {
 

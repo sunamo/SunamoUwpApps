@@ -1,3 +1,5 @@
+namespace apps.Popups;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +19,6 @@ using apps.Helpers;
 using Windows.UI.Popups;
 using Windows.ApplicationModel.Resources;
 
-namespace apps.Popups;
     public sealed partial class AboutApp : UserControl, IPopupResponsive, IPopupEvents<object>
     {
         

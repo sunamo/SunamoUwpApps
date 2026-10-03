@@ -1,3 +1,5 @@
+namespace apps.Essential;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +13,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.Essential;
     public  class WpfApp : ThisApp
     {
         public WpfApp()

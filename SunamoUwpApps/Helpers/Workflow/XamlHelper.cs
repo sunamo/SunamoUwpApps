@@ -1,3 +1,5 @@
+namespace apps.Helpers.Workflow;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,6 @@ using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps.Helpers;
     public static class XamlHelper //: IAsync
     {
         public static BitmapImage CreateBitmapImageFromVisual(FrameworkElement text)

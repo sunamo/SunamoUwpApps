@@ -1,4 +1,6 @@
-﻿using System;
+﻿namespace apps.Helpers.Controls;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +9,6 @@ using Windows.Foundation;
 using Windows.System.Threading;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps;
     public class WebViewHelper
     {
          WebView2 wv = new WebView2();

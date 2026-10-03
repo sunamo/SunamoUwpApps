@@ -1,3 +1,5 @@
+namespace apps.Popups;
+
 using apps;
 using System;
 using System.Collections.Generic;
@@ -6,15 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Windows.Foundation;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
-    /// <summary>
-    /// Nepovolí tlačítko OK dokud není povolená aspoň 1 položka
-    /// 
-    /// </summary>
     public partial class CheckBoxListUC : UserControl, IPopupResponsive, IPopupEvents<object> //, IUserControlInPopup
     {
         public int checkedLength = 0;

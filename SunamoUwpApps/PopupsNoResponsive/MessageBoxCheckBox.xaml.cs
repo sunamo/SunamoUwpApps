@@ -1,3 +1,5 @@
+namespace apps.PopupsNoResponsive;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +14,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.PopupsNoResponsive;
     public sealed partial class MessageBoxCheckBox : UserControl, IPopupSmall
     {
         public event RoutedEventHandler ClickOK;

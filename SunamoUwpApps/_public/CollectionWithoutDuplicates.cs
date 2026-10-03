@@ -1,10 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// A collection that automatically prevents duplicate items.
-/// Supports both normal comparison and string-based comparison.
-/// </summary>
-/// <typeparam name="T">The type of items in the collection.</typeparam>
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
 {
     /// <summary>

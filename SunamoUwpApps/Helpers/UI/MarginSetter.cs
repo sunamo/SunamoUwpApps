@@ -1,3 +1,5 @@
+namespace apps.Helpers.UI;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,6 @@ using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.Helpers;
     public static class MarginSetter
     {
         /// <summary>

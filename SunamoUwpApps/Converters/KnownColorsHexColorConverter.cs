@@ -1,14 +1,14 @@
+namespace apps.Converters;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
-
 using System.Reflection;
 using System.Diagnostics;
 
-namespace apps;
     public static class KnownColorsHexColorConverter //: ISimpleConverter<ColorConverter, string>
     {
         static Dictionary<string, Color> hexKnownColors = new Dictionary<string, Color>();

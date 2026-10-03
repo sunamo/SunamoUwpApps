@@ -1,8 +1,7 @@
+namespace apps._public;
+
 using System.Reflection;
 
-namespace SunamoUwpApps._sunamo;
-
-/// <summary>Font weights accepted by the text block helpers (values are OpenType weights).</summary>
 public enum FontWeight2 : ushort
 {
     /// <summary>Thin.</summary>

@@ -1,3 +1,5 @@
+namespace apps.Interfaces;
+
 using apps;
 using apps.Popups;
 using System.Threading.Tasks;
@@ -7,14 +9,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 
-
-
-    // MainPage is never based from IEssentialMainPage with generic arguments
-    /// <summary>
-    /// This is all about logging
-    /// now its doing with ThisApp.SetStatus
-    /// => Everything commented
-    /// </summary>
 public interface IEssentialMainPage 
 {
     //StackPanel ListBoxLogs { get; }

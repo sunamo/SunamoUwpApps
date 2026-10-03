@@ -1,6 +1,5 @@
-﻿namespace SunamoUwpApps._sunamo;
+﻿namespace apps._public;
 
-/// <summary>Common contract of a log message colored by <typeparamref name="Color"/>.</summary>
 public interface ILogMessage<Color, StorageClass>
 {
     /// <summary>Background color of the message.</summary>

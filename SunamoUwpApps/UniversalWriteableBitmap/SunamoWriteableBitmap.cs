@@ -1,3 +1,5 @@
+namespace apps.UniversalWriteableBitmap;
+
 using apps;
 using apps.Helpers;
 using apps.Helpers.Resources;
@@ -17,7 +19,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace UniversalWriteableBitmap;
     public static class SunamoWriteableBitmap
     {
         public static Grid gridCreateWithImage = null;

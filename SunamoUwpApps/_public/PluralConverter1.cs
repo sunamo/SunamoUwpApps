@@ -1,10 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Converts English words between singular and plural forms.
-/// This class is not static (unlike other converters) to avoid wasting resources at application startup
-/// when the class might not be used at all. Please try to create only one instance of this class.
-/// </summary>
 public sealed partial class PluralConverter : ISimpleConverter
 {
     /// <summary>

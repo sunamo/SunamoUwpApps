@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Interface for asynchronous task result retrieval.
-/// </summary>
 public interface IAsync
 {
     /// <summary>

@@ -1,3 +1,5 @@
+namespace apps.Helpers.DataHolderControls;
+
 using Microsoft.UI.Xaml.Controls;
 
 public static class ItemsControlHelper

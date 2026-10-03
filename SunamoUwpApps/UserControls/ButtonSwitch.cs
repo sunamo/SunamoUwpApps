@@ -1,3 +1,5 @@
+namespace apps.UserControls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,6 @@ using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
     public class ButtonSwitch : Button
     {
         SolidColorBrush panel1 = new SolidColorBrush(Colors.LightBlue);

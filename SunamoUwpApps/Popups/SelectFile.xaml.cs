@@ -1,4 +1,6 @@
-﻿using System;
+﻿namespace apps.Popups;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,14 +11,9 @@ using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
-    /// <summary>
-    /// Interaction logic for SelectFile.xaml
-    /// </summary>
     public partial class SelectFile : UserControl, IPopupResponsive
     {
         Border border = new Border();

@@ -1,3 +1,5 @@
+namespace apps.UserControls;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps;
     public sealed partial class UpDownNumeric : UserControl
     {
         public event ValueChangedRoutedHandler<uint> ValueChanged;

@@ -1,3 +1,5 @@
+namespace apps;
+
 using apps.PopupsNoResponsive;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,6 @@ using Windows.UI.Popups;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls.Primitives;
 
-namespace apps;
     class DW
     {
         private static bool ShowMessageDialog(string text, string typZpravy)

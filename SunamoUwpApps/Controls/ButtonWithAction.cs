@@ -1,3 +1,5 @@
+namespace apps.Controls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +9,6 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps;
-    /// <summary>
-    /// Pokud nebude specifikována akce, vytvoří pouze TextBlock, pokud bude, vytvoří Button s daným handlerem a do něj TextBlock
-    /// </summary>
     public  class ButtonWithAction : UserControl, IIdentificator
     {
         VoidObject action = null;

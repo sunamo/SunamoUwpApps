@@ -1,6 +1,5 @@
-/// <summary>
-/// Pomoc hledej v konkrétních třídách - pokud chceš například generovat Grid, tak GridHelper atd.
-/// </summary>
+namespace apps.Generators;
+
 public  class XamlGenerator
 {
 

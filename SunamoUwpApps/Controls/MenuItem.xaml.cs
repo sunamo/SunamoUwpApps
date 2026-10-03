@@ -1,3 +1,5 @@
+namespace apps.Controls;
+
 using apps.AwesomeFont;
 using System;
 using System.Collections.Generic;
@@ -14,12 +16,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps;
-    /// <summary>
-    /// Is used in UWP apps SocialNetworksManager or CreateW10AppGraphics
-    /// as replacement of SuMenuItem of WPF and easy porting WPF xaml
-    /// Now is not compile, better is use Microsoft.Toolkit.UWP.UI which contains Menu / SuMenuItems
-    /// </summary>
     public sealed partial class SuMenuItem : UserControl
     {
         public List<SuMenuItem> Items = new List<SuMenuItem>();

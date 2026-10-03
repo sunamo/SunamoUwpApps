@@ -1,8 +1,7 @@
-﻿using System.Reflection;
+﻿namespace apps._public;
 
-namespace SunamoUwpApps._sunamo;
+using System.Reflection;
 
-/// <summary>Part of a simple XPath expression, for example tag[@name="value"].</summary>
 public class XPathPart
 {
     /// <summary>Name of the tag.</summary>

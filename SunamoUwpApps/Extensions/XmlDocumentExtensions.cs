@@ -1,3 +1,5 @@
+namespace apps.Extensions;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,6 @@ using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.Storage;
 
-namespace apps;
     public static class XmlDocumentExtensions// : IAsync
     {
         public static XmlDocument Load(this XmlDocument xd, string file)

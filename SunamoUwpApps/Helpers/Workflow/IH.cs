@@ -1,3 +1,4 @@
+namespace apps.Helpers.Workflow;
 
 using System;
 using System.Collections;
@@ -6,8 +7,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps;
-    
     public delegate void updateBorderBrushOfBorder(Border b, Brush br);
     public delegate Brush getBorderBrushOfBorder(Border b);
     public delegate void updateProgressBarWpf(ProgressBar pb, double value);

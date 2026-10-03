@@ -1,3 +1,5 @@
+namespace apps.Converters;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,6 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.Converters;
     public class FontFamilyConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)

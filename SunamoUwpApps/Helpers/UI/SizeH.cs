@@ -1,3 +1,5 @@
+namespace apps.Helpers.UI;
+
 using System;
 using Microsoft.UI.Xaml;
 using Windows.Foundation;

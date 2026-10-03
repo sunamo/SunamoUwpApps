@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +10,6 @@ using Windows.Security.Cryptography.DataProtection;
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-namespace apps;
-    /// <summary>
-    /// Use SunamoSecure.apps.StringSecurityHelper instead of this
-    /// SaveSecureToDisc save on drive but ToInsecureString never return data
-    /// </summary>
     public static class ProtectedDataHelper
     {
         #region Newest from 3/4/20 but not working

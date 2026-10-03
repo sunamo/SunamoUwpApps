@@ -1,14 +1,9 @@
+namespace apps.Collections;
+
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.UI.Xaml;
 
-/// <summary>
-/// T je klíč slovníku
-/// U je hodnota slovníku
-/// </summary>
-/// <typeparam name="T"></typeparam>
-/// <typeparam name="U"></typeparam>
-/// <typeparam name="X"></typeparam>
 public class SunamoDictionaryWithKeysDependencyObject<T, U> : SunamoDictionary<T, U> where T : DependencyObject
 {
     public List<U> GetValuesByValuesOfKeysProperty<X>(DependencyProperty dp, X co)

@@ -1,3 +1,5 @@
+namespace apps;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -5,14 +7,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
-
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-
-    /// <summary>
-    /// Správná cesta není pomocí předávání stringu, ani StorageFile, ani StorageFolder+string, ani pomocí Streamu ale jedině a pouze pomocí bajtů a metod ReadBufferAsync a WriteBufferAsync
-    /// </summary>
     public static class TFApps 
     {
     #region GetLines

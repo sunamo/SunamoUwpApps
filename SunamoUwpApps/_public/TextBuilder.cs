@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// Text builder that supports both StringBuilder and List modes with undo capability.
-/// </summary>
 public class TextBuilder : ITextBuilder
 {
     private bool canUndo;

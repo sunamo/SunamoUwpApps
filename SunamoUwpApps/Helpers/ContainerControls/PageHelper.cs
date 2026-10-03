@@ -1,3 +1,5 @@
+namespace apps.Helpers.ContainerControls;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,6 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Xaml;
 
-namespace apps;
     public static class PageHelper
     {
         /// <summary>

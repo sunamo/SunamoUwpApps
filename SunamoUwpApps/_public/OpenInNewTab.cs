@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// OpenInNewTab
-/// </summary>
 public enum OpenInNewTab
 {
     /// <summary>Never</summary>

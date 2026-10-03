@@ -1,3 +1,5 @@
+namespace apps.UniversalWebControl;
+
 using apps;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.UI.Xaml.Controls;
 
-namespace UniversalWebControl;
     public class GoBackCommand : ISunamoAsyncCommand
     {
         static bool? previousCanExecute = null;

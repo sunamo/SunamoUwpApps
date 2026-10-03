@@ -1,4 +1,6 @@
-﻿using System;
+﻿namespace apps.UniversalWebControl;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,7 +17,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 
-namespace UniversalWebControl;
     public sealed partial class SunamoBrowser : UserControl, ISunamoAppsBrowser<Control>, IAsync
     {
         public static Dictionary<WebView2, SunamoBrowser> webViewToSunamoBrowser = new Dictionary<WebView2, SunamoBrowser>();

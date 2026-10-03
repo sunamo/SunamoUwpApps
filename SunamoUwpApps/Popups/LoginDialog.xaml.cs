@@ -1,4 +1,6 @@
-﻿using apps.Essential;
+﻿namespace apps.Popups;
+
+using apps.Essential;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +18,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-namespace apps.Popups;
+
     public sealed partial class LoginDialog : UserControl, IPopupResponsive, IPopupDialogResult, IAsync
     {
 static Type type = typeof(LoginDialog);

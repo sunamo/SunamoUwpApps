@@ -1,4 +1,4 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
 public enum AppPics
 {

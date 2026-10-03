@@ -1,4 +1,7 @@
-﻿using apps;
+﻿namespace apps.Popups;
+
+using ImageHelper = apps.Helpers.Controls.ImageHelper;
+using apps;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +20,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps;
     public sealed partial class WebBrowser : UserControl, IPopupWholeScreen
     {
         Uri uri = null;

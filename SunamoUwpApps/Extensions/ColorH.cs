@@ -1,3 +1,5 @@
+namespace apps.Extensions;
+
 using apps;
 using System;
 using System.Collections.Generic;
@@ -6,9 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
 using Microsoft.UI.Xaml.Media;
-/// <summary>
-/// Is shared between apps ColorH and shared's ColorH 
-/// </summary>
+
 public static class ColorH
     {
     #region For easy copy

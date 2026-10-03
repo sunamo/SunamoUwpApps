@@ -1,3 +1,5 @@
+namespace apps.PopupsNoResponsive;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,10 +14,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.PopupsNoResponsive;
-    /// <summary>
-    /// Přejmenován z MessageBox na MessageBoxMetro, protože MessageBox už v WPF byl, a nerad bych na něj odkazoval celou hiearchií. Dávej na to příště pozor.
-    /// </summary>
     public sealed partial class MessageBoxMetro : UserControl, IPopupSmall
     {
         public event RoutedEventHandler ClickOK;

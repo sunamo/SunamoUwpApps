@@ -1,11 +1,13 @@
-﻿using System;
+﻿namespace apps;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-namespace apps;
+
     public class FileNameWithDateTime
     {
 static Type type = typeof(FileNameWithDateTime);

@@ -1,5 +1,6 @@
-﻿using System.Reflection;
-namespace SunamoUwpApps._sunamo;
+﻿namespace apps._public;
+
+using System.Reflection;
 
 public class OuterObjectMapping
 {

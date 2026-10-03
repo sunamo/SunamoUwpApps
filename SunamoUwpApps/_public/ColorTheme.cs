@@ -1,8 +1,5 @@
-namespace SunamoUwpApps._sunamo;
+namespace apps._public;
 
-/// <summary>
-/// ColorTheme
-/// </summary>
 public enum ColorTheme
 {
     /// <summary>Dark</summary>
