@@ -39,3 +39,4 @@ global using apps.UniversalWriteableBitmap;
 global using apps.UserControls;
 global using apps.XmlStorage;
 global using apps._public;
+global using apps;
