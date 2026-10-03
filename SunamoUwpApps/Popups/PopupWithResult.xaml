@@ -1,0 +1,24 @@
+<UserControl
+    x:Class="apps.Popups.PopupWithResult"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:apps.Popups"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:apps="using:apps"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Border x:Name="border" Background="White" BorderThickness="2">
+        <Grid x:Name="grid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <apps:PopupButtons x:Name="popupButtons" Grid.Row="1" Background="Red"></apps:PopupButtons>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <OutputType>Library</OutputType>
+    <RootNamespace>apps</RootNamespace>
+    <AssemblyName>SunamoUwpApps</AssemblyName>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <DefineConstants>$(DefineConstants);WINDOWS_UWP;NETFX_CORE</DefineConstants>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Description>Helpers, popups and controls from the legacy UWP apps library, ported to WinUI 3</Description>
+    <Version>26.10.3.1</Version>
+    <Authors>www.sunamo.cz</Authors>
+    <Copyright>www.sunamo.cz</Copyright>
+    <PackageProjectUrl>https://sunamo.github.io/WindowsNuGetPackages/SunamoUwpApps/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sunamo/SunamoUwpApps.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IsPackable>true</IsPackable>
+    <DebugType>portable</DebugType>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>true</EmbedAllSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Optimize>false</Optimize>
+    <PackageReleaseNotes>Initial WinUI 3 port of the legacy UWP apps library</PackageReleaseNotes>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)' == '' or '$(Platform)' == 'AnyCPU'">
+    <Platform>x64</Platform>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.5.1" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2705" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.2" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.72" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="TemplatesNotCompile\**" />
+    <Compile Remove="_legacy\**" />
+    <None Include="_legacy\**" Pack="false" />
+    <!-- Not compiled in the original UWP project either (SelectorHelperListView has no xaml) -->
+    <Compile Remove="Controls\SelectorHelperListView.xaml.cs" />
+    <None Include="Controls\SelectorHelperListView.xaml.cs" />
+    <None Include="TemplatesNotCompile\**" />
+    <None Remove="_sunamo\**" />
+  </ItemGroup>
+</Project>
