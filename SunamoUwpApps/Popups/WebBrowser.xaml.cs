@@ -17,8 +17,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps
-{
+namespace apps;
     public sealed partial class WebBrowser : UserControl, IPopupWholeScreen
     {
         Uri uri = null;
@@ -241,4 +240,3 @@ namespace apps
             set { border.Name = value; }
         }
     }
-}

@@ -1,5 +1,4 @@
-namespace apps.PopupsNoResponsive
-{
+namespace apps.PopupsNoResponsive;
     /// <summary>
     /// Same member as IPopup
     /// </summary>
@@ -7,4 +6,3 @@ namespace apps.PopupsNoResponsive
     {
 
     }
-}

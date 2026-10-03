@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps
-{
+namespace apps;
     public class ComboBoxHelper<T> : ComboBoxHelperBase<T>
     {
         public ComboBoxHelper(ComboBox cb) : base(cb)
@@ -16,4 +15,3 @@ namespace apps
 
 
     }
-}

@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 
-namespace apps
-{
+namespace apps;
     public class BackgroundTaskTimeTrigger 
     {
         public string progress = "";
@@ -36,4 +35,3 @@ namespace apps
             return task;
         }
     }
-}

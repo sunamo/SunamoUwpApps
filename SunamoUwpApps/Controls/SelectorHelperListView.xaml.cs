@@ -14,8 +14,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// ListView který spolupracuje se třídou SelectorView
     /// </summary>
@@ -29,6 +28,3 @@ namespace apps
         public object SelectedItem { get; set; }
 
     }
-
-    
-}

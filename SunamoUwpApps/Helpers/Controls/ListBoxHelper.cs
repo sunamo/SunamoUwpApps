@@ -19,8 +19,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using apps.Helpers;
 using System.Collections.ObjectModel;
 
-namespace apps
-{
+namespace apps;
     public class ListBoxHelper<T> : SelectorHelper<T> where T : IIdentificator
     {
         static Type type = typeof(ListBoxHelper);
@@ -60,4 +59,3 @@ namespace apps
             ThrowEx.NotImplementedMethod();
         }
     }
-}

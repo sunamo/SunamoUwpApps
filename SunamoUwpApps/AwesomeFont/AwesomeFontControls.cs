@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.AwesomeFont
-{
+namespace apps.AwesomeFont;
     /// <summary>
     /// Obsahuje metody pro přiřazení awesome font ikon různým controlům
     /// </summary>
@@ -87,4 +86,3 @@ namespace apps.AwesomeFont
             }));
         }
     }
-}

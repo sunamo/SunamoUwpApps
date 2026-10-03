@@ -11,8 +11,7 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Xaml;
 
-namespace apps
-{
+namespace apps;
     public static class PageHelper
     {
         /// <summary>
@@ -59,4 +58,3 @@ namespace apps
             //}).AsTask().Conf();
         }
     }
-}

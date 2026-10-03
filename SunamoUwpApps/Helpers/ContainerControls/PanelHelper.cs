@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps.Helpers
-{
+namespace apps.Helpers;
     public static class PanelHelper
     {
         /// <summary>
@@ -25,4 +24,3 @@ namespace apps.Helpers
             return null;
         }
     }
-}

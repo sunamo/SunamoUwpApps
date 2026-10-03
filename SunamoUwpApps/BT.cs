@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Streams;
 
-namespace apps
-{
+namespace apps;
     public static class BufferHelper //: IAsync
     {
         public static IBuffer ConvertFromStringToBuffer(String str)
@@ -73,4 +72,3 @@ namespace apps
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

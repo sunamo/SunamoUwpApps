@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Zde to vždy vytváří nějaký soubor, pro jednoduché zjištění použij třídu KnownFolders
     /// </summary>
@@ -45,4 +44,3 @@ namespace apps
             return GetStorageFileOfKnownFolder(KnownFolders.VideosLibrary);
         }
     }
-}

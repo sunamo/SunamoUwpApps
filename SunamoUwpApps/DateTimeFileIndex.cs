@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-namespace apps
-{
+namespace apps;
     public class FileNameWithDateTime
     {
 static Type type = typeof(FileNameWithDateTime);
@@ -192,4 +191,3 @@ static Type type = typeof(FileNameWithDateTime);
             return x.dt.CompareTo(y.dt);
         }
     }
-}

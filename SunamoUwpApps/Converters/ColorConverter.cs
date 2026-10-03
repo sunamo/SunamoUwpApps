@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI;
 
 
-namespace apps
-{
+namespace apps;
     // <summary>
     /// Může se využít například když chceš ukládat barvu na disk
     /// </summary>
@@ -26,4 +25,3 @@ namespace apps
             return SF.PrepareToSerialization(CA.ToListString(t.A, t.R, t.G, t.B));
         }
     }
-}

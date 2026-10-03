@@ -7,8 +7,7 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Pokud nebude specifikována akce, vytvoří pouze TextBlock, pokud bude, vytvoří Button s daným handlerem a do něj TextBlock
     /// </summary>
@@ -85,4 +84,3 @@ namespace apps
             }
         }
     }
-}

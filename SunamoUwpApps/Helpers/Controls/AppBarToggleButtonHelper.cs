@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +9,4 @@ public class AppBarToggleButtonHelper
 {
     public bool IsChecked { get; set; }
     public string Name { get; set; }
-}
-
-namespace SunamoYouTube
-{
-    public partial class MainPage
-    {
-
-    }
 }

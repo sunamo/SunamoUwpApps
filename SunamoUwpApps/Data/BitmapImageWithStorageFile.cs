@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps.Data
-{
+namespace apps.Data;
     public class BitmapImageWithStorageFile
     {
         public StorageFile path = null;
@@ -24,4 +23,3 @@ namespace apps.Data
             return path.Path;
         }
     }
-}

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-namespace apps
-{
+namespace apps;
     public static class ControlHelper
     {
 static Type type = typeof(ControlHelper);
@@ -126,4 +125,3 @@ static Type type = typeof(ControlHelper);
             return GetName(sender, "chb");
         }
     }
-}

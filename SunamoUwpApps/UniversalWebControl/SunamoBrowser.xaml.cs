@@ -15,8 +15,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 
-namespace UniversalWebControl
-{
+namespace UniversalWebControl;
     public sealed partial class SunamoBrowser : UserControl, ISunamoAppsBrowser<Control>, IAsync
     {
         public static Dictionary<WebView2, SunamoBrowser> webViewToSunamoBrowser = new Dictionary<WebView2, SunamoBrowser>();
@@ -281,4 +280,3 @@ namespace UniversalWebControl
              Navigate(new Uri(uri));
         }
     }
-}

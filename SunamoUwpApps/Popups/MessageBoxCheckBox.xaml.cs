@@ -13,8 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.Popups
-{
+namespace apps.Popups;
     public sealed partial class MessageBoxCheckBox : UserControl, IPopupResponsive, IPopupEvents<object>
     {
         public event VoidT<object> ClickOK;
@@ -91,4 +90,3 @@ namespace apps.Popups
             }
         }
     }
-}

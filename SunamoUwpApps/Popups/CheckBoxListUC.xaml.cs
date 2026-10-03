@@ -10,8 +10,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Nepovolí tlačítko OK dokud není povolená aspoň 1 položka
     /// 
@@ -203,4 +202,3 @@ namespace apps
 
         
     }
-}

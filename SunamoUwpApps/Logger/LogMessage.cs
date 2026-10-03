@@ -17,8 +17,7 @@ using System.Drawing;
 using Microsoft.UI.Xaml.Media;
 #endif
 
-namespace apps
-{
+namespace apps;
     public class LogMessage : LogMessageAbstract<Color, StorageFile>//, ILogMessage
     {
         public LogMessage()
@@ -36,5 +35,3 @@ namespace apps
         #endif
 
     }
-
-}

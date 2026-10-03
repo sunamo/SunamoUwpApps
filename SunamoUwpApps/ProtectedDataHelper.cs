@@ -8,8 +8,7 @@ using Windows.Security.Cryptography.DataProtection;
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Use SunamoSecure.apps.StringSecurityHelper instead of this
     /// SaveSecureToDisc save on drive but ToInsecureString never return data
@@ -198,4 +197,3 @@ namespace apps
 
 
     }
-}

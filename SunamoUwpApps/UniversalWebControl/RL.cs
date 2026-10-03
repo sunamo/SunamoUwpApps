@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
-namespace UniversalWebControl
-{
+namespace UniversalWebControl;
     public static class RL
     {
         static ResourceLoader rl = ResourceLoader.GetForCurrentView("UniversalWebControl/Resources");
@@ -16,4 +15,3 @@ namespace UniversalWebControl
             return rl.GetString(k);
         }
     }
-}

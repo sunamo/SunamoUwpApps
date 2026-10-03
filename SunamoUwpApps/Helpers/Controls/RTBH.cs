@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 
-namespace apps
-{
+namespace apps;
     public class RTBH : TextBlockHelperBase
     {
         public FontArgs fa = FontArgs.DefaultRun();
@@ -35,4 +34,3 @@ namespace apps
             return p;
         }
     }
-}

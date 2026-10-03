@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
-namespace UniversalWebControl
-{
+namespace UniversalWebControl;
     public interface ISunamoBrowserHost
     {
         WebView2 SelectedWebView();
@@ -17,4 +16,3 @@ namespace UniversalWebControl
         /// </summary>
         bool wasOpenedNewTab { get; set; }
     }
-}

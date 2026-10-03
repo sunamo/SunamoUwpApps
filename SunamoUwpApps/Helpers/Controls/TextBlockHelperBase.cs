@@ -10,8 +10,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     // TODO: adatp to ITextBlockHelperBase, In desktop I have two classes derived already from this
     public class TextBlockHelperBase : ITextBlockHelperBase<FontWeight, Italic, Inline, Bold, Run, InlineUIContainer, FontArgs>
     {
@@ -103,4 +102,3 @@ namespace apps
             throw new NotImplementedException();
         }
     }
-}

@@ -13,8 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.Popups
-{
+namespace apps.Popups;
     public sealed partial class YesNoDialog : UserControl, IPopupResponsive, IPopupEvents<YesNoDialogEventArgs>
     {
         //Langs l = apps.Essential.WpfApp.l;
@@ -77,4 +76,3 @@ namespace apps.Popups
             ClickCancel(new YesNoDialogEventArgs { Arg = arg });
         }
     }
-}

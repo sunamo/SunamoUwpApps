@@ -5,8 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     public static class PopupHelper
     {
         public static void AssignNewSizePopupCenter(Size windowSize, Popup popup)
@@ -118,4 +117,3 @@ namespace apps
 
 
     }
-}

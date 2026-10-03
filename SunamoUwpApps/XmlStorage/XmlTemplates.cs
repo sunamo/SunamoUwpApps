@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace apps
-{
+namespace apps;
     public class XmlTemplates
     {
         public static string GetXml2(string prvni, string druhy)
@@ -13,4 +12,3 @@ namespace apps
             return "<sunamo><prvni><![CDATA[" + prvni + "]]></prvni><druhy><![CDATA[" + druhy + "]]></druhy></sunamo>";
         }
     }
-}

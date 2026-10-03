@@ -10,8 +10,7 @@ using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps.Helpers
-{
+namespace apps.Helpers;
     public static class XamlHelper //: IAsync
     {
         public static BitmapImage CreateBitmapImageFromVisual(FrameworkElement text)
@@ -68,4 +67,3 @@ namespace apps.Helpers
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

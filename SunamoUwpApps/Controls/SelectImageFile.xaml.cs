@@ -11,8 +11,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Interaction logic for SelectImageFile.xaml
     /// </summary>
@@ -97,4 +96,3 @@ namespace apps
             }
         }
     }
-}

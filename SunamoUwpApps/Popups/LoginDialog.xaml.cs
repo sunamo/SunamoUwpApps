@@ -16,8 +16,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-namespace apps.Popups
-{
+namespace apps.Popups;
     public sealed partial class LoginDialog : UserControl, IPopupResponsive, IPopupDialogResult, IAsync
     {
 static Type type = typeof(LoginDialog);
@@ -385,4 +384,3 @@ static Type type = typeof(LoginDialog);
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

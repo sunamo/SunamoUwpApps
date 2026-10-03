@@ -12,8 +12,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.PopupsNoResponsive
-{
+namespace apps.PopupsNoResponsive;
     public sealed partial class ErrorListing : UserControl, IPopupSmall
     {
         public event RoutedEventHandler ClickOK;
@@ -78,4 +77,3 @@ namespace apps.PopupsNoResponsive
 
         public event RoutedEventHandler ClickCancel;
     }
-}

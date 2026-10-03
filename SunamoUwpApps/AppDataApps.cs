@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Search;
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Dont use async, but only async. Then I can use same signature in apps and wpf
     /// Path in UWP apps is quite different:
@@ -316,4 +315,3 @@ static Type type = typeof(AppDataApps);
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 
-namespace apps
-{
+namespace apps;
     public static class Pickers //: IAsync
     {
         /// <summary>
@@ -62,4 +61,3 @@ namespace apps
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

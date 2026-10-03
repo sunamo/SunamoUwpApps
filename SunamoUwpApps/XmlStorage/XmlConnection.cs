@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Storage;
 
-namespace apps.XmlStorage
-{
+namespace apps.XmlStorage;
     public class XmlConnection
     {
         Type type = typeof(XmlConnection);
@@ -108,4 +107,3 @@ namespace apps.XmlStorage
             return null;
         }
     }
-}

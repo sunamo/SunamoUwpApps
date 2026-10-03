@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps
-{
+namespace apps;
     public static class ColorThemeHelper
     {
         /// <summary>
@@ -19,4 +18,3 @@ namespace apps
 
         }
     }
-}

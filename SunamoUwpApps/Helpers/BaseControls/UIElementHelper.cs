@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Windows.UI.Core;
 
-namespace apps
-{
+namespace apps;
     class UIElementHelper
     {
         public  static void Refresh( UIElement uiElement)
@@ -15,4 +14,3 @@ namespace apps
             uiElement.UpdateLayout();
         }
     }
-}

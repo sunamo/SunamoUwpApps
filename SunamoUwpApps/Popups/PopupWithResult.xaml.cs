@@ -15,8 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace apps.Popups
-{
+namespace apps.Popups;
     public sealed partial class PopupWithResult : UserControl, IPopupDialogResult, IPopupResponsive
     {
         public PopupWithResult(FrameworkElement customControl)
@@ -128,4 +127,3 @@ Popup: 175.2,52.8
     
         public Brush PopupBorderBrush { set => border.BorderBrush = value; }
     }
-}

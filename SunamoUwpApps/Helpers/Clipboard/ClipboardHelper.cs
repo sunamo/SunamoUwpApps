@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace apps
-{
+namespace apps;
     public static class ClipboardHelperApps2
     {
         public static event Action<object, object> ContentChanged;
@@ -39,4 +38,3 @@ namespace apps
             Clipboard.SetContent(dp);
         }
     }
-}

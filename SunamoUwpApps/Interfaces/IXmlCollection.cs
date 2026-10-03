@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace apps
-{
+namespace apps;
     public interface IXmlParserCollection
     {
         //void Parse(IEnumerable<XmlElement> node);
@@ -30,4 +29,3 @@ namespace apps
     {
         Value this[Key key] { get; set; }
     }
-}

@@ -7,8 +7,7 @@ using apps;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps
-{
+namespace apps;
     public static class GridHelper
     {
 
@@ -172,4 +171,3 @@ namespace apps
             return rd;
         }
     }
-}

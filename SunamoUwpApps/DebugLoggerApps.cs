@@ -8,8 +8,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 #if DEBUG
-namespace apps
-{
+namespace apps;
     public class DebugLoggerApps
     {
         public static DebugLoggerApps Instance = new DebugLoggerApps();
@@ -31,5 +30,4 @@ namespace apps
             DebugLoggerApps.Instance.Write(Canvas.GetLeft(svMenu) + AllStrings.space + Canvas.GetTop(svMenu));
         }
     }
-}
 #endif

@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace apps
-{
+namespace apps;
     class LogMessagesComparer : IComparer<LogMessage>
     {
         //public int Asc(LogMessage x, LogMessage y)
@@ -24,4 +23,3 @@ namespace apps
             return x.Dt.CompareTo(y.Dt);
         }
     }
-}

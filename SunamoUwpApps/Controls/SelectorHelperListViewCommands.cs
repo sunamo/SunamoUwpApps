@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Has inner command classes which execute methods in SelectorHelper
     /// </summary>
@@ -87,4 +86,3 @@ namespace apps
             }
         }
     }
-}

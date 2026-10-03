@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 
-namespace apps
-{
+namespace apps;
     public static class Consts
     {
         public static readonly Size dialogSize = new Size(1024, 256);
@@ -19,4 +18,3 @@ namespace apps
         public const string HttpLocalhostSlash = "http://sunamo.net/";
         public const string HttpSunamoCzSlash = "http://www.sunamo.cz/";
     }
-}

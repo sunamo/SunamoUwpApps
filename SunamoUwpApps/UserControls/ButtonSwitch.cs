@@ -7,8 +7,7 @@ using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     public class ButtonSwitch : Button
     {
         SolidColorBrush panel1 = new SolidColorBrush(Colors.LightBlue);
@@ -80,4 +79,3 @@ namespace apps
             }
         }
     }
-}

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps.Helpers
-{
+namespace apps.Helpers;
     public static class TextBlockHelper
     {
         public static TextBlock Get(Orientation orientation, string text)
@@ -45,4 +44,3 @@ namespace apps.Helpers
             txt.Text = sb.ToString();
         }
     }
-}

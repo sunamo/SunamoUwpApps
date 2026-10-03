@@ -7,8 +7,7 @@ using Windows.Foundation;
 using Windows.System.Threading;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps
-{
+namespace apps;
     public class WebViewHelper
     {
          WebView2 wv = new WebView2();
@@ -46,4 +45,3 @@ namespace apps
             System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(1));   
         }
     }
-}

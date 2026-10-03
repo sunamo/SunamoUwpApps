@@ -7,8 +7,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// ms-appx:/// - where the app is installed
     /// ms-appdata - application with
@@ -47,4 +46,3 @@ namespace apps
 
         
     }
-}

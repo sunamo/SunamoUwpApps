@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
-namespace apps
-{
+namespace apps;
     public class ResourceLoaderApps : IResourceHelper
     {
         static ResourceLoader loader = ResourceLoader.GetForCurrentView("apps/Resources");
@@ -22,4 +21,3 @@ namespace apps
             return sess.i18n(name);
         }
     }
-}

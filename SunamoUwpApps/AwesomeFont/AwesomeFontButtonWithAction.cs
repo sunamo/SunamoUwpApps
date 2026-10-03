@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.AwesomeFont
-{
+namespace apps.AwesomeFont;
     /// <summary>
     /// Button s obrázkem z AwesomeFont
     /// </summary>
@@ -28,4 +27,3 @@ namespace apps.AwesomeFont
             }
         }
     }
-}

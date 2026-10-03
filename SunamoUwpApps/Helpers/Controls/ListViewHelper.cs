@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps
-{
+namespace apps;
     public class ListViewHelper<T, U> : SelectorHelper<T, U> where T :IIdentificator
     {
         /// <summary>
@@ -101,5 +100,3 @@ namespace apps
             UpdateItemsSource();
         }
     }
-    
-}

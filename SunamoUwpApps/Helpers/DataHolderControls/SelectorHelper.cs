@@ -13,8 +13,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.Helpers
-{
+namespace apps.Helpers;
 
     public abstract class SelectorHelper<T, U> : SelectorHelper where T : IIdentificator
     {
@@ -285,6 +284,3 @@ namespace apps.Helpers
                 return vr;
             }
         }
-
-    
-}

@@ -10,8 +10,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     public class TBH : TextBlockHelperBase
     {
         public FontArgs fa = FontArgs.DefaultRun();
@@ -121,4 +120,3 @@ namespace apps
             tb.Inlines.Add(GetItalic(p, fa));
         }
     }
-}

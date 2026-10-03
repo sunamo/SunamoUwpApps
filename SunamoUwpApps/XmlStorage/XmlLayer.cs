@@ -8,8 +8,7 @@ using System.Globalization;
 using Windows.Storage;
 using System.IO;
 using Windows.Storage.Streams;
-namespace apps.XmlStorage
-{
+namespace apps.XmlStorage;
     public static class XmlLayer //: IAsync
     {
 static Type type = typeof(XmlLayer);
@@ -120,4 +119,3 @@ static Type type = typeof(XmlLayer);
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

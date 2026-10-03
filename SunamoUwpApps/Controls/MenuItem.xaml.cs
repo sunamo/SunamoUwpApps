@@ -14,8 +14,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Is used in UWP apps SocialNetworksManager or CreateW10AppGraphics
     /// as replacement of SuMenuItem of WPF and easy porting WPF xaml
@@ -76,4 +75,3 @@ namespace apps
             btn.Click += reh;
         }
     }
-}

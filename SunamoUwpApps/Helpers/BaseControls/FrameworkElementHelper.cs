@@ -13,8 +13,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps
-{
+namespace apps;
     public static class FrameworkElementHelper 
     {
         public static void DebugAllSizes(FrameworkElement fw)
@@ -123,4 +122,3 @@ namespace apps
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

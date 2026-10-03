@@ -14,8 +14,7 @@ using Microsoft.UI.Xaml.Navigation;
 using apps;
 
 
-namespace apps
-{
+namespace apps;
     public sealed partial class EnterOneValue : UserControl, IPopupResponsive, IPopupEvents<EnterOneValueEventArgs>
     {
         Langs l = Langs.cs;
@@ -78,4 +77,3 @@ namespace apps
             ColorThemeHelper.ApplyColorTheme(border, ct);
         }
     }
-}

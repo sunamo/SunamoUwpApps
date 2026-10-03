@@ -15,8 +15,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 #endif
 
-namespace apps
-{
+namespace apps;
     public class LogService : LogServiceAbstract<Color, StorageFile>, IAsync
     {
 static Type type = typeof(LogService);
@@ -127,4 +126,3 @@ static Type type = typeof(LogService);
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

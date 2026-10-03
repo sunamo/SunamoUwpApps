@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI;
 
 
-namespace apps
-{
+namespace apps;
     public static class StringHexColorConverter //: ISimpleConverter<string, Color>
     {
 
@@ -62,4 +61,3 @@ namespace apps
             return Convert.ToByte(s, 16);
         }
     }
-}

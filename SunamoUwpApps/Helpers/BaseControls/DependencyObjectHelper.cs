@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.Helpers
-{
+namespace apps.Helpers;
     public static class DependencyObjectHelper
     {
         public static T FindVisualChild<T>(DependencyObject obj)
@@ -28,4 +27,3 @@ namespace apps.Helpers
             return null;
         }
     }
-}

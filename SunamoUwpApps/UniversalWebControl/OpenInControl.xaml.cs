@@ -13,8 +13,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-namespace UniversalWebControl
-{
+namespace UniversalWebControl;
     public sealed partial class OpenInControl : UserControl
     {
 static Type type = typeof(OpenInControl);
@@ -70,4 +69,3 @@ static Type type = typeof(OpenInControl);
             openIn = OpenInNewTab.Prompt;
         }
     }
-}

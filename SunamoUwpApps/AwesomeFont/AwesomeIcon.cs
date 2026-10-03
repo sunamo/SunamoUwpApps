@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace apps.AwesomeFont
-{
+namespace apps.AwesomeFont;
     /// <summary>
     /// Všechno ve verzi 4.4
     /// Parsed from css
@@ -495,4 +494,3 @@ namespace apps.AwesomeFont
         Ils = 0xf20b,
         Meanpath = 0xf20c,
     }
-}

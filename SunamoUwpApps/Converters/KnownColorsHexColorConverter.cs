@@ -8,8 +8,7 @@ using Windows.UI;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace apps
-{
+namespace apps;
     public static class KnownColorsHexColorConverter //: ISimpleConverter<ColorConverter, string>
     {
         static Dictionary<string, Color> hexKnownColors = new Dictionary<string, Color>();
@@ -88,4 +87,3 @@ namespace apps
             return StringHexColorConverter.ConvertTo(t);
         }
     }
-}

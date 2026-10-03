@@ -7,8 +7,7 @@ using Windows.Foundation;
 using Windows.Graphics.Display;
 using Microsoft.UI.Xaml;
 
-namespace apps
-{
+namespace apps;
     public static class SizeExtensions
     {
         public static Size RecalculateSizeWithScaleFactor(this Size s)
@@ -20,4 +19,3 @@ namespace apps
 
         
     }
-}

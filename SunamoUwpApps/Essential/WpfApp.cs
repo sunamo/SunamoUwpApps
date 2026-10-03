@@ -11,8 +11,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.Essential
-{
+namespace apps.Essential;
     public  class WpfApp : ThisApp
     {
         public WpfApp()
@@ -164,4 +163,3 @@ namespace apps.Essential
             return vr;
         }
     }
-}

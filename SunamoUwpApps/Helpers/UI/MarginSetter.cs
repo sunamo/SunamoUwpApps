@@ -7,8 +7,7 @@ using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.Helpers
-{
+namespace apps.Helpers;
     public static class MarginSetter
     {
         /// <summary>
@@ -27,4 +26,3 @@ namespace apps.Helpers
             }
         }
     }
-}

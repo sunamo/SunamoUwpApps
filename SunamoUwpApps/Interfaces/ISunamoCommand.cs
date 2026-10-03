@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.UI.Xaml;
 
-namespace apps
-{
+namespace apps;
     public interface ISunamoAsyncCommandBase
     {
         void RaiseCanExecuteChanged(bool canExecute);
@@ -33,4 +32,3 @@ namespace apps
         void RaiseCanExecuteChanged(bool canExecute);
         void UpdateAssociatedControls();
     }
-}

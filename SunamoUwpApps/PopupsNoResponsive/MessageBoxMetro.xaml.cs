@@ -12,8 +12,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.PopupsNoResponsive
-{
+namespace apps.PopupsNoResponsive;
     /// <summary>
     /// Přejmenován z MessageBox na MessageBoxMetro, protože MessageBox už v WPF byl, a nerad bych na něj odkazoval celou hiearchií. Dávej na to příště pozor.
     /// </summary>
@@ -66,4 +65,3 @@ namespace apps.PopupsNoResponsive
             set { border.BorderBrush = value; }
         }
     }
-}

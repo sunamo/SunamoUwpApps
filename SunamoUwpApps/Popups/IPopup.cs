@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Have events OK and Cancel
     /// </summary>
@@ -48,4 +47,3 @@ namespace apps
         /// </summary>
         bool? DialogResult { set; }
     }
-}

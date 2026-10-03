@@ -9,8 +9,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Tento gridview pracuje s řádky v obsahu i hlavičce které je grid
     /// </summary>
@@ -34,4 +33,3 @@ namespace apps
         }
 
     }
-}

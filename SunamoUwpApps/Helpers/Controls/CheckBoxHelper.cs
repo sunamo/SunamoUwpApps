@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps.Helpers
-{
+namespace apps.Helpers;
     public static class CheckBoxHelper
     {
         public static CheckBox Get(TextWrapping noWrap, string v)
@@ -26,4 +25,3 @@ namespace apps.Helpers
             return chb;
         }
     }
-}

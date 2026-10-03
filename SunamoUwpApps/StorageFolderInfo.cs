@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace apps
-{
+namespace apps;
     public class StorageFolderInfo
     {
         string path = null;
@@ -66,4 +65,3 @@ namespace apps
             }
         }
     }
-}

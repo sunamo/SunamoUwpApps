@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-namespace apps.Data
-{
+namespace apps.Data;
     public class BitmapImageWithPath
     {
         public string path = "";
@@ -23,4 +22,3 @@ namespace apps.Data
             return path;
         }
     }
-}

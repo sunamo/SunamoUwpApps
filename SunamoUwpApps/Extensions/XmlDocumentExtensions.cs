@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.Storage;
 
-namespace apps
-{
+namespace apps;
     public static class XmlDocumentExtensions// : IAsync
     {
         public static XmlDocument Load(this XmlDocument xd, string file)
@@ -20,4 +19,3 @@ namespace apps
 
        
     }
-}

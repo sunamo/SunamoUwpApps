@@ -9,8 +9,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Helper class to add operations to any control/object. In GeoCachingTool is passed here FileNameWithDateTime<StorageFolder, StorageFile>.
     /// It's data class for SelectorHelperListViewUC
@@ -65,4 +64,3 @@ namespace apps
 
         }
     }
-}

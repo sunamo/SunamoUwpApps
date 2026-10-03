@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Use IPopup instead
     /// </summary>
     public interface IFlyout : IPopup
     {
     }
-}

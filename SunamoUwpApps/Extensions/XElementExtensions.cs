@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-namespace apps
-{
+namespace apps;
     public static class XElementExtensions
     {
 static Type type = typeof(XElementExtensions);
@@ -37,4 +36,3 @@ static Type type = typeof(XElementExtensions);
             return actual;
         }
     }
-}

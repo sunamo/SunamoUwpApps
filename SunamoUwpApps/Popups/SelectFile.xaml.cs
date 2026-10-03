@@ -13,8 +13,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Interaction logic for SelectFile.xaml
     /// </summary>
@@ -116,4 +115,3 @@ namespace apps
             set { border.BorderBrush = value; }
         }
     }
-}

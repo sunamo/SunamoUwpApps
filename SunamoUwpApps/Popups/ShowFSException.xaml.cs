@@ -12,8 +12,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.Popups
-{
+namespace apps.Popups;
     /// <summary>
     /// Má jen tlačítko OK
     /// </summary>
@@ -115,4 +114,3 @@ namespace apps.Popups
 
         }
     }
-}

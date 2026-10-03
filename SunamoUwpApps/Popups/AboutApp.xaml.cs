@@ -17,8 +17,7 @@ using apps.Helpers;
 using Windows.UI.Popups;
 using Windows.ApplicationModel.Resources;
 
-namespace apps.Popups
-{
+namespace apps.Popups;
     public sealed partial class AboutApp : UserControl, IPopupResponsive, IPopupEvents<object>
     {
         
@@ -93,4 +92,3 @@ namespace apps.Popups
 
         public event VoidT<object> ClickCancel;
     }
-}

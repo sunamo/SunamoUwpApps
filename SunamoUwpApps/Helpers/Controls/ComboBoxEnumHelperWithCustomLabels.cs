@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Whole file commented, uncomment for SunamoYouTube
     /// </summary>
@@ -78,4 +77,3 @@ namespace apps
             cb.SelectedIndex = 0;
         }
     }
-}

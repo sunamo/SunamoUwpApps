@@ -8,8 +8,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.AwesomeFont
-{
+namespace apps.AwesomeFont;
     /// <summary>
     /// Vrací a nastavuje ikonku FontAwesomeIcon do instance DependencyObject
     /// Pokud je font family fonts/fontawesome-webfont.ttf#FontAwesome , dává se do Text &#x a pak f09b; , dohromady tedy &#xf09b;
@@ -50,4 +49,3 @@ namespace apps.AwesomeFont
 
         public static readonly DependencyProperty SymbolProperty = DependencyProperty.RegisterAttached("Symbol", typeof(FontAwesomeIcon), typeof(TextBlock), new PropertyMetadata(FontAwesomeIcon.None));
     }
-}

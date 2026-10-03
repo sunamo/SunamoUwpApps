@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     public static class Brushes
     {
         public static readonly SolidColorBrush White = new SolidColorBrush(Colors.White);
@@ -17,4 +16,3 @@ namespace apps
         public static readonly SolidColorBrush Gray = new SolidColorBrush(Colors.Gray);
         public static readonly SolidColorBrush Red = new SolidColorBrush(Colors.Red);
     }
-}

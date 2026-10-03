@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.UI.Xaml.Controls;
 
-namespace UniversalWebControl
-{
+namespace UniversalWebControl;
     public class GoBackCommand : ISunamoAsyncCommand
     {
         static bool? previousCanExecute = null;
@@ -309,4 +308,3 @@ namespace UniversalWebControl
             webView.CoreWebView2?.Stop();
         }
     }
-}

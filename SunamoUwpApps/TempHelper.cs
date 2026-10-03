@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace sunamo.Helpers
-{
+namespace sunamo.Helpers;
     public static class TempHelper 
     {
         static StorageFolder folder = null;
@@ -26,4 +25,3 @@ namespace sunamo.Helpers
             return AsyncHelper.ci.GetResult<T>(t);
         }
     }
-}

@@ -6,8 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps
-{
+namespace apps;
     
     public delegate void updateBorderBrushOfBorder(Border b, Brush br);
     public delegate Brush getBorderBrushOfBorder(Border b);
@@ -194,4 +193,3 @@ namespace apps
             return s.SelectedItem;
         }
     }
-}

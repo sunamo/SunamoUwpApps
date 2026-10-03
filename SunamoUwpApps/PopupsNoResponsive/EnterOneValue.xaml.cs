@@ -12,8 +12,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace apps.PopupsNoResponsive
-{
+namespace apps.PopupsNoResponsive;
     public sealed partial class EnterOneValue : UserControl, IPopupSmall
     {
         Langs l = Langs.cs;
@@ -73,4 +72,3 @@ namespace apps.PopupsNoResponsive
             tbCoZadat.Text += AllStrings.colon;
         }
     }
-}

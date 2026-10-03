@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 
-namespace apps
-{
+namespace apps;
     /// <summary>
     /// Základním znakem responzivních Popupů(případně jakýchkoliv responzivních aplikací) je že používají jen procentové hodnoty pro velikost čehokoliv, v žádném případě ne nic fixního!! Nejlepší je tedy používat jen Grid
     /// Všechno co může být Wrap(například TextBlock) nastav na Wrap
@@ -32,5 +31,4 @@ namespace apps
 Size MaxContentSize { get; set; }
 
 
-}
 }

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace apps.Interfaces
-{
+namespace apps.Interfaces;
     public interface IColorTheme
     {
         /// <summary>
@@ -14,4 +13,3 @@ namespace apps.Interfaces
         /// <param name="ct"></param>
         void ApplyColorTheme(ColorTheme ct);
     }
-}

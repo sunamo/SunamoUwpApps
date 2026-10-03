@@ -8,8 +8,7 @@ using Windows.UI.Popups;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls.Primitives;
 
-namespace apps
-{
+namespace apps;
     class DW
     {
         private static bool ShowMessageDialog(string text, string typZpravy)
@@ -43,4 +42,3 @@ namespace apps
 
 
     }
-}

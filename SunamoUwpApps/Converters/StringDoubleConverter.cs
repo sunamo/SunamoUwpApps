@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
 
-namespace apps
-{
+namespace apps;
     public  class StringDoubleConverter : IValueConverter
     {
 
@@ -24,4 +23,3 @@ namespace apps
             return true;
         }
     }
-}

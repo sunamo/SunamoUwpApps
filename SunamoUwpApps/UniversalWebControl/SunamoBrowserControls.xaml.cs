@@ -10,8 +10,7 @@ using Microsoft.UI.Xaml;
 using System.Windows.Input;
 using Microsoft.UI.Xaml.Controls;
 
-namespace UniversalWebControl
-{
+namespace UniversalWebControl;
     /// <summary>
     /// Interaction logic for SunamoBrowserControls.xaml
     /// </summary>
@@ -139,4 +138,3 @@ namespace UniversalWebControl
             }
         }
     }
-}

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace apps.PopupsNoResponsive
-{
+namespace apps.PopupsNoResponsive;
     public interface IPopupCalculatedSize //: IPopup
     {
         //List<Control> GetChildElements();
@@ -15,4 +14,3 @@ namespace apps.PopupsNoResponsive
         Border Border { get; }
         StackPanel StackPanel { get; }
     }
-}
