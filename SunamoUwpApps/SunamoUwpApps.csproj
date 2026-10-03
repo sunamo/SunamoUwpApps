@@ -15,7 +15,7 @@
     <Version>26.10.3.1</Version>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
-    <PackageProjectUrl>https://sunamo.github.io/WindowsNuGetPackages/SunamoUwpApps/</PackageProjectUrl>
+    <PackageProjectUrl>https://sunamo.github.io/PlatformIndependentNuGetPackages/SunamoUwpApps/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sunamo/SunamoUwpApps.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -29,7 +29,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <Optimize>false</Optimize>
-    <PackageReleaseNotes>Initial WinUI 3 port of the legacy UWP apps library</PackageReleaseNotes>
+    <PackageReleaseNotes>Initial release of the WinUI 3 port of the apps library</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.5.1" />
