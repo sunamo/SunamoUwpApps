@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-#if DEBUG
 namespace apps;
+
+#if DEBUG
     public class DebugLoggerApps
     {
         public static DebugLoggerApps Instance = new DebugLoggerApps();
