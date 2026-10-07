@@ -9,7 +9,7 @@ public class SunamoDictionaryWithKeysDependencyObject<T, U> : SunamoDictionary<T
     public List<U> GetValuesByValuesOfKeysProperty<X>(DependencyProperty dependencyProperty, X searchedValue)
     {
         var matching = this.Where(pair => EqualityComparer<X>.Default.Equals((X)pair.Key.GetValue(dependencyProperty), searchedValue));
-        return matching.Select(pair2 => pair2.Value).ToList();
+        return matching.Select(matchingPair => matchingPair.Value).ToList();
         //return vr.SelectMany(d => d.Value);
     }
 }

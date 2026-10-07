@@ -43,12 +43,12 @@ using Microsoft.UI.Xaml.Media;
                 IPopupWholeScreen popupWholeScreen = (IPopupWholeScreen)child;
                 popupWholeScreen.PopupBorderBrush = borderBrush;
 
-                Size size2 = new Size(size.Width - 4, size.Height - 4);
-                child.MinWidth = size2.Width;
-                child.MinHeight = size2.Height;
+                Size childSize = new Size(size.Width - 4, size.Height - 4);
+                child.MinWidth = childSize.Width;
+                child.MinHeight = childSize.Height;
 
-                child.Width = size2.Width;
-                child.Height = size2.Height;
+                child.Width = childSize.Width;
+                child.Height = childSize.Height;
                 popup.Child = child;
             }
             if (show)
@@ -110,10 +110,10 @@ using Microsoft.UI.Xaml.Media;
 
        public static void ClosePopup()
         {
-            var popup2 = WpfApp.mp;
+            var popupHolder = WpfApp.mp;
             
-            popup2.popup.IsOpen = false;
-            VisualTreeHelper.DisconnectChildrenRecursive(popup2.popup);
+            popupHolder.popup.IsOpen = false;
+            VisualTreeHelper.DisconnectChildrenRecursive(popupHolder.popup);
         }
 
 

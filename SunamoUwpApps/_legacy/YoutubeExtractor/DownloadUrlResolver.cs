@@ -185,8 +185,8 @@ static Type type = typeof(DownloadUrlResolver);
         private static string GetHtml5PlayerVersion(JObject json)
         {
             var regex = new Regex(@"html5player-(.+?)\.js");
-            string json2 = json["assets"]["js"].ToString();
-            return regex.Match(json2).Result("$1");
+            string playerScriptPath = json["assets"]["js"].ToString();
+            return regex.Match(playerScriptPath).Result("$1");
         }
         private static string GetStreamMap(JObject json)
         {

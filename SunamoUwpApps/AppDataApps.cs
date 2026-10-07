@@ -191,8 +191,8 @@ static Type type = typeof(AppDataApps);
         public StorageFile Combine(AppFolders appFolders, string first, string second)
         {
             StorageFolder storageFolder =  GetFolder(appFolders);
-            StorageFolder storageFolder2 =  FSApps.ExistsFolderCreateIfNot(storageFolder, first);
-            StorageFile storageFile =  FSApps.ExistsFileCreateIfNot(storageFolder2, second);
+            StorageFolder subFolder =  FSApps.ExistsFolderCreateIfNot(storageFolder, first);
+            StorageFile storageFile =  FSApps.ExistsFileCreateIfNot(subFolder, second);
             return storageFile;
         }
         public List<StorageFile> GetFiles(AppFolders cache, string mask, string ext)
@@ -227,12 +227,12 @@ static Type type = typeof(AppDataApps);
             StorageFolder storageFolder =  FSApps.ExistsFolderCreateIfNot(sunamo, ThisApp.Name);
             return storageFolder;
         }
-        public override  StorageFolder GetFolder(AppFolders appFolder2)
+        public override  StorageFolder GetFolder(AppFolders appFolderType)
         {
             // Toto je protože to zpomaluje, proto následující řádek je hovadina
             //return AsyncHelper.ci.RunAsyncWithoutAwait<StorageFolder, string>(
             var rootFolder =  GetRootFolder();
-            StorageFolder appFolder = FSApps.ExistsFolderCreateIfNot(rootFolder, appFolder2.ToString());
+            StorageFolder appFolder = FSApps.ExistsFolderCreateIfNot(rootFolder, appFolderType.ToString());
             return appFolder;
         }
         public override  bool IsRootFolderOk()
@@ -247,13 +247,13 @@ static Type type = typeof(AppDataApps);
         /// G path file A2 in AF A1.
         /// Automatically create upfolder if there dont exists.
         /// </summary>
-        /// <param name="appFolder2"></param>
+        /// <param name="appFolderType"></param>
         /// <param name="file"></param>
-        public override StorageFile GetFile(AppFolders appFolder2, string file)
+        public override StorageFile GetFile(AppFolders appFolderType, string file)
         {
             StorageFolder sunamo =  GetSunamoFolder();
             StorageFolder storageFolder =  FSApps.ExistsFolderCreateIfNot(sunamo, ThisApp.Name);
-            StorageFolder appFolder =  FSApps.ExistsFolderCreateIfNot(storageFolder, appFolder2.ToString());
+            StorageFolder appFolder =  FSApps.ExistsFolderCreateIfNot(storageFolder, appFolderType.ToString());
             StorageFile storageFile = GetResult<StorageFile>( appFolder.CreateFileAsync(file, CreationCollisionOption.OpenIfExists).AsTask());
             return storageFile;
         }

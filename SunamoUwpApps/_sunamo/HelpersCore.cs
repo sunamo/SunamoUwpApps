@@ -257,7 +257,7 @@ internal static class FS
     internal static string DeleteWrongCharsInFileName(string fileName, bool isPath)
     {
         var invalid = Path.GetInvalidFileNameChars().Where(character => !isPath || (character != '\\' && character != '/' && character != ':')).ToArray();
-        return new string(fileName.Where(character2 => !invalid.Contains(character2)).ToArray());
+        return new string(fileName.Where(fileNameCharacter => !invalid.Contains(fileNameCharacter)).ToArray());
     }
 
     /// <summary>Creates all the folders of the path when they do not exist.</summary>

@@ -71,10 +71,10 @@ namespace YoutubeExtractor
             return Read(ref bits, length);
         }
 
-        public static void Write(ref ulong value2, int length, int value)
+        public static void Write(ref ulong destination, int length, int value)
         {
             ulong mask = 0xFFFFFFFFFFFFFFFF >> 64 - length;
-            value2 = value2 << length | (ulong)value & mask;
+            destination = destination << length | (ulong)value & mask;
         }
     }
 }

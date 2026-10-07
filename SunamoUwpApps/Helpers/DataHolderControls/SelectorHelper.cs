@@ -87,12 +87,12 @@ using Microsoft.UI.Xaml.Media;
                 return SelectedO != null;
             } }
 
-        public SelectorHelper(Selector selector2, ObservableCollection<SelectorHelperItem> boc)
+        public SelectorHelper(Selector selectorControl, ObservableCollection<SelectorHelperItem> boc)
         {
-            selector = selector2;
+            selector = selectorControl;
             oc = boc;
 
-            selector2.SelectionChanged += Lb_SelectionChanged;
+            selectorControl.SelectionChanged += Lb_SelectionChanged;
         }
 
         public void UpdateItemsSource()

@@ -38,8 +38,8 @@ using Windows.Storage;
 
             foreach (var item in elements)
             {
-                string value2 = tMap.primaryKey.GetValue(item).ToString();
-                if (hledaneID == value2)
+                string primaryKeyValue = tMap.primaryKey.GetValue(item).ToString();
+                if (hledaneID == primaryKeyValue)
                 {
                     foreach (var propertyInfo in tMap.propertyInfos)
                     {
@@ -61,8 +61,8 @@ using Windows.Storage;
             string path = value.ToString();
             foreach (T item in elements)
             {
-                string value2 = tMap.primaryKey.GetValue(item).ToString();
-                if (path == value2)
+                string primaryKeyValue = tMap.primaryKey.GetValue(item).ToString();
+                if (path == primaryKeyValue)
                 {
                     return item;
                 }

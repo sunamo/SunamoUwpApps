@@ -130,9 +130,9 @@ static Type type = typeof(LoginDialog);
             }
         }
         string salt = null;
-        public LoginDialog(CryptDelegates cryptDelegates2, string salt) : this()
+        public LoginDialog(CryptDelegates injectedCryptDelegates, string salt) : this()
         {
-            this.cryptDelegates = cryptDelegates2;
+            this.cryptDelegates = injectedCryptDelegates;
             this.salt = salt;
             chbAutoLogin.Checked += chbAutoLogin_Checked;
             chbRememberLogin.Unchecked += chbRememberLogin_Unchecked;

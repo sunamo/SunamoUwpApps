@@ -36,8 +36,8 @@ using Microsoft.UI.Xaml.Navigation;
 
         private void SuMenuItem_Loaded(object sender, RoutedEventArgs eventArgs)
         {
-            double width1 = btn.ActualHeight;
-            double width2 = gridButtonContent.ActualHeight;
+            double buttonHeight = btn.ActualHeight;
+            double contentHeight = gridButtonContent.ActualHeight;
         }
 
         public SuMenuItem(Brush fgIcon, string otfIcon, Brush fgText, string text) : this()

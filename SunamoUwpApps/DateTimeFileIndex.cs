@@ -150,7 +150,7 @@ static Type type = typeof(FileNameWithDateTime);
             }
             else if (ds == FileEntriesDuplicitiesStrategy.Serie)
             {
-                IEnumerable<int?> values = files.Where(file => file.dt == today).Select(file2 => file2.serie);
+                IEnumerable<int?> values = files.Where(file => file.dt == today).Select(fileWithSerie => fileWithSerie.serie);
                 
                 if (values.Count() != 0)
                 {
@@ -173,23 +173,23 @@ static Type type = typeof(FileNameWithDateTime);
     }
     public class CompareFileNameWithDateTimeBySerie : ISunamoComparer<FileNameWithDateTime>
     {
-        public int Desc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
+        public int Desc(FileNameWithDateTime fileName, FileNameWithDateTime otherFileName)
         {
-            return fileName.SerieValue.CompareTo(fileName2.SerieValue) * -1;
+            return fileName.SerieValue.CompareTo(otherFileName.SerieValue) * -1;
         }
-        public int Asc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
+        public int Asc(FileNameWithDateTime fileName, FileNameWithDateTime otherFileName)
         {
-            return fileName.SerieValue.CompareTo(fileName2.SerieValue);
+            return fileName.SerieValue.CompareTo(otherFileName.SerieValue);
         }
     }
     public class CompareFileNameWithDateTimeByDateTime : ISunamoComparer<FileNameWithDateTime>
     {
-        public int Desc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
+        public int Desc(FileNameWithDateTime fileName, FileNameWithDateTime otherFileName)
         {
-            return fileName.dt.CompareTo(fileName2.dt) * -1;
+            return fileName.dt.CompareTo(otherFileName.dt) * -1;
         }
-        public int Asc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
+        public int Asc(FileNameWithDateTime fileName, FileNameWithDateTime otherFileName)
         {
-            return fileName.dt.CompareTo(fileName2.dt);
+            return fileName.dt.CompareTo(otherFileName.dt);
         }
     }

@@ -88,9 +88,9 @@ public static class ColorH
         }
         return new SolidColorBrush(GetOpaqueColor(red, green, byteValue));
     }
-    public static Color GetColorWithAlpha(byte red, byte green, byte byteValue, byte byteValue2)
+    public static Color GetColorWithAlpha(byte red, byte green, byte byteValue, byte alpha)
     {
-        Color white2 = new Color { A = byteValue2, R = red, G = green, B = byteValue };
+        Color white2 = new Color { A = alpha, R = red, G = green, B = byteValue };
         return white2;
     }
     public static Color GetColorWithAlpha(Color color, byte? alpha)

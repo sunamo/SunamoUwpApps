@@ -96,8 +96,8 @@ using Microsoft.UI.Xaml.Media;
             List<GridLength> items = new List<GridLength>(showColumns.Count);
             for (int index = 0; index < widthColumn.Count; index++)
             {
-                double value2 = widthColumn[index];
-                if (value2 == 0)
+                double columnWidth = widthColumn[index];
+                if (columnWidth == 0)
                 {
                     showColumns.Add(index, false);
                     items.Add(GridHelper.GetGridLength(0));
@@ -107,12 +107,12 @@ using Microsoft.UI.Xaml.Media;
                     if (koef != 0)
                     {
                         showColumns.Add(index, true);
-                        items.Add(GridHelper.GetGridLength(value2 * koef));
+                        items.Add(GridHelper.GetGridLength(columnWidth * koef));
                     }
                     else
                     {
                         showColumns.Add(index, true);
-                        items.Add(GridHelper.GetGridLength(value2));
+                        items.Add(GridHelper.GetGridLength(columnWidth));
                     }
                 }
             }

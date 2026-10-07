@@ -44,11 +44,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
                 int toIndex = writeableBitmap.PixelWidth * writeableBitmap.PixelHeight + 1;
                 Color[,] pxs = new Color[writeableBitmap.PixelWidth, writeableBitmap.PixelHeight];
 
-                for (int first2 = 0; first2 < writeableBitmap.PixelWidth; first2++)
+                for (int columnIndex = 0; columnIndex < writeableBitmap.PixelWidth; columnIndex++)
                 {
                     for (int second = 0; second < writeableBitmap.PixelHeight; second++)
                     {
-                        pxs[first2, second] = writeableBitmap.GetPixel(first2, second);
+                        pxs[columnIndex, second] = writeableBitmap.GetPixel(columnIndex, second);
                     }
                 }
 
@@ -56,39 +56,39 @@ using Microsoft.UI.Xaml.Media.Imaging;
                 
                 for (int index = 0; index < pxs.GetLength(0); index++)
                 {
-                    for (int second2 = 0; second2 < pxs.GetLength(1); second2++)
+                    for (int rowIndex = 0; rowIndex < pxs.GetLength(1); rowIndex++)
                     {
                         
-                        var pxsi = pxs[index, second2];
+                        var pxsi = pxs[index, rowIndex];
 #if DEBUG
                         //ColorH.DebugWrite(pxsi);
 #endif
 
-                        bool first3 = false;
+                        bool isBackgroundColor = false;
                         ColorH.IsColorSame(first, pxsi);
 
                         //bool b2 = pxsi.A < 254;
-                        bool second3 = pxsi.A != 0;
-                        if (first3)
+                        bool isVisible = pxsi.A != 0;
+                        if (isBackgroundColor)
                         {
                             nt3++;
-                            pxs[index, second2] = trans;
-                            writeableBitmap.SetPixel(index, second2, trans);
+                            pxs[index, rowIndex] = trans;
+                            writeableBitmap.SetPixel(index, rowIndex, trans);
                         }
                         else
                         {
                             ////DebugLogger.Instance.Write(pxsi.Alpha + AllStrings.dash + pxsi.Red + AllStrings.dash + pxsi.Green + AllStrings.dash + pxsi.Blue);
-                            if (second3)
+                            if (isVisible)
                             {
                                 number++;
-                                pxs[index, second2] = white2;
-                                writeableBitmap.SetPixel(index, second2, white2);
+                                pxs[index, rowIndex] = white2;
+                                writeableBitmap.SetPixel(index, rowIndex, white2);
                             }
                             else
                             {
                                 nt2++;
-                                pxs[index, second2] = trans;
-                                writeableBitmap.SetPixel(index, second2, trans);
+                                pxs[index, rowIndex] = trans;
+                                writeableBitmap.SetPixel(index, rowIndex, trans);
                             }
 
 

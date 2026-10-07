@@ -18,9 +18,9 @@ using Microsoft.UI.Xaml.Media;
 
         protected FontWeight GetFontWeight(FontWeight2 fontWeight)
         {
-            FontWeight fontWeight2 = new FontWeight();
-            fontWeight2.Weight = (ushort)fontWeight;
-            return fontWeight2;
+            FontWeight convertedFontWeight = new FontWeight();
+            convertedFontWeight.Weight = (ushort)fontWeight;
+            return convertedFontWeight;
         }
 
         public Italic GetItalic(string run, FontArgs fontArgs)
@@ -49,9 +49,9 @@ using Microsoft.UI.Xaml.Media;
         {
             Bold bold = new Bold();
             FontArgs fa2 = new FontArgs(fontArgs);
-            Windows.UI.Text.FontWeight fontWeight2 = new Windows.UI.Text.FontWeight();
-            fontWeight2.Weight = 700;
-            fa2.fontWeight = fontWeight2;
+            Windows.UI.Text.FontWeight boldFontWeight = new Windows.UI.Text.FontWeight();
+            boldFontWeight.Weight = 700;
+            fa2.fontWeight = boldFontWeight;
             bold.Inlines.Add(GetRun(path, fa2));
             return bold;
         }

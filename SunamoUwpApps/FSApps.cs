@@ -310,19 +310,19 @@ public static class FSApps //: IAsync
     {
         // Vytvořím složku A2 v A1, když se podaří, vrátím nově vytvořenou složku
         slozka2 = SH.RemoveLastCharIfIs(slozka2, AllChars.bs);
-        StorageFolder storageFolder2 = GetResult<StorageFolder>( storageFolder.CreateFolderAsync(slozka2, CreationCollisionOption.OpenIfExists).AsTask());
-        if (ExistsFolder(storageFolder2))
+        StorageFolder createdFolder = GetResult<StorageFolder>( storageFolder.CreateFolderAsync(slozka2, CreationCollisionOption.OpenIfExists).AsTask());
+        if (ExistsFolder(createdFolder))
         {
-            return storageFolder2;
+            return createdFolder;
         }
         // Odstraním všechny soubory z A2
         int pocetSlozek = SH.SplitNone(slozka2, AllStrings.bs).Length();
-        FSApps.DeleteFiles(storageFolder2);
+        FSApps.DeleteFiles(createdFolder);
 
         // Pokud A3, odstraním prázdné složky z A1
         if (odstranitPrazdneSlozky)
         {
-            string slozka = FS.GetDirectoryName(storageFolder2.Path);
+            string slozka = FS.GetDirectoryName(createdFolder.Path);
 
             while (pocetSlozek > 1)
             {
@@ -350,7 +350,7 @@ public static class FSApps //: IAsync
         // Pokud A4, vrátím objekt StorageFolder bez ohledu na jeho hodnotu nebo zda složka existuje
         if (forceReturn)
         {
-            return storageFolder2;
+            return createdFolder;
         }
         return null;
     }
