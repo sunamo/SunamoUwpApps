@@ -9,7 +9,7 @@ using Microsoft.UI.Xaml.Controls;
 
     public class ComboBoxHelper<T> : ComboBoxHelperBase<T>
     {
-        public ComboBoxHelper(ComboBox cb) : base(cb)
+        public ComboBoxHelper(ComboBox comboBox) : base(comboBox)
         {
 
         }

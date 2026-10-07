@@ -62,17 +62,17 @@ using Microsoft.UI.Xaml.Navigation;
         public event VoidT<YesNoDialogEventArgs> ClickCancel;
         public event VoidT<YesNoDialogEventArgs> ClickOK;
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
-        private void btnYes_Click(object sender, RoutedEventArgs e)
+        private void btnYes_Click(object sender, RoutedEventArgs eventArgs)
         {
             ClickOK(new YesNoDialogEventArgs { Arg = arg });
         }
 
-        private void btnNo_Click(object sender, RoutedEventArgs e)
+        private void btnNo_Click(object sender, RoutedEventArgs eventArgs)
         {
             ClickCancel(new YesNoDialogEventArgs { Arg = arg });
         }

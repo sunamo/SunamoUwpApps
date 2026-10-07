@@ -2,29 +2,29 @@ namespace apps._public;
 
 using Microsoft.Web.WebView2.Core;
 
-public delegate string StringString(string s);
+public delegate string StringString(string text);
 /// <summary>Delegate taking a generic value and returning void.</summary>
-public delegate void VoidT<T>(T t);
+public delegate void VoidT<T>(T item);
 /// <summary>Delegate taking an int and returning void.</summary>
-public delegate void VoidInt(int i);
+public delegate void VoidInt(int index);
 /// <summary>Delegate taking a string and returning void.</summary>
-public delegate void VoidString(string s);
+public delegate void VoidString(string text);
 /// <summary>Delegate taking a nullable bool and returning void.</summary>
-public delegate void VoidBoolNullable(bool? b);
+public delegate void VoidBoolNullable(bool? flag);
 /// <summary>Async delegate taking a nullable bool.</summary>
-public delegate Task TaskBoolNullable(bool? b);
+public delegate Task TaskBoolNullable(bool? flag);
 /// <summary>Delegate taking a Uri and returning void.</summary>
 public delegate void VoidUri(Uri uri);
 /// <summary>Delegate taking an object and returning void.</summary>
-public delegate void VoidObject(object o);
+public delegate void VoidObject(object value);
 /// <summary>Delegate without parameters returning void.</summary>
 public delegate void VoidVoid();
 /// <summary>Delegate taking an object and a bool and returning void.</summary>
-public delegate void VoidObjectBool(object o, bool b);
+public delegate void VoidObjectBool(object value, bool flag);
 /// <summary>Handler raised when the browser finished navigation.</summary>
-public delegate void LoadCompletedEventHandler(object sender, CoreWebView2NavigationCompletedEventArgs e);
+public delegate void LoadCompletedEventHandler(object sender, CoreWebView2NavigationCompletedEventArgs navigationCompletedEventArgs);
 /// <summary>Handler for events that carry a Uri.</summary>
-public delegate void UriEventHandler(object sender, UriEventArgs e);
+public delegate void UriEventHandler(object sender, UriEventArgs uriEventArgs);
 
 /// <summary>Event data carrying a Uri.</summary>
 public class UriEventArgs : System.EventArgs

@@ -28,37 +28,37 @@ using Microsoft.UI.Xaml.Media;
         /// <param name="borderBrush"></param>
         public static Popup GetPopupWholeScreen(Control child, bool show, Brush borderBrush)
         {
-            Size w = PageHelper.WindowSize(false);
+            Size size = PageHelper.WindowSize(false);
             //ip.xName = ControlNameGenerator.GetSeries(child.GetType());
-            Popup p = new Popup();
-            p.Width = w.Width;
-            p.Height = w.Height;
-            p.Margin = new Thickness(0);
-            p.MinHeight = p.Height;
-            p.MinWidth = p.Width;
-            p.Name = ControlNameGenerator.GetSeries(p.GetType());
+            Popup popup = new Popup();
+            popup.Width = size.Width;
+            popup.Height = size.Height;
+            popup.Margin = new Thickness(0);
+            popup.MinHeight = popup.Height;
+            popup.MinWidth = popup.Width;
+            popup.Name = ControlNameGenerator.GetSeries(popup.GetType());
             //child.Name = ControlNameGenerator.GetSeries(child.GetType());
             if (child != null)
             {
-                IPopupWholeScreen ip = (IPopupWholeScreen)child;
-                ip.PopupBorderBrush = borderBrush;
+                IPopupWholeScreen popupWholeScreen = (IPopupWholeScreen)child;
+                popupWholeScreen.PopupBorderBrush = borderBrush;
 
-                Size s = new Size(w.Width - 4, w.Height - 4);
-                child.MinWidth = s.Width;
-                child.MinHeight = s.Height;
+                Size size2 = new Size(size.Width - 4, size.Height - 4);
+                child.MinWidth = size2.Width;
+                child.MinHeight = size2.Height;
 
-                child.Width = s.Width;
-                child.Height = s.Height;
-                p.Child = child;
+                child.Width = size2.Width;
+                child.Height = size2.Height;
+                popup.Child = child;
             }
             if (show)
             {
-                p.IsOpen = true;
+                popup.IsOpen = true;
             }
-            return p;
+            return popup;
         }
 
-        static void d(object o)
+        static void d(object value)
         {
             //DebugLogger.Instance.WriteLine(o);
         }
@@ -74,10 +74,10 @@ using Microsoft.UI.Xaml.Media;
         /// <param name="borderBrush"></param>
         public static Popup GetPopupResponsive(Control child, bool show, Brush borderBrush)
         {
-            Popup p = new Popup();
-            p.IsLightDismissEnabled = false;
-            p.Margin = new Thickness(0);
-            p.Name = ControlNameGenerator.GetSeries(p.GetType());
+            Popup popup = new Popup();
+            popup.IsLightDismissEnabled = false;
+            popup.Margin = new Thickness(0);
+            popup.Name = ControlNameGenerator.GetSeries(popup.GetType());
 
             Size windowSize = Size.Empty;
             windowSize = PageHelper.WindowSize(true);
@@ -86,7 +86,7 @@ using Microsoft.UI.Xaml.Media;
             if (child != null)
             {
                 child.Name = ControlNameGenerator.GetSeries(child.GetType());
-                p.Child = child;
+                popup.Child = child;
 
                 IPopupResponsive ips = (IPopupResponsive)child;
                 ips.MaxContentSize = sizeMin;
@@ -97,23 +97,23 @@ using Microsoft.UI.Xaml.Media;
                 var scaleFactor = DisplayHelper.GetScaleFactor();
                 Size sizeMinRecalculatedWithScaleFactor = sizeMin.RecalculateSizeWithScaleFactor();
                 Point center = ControlHelper.GetOnCenter(windowSize, sizeMinRecalculatedWithScaleFactor);
-                p.VerticalOffset = ((center.Y));
-                p.HorizontalOffset = ((center.X));
+                popup.VerticalOffset = ((center.Y));
+                popup.HorizontalOffset = ((center.X));
             }
 
             if (show)
             {
-                p.IsOpen = true;
+                popup.IsOpen = true;
             }
-            return p;
+            return popup;
         }
 
        public static void ClosePopup()
         {
-            var mp = WpfApp.mp;
+            var popup2 = WpfApp.mp;
             
-            mp.popup.IsOpen = false;
-            VisualTreeHelper.DisconnectChildrenRecursive(mp.popup);
+            popup2.popup.IsOpen = false;
+            VisualTreeHelper.DisconnectChildrenRecursive(popup2.popup);
         }
 
 

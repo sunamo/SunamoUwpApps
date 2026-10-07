@@ -20,7 +20,7 @@ using Microsoft.UI.Xaml.Controls;
             wv.NavigationCompleted += wv_LoadCompleted;
         }
 
-         void wv_LoadCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs e)
+         void wv_LoadCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs navigationCompletedEventArgs)
         {
             loaded = true;
             loadedSource = sender.Source?.ToString();
@@ -41,7 +41,7 @@ using Microsoft.UI.Xaml.Controls;
             return loadedSource;
         }
 
-        void WaitOneSecond(IAsyncAction h)
+        void WaitOneSecond(IAsyncAction asyncAction)
         {
             System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(1));   
         }

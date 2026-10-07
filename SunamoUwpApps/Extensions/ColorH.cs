@@ -22,14 +22,14 @@ public static class ColorH
         PixelColor white2 = new PixelColor() { Alpha = alpha.Value, Red = color.R, Green = color.G, Blue = color.B };
         return white2;
     }
-    public static Color GetOpaqueColor(byte r, byte g, byte b)
+    public static Color GetOpaqueColor(byte red, byte green, byte byteValue)
     {
-        Color c = new Color();
-        c.A = 255;
-        c.R = r;
-        c.G = g;
-        c.B = b;
-        return c;
+        Color color = new Color();
+        color.A = 255;
+        color.R = red;
+        color.G = green;
+        color.B = byteValue;
+        return color;
     }
     public static Color RandomColor(bool light)
     {
@@ -37,60 +37,60 @@ public static class ColorH
     }
     public static SolidColorBrush RandomLightBrush(ColorComponent shade)
     {
-        byte r = 0;
-        byte g = 0;
-        byte b = 0;
+        byte red = 0;
+        byte green = 0;
+        byte byteValue = 0;
         switch (shade)
         {
             case ColorComponent.Red:
-                r = 255;
-                g = b = RandomHelper.RandomByte(200, 250);
+                red = 255;
+                green = byteValue = RandomHelper.RandomByte(200, 250);
                 break;
             case ColorComponent.Green:
-                g = 255;
-                g = r = RandomHelper.RandomByte(200, 250);
+                green = 255;
+                green = red = RandomHelper.RandomByte(200, 250);
                 break;
             case ColorComponent.Blue:
-                b = 255;
-                g = r = RandomHelper.RandomByte(200, 250);
+                byteValue = 255;
+                green = red = RandomHelper.RandomByte(200, 250);
                 break;
             case ColorComponent.None:
             default:
-                r = g = b = 255;
+                red = green = byteValue = 255;
                 break;
         }
-        return new SolidColorBrush(GetColorWithAlpha(r, g, b, 150));
+        return new SolidColorBrush(GetColorWithAlpha(red, green, byteValue, 150));
     }
     public static SolidColorBrush RandomBrush(bool light, ColorComponent into)
     {
-        byte r = RandomHelper.RandomColorPart(light, 0);
-        byte g = RandomHelper.RandomColorPart(light, 0);
-        byte b = RandomHelper.RandomColorPart(light, 0);
+        byte red = RandomHelper.RandomColorPart(light, 0);
+        byte green = RandomHelper.RandomColorPart(light, 0);
+        byte byteValue = RandomHelper.RandomColorPart(light, 0);
         switch (into)
         {
             case ColorComponent.Red:
-                r += 127;
+                red += 127;
                 break;
             case ColorComponent.Green:
-                g += 127;
+                green += 127;
                 break;
             case ColorComponent.Blue:
-                b += 127;
+                byteValue += 127;
                 break;
             case ColorComponent.None:
-                r += 127;
-                g += 127;
-                b += 127;
+                red += 127;
+                green += 127;
+                byteValue += 127;
                 break;
             default:
                 ThrowEx.Custom("Not implemented case in ColorHelperApps.RandomBrush");
                 return Brushes.Black;
         }
-        return new SolidColorBrush(GetOpaqueColor(r, g, b));
+        return new SolidColorBrush(GetOpaqueColor(red, green, byteValue));
     }
-    public static Color GetColorWithAlpha(byte r, byte g, byte b, byte a)
+    public static Color GetColorWithAlpha(byte red, byte green, byte byteValue, byte byteValue2)
     {
-        Color white2 = new Color { A = a, R = r, G = g, B = b };
+        Color white2 = new Color { A = byteValue2, R = red, G = green, B = byteValue };
         return white2;
     }
     public static Color GetColorWithAlpha(Color color, byte? alpha)

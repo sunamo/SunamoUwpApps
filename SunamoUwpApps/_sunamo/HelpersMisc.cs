@@ -63,15 +63,15 @@ internal static class ControlNameGenerator
     private static Dictionary<Type, uint> s_actual = new Dictionary<Type, uint>();
 
     /// <summary>Returns next name in the series of the type.</summary>
-    internal static string GetSeries(Type t)
+    internal static string GetSeries(Type type)
     {
-        if (s_actual.ContainsKey(t))
+        if (s_actual.ContainsKey(type))
         {
-            return t.Name + (++s_actual[t]).ToString();
+            return type.Name + (++s_actual[type]).ToString();
         }
 
-        s_actual.Add(t, 0);
-        return t.Name + "0";
+        s_actual.Add(type, 0);
+        return type.Name + "0";
     }
 }
 
@@ -91,13 +91,13 @@ internal static class XHelper
     /// <summary>Returns the first child element of the name.</summary>
     internal static XElement GetElementOfName(XElement parent, string name)
     {
-        return parent.Elements().FirstOrDefault(d => d.Name.LocalName == name);
+        return parent.Elements().FirstOrDefault(element => element.Name.LocalName == name);
     }
 
     /// <summary>Returns the first child element of the name with the attribute value.</summary>
     internal static XElement GetElementOfNameWithAttr(XElement parent, string name, string attributeName, string attributeValue)
     {
-        return parent.Elements().FirstOrDefault(d => d.Name.LocalName == name && (string)d.Attribute(attributeName) == attributeValue);
+        return parent.Elements().FirstOrDefault(element => element.Name.LocalName == name && (string)element.Attribute(attributeName) == attributeValue);
     }
 }
 
@@ -134,36 +134,36 @@ internal static class sess
 internal static class DTHelper
 {
     /// <summary>Returns the time as H:mm:ss.</summary>
-    internal static string TimeToStringAngularTime(DateTime dt)
+    internal static string TimeToStringAngularTime(DateTime dateTime)
     {
-        return dt.ToString("H:mm:ss");
+        return dateTime.ToString("H:mm:ss");
     }
 
     /// <summary>Returns the date in the format of the language.</summary>
-    internal static string DateToString(DateTime dt, Langs l)
+    internal static string DateToString(DateTime dateTime, Langs language)
     {
-        return l == Langs.cs ? dt.ToString("d. M. yyyy") : dt.ToString("M/d/yyyy");
+        return language == Langs.cs ? dateTime.ToString("d. M. yyyy") : dateTime.ToString("M/d/yyyy");
     }
 
     /// <summary>Returns the date and time, empty for the minimal value.</summary>
-    internal static string DateTimeToString(DateTime dt, Langs l, DateTime minValue)
+    internal static string DateTimeToString(DateTime dateTime, Langs language, DateTime minValue)
     {
-        if (dt == minValue)
+        if (dateTime == minValue)
         {
             return string.Empty;
         }
-        return DateToString(dt, l) + " " + dt.ToString("H:mm:ss");
+        return DateToString(dateTime, language) + " " + dateTime.ToString("H:mm:ss");
     }
 
     /// <summary>Returns the date and time usable in a file name.</summary>
-    internal static string DateTimeToFileName(DateTime dt, bool withMiliseconds)
+    internal static string DateTimeToFileName(DateTime dateTime, bool withMiliseconds)
     {
-        return dt.ToString(withMiliseconds ? "yyyy-MM-dd_HH-mm-ss-fff" : "yyyy-MM-dd_HH-mm-ss");
+        return dateTime.ToString(withMiliseconds ? "yyyy-MM-dd_HH-mm-ss-fff" : "yyyy-MM-dd_HH-mm-ss");
     }
 
     /// <summary>Returns the duration as text.</summary>
-    internal static string OperationLastedInLocalizateString(TimeSpan ts, Langs l)
+    internal static string OperationLastedInLocalizateString(TimeSpan timeSpan, Langs language)
     {
-        return ts.TotalSeconds.ToString("0.###") + " s";
+        return timeSpan.TotalSeconds.ToString("0.###") + " s";
     }
 }

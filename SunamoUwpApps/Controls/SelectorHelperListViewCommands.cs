@@ -44,9 +44,9 @@ using System.Windows.Input;
 
             public void Execute(object parameter)
             {
-                SelectorHelperItem dc = (SelectorHelperItem)parameter;
+                SelectorHelperItem selectorHelperItem = (SelectorHelperItem)parameter;
 
-                 dc.sh.RemoveOne(dc.Id);
+                 selectorHelperItem.sh.RemoveOne(selectorHelperItem.Id);
             }
         }
 
@@ -61,9 +61,9 @@ using System.Windows.Input;
 
             public void Execute(object parameter)
             {
-                SelectorHelperItem dc = (SelectorHelperItem)parameter;
+                SelectorHelperItem selectorHelperItem = (SelectorHelperItem)parameter;
 
-                 dc.sh.SaveToClipboard(dc.Id);
+                 selectorHelperItem.sh.SaveToClipboard(selectorHelperItem.Id);
             }
         }
 
@@ -78,9 +78,9 @@ using System.Windows.Input;
 
             public void Execute(object parameter)
             {
-                SelectorHelperItem dc = (SelectorHelperItem)parameter;
+                SelectorHelperItem selectorHelperItem = (SelectorHelperItem)parameter;
 
-                 dc.sh.RunOne(dc.Id);
+                 selectorHelperItem.sh.RunOne(selectorHelperItem.Id);
             }
         }
     }

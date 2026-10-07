@@ -41,9 +41,9 @@ namespace YoutubeExtractor
                 Task<Stream> rsTask = request.GetRequestStreamAsync();
 
                 //rsTask.Wait();
-                Stream rs = await rsTask;
-                byte[] b = Encoding.UTF8.GetBytes(.Format2("Range: bytes={0}-{1}", 0, this.BytesToDownload.Value - 1));
-                rs.Write(b, 0, b.Length);
+                Stream stream = await rsTask;
+                byte[] bytes2 = Encoding.UTF8.GetBytes(.Format2("Range: bytes={0}-{1}", 0, this.BytesToDownload.Value - 1));
+                stream.Write(bytes2, 0, bytes2.Length);
             }
 
             // the following code is alternative, you may implement the function after your needs

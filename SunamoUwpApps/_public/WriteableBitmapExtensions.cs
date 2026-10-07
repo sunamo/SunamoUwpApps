@@ -59,17 +59,17 @@ public static class WriteableBitmapExtensions
     }
 
     /// <summary>Returns the color of the pixel.</summary>
-    public static Color GetPixel(this WriteableBitmap bitmap, int x, int y)
+    public static Color GetPixel(this WriteableBitmap bitmap, int first, int second)
     {
         var data = bitmap.PixelBuffer.ToArray();
-        var index = (y * bitmap.PixelWidth + x) * 4;
+        var index = (second * bitmap.PixelWidth + first) * 4;
         return Color.FromArgb(data[index + 3], data[index + 2], data[index + 1], data[index]);
     }
 
     /// <summary>Sets the color of the pixel.</summary>
-    public static void SetPixel(this WriteableBitmap bitmap, int x, int y, Color color)
+    public static void SetPixel(this WriteableBitmap bitmap, int first, int second, Color color)
     {
-        var index = (y * bitmap.PixelWidth + x) * 4;
+        var index = (second * bitmap.PixelWidth + first) * 4;
         using var stream = bitmap.PixelBuffer.AsStream();
         stream.Position = index;
         stream.Write(new[] { color.B, color.G, color.R, color.A }, 0, 4);

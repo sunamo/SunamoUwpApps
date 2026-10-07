@@ -17,10 +17,10 @@ using Microsoft.UI.Xaml.Media;
 
         }
 
-        protected override void SetBg(Color c)
+        protected override void SetBg(Color color)
         {
             AsyncHelperApps.ci.GetResult(WpfApp.cd.RunAsync(WpfApp.cdp, () => {
-                    Bg = c;
+                    Bg = color;
                 }));
         }
 

@@ -11,8 +11,8 @@ using Windows.ApplicationModel.Resources;
     {
         static ResourceLoader rl = ResourceLoader.GetForCurrentView("UniversalWebControl/Resources");
 
-        public static string GetString(string k)
+        public static string GetString(string key)
         {
-            return rl.GetString(k);
+            return rl.GetString(key);
         }
     }

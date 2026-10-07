@@ -10,15 +10,15 @@ using Windows.UI;
     public static class ColorConverter //: ISimpleConverter<Color, string>
     {
 
-        public static Color ConvertTo(string u)
+        public static Color ConvertTo(string url)
         {
-            var d2 = SF.GetAllElementsLine(u);
-            var d = CA.ToInt(d2);
-            return Color.FromArgb((byte)d[0], (byte)d[1], (byte)d[2], (byte)d[3]);
+            var elements = SF.GetAllElementsLine(url);
+            var numbers = CA.ToInt(elements);
+            return Color.FromArgb((byte)numbers[0], (byte)numbers[1], (byte)numbers[2], (byte)numbers[3]);
         }
 
-        public static string ConvertFrom(Color t)
+        public static string ConvertFrom(Color color)
         {
-            return SF.PrepareToSerialization(CA.ToListString(t.A, t.R, t.G, t.B));
+            return SF.PrepareToSerialization(CA.ToListString(color.A, color.R, color.G, color.B));
         }
     }

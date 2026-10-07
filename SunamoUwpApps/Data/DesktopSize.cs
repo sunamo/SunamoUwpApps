@@ -16,10 +16,10 @@ public class DesktopSize : SunamoSize
 
     }
 
-    public DesktopSize(SizeChangedEventArgs e)
+    public DesktopSize(SizeChangedEventArgs sizeChangedEventArgs)
     {
-        Width = e.NewSize.Width;
-        Height = e.NewSize.Height;
+        Width = sizeChangedEventArgs.NewSize.Width;
+        Height = sizeChangedEventArgs.NewSize.Height;
     }
 
     public DesktopSize(double actualWidth, double actualHeight)

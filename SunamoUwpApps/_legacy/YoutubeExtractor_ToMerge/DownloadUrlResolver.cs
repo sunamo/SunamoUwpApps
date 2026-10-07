@@ -33,9 +33,9 @@ static Type type = typeof(DownloadUrlResolver);
                 {
                     decrypted = GetDecipheredSignature(videoInfo.HtmlPlayerVersion, encryptedSignature);
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
-                    ThrowEx.Custom(YoutubeParseException("Could not decipher signature", ex);
+                    ThrowEx.Custom(YoutubeParseException("Could not decipher signature", exception);
                 }
                 videoInfo.DownloadUrl = HttpHelper.ReplaceQueryStringParameter(videoInfo.DownloadUrl, SignatureQuery, decrypted);
                 videoInfo.RequiresDecryption = false;
@@ -89,13 +89,13 @@ static Type type = typeof(DownloadUrlResolver);
                 }
                 return infos;
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                if (ex is WebException || ex is VideoNotAvailableException)
+                if (exception is WebException || exception is VideoNotAvailableException)
                 {
                     throw;
                 }
-                ThrowYoutubeParseException(ex, videoUrl);
+                ThrowYoutubeParseException(exception, videoUrl);
             }
             return null; // Will never happen, but the compiler requires it
         }
@@ -126,13 +126,13 @@ static Type type = typeof(DownloadUrlResolver);
             }
             url = url.Replace("/watch#", "/watch?");
             IDictionary<string, string> query = HttpHelper.ParseQueryString(url);
-            string v;
-            if (!query.TryGetValue("v", out v))
+            string value;
+            if (!query.TryGetValue("v", out value))
             {
                 normalizedUrl = null;
                 return false;
             }
-            normalizedUrl = "http://youtube.com/watch?v=" + v;
+            normalizedUrl = "http://youtube.com/watch?v=" + value;
             return true;
         }
         private static IEnumerable<ExtractionInfo> ExtractDownloadUrls(JObject json)
@@ -140,9 +140,9 @@ static Type type = typeof(DownloadUrlResolver);
             List<string> splitByUrls = GetStreamMap(json).Split(',');
             List<string> adaptiveFmtSplitByUrls = GetAdaptiveStreamMap(json).Split(',');
             splitByUrls = splitByUrls.Concat(adaptiveFmtSplitByUrls).ToArray();
-            foreach (string s in splitByUrls)
+            foreach (string text in splitByUrls)
             {
-                IDictionary<string, string> queries = HttpHelper.ParseQueryString(s);
+                IDictionary<string, string> queries = HttpHelper.ParseQueryString(text);
                 string url;
                 bool requiresDecryption = false;
                 if (queries.ContainsKey("s") || queries.ContainsKey("sig"))
@@ -181,8 +181,8 @@ static Type type = typeof(DownloadUrlResolver);
         private static string GetHtml5PlayerVersion(JObject json)
         {
             var regex = new Regex(@"html5player-(.+?)\.js");
-            string js = json["assets"]["js"].ToString();
-            return regex.Match(js).Result("$1");
+            string json2 = json["assets"]["js"].ToString();
+            return regex.Match(json2).Result("$1");
         }
         private static string GetStreamMap(JObject json)
         {

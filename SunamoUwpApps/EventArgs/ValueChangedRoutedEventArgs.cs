@@ -2,7 +2,7 @@ namespace apps.EventArgs;
 
 using Microsoft.UI.Xaml;
 
-    public delegate void ValueChangedRoutedHandler<T>(object sender, ValueChangedRoutedEventArgs<T> ea);
+    public delegate void ValueChangedRoutedHandler<T>(object sender, ValueChangedRoutedEventArgs<T> eventArgs);
 
     public class ValueChangedRoutedEventArgs<T> : RoutedEventArgs
     {

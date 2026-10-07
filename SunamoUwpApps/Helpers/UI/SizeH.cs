@@ -8,27 +8,27 @@ using Microsoft.UI.Xaml.Controls;
 
 public static class SizeH
 {
-    public static Size Divide(Size s, double div)
+    public static Size Divide(Size size, double div)
     {
-        return new Size(s.Width / div, s.Height / div);
+        return new Size(size.Width / div, size.Height / div);
     }
 
-    public static Size Multiply(Size s, double mul)
+    public static Size Multiply(Size size, double mul)
     {
-        return new Size(s.Width * mul, s.Height * mul);
+        return new Size(size.Width * mul, size.Height * mul);
     }
 
-    public static Size Multiply(Size s, int dpiXPrinter, int dpiYPrinter)
+    public static Size Multiply(Size size, int dpiXPrinter, int dpiYPrinter)
     {
-        return new Size(s.Width * dpiXPrinter, s.Height * dpiYPrinter);
+        return new Size(size.Width * dpiXPrinter, size.Height * dpiYPrinter);
     }
-    public static Size Plus(Size s, int v)
+    public static Size Plus(Size size, int value)
     {
-        return new Size(s.Width + v, s.Height + v);
+        return new Size(size.Width + value, size.Height + value);
     }
-    public static Size Minus(Size s, int v)
+    public static Size Minus(Size size, int value)
     {
-        return new Size(s.Width - v, s.Height - v);
+        return new Size(size.Width - value, size.Height - value);
     }
     public static double OverallWidth(TextBlock tbKeywords)
     {
@@ -91,9 +91,9 @@ public static class SizeH
         return lvApps.Margin.Top + lvApps.Margin.Bottom;
     }
 
-    public static double RecalculateSizeWithScaleFactor(double s)
+    public static double RecalculateSizeWithScaleFactor(double value)
     {
         var scaleFactor = DisplayHelper.GetScaleFactor();
-        return s * scaleFactor;
+        return value * scaleFactor;
     }
 }

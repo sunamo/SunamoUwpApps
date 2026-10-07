@@ -11,9 +11,9 @@ using Windows.Storage;
     {
         private StorageFolder GetStorageFileOfKnownFolder(StorageFolder storageFolder)
         {
-            StorageFolder sf = FSApps.GetStorageFolder(storageFolder, "a", true, true);
+            StorageFolder storageFolder2 = FSApps.GetStorageFolder(storageFolder, "a", true, true);
             // Již s koncovým lomítkem na konci vrací
-            return sf;// +AllStrings.bs;
+            return storageFolder2;// +AllStrings.bs;
 
         }
 

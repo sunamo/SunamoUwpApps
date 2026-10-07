@@ -51,21 +51,21 @@ static Type type = typeof(FileNameWithDateTime);
         public List<FileNameWithDateTime> files = new List<FileNameWithDateTime>();
         FileEntriesDuplicitiesStrategy ds = FileEntriesDuplicitiesStrategy.Time;
         Langs l = Langs.cs;
-        public DateTimeFileIndex(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, bool addPostfix)
+        public DateTimeFileIndex(AppFolders appFolder, string ext, FileEntriesDuplicitiesStrategy duplicitiesStrategy, bool addPostfix)
         {
-            Initialize(af, ext, ds, addPostfix);
+            Initialize(appFolder, ext, duplicitiesStrategy, addPostfix);
         }
-        async Task Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, bool addPostfix)
+        async Task Initialize(AppFolders appFolder, string ext, FileEntriesDuplicitiesStrategy duplicitiesStrategy, bool addPostfix)
         {
-            this.ds = ds;
-            this.folder = AppDataApps.ci.GetFolder(af);
+            this.ds = duplicitiesStrategy;
+            this.folder = AppDataApps.ci.GetFolder(appFolder);
             this.ext = ext;
             string mask = "????_??_??_";
-            if (ds == FileEntriesDuplicitiesStrategy.Serie)
+            if (duplicitiesStrategy == FileEntriesDuplicitiesStrategy.Serie)
             {
                 mask += "S_?*_";
             }
-            else if (ds == FileEntriesDuplicitiesStrategy.Time)
+            else if (duplicitiesStrategy == FileEntriesDuplicitiesStrategy.Time)
             {
                 mask += "??_??_";
             }
@@ -74,19 +74,19 @@ static Type type = typeof(FileNameWithDateTime);
                 ThrowEx.Custom("Not supported strategy of saving files.");
             }
             mask += AllStrings.asterisk;
-            if (ds == FileEntriesDuplicitiesStrategy.Serie)
+            if (duplicitiesStrategy == FileEntriesDuplicitiesStrategy.Serie)
             {
                 files.Sort(new CompareFileNameWithDateTimeBySerie().Desc);
             }
             files.Sort(new CompareFileNameWithDateTimeByDateTime().Desc);
             InitComplete(files);
         }
-        private static string GetDisplayText(DateTime date, int? serie, Langs l)
+        private static string GetDisplayText(DateTime date, int? serie, Langs language)
         {
             string displayText;
             if (serie == null)
             {
-                displayText = DTHelper.DateTimeToString(date, l, SqlServerHelper.DateTimeMinVal);
+                displayText = DTHelper.DateTimeToString(date, language, SqlServerHelper.DateTimeMinVal);
             }
             else
             {
@@ -96,7 +96,7 @@ static Type type = typeof(FileNameWithDateTime);
                 {
                     addSer = " (" + ser + AllStrings.rb;
                 }
-                displayText = DTHelper.DateToString(date, l) + addSer;
+                displayText = DTHelper.DateToString(date, language) + addSer;
             }
             return displayText;
         }
@@ -113,23 +113,23 @@ static Type type = typeof(FileNameWithDateTime);
         {
             return SH.ReplaceAll(FS.DeleteWrongCharsInFileName(fnwoe, false), AllStrings.lowbar, AllStrings.space);
         }
-        public async Task DeleteFile(FileNameWithDateTime o)
+        public async Task DeleteFile(FileNameWithDateTime fileName)
         {
             try
             {
-                StorageFile t = await GetStorageFile(o);
+                StorageFile storageFile = await GetStorageFile(fileName);
                 //File.Delete(t);
-                FSApps.DeleteFile( t);
-                files.Remove(o);
+                FSApps.DeleteFile( storageFile);
+                files.Remove(fileName);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 RaisedException(sess.i18n("FileCannotBeDeleted"));
             } 
         }
-        public async Task<StorageFile> GetStorageFile(FileNameWithDateTime o)
+        public async Task<StorageFile> GetStorageFile(FileNameWithDateTime fileName)
         {
-            return FSApps.GetStorageFile(folder, o.fnwoe + ext);
+            return FSApps.GetStorageFile(folder, fileName.fnwoe + ext);
             //return FS.Combine(folder, o.fnwoe + ext);
         }
         /// <summary>
@@ -140,27 +140,27 @@ static Type type = typeof(FileNameWithDateTime);
         /// <param name="name"></param>
         public async Task< FileNameWithDateTime> SaveFileWithDate(string name, string content)
         {
-            DateTime dt = DateTime.Now;
+            DateTime dateTime = DateTime.Now;
             DateTime today = DateTime.Today;
             string fnwoe = "";
             int? max = null;
             if (ds == FileEntriesDuplicitiesStrategy.Time)
             {
-                fnwoe = name + AllStrings.lowbar + DTHelper.DateTimeToFileName(dt, true);
+                fnwoe = name + AllStrings.lowbar + DTHelper.DateTimeToFileName(dateTime, true);
             }
             else if (ds == FileEntriesDuplicitiesStrategy.Serie)
             {
-                IEnumerable<int?> ml = files.Where(u => u.dt == today).Select(s => s.serie);
+                IEnumerable<int?> values = files.Where(file => file.dt == today).Select(file2 => file2.serie);
                 
-                if (ml.Count() != 0)
+                if (values.Count() != 0)
                 {
-                    max = ml.Max() + 1;
+                    max = values.Max() + 1;
                 }
                 if (!max.HasValue)
                 {
                     max = 1;
                 }
-                fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + AllStrings.lowbar + name;
+                fnwoe = DTHelper.DateTimeToFileName(dateTime, false) + "_S_" + max.Value + AllStrings.lowbar + name;
             }
             else
             {
@@ -168,28 +168,28 @@ static Type type = typeof(FileNameWithDateTime);
             }
             StorageFile storageFile = FSApps.GetStorageFile(folder, DeleteWrongCharsInFileName( fnwoe) + ext);
             TFApps.SaveFile(content, storageFile);
-            return CreateObjectFileNameWithDateTime(GetDisplayText(dt, max, l), name, dt, max, name, fnwoe);
+            return CreateObjectFileNameWithDateTime(GetDisplayText(dateTime, max, l), name, dateTime, max, name, fnwoe);
         }
     }
     public class CompareFileNameWithDateTimeBySerie : ISunamoComparer<FileNameWithDateTime>
     {
-        public int Desc(FileNameWithDateTime x, FileNameWithDateTime y)
+        public int Desc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
         {
-            return x.SerieValue.CompareTo(y.SerieValue) * -1;
+            return fileName.SerieValue.CompareTo(fileName2.SerieValue) * -1;
         }
-        public int Asc(FileNameWithDateTime x, FileNameWithDateTime y)
+        public int Asc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
         {
-            return x.SerieValue.CompareTo(y.SerieValue);
+            return fileName.SerieValue.CompareTo(fileName2.SerieValue);
         }
     }
     public class CompareFileNameWithDateTimeByDateTime : ISunamoComparer<FileNameWithDateTime>
     {
-        public int Desc(FileNameWithDateTime x, FileNameWithDateTime y)
+        public int Desc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
         {
-            return x.dt.CompareTo(y.dt) * -1;
+            return fileName.dt.CompareTo(fileName2.dt) * -1;
         }
-        public int Asc(FileNameWithDateTime x, FileNameWithDateTime y)
+        public int Asc(FileNameWithDateTime fileName, FileNameWithDateTime fileName2)
         {
-            return x.dt.CompareTo(y.dt);
+            return fileName.dt.CompareTo(fileName2.dt);
         }
     }

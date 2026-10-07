@@ -20,25 +20,25 @@ using Microsoft.UI.Xaml.Media.Imaging;
             SelectedFile = null;
         }
 
-        private string GetPathFile(StorageFile v)
+        private string GetPathFile(StorageFile storageFile)
         {
-            if (v == null)
+            if (storageFile == null)
             {
                 bi = null;
                 return "None";
             }
-            return v.Path;
+            return storageFile.Path;
         }
 
-        private void SetSelectedFile(StorageFile v)
+        private void SetSelectedFile(StorageFile storageFile)
         {
-            selectedFile = v;
-            tbSelectedFile.Text = "Selected file: " + GetPathFile( v);
+            selectedFile = storageFile;
+            tbSelectedFile.Text = "Selected file: " + GetPathFile( storageFile);
         }
 
         public event VoidStorageFileBitmapImage FileSelected;
 
-        private async void btnSelectFile_Click(object sender, RoutedEventArgs e)
+        private async void btnSelectFile_Click(object sender, RoutedEventArgs eventArgs)
         {
             StorageFile file = null;
             file = await  Pickers.GetFile(Windows.Storage.Pickers.PickerViewMode.Thumbnail, Windows.Storage.Pickers.PickerLocationId.PicturesLibrary, ".jpg", ".png");
@@ -60,9 +60,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
             }
         }
 
-        public T GetResult<T>(Task<T> t)
+        public T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
 
         BitmapImage bi = null;

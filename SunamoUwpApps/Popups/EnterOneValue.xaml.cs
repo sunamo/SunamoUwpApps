@@ -20,10 +20,10 @@ using apps;
         Langs l = Langs.cs;
         public event VoidT<EnterOneValueEventArgs> ClickOK;
         public event VoidT<EnterOneValueEventArgs> ClickCancel;
-        public EnterOneValue(string coZadat, Langs l)
+        public EnterOneValue(string coZadat, Langs language)
         {
             this.InitializeComponent();
-            this.l = l;
+            this.l = language;
             Reset(coZadat);
         }
 
@@ -35,12 +35,12 @@ using apps;
             }
         }
 
-        private void OnClickCancel(object sender, RoutedEventArgs e)
+        private void OnClickCancel(object sender, RoutedEventArgs eventArgs)
         {
             ClickCancel(null);
         }
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
             ClickOK(new EnterOneValueEventArgs { EnteredText = EnteredText });
         }
@@ -72,8 +72,8 @@ using apps;
             tbCoZadat.Text += AllStrings.colon;
         }
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
     }

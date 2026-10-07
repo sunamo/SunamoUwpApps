@@ -34,10 +34,10 @@ using Microsoft.UI.Xaml.Navigation;
             Loaded += SuMenuItem_Loaded;
         }
 
-        private void SuMenuItem_Loaded(object sender, RoutedEventArgs e)
+        private void SuMenuItem_Loaded(object sender, RoutedEventArgs eventArgs)
         {
-            double w1 = btn.ActualHeight;
-            double w2 = gridButtonContent.ActualHeight;
+            double width1 = btn.ActualHeight;
+            double width2 = gridButtonContent.ActualHeight;
         }
 
         public SuMenuItem(Brush fgIcon, string otfIcon, Brush fgText, string text) : this()

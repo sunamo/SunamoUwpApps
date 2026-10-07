@@ -18,9 +18,9 @@ using Microsoft.UI.Xaml.Navigation;
     {
         public event RoutedEventHandler ClickOK;
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
         public string Title
@@ -65,9 +65,9 @@ using Microsoft.UI.Xaml.Navigation;
             this.InitializeComponent();
         }
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
-            ClickOK(sender, e);
+            ClickOK(sender, eventArgs);
         }
 
         public Brush PopupBorderBrush

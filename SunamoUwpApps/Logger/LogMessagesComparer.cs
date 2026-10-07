@@ -13,13 +13,13 @@ using System.Threading.Tasks;
         //    return x.datum.CompareTo(y.datum) * -1;
         //}
 
-        public int Compare(LogMessage x, LogMessage y)
+        public int Compare(LogMessage logMessage, LogMessage logMessage2)
         {
-            return Desc(x, y);
+            return Desc(logMessage, logMessage2);
         }
 
-        public int Desc(LogMessage x, LogMessage y)
+        public int Desc(LogMessage logMessage, LogMessage logMessage2)
         {
-            return x.Dt.CompareTo(y.Dt);
+            return logMessage.Dt.CompareTo(logMessage2.Dt);
         }
     }

@@ -14,9 +14,9 @@ using Microsoft.UI.Xaml.Controls.Primitives;
     {
         private static bool ShowMessageDialog(string text, string typZpravy)
         {
-            MessageDialog md = new MessageDialog(text, ThisApp.Name + AllStrings.swda + typZpravy);
-            md.Options = MessageDialogOptions.None;
-            var d = md.ShowAsync();
+            MessageDialog messageDialog = new MessageDialog(text, ThisApp.Name + AllStrings.swda + typZpravy);
+            messageDialog.Options = MessageDialogOptions.None;
+            var showTask = messageDialog.ShowAsync();
             return true;
         }
 

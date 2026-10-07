@@ -162,17 +162,17 @@ static Type type = typeof(FlvFile);
         }
         private uint ReadUInt24()
         {
-            var x = new byte[4];
-            this.fileStream.Read(x, 1, 3);
+            var buffer = new byte[4];
+            this.fileStream.Read(buffer, 1, 3);
             this.fileOffset += 3;
-            return BigEndianBitConverter.ToUInt32(x, 0);
+            return BigEndianBitConverter.ToUInt32(buffer, 0);
         }
         private uint ReadUInt32()
         {
-            var x = new byte[4];
-            this.fileStream.Read(x, 0, 4);
+            var buffer = new byte[4];
+            this.fileStream.Read(buffer, 0, 4);
             this.fileOffset += 4;
-            return BigEndianBitConverter.ToUInt32(x, 0);
+            return BigEndianBitConverter.ToUInt32(buffer, 0);
         }
         private uint ReadUInt8()
         {

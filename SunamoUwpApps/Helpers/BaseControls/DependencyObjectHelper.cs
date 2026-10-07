@@ -13,9 +13,9 @@ using Microsoft.UI.Xaml.Media;
         public static T FindVisualChild<T>(DependencyObject obj)
     where T : DependencyObject
         {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            for (int index = 0; index < VisualTreeHelper.GetChildrenCount(obj); index++)
             {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                DependencyObject child = VisualTreeHelper.GetChild(obj, index);
                 if (child != null && child is T)
                     return (T)child;
                 else

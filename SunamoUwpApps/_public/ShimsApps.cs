@@ -52,7 +52,7 @@ public class SunamoDictionary<T, U> : Dictionary<T, U>
 public interface IClipboardHelperApps
 {
     /// <summary>Puts the text to the clipboard.</summary>
-    void SetText(string v);
+    void SetText(string value);
     /// <summary>Puts the lines to the clipboard.</summary>
     void SetLines(List<string> lines);
     /// <summary>Returns true when the clipboard contains text.</summary>
@@ -67,7 +67,7 @@ public interface IClipboardHelperApps
 public interface IKeysHandler<KeyArg>
 {
     /// <summary>Handles the key and returns true when handled.</summary>
-    bool HandleKey(KeyArg e);
+    bool HandleKey(KeyArg keyArgs);
 }
 
 /// <summary>Generic browser interface with type parameter for browser control type.</summary>
@@ -86,9 +86,9 @@ public class ThisApp
     public static event Action<TypeOfMessage, string> StatusSetted;
 
     /// <summary>Raises <see cref="StatusSetted"/>.</summary>
-    protected static void RaiseStatusSetted(TypeOfMessage t, string message)
+    protected static void RaiseStatusSetted(TypeOfMessage messageType, string message)
     {
-        StatusSetted?.Invoke(t, message);
+        StatusSetted?.Invoke(messageType, message);
     }
 }
 

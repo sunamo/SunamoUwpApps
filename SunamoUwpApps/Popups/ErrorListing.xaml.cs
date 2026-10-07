@@ -75,7 +75,7 @@ using Microsoft.UI.Xaml.Navigation;
             this.InitializeComponent();
         }
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
             ClickOK(null);
         }
@@ -88,8 +88,8 @@ using Microsoft.UI.Xaml.Navigation;
 
         public event VoidT<object> ClickCancel;
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
     }

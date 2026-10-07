@@ -5,15 +5,15 @@ using Microsoft.UI.Xaml;
 public static class EventHelper
 {
 
-    public static T GetGetRightSource<T>(object sender, RoutedEventArgs ea)
+    public static T GetGetRightSource<T>(object sender, RoutedEventArgs eventArgs)
     {
         if (sender.GetType() == typeof(T))
         {
             return (T)sender;
         }
-        if (ea.OriginalSource.GetType() == typeof(T))
+        if (eventArgs.OriginalSource.GetType() == typeof(T))
         {
-            return (T)ea.OriginalSource;
+            return (T)eventArgs.OriginalSource;
         }
         //if (ea.Source.GetType() == typeof(T))
         //{

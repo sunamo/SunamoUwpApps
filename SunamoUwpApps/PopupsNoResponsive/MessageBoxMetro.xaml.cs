@@ -19,9 +19,9 @@ using Microsoft.UI.Xaml.Navigation;
         public event RoutedEventHandler ClickOK;
         public event RoutedEventHandler ClickCancel;
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
         public MessageBoxMetro(string title, string message)
@@ -34,19 +34,19 @@ using Microsoft.UI.Xaml.Navigation;
 
        
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
-            ClickOK(sender, e);
+            ClickOK(sender, eventArgs);
         }
 
-        private void OnClickCancel(object sender, RoutedEventArgs e)
+        private void OnClickCancel(object sender, RoutedEventArgs eventArgs)
         {
-            ClickCancel(sender, e);
+            ClickCancel(sender, eventArgs);
         }
 
-        public void ShowCancelButton(bool p)
+        public void ShowCancelButton(bool flag)
         {
-            if (p)
+            if (flag)
             {
                 btnCancel.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
             }

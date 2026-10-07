@@ -16,64 +16,64 @@ using System.Diagnostics;
 
         static KnownColorsHexColorConverter()
         {
-            IEnumerable<PropertyInfo> f = typeof(Colors).GetRuntimeProperties();
-            foreach (var item in f)
+            IEnumerable<PropertyInfo> properties = typeof(Colors).GetRuntimeProperties();
+            foreach (var item in properties)
             {
-                Color c = (Color)item.GetValue(null);
-                string d = item.Name;
-                if (!stringKnownColors.ContainsKey(d))
+                Color color = (Color)item.GetValue(null);
+                string value = item.Name;
+                if (!stringKnownColors.ContainsKey(value))
                 {
-                stringKnownColors.Add(d, c);    
+                stringKnownColors.Add(value, color);    
                 }
-                char[] b = c.ToString().ToCharArray();
-                b[1] = 'F';
-                b[2] = 'F';
-                String a = new string(b);
-                if (!hexKnownColors.ContainsKey(a))
+                char[] chars = color.ToString().ToCharArray();
+                chars[1] = 'F';
+                chars[2] = 'F';
+                String text = new string(chars);
+                if (!hexKnownColors.ContainsKey(text))
                 {
-                    hexKnownColors.Add(a, c);
+                    hexKnownColors.Add(text, color);
                 }
                 
             }
         }
 
-        public  static Color ConvertTo(string u)
+        public  static Color ConvertTo(string url)
         {
-            Color e = Colors.AliceBlue;
-            if (u.StartsWith("#"))
+            Color color = Colors.AliceBlue;
+            if (url.StartsWith("#"))
             {
-                if (u.Length == 7)
+                if (url.Length == 7)
                 {
                     //
-                    u = "#FF" + u.Substring(1);
+                    url = "#FF" + url.Substring(1);
                 }
-                else if(u.Length == 9)
+                else if(url.Length == 9)
                 {
-                    u = "#FF" + u.Substring(3);
+                    url = "#FF" + url.Substring(3);
                 }
-                else if (u.Length == 4)
+                else if (url.Length == 4)
                 {
                     //
-                    u = "#FF" + u[1] + u[1] + u[2] + u[2] + u[3] + u[3];
+                    url = "#FF" + url[1] + url[1] + url[2] + url[2] + url[3] + url[3];
                 }
-                if (u == "#FFFFFFFF")
+                if (url == "#FFFFFFFF")
                 {
                     return Colors.LightBlue;
                 }
-                if (hexKnownColors.ContainsKey(u))
+                if (hexKnownColors.ContainsKey(url))
                 {
-                    return hexKnownColors[u];
+                    return hexKnownColors[url];
                 }
                 else
                 { 
-                    e = StringHexColorConverter.ConvertFrom(u);
-                    return Color.FromArgb(e.A, e.R, e.G, e.B);
+                    color = StringHexColorConverter.ConvertFrom(url);
+                    return Color.FromArgb(color.A, color.R, color.G, color.B);
                 }
                 return stringKnownColors["Blue"];    
             }
-            if (stringKnownColors.ContainsKey(u))
+            if (stringKnownColors.ContainsKey(url))
             {
-                return stringKnownColors[u];
+                return stringKnownColors[url];
             }
 #if DEBUG
             Debug.WriteLine("Blue");
@@ -82,8 +82,8 @@ using System.Diagnostics;
             //return (Color)typeof(Colors).GetRuntimeProperty(u).GetValue(null);
         }
 
-        public static string ConvertFrom(Color t)
+        public static string ConvertFrom(Color color)
         {
-            return StringHexColorConverter.ConvertTo(t);
+            return StringHexColorConverter.ConvertTo(color);
         }
     }

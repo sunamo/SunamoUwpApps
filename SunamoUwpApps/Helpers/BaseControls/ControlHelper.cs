@@ -14,32 +14,32 @@ using Microsoft.UI.Xaml.Controls;
 static Type type = typeof(ControlHelper);
         public static Point GetOnCenter(Size parent, Size child)
         {
-            Point vr = new Point();
+            Point point = new Point();
             if (parent.Width > child.Width)
             {
-                vr.X = ((parent.Width - child.Width) / 2d);
+                point.X = ((parent.Width - child.Width) / 2d);
             }
             else if(parent.Width == child.Width)
             {
-                vr.X = 0;
+                point.X = 0;
             }
             else
             {
-                vr.X = 0;
+                point.X = 0;
             }
             if (parent.Height > child.Height)
             {
-                vr.Y = (parent.Height - child.Height) / 2d;
+                point.Y = (parent.Height - child.Height) / 2d;
             }
             else if (parent.Height == child.Height)
             {
-                vr.Y = 0;
+                point.Y = 0;
             }
             else
             {
-                vr.Y = 0;
+                point.Y = 0;
             }
-            return vr;
+            return point;
         }
         public static readonly Size SizePositiveInfinity = new Size(double.PositiveInfinity, double.PositiveInfinity);
         /// <summary>
@@ -66,10 +66,10 @@ static Type type = typeof(ControlHelper);
         public static Size GetMinimumHeightMaximumWidth(UIElement uie, Size windowSize)
         {
             uie.Measure(SizePositiveInfinity);
-            var vr = uie.DesiredSize; //SizeHelper.RecalculateSizeWithScaleFactor( uie.DesiredSize.Width, uie.DesiredSize.Height);
+            var desiredSize = uie.DesiredSize; //SizeHelper.RecalculateSizeWithScaleFactor( uie.DesiredSize.Width, uie.DesiredSize.Height);
             //Frame rootFrame = Window.Current.Content as Frame;
-            vr.Width = windowSize.Width;
-            return vr;
+            desiredSize.Width = windowSize.Width;
+            return desiredSize;
         }
         public static Size GetMinimumHeightMinimumWidth(UIElement uie)
         {
@@ -78,9 +78,9 @@ static Type type = typeof(ControlHelper);
         public static Size GetMinimumHeightMinimumWidth(UIElement uie, Size windowSize)
         {
             uie.Measure(windowSize);
-            var vr = uie.DesiredSize;
+            var desiredSize = uie.DesiredSize;
             
-            return vr;
+            return desiredSize;
         }
         /// <summary>
         /// A1 musí být (FrameworkElement)
@@ -94,12 +94,12 @@ static Type type = typeof(ControlHelper);
             {
                 ThrowEx.Custom("Parameter prefixToRemove in ControlHelper.GetName was SE or null");
             }
-            string vr = null;
-            vr = GetName(sender);
+            string result = null;
+            result = GetName(sender);
             
-            if (vr.StartsWith(prefixToRemove))
+            if (result.StartsWith(prefixToRemove))
             {
-                return vr.Substring(prefixToRemove.Length);
+                return result.Substring(prefixToRemove.Length);
             }
             else
             {
@@ -113,14 +113,14 @@ static Type type = typeof(ControlHelper);
         /// <param name="sender"></param>
         private static string GetName(object sender)
         {
-            string vr;
-            FrameworkElement fe = (FrameworkElement)sender;
-            if (fe == null)
+            string result;
+            FrameworkElement frameworkElement = (FrameworkElement)sender;
+            if (frameworkElement == null)
             {
                 ThrowEx.Custom("Parameter sender in ControlHelper.GetName wasnt FrameworkElement");
             }
-            vr = fe.Name;
-            return vr;
+            result = frameworkElement.Name;
+            return result;
         }
         public static string GetNameChb(object sender)
         {

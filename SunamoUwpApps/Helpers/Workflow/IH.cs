@@ -7,27 +7,27 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 
-    public delegate void updateBorderBrushOfBorder(Border b, Brush br);
-    public delegate Brush getBorderBrushOfBorder(Border b);
-    public delegate void updateProgressBarWpf(ProgressBar pb, double value);
+    public delegate void updateBorderBrushOfBorder(Border border, Brush brush);
+    public delegate Brush getBorderBrushOfBorder(Border border);
+    public delegate void updateProgressBarWpf(ProgressBar progressBar, double value);
     public delegate void updateTextBlockText(TextBlock lbl, string text);
     public delegate void appendToTextBlock(TextBlock lbl, string text);
 
-    public delegate void changeVisibilityUIElementWpf(UIElement uie, Visibility v);
+    public delegate void changeVisibilityUIElementWpf(UIElement uie, Visibility visibility);
     
     public delegate void appendToTextBox(TextBox lbl, string text);
-    public delegate void insertToListBoxWpf(ListBox lb, int index, object o);
-    public delegate void setDataContext(FrameworkElement fe, object o);
-    public delegate object getDataContext(FrameworkElement fe);
+    public delegate void insertToListBoxWpf(ListBox listBox, int index, object value);
+    public delegate void setDataContext(FrameworkElement frameworkElement, object value);
+    public delegate object getDataContext(FrameworkElement frameworkElement);
     
-    public delegate object getSelectedItemSelector(Selector cb);
-    public delegate void setItemsSourceOfItemsControl(ItemsControl ic, IEnumerable o);
+    public delegate object getSelectedItemSelector(Selector selector);
+    public delegate void setItemsSourceOfItemsControl(ItemsControl itemsControl, IEnumerable items);
     public delegate void setCaretIndexOfTextBox(TextBox txt, int caretIndex);
     public delegate void focusTextBox(TextBox txt);
     public delegate string getTextOfTextBox(TextBox txt);
     
-    public delegate object getItemAtIndexInSelector(Selector s, int dex);
-    public delegate void setSelectedItemSelector(Selector s, object item);
+    public delegate object getItemAtIndexInSelector(Selector selector, int dex);
+    public delegate void setSelectedItemSelector(Selector selector, object item);
     public delegate void updateLayoutOfUIElement(UIElement uie);
     //public delegate ListBoxItem getListBoxItemFromObject(ListBox lb, object )
     public static partial class IH
@@ -88,14 +88,14 @@ using Microsoft.UI.Xaml.Media;
             uie.UpdateLayout();
         }
 
-        public static void setSelectedItemSelector(Selector s, object item)
+        public static void setSelectedItemSelector(Selector selector, object item)
         {
-            s.SelectedItem = item;
+            selector.SelectedItem = item;
         }
 
-        public static object getItemAtIndexInSelector(Selector s, int dex)
+        public static object getItemAtIndexInSelector(Selector selector, int dex)
         {
-            return s.Items[dex];
+            return selector.Items[dex];
         }
 
         
@@ -114,21 +114,21 @@ using Microsoft.UI.Xaml.Media;
 
         
 
-        public static void updateBorderBrushOfBorderValue(Border b, Brush br)
+        public static void updateBorderBrushOfBorderValue(Border border, Brush brush)
         {
-            b.BorderBrush = br;
+            border.BorderBrush = brush;
         }
 
-        public static Brush getBorderBrushOfBorderValue(Border b)
+        public static Brush getBorderBrushOfBorderValue(Border border)
         {
-            return b.BorderBrush;
+            return border.BorderBrush;
         }
 
         
 
-        static void setItemsSourceOfItemsControlM(ItemsControl ic, IEnumerable o)
+        static void setItemsSourceOfItemsControlM(ItemsControl itemsControl, IEnumerable items)
         {
-            ic.ItemsSource = o;
+            itemsControl.ItemsSource = items;
         }
 
         
@@ -147,8 +147,8 @@ using Microsoft.UI.Xaml.Media;
 
         private static void UpdateTooltip(DependencyObject lbl, string text)
         {
-            ToolTip t = new ToolTip();
-            t.Content = text;
+            ToolTip toolTip = new ToolTip();
+            toolTip.Content = text;
             if (text == "About this app")
             {
 
@@ -156,39 +156,39 @@ using Microsoft.UI.Xaml.Media;
             ToolTipService.SetToolTip(lbl, text);
         }
 
-        public static void appendToTextBoxText(TextBox tb, string text)
+        public static void appendToTextBoxText(TextBox textBox, string text)
         {
-            tb.Text = tb.Text + AllStrings.space + text;
-            UpdateTooltip(tb, tb.Text);
+            textBox.Text = textBox.Text + AllStrings.space + text;
+            UpdateTooltip(textBox, textBox.Text);
         }
 
         //
-        public static void updateVisibility(UIElement ui, Visibility vis)
+        public static void updateVisibility(UIElement uiElement, Visibility vis)
         {
-            ui.Visibility = vis;
+            uiElement.Visibility = vis;
         }
 
 
 
-        public static void insertToListBoxWpfValue(ListBox lb, int index, object o)
+        public static void insertToListBoxWpfValue(ListBox listBox, int index, object value)
         {
-            lb.Items.Insert(index, o);
+            listBox.Items.Insert(index, value);
         }
 
-        public static void setDataContextObject(FrameworkElement fw, object dc)
+        public static void setDataContextObject(FrameworkElement frameworkElement, object dataContext)
         {
-            fw.DataContext = dc;
+            frameworkElement.DataContext = dataContext;
         }
 
-        public static object getDataContextObject(FrameworkElement fw)
+        public static object getDataContextObject(FrameworkElement frameworkElement)
         {
-            return fw.DataContext;
+            return frameworkElement.DataContext;
         }
 
         
 
-        public static object getSelectedItemSelector(Selector s)
+        public static object getSelectedItemSelector(Selector selector)
         {
-            return s.SelectedItem;
+            return selector.SelectedItem;
         }
     }

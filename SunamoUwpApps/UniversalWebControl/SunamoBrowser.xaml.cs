@@ -200,9 +200,9 @@ using System.Threading.Tasks;
 
                     return result;
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
-                    if (ex.Message == "Exception from HRESULT: 0x80020101")
+                    if (exception.Message == "Exception from HRESULT: 0x80020101")
                     {
                         return string.Empty;
                     }
@@ -271,9 +271,9 @@ using System.Threading.Tasks;
             
         }
 
-        public T GetResult<T>(Task<T> t)
+        public T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
 
         public void Navigate(string uri)

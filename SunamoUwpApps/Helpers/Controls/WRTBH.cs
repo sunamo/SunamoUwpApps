@@ -21,9 +21,9 @@ using Microsoft.UI.Xaml.Documents;
         double width = 0;
         public List<StackPanel> uis = new List<StackPanel>();
 
-        public WRTBH(double maxWidth, double paddingLeftFirst, FontArgs fa)
+        public WRTBH(double maxWidth, double paddingLeftFirst, FontArgs fontArgs)
         {
-            this.fa = fa;
+            this.fa = fontArgs;
             this.paddingLeftFirst = paddingLeftFirst;
             this.maxWidth = maxWidth;
             uis.Add(NewStackPanel());
@@ -31,9 +31,9 @@ using Microsoft.UI.Xaml.Documents;
 
         private StackPanel NewStackPanel()
         {
-            StackPanel sp = new StackPanel();
-            sp.Orientation = Orientation.Horizontal;
-            return sp;
+            StackPanel stackPanel = new StackPanel();
+            stackPanel.Orientation = Orientation.Horizontal;
+            return stackPanel;
         }
 
         public void Run(string text)
@@ -94,11 +94,11 @@ using Microsoft.UI.Xaml.Documents;
         private RichTextBlock GetRichTextBlock(Inline inline)
         {
             RichTextBlock txt = new RichTextBlock();
-            Paragraph p = new Paragraph();
-            p.Inlines.Add(inline);
+            Paragraph paragraph = new Paragraph();
+            paragraph.Inlines.Add(inline);
             txt.Padding = padding;
             txt.Margin = margin;
-            txt.Blocks.Add(p);
+            txt.Blocks.Add(paragraph);
             return txt;
         }
 
@@ -164,9 +164,9 @@ using Microsoft.UI.Xaml.Documents;
 
 
 
-        public void Italic(string p)
+        public void Italic(string path)
         {
-            List<string> slova = GetWords(p);
+            List<string> slova = GetWords(path);
             foreach (var item in slova)
             {
                 Add(GetTextBlock(GetItalic(item + AllStrings.doubleSpace, fa)));

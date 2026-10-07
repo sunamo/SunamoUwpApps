@@ -16,18 +16,18 @@ using Microsoft.UI.Xaml.Media;
     {
         public FontArgs fa = FontArgs.DefaultRun();
         TextBlock tb = null;
-        public TBH(TextBlock tb)
+        public TBH(TextBlock textBlock)
         {
-            this.tb = tb;
+            this.tb = textBlock;
         }
 
         public void DivideStringToRows(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text, Size maxSize)
         {
-            FontArgs fa = new FontArgs(fontFamily, fontSize, fontStyle, fontStretch, fontWeight);
-            List<string> l = SHWithControls.DivideStringToRowsList(fontFamily, fontSize, fontStyle, fontStretch, fontWeight, text, maxSize);
-            foreach (var item in l)
+            FontArgs fontArgs = new FontArgs(fontFamily, fontSize, fontStyle, fontStretch, fontWeight);
+            List<string> items = SHWithControls.DivideStringToRowsList(fontFamily, fontSize, fontStyle, fontStretch, fontWeight, text, maxSize);
+            foreach (var item in items)
             {
-                tb.Inlines.Add(GetRun(item, fa));
+                tb.Inlines.Add(GetRun(item, fontArgs));
                 tb.Inlines.Add(new LineBreak());
             }
 
@@ -39,38 +39,38 @@ using Microsoft.UI.Xaml.Media;
 
         public void H1(string text)
         {
-            Bold b = new Bold();
-            FontArgs fa = FontArgs.DefaultRun();
-            fa.fontSize = 50;
+            Bold bold = new Bold();
+            FontArgs fontArgs = FontArgs.DefaultRun();
+            fontArgs.fontSize = 50;
             //b.FontSize = 40;
-            b.Inlines.Add(new LineBreak());
-            b.Inlines.Add(GetRun(text, fa));
-            b.Inlines.Add(new LineBreak());
-            b.Inlines.Add(new LineBreak());
-            tb.Inlines.Add(b);
+            bold.Inlines.Add(new LineBreak());
+            bold.Inlines.Add(GetRun(text, fontArgs));
+            bold.Inlines.Add(new LineBreak());
+            bold.Inlines.Add(new LineBreak());
+            tb.Inlines.Add(bold);
         }
 
-        public void Run(string v)
+        public void Run(string value)
         {
-            tb.Inlines.Add(GetRun(v, fa));
+            tb.Inlines.Add(GetRun(value, fa));
         }
 
-        public void Bold(string v)
+        public void Bold(string value)
         {
-            tb.Inlines.Add(GetBold(v, fa));
+            tb.Inlines.Add(GetBold(value, fa));
         }
 
         public void H3(string text)
         {
-            Italic b = new Italic();
-            FontArgs fa = FontArgs.DefaultRun();
-            fa.fontSize = 30;
+            Italic italic = new Italic();
+            FontArgs fontArgs = FontArgs.DefaultRun();
+            fontArgs.fontSize = 30;
             //b.FontSize = 30;
-            b.Inlines.Add(new LineBreak());
-            b.Inlines.Add(GetRun(text, fa));
-            b.Inlines.Add(new LineBreak());
-            b.Inlines.Add(new LineBreak());
-            tb.Inlines.Add(b);
+            italic.Inlines.Add(new LineBreak());
+            italic.Inlines.Add(GetRun(text, fontArgs));
+            italic.Inlines.Add(new LineBreak());
+            italic.Inlines.Add(new LineBreak());
+            tb.Inlines.Add(italic);
         }
 
         /// <summary>
@@ -88,36 +88,36 @@ using Microsoft.UI.Xaml.Media;
 
         
 
-        public void KeyValue(string p1, string p2)
+        public void KeyValue(string first, string second)
         {
-             p2 = p2.Trim();
-             p1 = p1.Trim();
-            if (p2 != "" && p1 != "")
+             second = second.Trim();
+             first = first.Trim();
+            if (second != "" && first != "")
             {
-                Bold(p1);
-                Run(AllStrings.space + p2);
+                Bold(first);
+                Run(AllStrings.space + second);
                 LineBreak();
             }
         }
 
         
 
-        public void Error(string p)
+        public void Error(string path)
         {
-            tb.Inlines.Add(GetError(p, FontArgs.DefaultRun()));
+            tb.Inlines.Add(GetError(path, FontArgs.DefaultRun()));
             LineBreak();
         }
 
-        public void Bullet(string p)
+        public void Bullet(string path)
         {
-            Inline il = GetBullet(p, fa);
+            Inline inline = GetBullet(path, fa);
             //il.Foreground = new SolidColorBrush(Colors.Black);
-            tb.Inlines.Add(il);
+            tb.Inlines.Add(inline);
             LineBreak();
         }
 
-        public void Italic(string p)
+        public void Italic(string path)
         {
-            tb.Inlines.Add(GetItalic(p, fa));
+            tb.Inlines.Add(GetItalic(path, fa));
         }
     }

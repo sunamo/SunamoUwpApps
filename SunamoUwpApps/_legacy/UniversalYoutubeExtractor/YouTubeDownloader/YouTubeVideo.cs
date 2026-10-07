@@ -56,9 +56,9 @@ namespace UniversalYouTubeExtractor
                 Task<Stream> rsTask = request.GetRequestStreamAsync();
 
                 //rsTask.Wait();
-                Stream rs = await rsTask;
-                byte[] b = Encoding.UTF8.GetBytes(.Format2("Range: bytes={0}-{1}", 0, this.BytesToDownload.Value - 1));
-                rs.Write(b, 0, b.Length);
+                Stream stream = await rsTask;
+                byte[] bytes2 = Encoding.UTF8.GetBytes(.Format2("Range: bytes={0}-{1}", 0, this.BytesToDownload.Value - 1));
+                stream.Write(bytes2, 0, bytes2.Length);
             }
 
             // the following code is alternative, you may implement the function after your needs
@@ -81,10 +81,10 @@ namespace UniversalYouTubeExtractor
 
                             copiedBytes += bytes;
 
-                            double d = (copiedBytes * 1.0 / response.ContentLength) * 100;
+                            double value = (copiedBytes * 1.0 / response.ContentLength) * 100;
 #if DEBUG
 #endif
-                            var eventArgs = new DownloadProgressEventArgs(d);
+                            var eventArgs = new DownloadProgressEventArgs(value);
 
                             if (this.DownloadProgressChanged != null)
                             {
@@ -108,17 +108,17 @@ namespace UniversalYouTubeExtractor
 
         public async Task DoWorkWithHttpClient(string uri)
         {
-            HttpClient hc = new HttpClient();
+            HttpClient httpClient = new HttpClient();
             if (this.BytesToDownload.HasValue)
             {
-                hc.DefaultRequestHeaders.Range = new System.Net.Http.Headers.RangeHeaderValue(0, this.BytesToDownload.Value - 1);
+                httpClient.DefaultRequestHeaders.Range = new System.Net.Http.Headers.RangeHeaderValue(0, this.BytesToDownload.Value - 1);
             }
 
-            Stream s = await hc.GetStreamAsync(uri);
-            Task<Stream> ts = SavePath.OpenStreamForWriteAsync();
+            Stream stream = await httpClient.GetStreamAsync(uri);
+            Task<Stream> task = SavePath.OpenStreamForWriteAsync();
             //ts.Wait();
-            Stream target = await ts;
-            await s.CopyToAsync(target);
+            Stream target = await task;
+            await stream.CopyToAsync(target);
             target.Flush();
             target.Dispose();
             return;

@@ -48,18 +48,18 @@ static Type type = typeof(for);
         /// Starts the work of the <see cref="Downloader"/>.
         /// </summary>
         public abstract void Execute();
-        protected void OnDownloadFinished(EventArgs e)
+        protected void OnDownloadFinished(EventArgs eventArgs)
         {
             if (this.DownloadFinished != null)
             {
-                this.DownloadFinished(this, e);
+                this.DownloadFinished(this, eventArgs);
             }
         }
-        protected void OnDownloadStarted(EventArgs e)
+        protected void OnDownloadStarted(EventArgs eventArgs)
         {
             if (this.DownloadStarted != null)
             {
-                this.DownloadStarted(this, e);
+                this.DownloadStarted(this, eventArgs);
             }
         }
     }

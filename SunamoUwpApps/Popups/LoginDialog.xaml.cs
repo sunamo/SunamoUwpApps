@@ -49,14 +49,14 @@ static Type type = typeof(LoginDialog);
         static LoginDialog()
         {
         }
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
             if (ChangeDialogResult != null)
             {
                 ChangeDialogResult(true);
             }
         }
-        private void OnClickCancel(object sender, RoutedEventArgs e)
+        private void OnClickCancel(object sender, RoutedEventArgs eventArgs)
         {
             if (ChangeDialogResult != null)
             {
@@ -130,25 +130,25 @@ static Type type = typeof(LoginDialog);
             }
         }
         string salt = null;
-        public LoginDialog(CryptDelegates cd, string salt) : this()
+        public LoginDialog(CryptDelegates cryptDelegates2, string salt) : this()
         {
-            this.cryptDelegates = cd;
+            this.cryptDelegates = cryptDelegates2;
             this.salt = salt;
             chbAutoLogin.Checked += chbAutoLogin_Checked;
             chbRememberLogin.Unchecked += chbRememberLogin_Unchecked;
         }
-        public LoginDialog(CryptDelegates cd, string salt, StorageApplicationData storageApplicationData, Brush borderBrush)
-            : this(cd, salt)
+        public LoginDialog(CryptDelegates cryptDelegates, string salt, StorageApplicationData storageApplicationData, Brush borderBrush)
+            : this(cryptDelegates, salt)
         {
             this.storageApplicationData = storageApplicationData;
             this.PopupBorderBrush = borderBrush;
             Initialize();
         }
-        void chbRememberLogin_Unchecked(object sender, RoutedEventArgs e)
+        void chbRememberLogin_Unchecked(object sender, RoutedEventArgs eventArgs)
         {
             chbAutoLogin.IsChecked = false;
         }
-        void chbAutoLogin_Checked(object sender, RoutedEventArgs e)
+        void chbAutoLogin_Checked(object sender, RoutedEventArgs eventArgs)
         {
             chbRememberLogin.IsChecked = true;
         }
@@ -193,9 +193,9 @@ static Type type = typeof(LoginDialog);
         static void LoadStorageFiles()
         {
             //DebugLogger.Instance.WriteLine("LoadStorageFiles start"); 
-            var v = GetStorageFiles();
+            var files = GetStorageFiles();
             
-            StorageFile[] sfa = v;
+            StorageFile[] sfa = files;
             _loginSf = sfa[0];
             _saltSf = sfa[1];
             _passwordSf = sfa[2];
@@ -225,8 +225,8 @@ static Type type = typeof(LoginDialog);
             #endregion
 
             #region New way to loading
-            var c = await FileIO.ReadTextAsync(passwordSf, Windows.Storage.Streams.UnicodeEncoding.Utf16BE);
-            LoadedPassword = cryptDelegates.decryptString(null, c);
+            var content = await FileIO.ReadTextAsync(passwordSf, Windows.Storage.Streams.UnicodeEncoding.Utf16BE);
+            LoadedPassword = cryptDelegates.decryptString(null, content);
             #endregion
 
             // Načtu už. jméno
@@ -270,17 +270,17 @@ static Type type = typeof(LoginDialog);
         /// </summary>
         private static StorageFile[] GetStorageFiles()
         {
-            StorageFile[] vr = new StorageFile[3];
-            vr[0] = AppDataApps.ci.GetFile(AppFolders.Settings, "l.txt");
-            vr[1] = AppDataApps.ci.GetFile(AppFolders.Settings, "s.txt");
-            vr[2] = AppDataApps.ci.GetFile(AppFolders.Settings, "h.txt");
-            return vr;
+            StorageFile[] result = new StorageFile[3];
+            result[0] = AppDataApps.ci.GetFile(AppFolders.Settings, "l.txt");
+            result[1] = AppDataApps.ci.GetFile(AppFolders.Settings, "s.txt");
+            result[2] = AppDataApps.ci.GetFile(AppFolders.Settings, "h.txt");
+            return result;
         }
         private static void ThrowExceptionSavingConfigInOtherWayIsntSupportedInWindowsStoreAppsNotSupported()
         {//Ukládání nastavení jinde než do textového souboru zatím není podporováno ve Windows Store Apps
             ThrowEx.Custom("Saving into other way than text file isn't supported in Windows Store apps yet");
         }
-        private async void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs eventArgs)
         {
             if (storageApplicationData == StorageApplicationData.TextFile)
             {
@@ -329,7 +329,7 @@ static Type type = typeof(LoginDialog);
                 ChangeDialogResult(true);
             }
         }
-        private void btnForgetLoginAndPassword_Click(object sender, RoutedEventArgs e)
+        private void btnForgetLoginAndPassword_Click(object sender, RoutedEventArgs eventArgs)
         {
             txtLogin.Text = "";
             txtHeslo.Password = "";
@@ -352,7 +352,7 @@ static Type type = typeof(LoginDialog);
                 ThrowExceptionSavingConfigInOtherWayIsntSupportedInWindowsStoreAppsNotSupported();
             }
         }
-        private void btnForgetPassword_Click(object sender, RoutedEventArgs e)
+        private void btnForgetPassword_Click(object sender, RoutedEventArgs eventArgs)
         {
             txtHeslo.Password = "";
             if (storageApplicationData == StorageApplicationData.TextFile)
@@ -373,16 +373,16 @@ static Type type = typeof(LoginDialog);
                 ThrowExceptionSavingConfigInOtherWayIsntSupportedInWindowsStoreAppsNotSupported();
             }
         }
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
-        private void btnCloseDialog_Click(object sender, RoutedEventArgs e)
+        private void btnCloseDialog_Click(object sender, RoutedEventArgs eventArgs)
         {
             ChangeDialogResult(null);
         }
-        public  T GetResult<T>(Task<T> t)
+        public  T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

@@ -19,7 +19,7 @@ namespace YoutubeExtractor
                 asyncResult => request.EndGetResponse(asyncResult),
                 null);
 
-            return task.ContinueWith(t => ReadStreamFromResponse(t.Result)).Result;
+            return task.ContinueWith(completedTask => ReadStreamFromResponse(completedTask.Result)).Result;
         }
 
         public static string HtmlDecode(string value)
@@ -27,19 +27,19 @@ namespace YoutubeExtractor
             return System.Net.WebUtility.HtmlDecode(value);
         }
 
-        public static IDictionary<string, string> ParseQueryString(string s)
+        public static IDictionary<string, string> ParseQueryString(string text)
         {
             // remove anything other than query string from url
-            if (s.Contains(AllStrings.q))
+            if (text.Contains(AllStrings.q))
             {
-                s = s.Substring(s.IndexOf(AllChars.q) + 1);
+                text = text.Substring(text.IndexOf(AllChars.q) + 1);
             }
 
             var dictionary = new Dictionary<string, string>();
 
-            foreach (string vp in RegexSH.Split(s, "&"))
+            foreach (string videoPath in RegexSH.Split(text, "&"))
             {
-                List<string> strings = RegexSH.Split(vp, "=");
+                List<string> strings = RegexSH.Split(videoPath, "=");
                 dictionary.Add(strings[0], strings.Length == 2 ? UrlDecode(strings[1]) : string.Empty);
             }
 
@@ -86,9 +86,9 @@ namespace YoutubeExtractor
         {
             using (Stream responseStream = response.GetResponseStream())
             {
-                using (var sr = new StreamReader(responseStream))
+                using (var streamReader = new StreamReader(responseStream))
                 {
-                    return sr.ReadToEnd();
+                    return streamReader.ReadToEnd();
                 }
             }
         }

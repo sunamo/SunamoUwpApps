@@ -11,10 +11,10 @@ using Microsoft.UI.Xaml;
 
     public static class SizeExtensions
     {
-        public static Size RecalculateSizeWithScaleFactor(this Size s)
+        public static Size RecalculateSizeWithScaleFactor(this Size size2)
         {
             var scaleFactor = DisplayHelper.GetScaleFactor();
-            var size = new Size(s.Width / scaleFactor, s.Height / scaleFactor);
+            var size = new Size(size2.Width / scaleFactor, size2.Height / scaleFactor);
             return size;
         }
 

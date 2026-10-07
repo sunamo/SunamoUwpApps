@@ -11,6 +11,6 @@ using System.Threading.Tasks;
         /// <summary>
         /// As body method write just ColorThemeHelper.ApplyColorTheme(border, ct);
         /// </summary>
-        /// <param name="ct"></param>
-        void ApplyColorTheme(ColorTheme ct);
+        /// <param name="colorTheme"></param>
+        void ApplyColorTheme(ColorTheme colorTheme);
     }

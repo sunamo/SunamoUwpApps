@@ -11,9 +11,9 @@ using Microsoft.UI.Xaml.Controls;
     {
         Dictionary<string, string> d = null;
 
-        public ComboBoxEnumHelperWithCustomLabels(ComboBox cb, Dictionary<string, string> d) : base(cb)
+        public ComboBoxEnumHelperWithCustomLabels(ComboBox comboBox, Dictionary<string, string> labels) : base(comboBox)
         {
-            this.d = d;
+            this.d = labels;
             AddItems();
         }
 
@@ -30,15 +30,15 @@ using Microsoft.UI.Xaml.Controls;
             return default(T);
         }
 
-        public override void RemoveItem(T t)
+        public override void RemoveItem(T item)
         {
-            string cbi = d[t.ToString()];
-            for (int i = 0; i < cb.Items.Count; i++)
+            string cbi = d[item.ToString()];
+            for (int index = 0; index < cb.Items.Count; index++)
             {
-                string gg = cb.Items[i].ToString();
-                if (gg == cbi)
+                string guid = cb.Items[index].ToString();
+                if (guid == cbi)
                 {
-                    cb.Items.RemoveAt(i);
+                    cb.Items.RemoveAt(index);
                     break;
                 }
             }
@@ -47,12 +47,12 @@ using Microsoft.UI.Xaml.Controls;
         public override void SetValue(string cbi)
         {
 
-            for (int i = 0; i < cb.Items.Count; i++)
+            for (int index = 0; index < cb.Items.Count; index++)
             {
-                string gg = cb.Items[i].ToString();
-                if (gg == cbi)
+                string guid = cb.Items[index].ToString();
+                if (guid == cbi)
                 {
-                    cb.SelectedIndex = i;
+                    cb.SelectedIndex = index;
                     break;
                 }
             }

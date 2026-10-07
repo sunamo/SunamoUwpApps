@@ -18,12 +18,12 @@ using Microsoft.UI.Xaml.Media;
         public event VoidT<object> ClickOK;
         public event VoidT<object> ClickCancel;
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
             if (ClickOK != null)
             {
@@ -31,7 +31,7 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
-        private void OnClickCancel(object sender, RoutedEventArgs e)
+        private void OnClickCancel(object sender, RoutedEventArgs eventArgs)
         {
             if (ClickCancel != null)
             {
@@ -92,13 +92,13 @@ using Microsoft.UI.Xaml.Media;
             {
                 if (item is CheckBox)
                 {
-                    var fw = ((CheckBox)item);
-                    var tag = fw.Tag;
+                    var checkBox = ((CheckBox)item);
+                    var tag = checkBox.Tag;
                     
                         
                         if(BTS.CompareAsObjectAndString(tag2, tag))
                     { 
-                        return BTS.GetValueOfNullable(((CheckBox)fw).IsChecked);
+                        return BTS.GetValueOfNullable(((CheckBox)checkBox).IsChecked);
                     }
                 }
             }
@@ -127,13 +127,13 @@ using Microsoft.UI.Xaml.Media;
             TurnOnOffButtonOk();
         }
 
-        private void Chb_Unchecked(object sender, RoutedEventArgs e)
+        private void Chb_Unchecked(object sender, RoutedEventArgs eventArgs)
         {
             checkedLength--;
             TurnOnOffButtonOk();
         }
 
-        private void Chb_Checked(object sender, RoutedEventArgs e)
+        private void Chb_Checked(object sender, RoutedEventArgs eventArgs)
         {
             checkedLength++;
             TurnOnOffButtonOk();
@@ -180,7 +180,7 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
-        private void chbTickAll_Checked(object sender, RoutedEventArgs e)
+        private void chbTickAll_Checked(object sender, RoutedEventArgs eventArgs)
         {
             foreach (CheckBox item in spCheckBoxes.Children)
             {
@@ -188,7 +188,7 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
-        private void chbTickAll_Unchecked(object sender, RoutedEventArgs e)
+        private void chbTickAll_Unchecked(object sender, RoutedEventArgs eventArgs)
         {
             foreach (CheckBox item in spCheckBoxes.Children)
             {

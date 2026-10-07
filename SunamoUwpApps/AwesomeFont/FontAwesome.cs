@@ -12,9 +12,9 @@ using Microsoft.UI.Xaml.Media;
 
     public static class FontAwesome
     {
-        public static FontAwesomeIcon GetSymbol(DependencyObject dp)
+        public static FontAwesomeIcon GetSymbol(DependencyObject dependencyObject)
         {
-            return (FontAwesomeIcon)dp.GetValue(SymbolProperty);
+            return (FontAwesomeIcon)dependencyObject.GetValue(SymbolProperty);
         }
 
         public static FontFamily FontFamily { get; set; }
@@ -24,22 +24,22 @@ using Microsoft.UI.Xaml.Media;
             FontFamily = new FontFamily(AwesomeFontControls.awesomeFontPath);
         }
 
-        public static void SetSymbol(DependencyObject dp, FontAwesomeIcon value)
+        public static void SetSymbol(DependencyObject dependencyObject, FontAwesomeIcon value)
         {
             string hex = ((int)value).ToString("X").ToLower();
-            dp.SetValue(SymbolProperty, hex);
+            dependencyObject.SetValue(SymbolProperty, hex);
 
-            if (dp is Button)
+            if (dependencyObject is Button)
             {
-                dp.SetValue(Button.FontFamilyProperty, new FontFamily( "ms-appx:///Fonts/FontAwesome.otf#FontAwesome"));
-                dp.SetValue(Button.ContentProperty, "" + hex);
+                dependencyObject.SetValue(Button.FontFamilyProperty, new FontFamily( "ms-appx:///Fonts/FontAwesome.otf#FontAwesome"));
+                dependencyObject.SetValue(Button.ContentProperty, "" + hex);
             }
-            else if (dp is TextBlock)
+            else if (dependencyObject is TextBlock)
             {
-                TextBlock dpb = (TextBlock)dp;
+                TextBlock dpb = (TextBlock)dependencyObject;
                 
-                dp.SetValue(TextBlock.FontFamilyProperty, new FontFamily("/fontawesome-webfont.ttf#FontAwesome"));
-                dp.SetValue(TextBlock.TextProperty, "&#x" + hex + AllStrings.sc);
+                dependencyObject.SetValue(TextBlock.FontFamilyProperty, new FontFamily("/fontawesome-webfont.ttf#FontAwesome"));
+                dependencyObject.SetValue(TextBlock.TextProperty, "&#x" + hex + AllStrings.sc);
             }
         }
 

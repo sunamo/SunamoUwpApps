@@ -13,18 +13,18 @@ using Windows.Storage.Streams;
     public static class TFApps 
     {
     #region GetLines
-    public static List<string> GetLines(StorageFile s)
+    public static List<string> GetLines(StorageFile storageFile)
     {
-        var d = GetResult<IList<string>>( FileIO.ReadLinesAsync(s).AsTask());
-        return d.ToList();
+        var lines = GetResult<IList<string>>( FileIO.ReadLinesAsync(storageFile).AsTask());
+        return lines.ToList();
     }
     #endregion
 
     #region Sync
     #region ReadAllText
-    public static string ReadAllTextSync(StorageFile sf)
+    public static string ReadAllTextSync(StorageFile storageFile)
     {
-        return ReadFile(sf);
+        return ReadFile(storageFile);
     }
     #endregion
 
@@ -38,34 +38,34 @@ using Windows.Storage.Streams;
     #endregion
 
     #region SaveFile
-    public static void SaveFile(string p, string VybranySouborLogu)
+    public static void SaveFile(string path, string VybranySouborLogu)
     {
-        SaveFile(p, GetResult<StorageFile>( StorageFile.GetFileFromPathAsync(VybranySouborLogu).AsTask()), false);
+        SaveFile(path, GetResult<StorageFile>( StorageFile.GetFileFromPathAsync(VybranySouborLogu).AsTask()), false);
     }
 
-    public static void SaveFile(string p, StorageFile sf)
+    public static void SaveFile(string path, StorageFile storageFile)
     {
-        SaveFile(p, sf, false);
+        SaveFile(path, storageFile, false);
     }
 
-    public static void SaveFile(string p, StorageFile sf, bool append)
+    public static void SaveFile(string path, StorageFile storageFile, bool append)
     {
         if (append)
         {
-            FileIO.AppendTextAsync((dynamic)sf, p);
+            FileIO.AppendTextAsync((dynamic)storageFile, path);
         }
         else
         {
-            FileIO.WriteTextAsync((dynamic)sf, p);
+            FileIO.WriteTextAsync((dynamic)storageFile, path);
         }
     }
     #endregion
 
 
     #region ReadLines
-    public static IEnumerable<string> ReadLines(StorageFile sf)
+    public static IEnumerable<string> ReadLines(StorageFile storageFile)
     {
-        return SH.GetLinesList(ReadFile(sf));
+        return SH.GetLinesList(ReadFile(storageFile));
     }
     #endregion
 
@@ -77,7 +77,7 @@ using Windows.Storage.Streams;
     #endregion
 
     #region WriteBuffer
-    public static void WriteBuffer<StorageFile>(StorageFile sf, IBuffer buffProtectedData) where StorageFile : IStorageFile2
+    public static void WriteBuffer<StorageFile>(StorageFile storageFile, IBuffer buffProtectedData) where StorageFile : IStorageFile2
     {
         //FileIO.WriteBufferAsync
          System.Threading.Tasks.Task.FromResult<object>(null);
@@ -90,21 +90,21 @@ using Windows.Storage.Streams;
     //    return ReadFile(FSApps.GetStorageFile(sf));
     //}
 
-    public static string ReadFile(StorageFile s)
+    public static string ReadFile(StorageFile storageFile)
     {
-        return GetResult<string>( FileIO.ReadTextAsync(s).AsTask());
+        return GetResult<string>( FileIO.ReadTextAsync(storageFile).AsTask());
     }
 
 
 
-    public static string ReadFile(string s)
+    public static string ReadFile(string text)
     {
-        return  ReadFile(GetResult<StorageFile>( StorageFile.GetFileFromPathAsync(s).AsTask()));
+        return  ReadFile(GetResult<StorageFile>( StorageFile.GetFileFromPathAsync(text).AsTask()));
     }
 
-    public static T GetResult<T>(Task<T> t)
+    public static T GetResult<T>(Task<T> task)
     {
-        return AsyncHelper.ci.GetResult<T>(t);
+        return AsyncHelper.ci.GetResult<T>(task);
     }
     #endregion
 

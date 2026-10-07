@@ -10,19 +10,19 @@ using Microsoft.UI.Xaml.Controls;
 
     public static class CheckBoxHelper
     {
-        public static CheckBox Get(TextWrapping noWrap, string v)
+        public static CheckBox Get(TextWrapping noWrap, string value)
         {
-            return Get(noWrap, v, null);
+            return Get(noWrap, value, null);
         }
 
-        public static CheckBox Get(TextWrapping noWrap, string v, object tag)
+        public static CheckBox Get(TextWrapping noWrap, string value, object tag)
         {
             CheckBox chb = new CheckBox();
-            TextBlock tb = new TextBlock();
-            tb.Text = v;
+            TextBlock textBlock = new TextBlock();
+            textBlock.Text = value;
             chb.Tag = tag;
-            tb.TextWrapping = noWrap;
-            chb.Content = tb;
+            textBlock.TextWrapping = noWrap;
+            chb.Content = textBlock;
             return chb;
         }
     }

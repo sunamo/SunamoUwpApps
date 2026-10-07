@@ -256,8 +256,8 @@ internal static class FS
     /// <summary>Removes chars not allowed in a file name.</summary>
     internal static string DeleteWrongCharsInFileName(string fileName, bool isPath)
     {
-        var invalid = Path.GetInvalidFileNameChars().Where(c => !isPath || (c != '\\' && c != '/' && c != ':')).ToArray();
-        return new string(fileName.Where(c => !invalid.Contains(c)).ToArray());
+        var invalid = Path.GetInvalidFileNameChars().Where(character => !isPath || (character != '\\' && character != '/' && character != ':')).ToArray();
+        return new string(fileName.Where(character2 => !invalid.Contains(character2)).ToArray());
     }
 
     /// <summary>Creates all the folders of the path when they do not exist.</summary>
@@ -279,7 +279,7 @@ internal static class CA
     /// <summary>Converts the values to list of strings.</summary>
     internal static List<string> ToListString(params object[] values)
     {
-        return values.Select(d => d?.ToString()).ToList();
+        return values.Select(item => item?.ToString()).ToList();
     }
 
     /// <summary>Converts the strings to list of ints.</summary>
@@ -291,7 +291,7 @@ internal static class CA
     /// <summary>Counts occurrences of the value.</summary>
     internal static int CountOfValue<T>(T value, IEnumerable<T> values)
     {
-        return values.Count(d => EqualityComparer<T>.Default.Equals(d, value));
+        return values.Count(item => EqualityComparer<T>.Default.Equals(item, value));
     }
 }
 

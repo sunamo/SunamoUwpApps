@@ -29,13 +29,13 @@ using System.Collections.ObjectModel;
         /// EK, OOP.
         /// V¢chozy pro A2 bylo SelectionMode.Extended
         /// </summary>
-        /// <param name="lb"></param>
-        public ListBoxHelper(ListBox lb, SelectionMode sm, ObservableCollection<SelectorHelperItem> boc) : base(lb, boc)
+        /// <param name="listBox"></param>
+        public ListBoxHelper(ListBox listBox, SelectionMode selectionMode, ObservableCollection<SelectorHelperItem> boc) : base(listBox, boc)
         {
-                lb.SelectionMode = sm;
+                listBox.SelectionMode = selectionMode;
         }
 
-        protected override void RemoveFromSelector(object o)
+        protected override void RemoveFromSelector(object value)
         {
             ThrowEx.NotImplementedMethod();
         }
@@ -49,13 +49,13 @@ using System.Collections.ObjectModel;
         /// EK, OOP.
         /// Vychozi pro A2 bylo SelectionMode.Extended
         /// </summary>
-        /// <param name="lb"></param>
-        public ListBoxHelper(ListBox lb, SelectionMode sm, ObservableCollection<SelectorHelperItem> boc) : base(lb, boc)
+        /// <param name="listBox"></param>
+        public ListBoxHelper(ListBox listBox, SelectionMode selectionMode, ObservableCollection<SelectorHelperItem> boc) : base(listBox, boc)
         {
-            lb.SelectionMode = sm;
+            listBox.SelectionMode = selectionMode;
         }
 
-        protected override void RemoveFromSelector(object o)
+        protected override void RemoveFromSelector(object value)
         {
             ThrowEx.NotImplementedMethod();
         }

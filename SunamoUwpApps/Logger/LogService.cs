@@ -15,9 +15,9 @@ using Microsoft.UI.Xaml.Controls;
 static Type type = typeof(LogService);
         public static  LogService Instance = new LogService();
 
-        public override Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st)
+        public override Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage messageType)
         {
-            switch (st)
+            switch (messageType)
             {
                 case TypeOfMessage.Error:
                     return Colors.LightCoral;
@@ -35,9 +35,9 @@ static Type type = typeof(LogService);
                     return Colors.White;
             }
         }
-        public override Color GetForegroundBrushOfTypeOfMessage(TypeOfMessage st)
+        public override Color GetForegroundBrushOfTypeOfMessage(TypeOfMessage messageType)
         {
-            switch (st)
+            switch (messageType)
             {
                 case TypeOfMessage.Error:
                     return Colors.DarkRed;
@@ -61,7 +61,7 @@ static Type type = typeof(LogService);
 
         TextBlock tssl = null;
         LogMessageAbstract<Color, StorageFile> prectenyRadek;
-        bool HasRowContent(string s)
+        bool HasRowContent(string text)
         {
             // Must set prectenyRadek here
             prectenyRadek = null;
@@ -75,30 +75,30 @@ static Type type = typeof(LogService);
 
         protected override List<LogMessageAbstract<Color, StorageFile>> ReadMessagesFromFile(StorageFile fileStream)
         {
-            Stream s = GetResult<Stream>( fileStream.OpenStreamForReadAsync());
-            StreamReader sr = new StreamReader(s);
-            List<LogMessageAbstract<Color, StorageFile>> vr = new List<LogMessageAbstract<Color, StorageFile>>();
+            Stream stream = GetResult<Stream>( fileStream.OpenStreamForReadAsync());
+            StreamReader streamReader = new StreamReader(stream);
+            List<LogMessageAbstract<Color, StorageFile>> result = new List<LogMessageAbstract<Color, StorageFile>>();
             // Zde by se prazdne radky nemeli vyskytovat, ale v jinych programech ano!
-            while (HasRowContent(sr.ReadLine()))
+            while (HasRowContent(streamReader.ReadLine()))
             {
                 LogMessageAbstract<Color, StorageFile> zpravaLogu = CreateMessage();
                 zpravaLogu = Parse(prectenyRadek);
                 if (zpravaLogu != null)
                 {
-                    vr.Add(zpravaLogu);
+                    result.Add(zpravaLogu);
                 }
                 
             }
-            sr.Dispose();
-            return vr;
+            streamReader.Dispose();
+            return result;
         }
      
-        public  void Initialize(string soubor, bool invariant, TextBlock tssl, Langs l)
+        public  void Initialize(string soubor, bool invariant, TextBlock tssl, Langs language)
         {
-            InitializeAbstract(invariant, l);
+            InitializeAbstract(invariant, language);
             this.tssl = tssl;
         }
-        private void InitializeAbstract(bool invariant, Langs l)
+        private void InitializeAbstract(bool invariant, Langs language)
         {
             ThrowEx.NotImplementedMethod();
         }
@@ -106,7 +106,7 @@ static Type type = typeof(LogService);
         {
             return new LogMessage();
         }
-        public override LogMessageAbstract<Color, StorageFile> Add(TypeOfMessage st, string status)
+        public override LogMessageAbstract<Color, StorageFile> Add(TypeOfMessage messageType, string status)
         {
             ThrowEx.NotImplementedMethod();
             return null;
@@ -115,8 +115,8 @@ static Type type = typeof(LogService);
         {
             ThrowEx.NotImplementedMethod();
         }
-        public T GetResult<T>(Task<T> t)
+        public T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

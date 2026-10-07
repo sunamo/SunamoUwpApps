@@ -11,27 +11,27 @@ using Microsoft.UI.Xaml.Controls;
 
     public static class ButtonHelper
     {
-        public static Button Get(Orientation orientation, object content, RoutedEventHandler eh)
+        public static Button Get(Orientation orientation, object content, RoutedEventHandler handler)
         {
-            Button vr = Get(Orientation.Horizontal, content);
-            vr.Click += eh;
-            return vr;
+            Button button = Get(Orientation.Horizontal, content);
+            button.Click += handler;
+            return button;
         }
 
-        public static Button Get(Orientation orientation, object content, ICommand eh)
+        public static Button Get(Orientation orientation, object content, ICommand command)
         {
-            Button vr = Get(Orientation.Horizontal, content);
-            vr.Command = eh;
-            return vr;
+            Button button = Get(Orientation.Horizontal, content);
+            button.Command = command;
+            return button;
         }
 
-        public static Button Get(Orientation orientation, object content, ISunamoAsyncCommand eh)
+        public static Button Get(Orientation orientation, object content, ISunamoAsyncCommand command)
         {
-            Button vr = Get(Orientation.Horizontal, content);
-            vr.Click += delegate (object sender, RoutedEventArgs ea) {
-                eh.Execute(sender);
+            Button button = Get(Orientation.Horizontal, content);
+            button.Click += delegate (object sender, RoutedEventArgs eventArgs) {
+                command.Execute(sender);
             };
-            return vr;
+            return button;
         }
 
         /// <summary>
@@ -41,17 +41,17 @@ using Microsoft.UI.Xaml.Controls;
         /// <param name="content"></param>
         public static Button Get(Orientation orientation, object content)
         {
-            Button vr = new Button();
-            vr.Content = content;
+            Button button = new Button();
+            button.Content = content;
 
             if (orientation == Orientation.Horizontal)
             {
-                vr.VerticalAlignment = VerticalAlignment.Center;
+                button.VerticalAlignment = VerticalAlignment.Center;
             }
             else
             {
-                vr.HorizontalAlignment = HorizontalAlignment.Center;
+                button.HorizontalAlignment = HorizontalAlignment.Center;
             }
-            return vr;
+            return button;
         }
     }

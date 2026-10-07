@@ -36,20 +36,20 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
                 AsyncHelperApps.ci.GetResult(encoder.FlushAsync());
 
-                BitmapImage vr = new BitmapImage();
-                vr.SetSource(stream);
-                return vr;
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(stream);
+                return bitmapImage;
             }
             return null;
         }
 
-        public static void SaveImage(FrameworkElement text, StorageFile sf)
+        public static void SaveImage(FrameworkElement text, StorageFile storageFile)
         {
             var renderTargetBitmap = new RenderTargetBitmap();
             AsyncHelperApps.ci.GetResult(renderTargetBitmap.RenderAsync(text));
             var pixelBuffer = GetResult<IBuffer>( renderTargetBitmap.GetPixelsAsync().AsTask());
 
-            IRandomAccessStream stream = GetResult<IRandomAccessStream>( sf.OpenAsync(FileAccessMode.ReadWrite).AsTask());
+            IRandomAccessStream stream = GetResult<IRandomAccessStream>( storageFile.OpenAsync(FileAccessMode.ReadWrite).AsTask());
 
 
             var encoder = GetResult<BitmapEncoder>( BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream).AsTask());
@@ -63,8 +63,8 @@ using Microsoft.UI.Xaml.Media.Imaging;
             AsyncHelperApps.ci.GetResult(encoder.FlushAsync());
         }
 
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

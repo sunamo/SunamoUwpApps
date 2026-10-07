@@ -19,15 +19,15 @@ using Microsoft.UI.Xaml.Navigation;
         Langs l = Langs.cs;
         string fileOrFolder = null;
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
-        public ShowFSException(string fileOrFolder, FileExceptions fsExc, Langs l)
+        public ShowFSException(string fileOrFolder, FileExceptions fsExc, Langs language)
         {
             this.InitializeComponent();
             this.fileOrFolder = fileOrFolder;
-            this.l = l;
+            this.l = language;
             tbTitle.Text = ThisApp.Name + AllStrings.swda;
             
             tbTitle.Text += sess.i18n("Warning");
@@ -55,9 +55,9 @@ using Microsoft.UI.Xaml.Navigation;
             ShowMessage(sess.i18n("UnknownErrorWhenWorkWithFileOrFolder") + AllStrings.space + fileOrFolder);
         }
 
-        private void ShowMessage(string p)
+        private void ShowMessage(string path)
         {
-            tbZprava.Text = p;
+            tbZprava.Text = path;
         }
 
         public Size MaxContentSize
@@ -102,12 +102,12 @@ using Microsoft.UI.Xaml.Navigation;
 
         public event VoidT<object> ClickOK;
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
             ClickOK(null);
         }
 
-        private void OnClickCancel(object sender, RoutedEventArgs e)
+        private void OnClickCancel(object sender, RoutedEventArgs eventArgs)
         {
 
         }

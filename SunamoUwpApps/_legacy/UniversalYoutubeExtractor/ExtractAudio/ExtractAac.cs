@@ -10,10 +10,10 @@ static Type type = typeof(AacAudioExtractor);
         private int aacProfile;
         private int channelConfig;
         private int sampleRateIndex;
-        public AacAudioExtractor(string path, Stream s)
+        public AacAudioExtractor(string path, Stream stream)
         {
             this.VideoPath = path;
-            fileStream = s; // new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read, 64 * 1024);
+            fileStream = stream; // new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read, 64 * 1024);
         }
         public string VideoPath { get; private set; }
         public void Dispose()

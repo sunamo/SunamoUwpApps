@@ -25,7 +25,7 @@ using Microsoft.UI.Xaml;
     {
 
 
-        void Execute(object parameter, RoutedEventArgs ea);
+        void Execute(object parameter, RoutedEventArgs eventArgs);
     }
 
     public interface ISunamoCommand : ICommand

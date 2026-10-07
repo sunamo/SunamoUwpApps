@@ -56,13 +56,13 @@ static Type type = typeof(ColorPicker);
             
             //ASlider.Value = 255;            
         }
-        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs valueChangedEventArgs)
         {
             if (rectColor != null)
             {
-                Slider s = (sender as Slider);
-                string name = s.Name;
-                byte value = (byte)s.Value;
+                Slider slider = (sender as Slider);
+                string name = slider.Name;
+                byte value = (byte)slider.Value;
                 switch (name)
                 {
                     case "RSlider":
@@ -88,16 +88,16 @@ static Type type = typeof(ColorPicker);
         }
 
         
-        private void htmlColor_KeyUp_1(object sender, KeyRoutedEventArgs e)
+        private void htmlColor_KeyUp_1(object sender, KeyRoutedEventArgs keyEventArgs)
         {
-            if (e.Key == Windows.System.VirtualKey.Enter)
+            if (keyEventArgs.Key == Windows.System.VirtualKey.Enter)
             {
-                e.Handled = true;
+                keyEventArgs.Handled = true;
                 Result = StringHexColorConverter.ConvertFrom(htmlColor.Text);
             }
             
         }
-        private void htmlColor_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void htmlColor_TextChanged_1(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             
             

@@ -24,7 +24,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
             // create a stream from the file and decode the image
             var fileStream = GetResult < IRandomAccessStream>(file.OpenAsync(FileAccessMode.Read).AsTask());
-            BitmapSource bs = new BitmapImage(new Uri(file.Path));
+            BitmapSource bitmapSource = new BitmapImage(new Uri(file.Path));
             BitmapDecoder decoder = BitmapDecoder.CreateAsync(fileStream).AsTask().Result;
 
             // create a new stream and encoder for the new image
@@ -37,8 +37,8 @@ using Microsoft.UI.Xaml.Media.Imaging;
                 enc.BitmapTransform.ScaledWidth = (uint)newWidth;
 
                 BitmapBounds bounds = new BitmapBounds();
-                bounds.Height = (uint)bs.PixelHeight;
-                bounds.Width = (uint)bs.PixelWidth;
+                bounds.Height = (uint)bitmapSource.PixelHeight;
+                bounds.Width = (uint)bitmapSource.PixelWidth;
                 bounds.X = 0;
                 bounds.Y = 0;
                 enc.BitmapTransform.Bounds = bounds;
@@ -48,7 +48,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
                 {
                     AsyncHelperApps.ci.GetResult(enc.FlushAsync());
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
                     //string s = ex.ToString();
                     return null;
@@ -79,16 +79,16 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
                 AsyncHelperApps.ci.GetResult(encoder.FlushAsync());
 
-                var bi = new BitmapImage();
-                bi.SetSource(stream);
-                return bi;
+                var bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(stream);
+                return bitmapImage;
             }
 
             return null;
         }
 
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

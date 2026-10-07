@@ -17,27 +17,27 @@ using Microsoft.UI.Xaml.Controls;
         /// EK, OOP.
         /// Výchozí pro A2 bylo SelectionMode.Extended
         /// </summary>
-        /// <param name="lb"></param>
-        public ListViewHelper(ListView lb, ListViewSelectionMode sm, ObservableCollection<SelectorHelperItem> boc) : base(lb, boc)
+        /// <param name="listView"></param>
+        public ListViewHelper(ListView listView, ListViewSelectionMode selectionMode, ObservableCollection<SelectorHelperItem> boc) : base(listView, boc)
         {
-            lb.SelectionMode = sm;
+            listView.SelectionMode = selectionMode;
         }
 
-        protected override void RemoveFromSelector(object o)
+        protected override void RemoveFromSelector(object value)
         {
             if (oc != null)
             {
-                for (int i = 0; i < oc.Count; i++)
+                for (int index = 0; index < oc.Count; index++)
                 {
-                    if (EqualityComparer<U>.Default.Equals( SelectedU, (U)o))
+                    if (EqualityComparer<U>.Default.Equals( SelectedU, (U)value))
                     {
-                        oc.RemoveAt(i);
+                        oc.RemoveAt(index);
                     }
                 }
             }
             else
             {
-                selector.Items.Remove(o);
+                selector.Items.Remove(value);
             }
             UpdateItemsSource();
         }
@@ -49,27 +49,27 @@ using Microsoft.UI.Xaml.Controls;
             /// EK, OOP.
             /// Výchozí pro A2 bylo SelectionMode.Extended
             /// </summary>
-            /// <param name="lb"></param>
-            public ListViewHelper(ListView lb, ListViewSelectionMode sm, ObservableCollection<SelectorHelperItem> boc) : base(lb, boc)
+            /// <param name="listView"></param>
+            public ListViewHelper(ListView listView, ListViewSelectionMode selectionMode, ObservableCollection<SelectorHelperItem> boc) : base(listView, boc)
             {
-                lb.SelectionMode = sm;
+                listView.SelectionMode = selectionMode;
             }
 
-        protected override void RemoveFromSelector(object o)
+        protected override void RemoveFromSelector(object value)
         {
             if (oc != null)
             {
-                for (int i = 0; i < oc.Count; i++)
+                for (int index = 0; index < oc.Count; index++)
                 {
-                    if ((oc[i] as SelectorHelperItem).Id == o)
+                    if ((oc[index] as SelectorHelperItem).Id == value)
                     {
-                        oc.RemoveAt(i);
+                        oc.RemoveAt(index);
                     }
                 }
             }
             else
             {
-                selector.Items.Remove(o);
+                selector.Items.Remove(value);
             }
             UpdateItemsSource();
         }
@@ -81,22 +81,22 @@ using Microsoft.UI.Xaml.Controls;
             /// EK, OOP.
             /// Výchozí pro A2 bylo SelectionMode.Extended
             /// </summary>
-            /// <param name="lb"></param>
-            public ListViewHelper(ListView lb, ListViewSelectionMode sm, ObservableCollection<SelectorHelperItem> boc) : base(lb, boc)
+            /// <param name="listView"></param>
+            public ListViewHelper(ListView listView, ListViewSelectionMode selectionMode, ObservableCollection<SelectorHelperItem> boc) : base(listView, boc)
             {
-                lb.SelectionMode = sm;
+                listView.SelectionMode = selectionMode;
             }
 
-        protected override void RemoveFromSelector(object o)
+        protected override void RemoveFromSelector(object value)
         {
             if (oc != null)
             {
-                oc.Remove((SelectorHelperItem)o);
+                oc.Remove((SelectorHelperItem)value);
 
             }
             else
             {
-                selector.Items.Remove(o);
+                selector.Items.Remove(value);
             }
             UpdateItemsSource();
         }

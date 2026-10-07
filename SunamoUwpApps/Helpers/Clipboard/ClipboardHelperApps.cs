@@ -29,15 +29,15 @@ static Type type = typeof(ClipboardHelperApps);
     /// Use here only managed method! I could avoid reinstall Windows (RepairJpn). Use only managed also for working with formats.
     /// not working if was pasted into visual studio (but code yes), created SetText2
     /// </summary>
-    /// <param name="v"></param>
-    public void SetText(string v)
+    /// <param name="value"></param>
+    public void SetText(string value)
     {
         if (clipboardMonitor != null)
         {
             
             clipboardMonitor.AfterSet = null;
         }
-        if (!string.IsNullOrWhiteSpace(v))
+        if (!string.IsNullOrWhiteSpace(value))
         {
             // In use from SunamoCzAdmin.Cmd: Current thread must be set to single thread apartment (STA) mode before OLE calls can be made. Ensure that your Main function has STAThreadAttribute marked on it. 
             // Ani Dispatcher ani Thread nepomohl
@@ -45,22 +45,22 @@ static Type type = typeof(ClipboardHelperApps);
             //{
             //new System.Threading.Thread(delegate ()
             //{
-            SetTextWorker(v);
+            SetTextWorker(value);
             //}).Start();
             //});
         }
     }
-    void SetTextWorker(string v)
+    void SetTextWorker(string value)
     {
-        var dp = new DataPackage();
-        dp.SetText(v);
-        Clipboard.SetContent(dp);
+        var dataPackage = new DataPackage();
+        dataPackage.SetText(value);
+        Clipboard.SetContent(dataPackage);
     }
   
-    public void SetText2(string s)
+    public void SetText2(string text)
     {
         // Nastavím text a místo toho se mi  uloží nějaký úplně starý
-        SetTextWorker(s);
+        SetTextWorker(text);
     }
    
     #endregion
@@ -68,34 +68,34 @@ static Type type = typeof(ClipboardHelperApps);
     {
         Console.WriteLine("Copy text to clipboard.");
         Console.ReadLine();
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         var text =  GetLines();
         foreach (var item in text)
         {
-            string t = item.Trim();
-            if (t.EndsWith(AllStrings.colon))
+            string task = item.Trim();
+            if (task.EndsWith(AllStrings.colon))
             {
-                sb.AppendLine(item);
+                stringBuilder.AppendLine(item);
             }
-            else if (t == "")
+            else if (task == "")
             {
-                sb.AppendLine(t);
+                stringBuilder.AppendLine(task);
             }
             else
             {
-                sb.AppendLine(SH.GetFirstWord(t));
+                stringBuilder.AppendLine(SH.GetFirstWord(task));
             }
         }
-        SetText(sb.ToString());
+        SetText(stringBuilder.ToString());
     }
-    public void SetList(List<string> d)
+    public void SetList(List<string> items)
     {
-        SetLines(d);
+        SetLines(items);
     }
     public void SetLines(List<string> lines)
     {
-        string s = SH.JoinNL(lines);
-        SetText(s);
+        string text = SH.JoinNL(lines);
+        SetText(text);
     }
     public void CutFiles(params string[] selected)
     {
@@ -117,7 +117,7 @@ static Type type = typeof(ClipboardHelperApps);
     {
         SetText(stringBuilder.ToString());
     }
-    public void SetText3(string s)
+    public void SetText3(string text)
     {
      
     }

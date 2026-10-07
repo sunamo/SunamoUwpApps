@@ -35,23 +35,23 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return writeStream;
         }
 
-        public static  BitmapImage ToBitmapImage(WriteableBitmap wb)
+        public static  BitmapImage ToBitmapImage(WriteableBitmap writeableBitmap)
         {
-            var ms = new InMemoryRandomAccessStream();
-            WriteableBitmapHelper.EncodeWriteableBitmap(wb, ms, BitmapEncoder.PngEncoderId);
+            var stream = new InMemoryRandomAccessStream();
+            WriteableBitmapHelper.EncodeWriteableBitmap(writeableBitmap, stream, BitmapEncoder.PngEncoderId);
 
-            ms.Seek(0);
+            stream.Seek(0);
 
-            var bm = new BitmapImage();
+            var bitmapImage = new BitmapImage();
 
             //bm.CreateOptions = BitmapCreateOptions.None;
-            bm.SetSource(ms);
+            bitmapImage.SetSource(stream);
 
-            return bm;
+            return bitmapImage;
         }
 
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }
