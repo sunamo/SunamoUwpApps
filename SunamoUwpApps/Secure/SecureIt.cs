@@ -57,9 +57,9 @@ public static class SecureIt
 
         var secure = new SecureString();
 
-        foreach (var c in input)
+        foreach (var character in input)
         {
-            secure.AppendChar(c);
+            secure.AppendChar(character);
         }
 
         secure.MakeReadOnly();

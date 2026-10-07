@@ -61,20 +61,20 @@ namespace UniversalYouTubeExtractor
         {
             var tempPath = sfVideo;
 
-            string vr = null;
+            string result = null;
 
             await this.DownloadVideo(tempPath);
 
-            if (vr == null)
+            if (result == null)
             {
                 if (!this.isCanceled)
                 {
-                    vr = await this.ExtractAudio(tempPath);
+                    result = await this.ExtractAudio(tempPath);
                 }
             }
 
             this.OnDownloadFinished(EventArgs.Empty);
-            return vr;
+            return result;
         }
 
         
@@ -118,9 +118,9 @@ namespace UniversalYouTubeExtractor
                 {
                     await flvFile.ExtractStreams();
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
-                    return ex.Message;
+                    return exception.Message;
                 }
 
                 ID3 id3 = new ID3();

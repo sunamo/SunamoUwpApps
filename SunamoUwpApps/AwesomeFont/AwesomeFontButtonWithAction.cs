@@ -11,17 +11,17 @@ using Microsoft.UI.Xaml.Media;
 
     class AwesomeFontButtonWithAction : ButtonWithAction
     {
-        public void InitAwesomeFontButtonWithAction(bool visible, double width, double height, VoidObject action, string otf, Brush fg, object idObject)
+        public void InitAwesomeFontButtonWithAction(bool visible, double width, double height, VoidObject action, string otf, Brush brush, object idObject)
         {
             if (visible)
             {
                 InitButtonWithAction(visible, width, height, action, null, idObject);
 
-                TextBlock tb = new TextBlock();
+                TextBlock textBlock = new TextBlock();
 
-                 AwesomeFontControls.SetAwesomeFontSymbol(tb, otf, fg, AwesomeFontControls.CalculateFontSize(width), "");
+                 AwesomeFontControls.SetAwesomeFontSymbol(textBlock, otf, brush, AwesomeFontControls.CalculateFontSize(width), "");
 
-                base.SetButtonContent(tb);
+                base.SetButtonContent(textBlock);
             }
         }
     }

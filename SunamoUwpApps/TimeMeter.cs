@@ -51,25 +51,25 @@ public class TimeMeter
         if (sw != null)
         {
             string ods = LogServiceData.ods;
-            TimeSpan ts = sw.Elapsed;
-            string s = null;
+            TimeSpan timeSpan = sw.Elapsed;
+            string text = null;
             if (RL.l == Langs.cs)
             {
-                s= sess.i18n("Operation") + AllStrings.space + ods + operation + ods + AllStrings.space + sess.i18n("lasted") + AllStrings.space + ods;
+                text= sess.i18n("Operation") + AllStrings.space + ods + operation + ods + AllStrings.space + sess.i18n("lasted") + AllStrings.space + ods;
             }
             else
             {
-                s = sess.i18n("Operation") + AllStrings.space + ods + operation  + ods + AllStrings.space+sess.i18n("lasted")+AllStrings.space + ods;
+                text = sess.i18n("Operation") + AllStrings.space + ods + operation  + ods + AllStrings.space+sess.i18n("lasted")+AllStrings.space + ods;
             }
             if (inRelease)
             {
-                s += DTHelper.OperationLastedInLocalizateString(ts, Langs.cs) + ods;
+                text += DTHelper.OperationLastedInLocalizateString(timeSpan, Langs.cs) + ods;
             }
             else
             {
-                s += ts.ToString() + LogServiceData.ods;
+                text += timeSpan.ToString() + LogServiceData.ods;
             }
-            return s;
+            return text;
         }
         return null;
     }

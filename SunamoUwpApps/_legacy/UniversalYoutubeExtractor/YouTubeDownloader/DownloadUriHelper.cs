@@ -111,13 +111,13 @@ static Type type = typeof(DownloadUH);
             }
             url = url.Replace("/watch#", "/watch?");
             IDictionary<string, string> query = UH.ParseQueryString(url);
-            string v;
-            if (!query.TryGetValue("v", out v))
+            string value;
+            if (!query.TryGetValue("v", out value))
             {
                 normalizedUrl = null;
                 return false;
             }
-            normalizedUrl = "http://youtube.com/watch?v=" + v;
+            normalizedUrl = "http://youtube.com/watch?v=" + value;
             return true;
         }
         /// <summary>
@@ -129,9 +129,9 @@ static Type type = typeof(DownloadUH);
             List<string> splitByUrls = SH.Split( GetStreamMap(json),AllChars.comma);
             List<string> adaptiveFmtSplitByUrls = SH.Split( GetAdaptiveStreamMap(json), AllChars.comma);
             splitByUrls = splitByUrls.Concat(adaptiveFmtSplitByUrls).ToArray();
-            foreach (string s in splitByUrls)
+            foreach (string text in splitByUrls)
             {
-                IDictionary<string, string> queries = UH.ParseQueryString(s);
+                IDictionary<string, string> queries = UH.ParseQueryString(text);
                 string url;
                 bool requiresDecryption = false;
                 if (queries.ContainsKey("s") || queries.ContainsKey("sig"))
@@ -187,9 +187,9 @@ static Type type = typeof(DownloadUH);
         private static string GetHtml5PlayerVersion(JObject json)
         {
             var regex = new Regex(@"html5player-(.+?)\.js");
-            string js = json["assets"]["js"].ToString();
-            string vr = regex.Match(js).Result("$1");
-            return vr;
+            string playerScriptPath = json["assets"]["js"].ToString();
+            string result = regex.Match(playerScriptPath).Result("$1");
+            return result;
         }
         /// <summary>
         /// Druhá metoda k tomuto je GetAdaptiveStreamMap

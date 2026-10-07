@@ -33,18 +33,18 @@ using Windows.Storage;
         {
             Type type = typeof(T);
             PropertyInfo pi2 = type.GetRuntimeProperty(tMap.primaryKey.Name);
-            string d = pi2.GetValue(flat).ToString();
+            string value = pi2.GetValue(flat).ToString();
             string hledaneID = tMap.primaryKey.GetValue(flat).ToString();
 
             foreach (var item in elements)
             {
-                string o = tMap.primaryKey.GetValue(item).ToString();
-                if (hledaneID == o)
+                string primaryKeyValue = tMap.primaryKey.GetValue(item).ToString();
+                if (hledaneID == primaryKeyValue)
                 {
-                    foreach (var pi in tMap.propertyInfos)
+                    foreach (var propertyInfo in tMap.propertyInfos)
                     {
                         //PropertyInfo pi = type.GetRuntimeProperty(tMap.primaryKey.Name);
-                        pi.SetValue(item, pi.GetValue(flat));
+                        propertyInfo.SetValue(item, propertyInfo.GetValue(flat));
                     }
                     break;
                 }
@@ -56,13 +56,13 @@ using Windows.Storage;
             //type.Pro
         }
 
-        public  T GetAsync<T>(object pk, IXmlParserCollectionEnumerable<T> elements) where T : new()
+        public  T GetAsync<T>(object value, IXmlParserCollectionEnumerable<T> elements) where T : new()
         {
-            string p = pk.ToString();
+            string path = value.ToString();
             foreach (T item in elements)
             {
-                string o = tMap.primaryKey.GetValue(item).ToString();
-                if (p == o)
+                string primaryKeyValue = tMap.primaryKey.GetValue(item).ToString();
+                if (path == primaryKeyValue)
                 {
                     return item;
                 }
@@ -102,7 +102,7 @@ using Windows.Storage;
             XmlLayer.SaveDbFile(elements);
         }
 
-        public List<T> QueryAsync<T>(string p)
+        public List<T> QueryAsync<T>(string path)
         {
             ThrowEx.NotImplementedMethod();
             return null;

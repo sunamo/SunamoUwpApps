@@ -23,30 +23,30 @@ using Windows.Storage.Streams;
             }
         }
 
-        public static IBuffer ConvertFromBytesToBuffer(byte[] p)
+        public static IBuffer ConvertFromBytesToBuffer(byte[] bytes)
         {
             using (InMemoryRandomAccessStream memoryStream = new InMemoryRandomAccessStream())
             {
                 using (DataWriter dataWriter = new DataWriter(memoryStream))
                 {
-                    dataWriter.WriteBytes(p);
+                    dataWriter.WriteBytes(bytes);
                     return dataWriter.DetachBuffer();
                 }
             }
         }
 
-        public static string ConvertFromBufferToString(IBuffer ib)
+        public static string ConvertFromBufferToString(IBuffer buffer)
         {
-            DataReader reader = DataReader.FromBuffer(ib);
+            DataReader reader = DataReader.FromBuffer(buffer);
             byte[] fileContent = new byte[reader.UnconsumedBufferLength];
             reader.ReadBytes(fileContent);
             string text = Encoding.UTF8.GetString(fileContent, 0, fileContent.Length);
             return text;
         }
 
-        public static byte[] ConvertFromBufferToByteArray(IBuffer ib)
+        public static byte[] ConvertFromBufferToByteArray(IBuffer buffer)
         {
-            DataReader reader = DataReader.FromBuffer(ib);
+            DataReader reader = DataReader.FromBuffer(buffer);
             byte[] fileContent = new byte[reader.UnconsumedBufferLength];
             reader.ReadBytes(fileContent);
             return fileContent;
@@ -54,22 +54,22 @@ using Windows.Storage.Streams;
 
         
 
-        public static  InMemoryRandomAccessStream ConvertFromBufferToInMemoryRandomAccessStream(IBuffer ib)
+        public static  InMemoryRandomAccessStream ConvertFromBufferToInMemoryRandomAccessStream(IBuffer buffer)
         {
             
-            var vr = new InMemoryRandomAccessStream();
-            uint u = GetResult<uint>( vr.WriteAsync(ib).AsTask());
-            return vr;
+            var stream = new InMemoryRandomAccessStream();
+            uint value = GetResult<uint>( stream.WriteAsync(buffer).AsTask());
+            return stream;
 
         }
 
-        public static IBuffer ConvertFromByteArrayToBuffer(byte[] v)
+        public static IBuffer ConvertFromByteArrayToBuffer(byte[] bytes)
         {
-            return v.AsBuffer();
+            return bytes.AsBuffer();
         }
 
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

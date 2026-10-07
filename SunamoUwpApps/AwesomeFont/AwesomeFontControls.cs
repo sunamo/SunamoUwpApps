@@ -40,13 +40,13 @@ using Microsoft.UI.Xaml.Media;
             }).AsTask().Conf();
         }
 
-        public static void SetAwesomeFontSymbol(TextBlock txtSearchIcon, string otf, Brush fg, double fontSize, string tooltip)
+        public static void SetAwesomeFontSymbol(TextBlock txtSearchIcon, string otf, Brush brush, double fontSize, string tooltip)
         {
             AsyncHelperApps.ci.GetResult( WpfApp.cd.RunAsync(WpfApp.cdp, () =>
             {
                 txtSearchIcon.FontFamily = new FontFamily(awesomeFontPath);
                 txtSearchIcon.Text = otf;
-                txtSearchIcon.Foreground = fg;
+                txtSearchIcon.Foreground = brush;
                 txtSearchIcon.FontSize = fontSize;
                 
             }));

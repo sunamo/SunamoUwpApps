@@ -39,19 +39,19 @@ namespace YoutubeExtractor
 #endif
         }
 
-        public static IDictionary<string, string> ParseQueryString(string s)
+        public static IDictionary<string, string> ParseQueryString(string text)
         {
             // remove anything other than query string from url
-            if (s.Contains("?"))
+            if (text.Contains("?"))
             {
-                s = s.Substring(s.IndexOf('?') + 1);
+                text = text.Substring(text.IndexOf('?') + 1);
             }
 
             var dictionary = new Dictionary<string, string>();
 
-            foreach (string vp in RegexSH.Split(s, "&"))
+            foreach (string videoPath in RegexSH.Split(text, "&"))
             {
-                List<string> strings = RegexSH.Split(vp, "=");
+                List<string> strings = RegexSH.Split(videoPath, "=");
                 dictionary.Add(strings[0], strings.Length == 2 ? UrlDecode(strings[1]) : string.Empty);
             }
 
@@ -102,9 +102,9 @@ namespace YoutubeExtractor
         {
             using (Stream responseStream = response.GetResponseStream())
             {
-                using (var sr = new StreamReader(responseStream))
+                using (var streamReader = new StreamReader(responseStream))
                 {
-                    return sr.ReadToEnd();
+                    return streamReader.ReadToEnd();
                 }
             }
         }

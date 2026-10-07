@@ -9,7 +9,7 @@ using Microsoft.UI.Xaml.Controls;
 
     public abstract class ComboBoxEnumHelperBase<T> : ComboBoxHelperBase<T>
     {
-        public ComboBoxEnumHelperBase(ComboBox cb) : base(cb)
+        public ComboBoxEnumHelperBase(ComboBox comboBox) : base(comboBox)
         {
 
         }
@@ -17,7 +17,7 @@ using Microsoft.UI.Xaml.Controls;
         protected abstract void AddItems();
         public abstract void SetValue(T sablonyProjektu);
         public abstract void SetValue(string cbi);
-        public abstract void RemoveItem(T t);
+        public abstract void RemoveItem(T item);
         public abstract T GetSelected();
     }
 
@@ -25,8 +25,8 @@ using Microsoft.UI.Xaml.Controls;
     {
         protected ComboBox cb = null;
 
-        public ComboBoxHelperBase(ComboBox cb)
+        public ComboBoxHelperBase(ComboBox comboBox)
         {
-            this.cb = cb;
+            this.cb = comboBox;
         }
     }

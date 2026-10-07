@@ -23,7 +23,7 @@ using System.Xml.Linq;
 
     public interface IXmlParserCollectionEnumerable<T> : IXmlParserCollection, IEnumerable<T>
     {
-        void Add(T t);
+        void Add(T item);
     }
 
     public interface IXmlParserCollectionWithIndexer<Key, Value> : IXmlParserCollection, IEnumerable<Value> //IDictionary<Key, Value> //

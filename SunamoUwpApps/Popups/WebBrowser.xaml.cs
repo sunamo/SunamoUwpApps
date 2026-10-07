@@ -34,9 +34,9 @@ using Microsoft.UI.Xaml.Navigation;
         bool reload = false;
         List<bool> backnext = new List<bool>();
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
         public WebBrowser(string TextCustomButton, string homeAdressWithoutHttp)
@@ -107,7 +107,7 @@ using Microsoft.UI.Xaml.Navigation;
             webView.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
         }
 
-        void webView_LoadCompleted(WebView2 sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
+        void webView_LoadCompleted(WebView2 sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs navigationCompletedEventArgs)
         {
             if (!reload)
             {
@@ -138,7 +138,7 @@ using Microsoft.UI.Xaml.Navigation;
                 }
                 if (LoadCompleted != null)
                 {
-                    LoadCompleted(sender, e);   
+                    LoadCompleted(sender, navigationCompletedEventArgs);   
                 }
                 
             }
@@ -152,7 +152,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 
 
-        private void btnBack_Click_1(object sender, RoutedEventArgs e)
+        private void btnBack_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             if (canGoBack)
             {
@@ -163,7 +163,7 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
-        private void btnNext_Click_1(object sender, RoutedEventArgs e)
+        private void btnNext_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             if (canGoNext)
             {
@@ -174,14 +174,14 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
-        private void btnReload_Click_1(object sender, RoutedEventArgs e)
+        private void btnReload_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             reload = true;
             backnext.Add(false);
             Navigate(uri);
         }
 
-        private void btnHome_Click_1(object sender, RoutedEventArgs e)
+        private void btnHome_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             reload = true;
             backnext.Clear();
@@ -204,15 +204,15 @@ using Microsoft.UI.Xaml.Navigation;
         }
 
 
-        private void btnCustom_Click_1(object sender, RoutedEventArgs e)
+        private void btnCustom_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             
             CustomButtonClick(webView, new UriEventArgs(uri));
         }
 
-        private void TextBox_KeyUp_1(object sender, KeyRoutedEventArgs e)
+        private void TextBox_KeyUp_1(object sender, KeyRoutedEventArgs keyEventArgs)
         {
-            if (e.Key == Windows.System.VirtualKey.Enter)
+            if (keyEventArgs.Key == Windows.System.VirtualKey.Enter)
             {
                 Uri uriOut = null;
                 if (Uri.TryCreate(txtAddress.Text, UriKind.Absolute, out uriOut))
@@ -225,7 +225,7 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
-        private void btnClose_Click_1(object sender, RoutedEventArgs e)
+        private void btnClose_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             CloseButtonClick();
         }

@@ -57,14 +57,14 @@ namespace YoutubeExtractor
             this.OnDownloadFinished(EventArgs.Empty);
         }
 
-        public async Task DownloadVideo(string path, EventHandler eh)
+        public async Task DownloadVideo(string path, EventHandler handler)
         {
             
             var videoDownloader = new VideoDownloader(this.Video, path, this.BytesToDownload);
 
-            if (eh != null)
+            if (handler != null)
             {
-                videoDownloader.DownloadFinished+= eh;
+                videoDownloader.DownloadFinished+= handler;
             }
 
             videoDownloader.DownloadProgressChanged += (sender, args) =>

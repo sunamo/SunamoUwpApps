@@ -13,8 +13,8 @@ public static class BitmapImageHelper
         public static BitmapImage MsAppx(string relPath)
         {
             
-            BitmapImage bs = new BitmapImage(new Uri(ImageHelper.protocol + relPath, UriKind.Absolute));
-            return bs;
+            BitmapImage bitmapImage = new BitmapImage(new Uri(ImageHelper.protocol + relPath, UriKind.Absolute));
+            return bitmapImage;
         }
 
         /// <summary>
@@ -25,8 +25,8 @@ public static class BitmapImageHelper
         /// <param name="appPic2"></param>
         public static BitmapImage MsAppxI(string appPic2)
         {
-            BitmapImage bs = new BitmapImage(new Uri(ImageHelper.protocol + "i/" + appPic2 + ".png"));
-            return bs;
+            BitmapImage bitmapImage = new BitmapImage(new Uri(ImageHelper.protocol + "i/" + appPic2 + ".png"));
+            return bitmapImage;
         }
 
         public static BitmapImage MsAppx(bool disabled, AppPics appPic)
@@ -51,8 +51,8 @@ public static class BitmapImageHelper
 
     public static BitmapImage UriToBitmapImage(Uri uri)
     {
-        BitmapImage bi = new BitmapImage(uri);
-        return bi;
+        BitmapImage bitmapImage = new BitmapImage(uri);
+        return bitmapImage;
     }
 
     public static ImageSource Path(string path)
@@ -62,13 +62,13 @@ public static class BitmapImageHelper
 
         public static ImageSource Uri(Uri uri)
         {
-            BitmapImage bi = new BitmapImage(uri);
-            return bi;
+            BitmapImage bitmapImage = new BitmapImage(uri);
+            return bitmapImage;
         }
 
-        public static BitmapImage MsAppxRoot(string p)
+        public static BitmapImage MsAppxRoot(string path)
         {
-            return new BitmapImage(new Uri( ImageHelper.protocol+ p, UriKind.Absolute));
+            return new BitmapImage(new Uri( ImageHelper.protocol+ path, UriKind.Absolute));
         }
 
     public static BitmapImage Resize(BitmapImage source, int rate)

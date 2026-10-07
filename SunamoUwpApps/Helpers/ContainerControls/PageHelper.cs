@@ -23,16 +23,16 @@ using Microsoft.UI.Xaml;
         public static Size WindowSize(bool noScaleFactor)
         {
             
-                var sf = DisplayHelper.GetScaleFactor();
+                var scaleFactor = DisplayHelper.GetScaleFactor();
                 var bounds = ApplicationView.GetForCurrentView().VisibleBounds;
                 double width = bounds.Width;
                 double height = bounds.Height;
 
             if (noScaleFactor)
             {
-                sf = 1;
+                scaleFactor = 1;
             }
-                return new Size(width *sf, height *sf);
+                return new Size(width *scaleFactor, height *scaleFactor);
             
         }
 
@@ -42,16 +42,16 @@ using Microsoft.UI.Xaml;
             {
                  RefreshLogs(lmn);
             }
-            var st = lmn.st;
+            var messageType = lmn.st;
             var status = lmn.Message;
-            WpfApp.SetStatusToTextBlock(st, status);
+            WpfApp.SetStatusToTextBlock(messageType, status);
         }
 
         /// <summary>
         /// Add log 
         /// </summary>
-        /// <param name="lm"></param>
-        private static void RefreshLogs(LogMessageAbstract<Color, StorageFile> lm)
+        /// <param name="logMessage"></param>
+        private static void RefreshLogs(LogMessageAbstract<Color, StorageFile> logMessage)
         {
             // WpfApp.cd.RunAsync(WpfApp.cdp, () =>
             //{

@@ -18,66 +18,66 @@ using Microsoft.UI.Xaml.Media;
 
         protected FontWeight GetFontWeight(FontWeight2 fontWeight)
         {
-            FontWeight fw = new FontWeight();
-            fw.Weight = (ushort)fontWeight;
-            return fw;
+            FontWeight convertedFontWeight = new FontWeight();
+            convertedFontWeight.Weight = (ushort)fontWeight;
+            return convertedFontWeight;
         }
 
-        public Italic GetItalic(string run, FontArgs fa)
+        public Italic GetItalic(string run, FontArgs fontArgs)
         {
-            Italic b = new Italic();
-            FontArgs fa2 = new FontArgs(fa);
-            fa.fontStyle = Windows.UI.Text.FontStyle.Italic;
-            b.Inlines.Add(GetRun(run, fa));
+            Italic italic = new Italic();
+            FontArgs fa2 = new FontArgs(fontArgs);
+            fontArgs.fontStyle = Windows.UI.Text.FontStyle.Italic;
+            italic.Inlines.Add(GetRun(run, fontArgs));
 
-            return b;
+            return italic;
         }
-        public Inline GetBullet(string p, FontArgs fa)
+        public Inline GetBullet(string path, FontArgs fontArgs)
         {
-            return GetRun("• " + p, fa);
+            return GetRun("• " + path, fontArgs);
         }
 
-        public Bold GetError(string p, FontArgs fa)
+        public Bold GetError(string path, FontArgs fontArgs)
         {
-            Bold b = GetBold(p, fa);
-            b.Foreground = new SolidColorBrush(Colors.Red);
-            b.FontSize += 5;
-            return b;
+            Bold bold = GetBold(path, fontArgs);
+            bold.Foreground = new SolidColorBrush(Colors.Red);
+            bold.FontSize += 5;
+            return bold;
         }
 
-        public Bold GetBold(string p, FontArgs fa)
+        public Bold GetBold(string path, FontArgs fontArgs)
         {
-            Bold b = new Bold();
-            FontArgs fa2 = new FontArgs(fa);
-            Windows.UI.Text.FontWeight fw = new Windows.UI.Text.FontWeight();
-            fw.Weight = 700;
-            fa2.fontWeight = fw;
-            b.Inlines.Add(GetRun(p, fa2));
-            return b;
+            Bold bold = new Bold();
+            FontArgs fa2 = new FontArgs(fontArgs);
+            Windows.UI.Text.FontWeight boldFontWeight = new Windows.UI.Text.FontWeight();
+            boldFontWeight.Weight = 700;
+            fa2.fontWeight = boldFontWeight;
+            bold.Inlines.Add(GetRun(path, fa2));
+            return bold;
         }
 
-        public Run GetRun(string text, FontArgs fa)
+        public Run GetRun(string text, FontArgs fontArgs)
         {
             Run run = new Run();
-            run.FontFamily = fa.fontFamily;
-            run.FontSize = fa.fontSize;
-            run.FontStretch = fa.fontStretch;
-            run.FontStyle = fa.fontStyle;
-            run.FontWeight = fa.fontWeight;
+            run.FontFamily = fontArgs.fontFamily;
+            run.FontSize = fontArgs.fontSize;
+            run.FontStretch = fontArgs.fontStretch;
+            run.FontStyle = fontArgs.fontStyle;
+            run.FontWeight = fontArgs.fontWeight;
             run.Text = text;
             
             texts.Add(new MeasureStringArgs(run.FontFamily, run.FontSize, run.FontStyle, run.FontStretch, run.FontWeight, run.Text));
             return run;
         }
 
-        public InlineUIContainer GetHyperlink(string text, string uri, Thickness margin, Thickness padding, FontArgs fa)
+        public InlineUIContainer GetHyperlink(string text, string uri, Thickness margin, Thickness padding, FontArgs fontArgs)
         {
             HyperlinkButton link = new HyperlinkButton();
-            link.FontFamily = fa.fontFamily;
-            link.FontSize = fa.fontSize;
-            link.FontStretch = fa.fontStretch;
-            link.FontStyle = fa.fontStyle;
-            link.FontWeight = fa.fontWeight;
+            link.FontFamily = fontArgs.fontFamily;
+            link.FontSize = fontArgs.fontSize;
+            link.FontStretch = fontArgs.fontStretch;
+            link.FontStyle = fontArgs.fontStyle;
+            link.FontWeight = fontArgs.fontWeight;
             link.NavigateUri = new Uri(uri);
             link.Padding = padding;
             link.Margin = margin;
@@ -97,7 +97,7 @@ using Microsoft.UI.Xaml.Media;
             throw new NotImplementedException();
         }
 
-        public InlineUIContainer GetHyperlink(string text, string uri, FontArgs fa)
+        public InlineUIContainer GetHyperlink(string text, string uri, FontArgs fontArgs)
         {
             throw new NotImplementedException();
         }

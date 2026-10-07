@@ -58,15 +58,15 @@ static Type type = typeof(OpenInControl);
                 openIn = value;
             }
         }
-        private void rbNever_Click(object sender, RoutedEventArgs e)
+        private void rbNever_Click(object sender, RoutedEventArgs eventArgs)
         {
             openIn = OpenInNewTab.Never;
         }
-        private void rbAlways_Click(object sender, RoutedEventArgs e)
+        private void rbAlways_Click(object sender, RoutedEventArgs eventArgs)
         {
             openIn = OpenInNewTab.Always;
         }
-        private void rbPrompt_Click(object sender, RoutedEventArgs e)
+        private void rbPrompt_Click(object sender, RoutedEventArgs eventArgs)
         {
             openIn = OpenInNewTab.Prompt;
         }

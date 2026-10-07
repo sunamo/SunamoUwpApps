@@ -23,7 +23,7 @@ public interface IEssentialMainPage
     Popup popup { get; set; }
     CryptDelegates CryptDelegates { get; set; }
 
-    void EnableAppInterface(bool en);
+    void EnableAppInterface(bool enabled);
 }
 
 //public interface IEssentialMainPage : IEssentialMainPage

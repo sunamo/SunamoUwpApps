@@ -64,15 +64,15 @@ static Type type = typeof(PopupButtons);
                 btnApply.Visibility = value;
             }
         }
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs eventArgs)
         {
             DialogResult = false;
         }
-        private void btnOk_Click(object sender, RoutedEventArgs e)
+        private void btnOk_Click(object sender, RoutedEventArgs eventArgs)
         {
             DialogResult = true;
         }
-        private void btnApply_Click(object sender, RoutedEventArgs e)
+        private void btnApply_Click(object sender, RoutedEventArgs eventArgs)
         {
             DialogResult = null;
         }

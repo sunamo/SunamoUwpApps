@@ -17,17 +17,17 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
     public static class FrameworkElementHelper 
     {
-        public static void DebugAllSizes(FrameworkElement fw)
+        public static void DebugAllSizes(FrameworkElement frameworkElement)
         {
             DebugLogger.Instance.WriteLine("***");
-            DebugLogger.Instance.WriteLine( fw.Name + " of type " + fw.GetType().Name);
-            DebugLogger.Instance.WriteLine("ActualSize", fw.ActualSize);
-            DebugLogger.Instance.WriteLine("DesiredSize", fw.DesiredSize);
-            DebugLogger.Instance.WriteLine("RenderSize", fw.RenderSize);
-            DebugLogger.Instance.WriteLine("Width/Height", fw.Width + "x" + fw.Height);
-            DebugLogger.Instance.WriteLine("Actual", fw.ActualWidth + "x" + fw.ActualHeight);
-            DebugLogger.Instance.WriteLine("Min", fw.MinWidth + "x" + fw.MinHeight);
-            DebugLogger.Instance.WriteLine("Max", fw.MaxWidth + "x" + fw.MaxHeight);
+            DebugLogger.Instance.WriteLine( frameworkElement.Name + " of type " + frameworkElement.GetType().Name);
+            DebugLogger.Instance.WriteLine("ActualSize", frameworkElement.ActualSize);
+            DebugLogger.Instance.WriteLine("DesiredSize", frameworkElement.DesiredSize);
+            DebugLogger.Instance.WriteLine("RenderSize", frameworkElement.RenderSize);
+            DebugLogger.Instance.WriteLine("Width/Height", frameworkElement.Width + "x" + frameworkElement.Height);
+            DebugLogger.Instance.WriteLine("Actual", frameworkElement.ActualWidth + "x" + frameworkElement.ActualHeight);
+            DebugLogger.Instance.WriteLine("Min", frameworkElement.MinWidth + "x" + frameworkElement.MinHeight);
+            DebugLogger.Instance.WriteLine("Max", frameworkElement.MaxWidth + "x" + frameworkElement.MaxHeight);
             DebugLogger.Instance.WriteLine("***");
         }
 
@@ -38,35 +38,35 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return new Rect(point, new Size(element.ActualWidth, element.ActualHeight));
         }
 
-        public static void SetMinMaxWidth(FrameworkElement e, double v)
+        public static void SetMinMaxWidth(FrameworkElement frameworkElement, double value)
         {
-            e.MinWidth = e.MaxWidth = v;
+            frameworkElement.MinWidth = frameworkElement.MaxWidth = value;
         }
 
-        public static void SetMinMaxHeight(FrameworkElement e, double v)
+        public static void SetMinMaxHeight(FrameworkElement frameworkElement, double value)
         {
-            e.MinHeight = e.MaxHeight = v;
+            frameworkElement.MinHeight = frameworkElement.MaxHeight = value;
         }
 
         /// <summary>
         /// Vrátí new Size(fe.ActualWidth, fe.ActualHeight);
         /// </summary>
-        /// <param name="fe"></param>
-        public static Size GetMaxContentSize(FrameworkElement fe)
+        /// <param name="frameworkElement"></param>
+        public static Size GetMaxContentSize(FrameworkElement frameworkElement)
         {
-            return new Size(fe.ActualWidth, fe.ActualHeight);
+            return new Size(frameworkElement.ActualWidth, frameworkElement.ActualHeight);
         }
 
-        public static void SetMaxContentSize(FrameworkElement fe, Size s)
+        public static void SetMaxContentSize(FrameworkElement frameworkElement, Size size)
         {
-            fe.MaxWidth = s.Width;
-            fe.MaxHeight = s.Height;
+            frameworkElement.MaxWidth = size.Width;
+            frameworkElement.MaxHeight = size.Height;
 
-            var r1 = fe.RenderSize;
+            var firstRenderSize = frameworkElement.RenderSize;
 
-            fe.Measure(s);
+            frameworkElement.Measure(size);
 
-            var r2 = fe.RenderSize;
+            var secondRenderSize = frameworkElement.RenderSize;
             
             //fe.InvalidateArrange();
             
@@ -99,7 +99,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
                 return renderTargetBitmap;
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 //DisplayMessage(ex.Message);
             }
@@ -118,8 +118,8 @@ using Microsoft.UI.Xaml.Media.Imaging;
             window.Arrange(new Rect(0, 0, window.DesiredSize.Width, window.DesiredSize.Height));
         }
 
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

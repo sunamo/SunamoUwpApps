@@ -51,7 +51,7 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
-        private void btnIncrement_Click_1(object sender, RoutedEventArgs e)
+        private void btnIncrement_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             if (Value != int.MaxValue)
             {
@@ -60,7 +60,7 @@ using Microsoft.UI.Xaml.Navigation;
             
         }
 
-        private void btnDecrement_Click_1(object sender, RoutedEventArgs e)
+        private void btnDecrement_Click_1(object sender, RoutedEventArgs eventArgs)
         {
             if (Value != 0)
             {
@@ -75,12 +75,12 @@ using Microsoft.UI.Xaml.Navigation;
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        private void txtValue_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void txtValue_TextChanged_1(object sender, TextChangedEventArgs textChangedEventArgs)
         {
-            uint nv = 0;
-            if (uint.TryParse(txtValue.Text, out nv))
+            uint newValue = 0;
+            if (uint.TryParse(txtValue.Text, out newValue))
             {
-                if (nv > 1000)
+                if (newValue > 1000)
                 {
                     txtValue.Text = latest;
                 }
@@ -89,7 +89,7 @@ using Microsoft.UI.Xaml.Navigation;
                     latest = txtValue.Text;
                     if (ValueChanged != null)
                     {
-                        ValueChanged(sender, new ValueChangedRoutedEventArgs<uint>(nv));
+                        ValueChanged(sender, new ValueChangedRoutedEventArgs<uint>(newValue));
                     }
                 }
             }

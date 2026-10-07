@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
     public static class StringExtensions
     {
-        public static string Copy(this string s)
+        public static string Copy(this string text)
         {
-            return new string(s.ToCharArray());
+            return new string(text.ToCharArray());
         }
     }

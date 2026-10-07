@@ -32,10 +32,10 @@ using Windows.ApplicationModel.DataTransfer;
             return null;
         }
 
-        public static void SetText(string v)
+        public static void SetText(string value)
         {
-            DataPackage dp = new DataPackage();
-            dp.SetText(v);
-            Clipboard.SetContent(dp);
+            DataPackage dataPackage = new DataPackage();
+            dataPackage.SetText(value);
+            Clipboard.SetContent(dataPackage);
         }
     }

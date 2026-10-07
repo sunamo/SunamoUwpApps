@@ -7,7 +7,7 @@ public interface ILogMessage<Color, StorageClass>
     /// <summary>Text of the message.</summary>
     string Message { get; }
     /// <summary>Fills the message and returns it.</summary>
-    LogMessageAbstract<Color, StorageClass> Initialize(DateTime datum, TypeOfMessage st, string zprava, Color color);
+    LogMessageAbstract<Color, StorageClass> Initialize(DateTime datum, TypeOfMessage messageType, string zprava, Color color);
 }
 
 /// <summary>Base class of a log message independent of the UI technology.</summary>
@@ -23,9 +23,9 @@ public abstract class LogMessageAbstract<Color, StorageClass> : ILogMessage<Colo
     public Color Bg { get; set; } = default;
 
     /// <summary>Is here for easy cast LogMessage to generic version.</summary>
-    public LogMessageAbstract<Color, StorageClass> Initialize(DateTime dt, TypeOfMessage typeOfMessage, string message, Color color)
+    public LogMessageAbstract<Color, StorageClass> Initialize(DateTime dateTime, TypeOfMessage typeOfMessage, string message, Color color)
     {
-        Dt = dt;
+        Dt = dateTime;
         st = typeOfMessage;
         Message = message;
         Bg = color;
@@ -33,7 +33,7 @@ public abstract class LogMessageAbstract<Color, StorageClass> : ILogMessage<Colo
     }
 
     /// <summary>Must be method because it works with controls.</summary>
-    protected virtual void SetBg(Color c)
+    protected virtual void SetBg(Color color)
     {
     }
 }
@@ -42,9 +42,9 @@ public abstract class LogMessageAbstract<Color, StorageClass> : ILogMessage<Colo
 public abstract class LogServiceAbstract<Color, StorageClass, TextBlock>
 {
     /// <summary>Returns background color for the type of message.</summary>
-    public abstract Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st);
+    public abstract Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage messageType);
     /// <summary>Returns foreground color for the type of message.</summary>
-    public abstract Color GetForegroundBrushOfTypeOfMessage(TypeOfMessage st);
+    public abstract Color GetForegroundBrushOfTypeOfMessage(TypeOfMessage messageType);
 
     /// <summary>Reads messages from the file, null by default.</summary>
     protected virtual List<LogMessageAbstract<Color, StorageClass>> ReadMessagesFromFile(StorageClass fileStream)
@@ -53,7 +53,7 @@ public abstract class LogServiceAbstract<Color, StorageClass, TextBlock>
     }
 
     /// <summary>Initializes the service.</summary>
-    public virtual void Initialize(string soubor, bool invariant, TextBlock tssl, Langs l)
+    public virtual void Initialize(string soubor, bool invariant, TextBlock tssl, Langs language)
     {
     }
 
@@ -62,5 +62,5 @@ public abstract class LogServiceAbstract<Color, StorageClass, TextBlock>
     /// <summary>Creates an empty message.</summary>
     protected abstract LogMessageAbstract<Color, StorageClass> CreateMessage();
     /// <summary>Adds a message.</summary>
-    public abstract LogMessageAbstract<Color, StorageClass> Add(TypeOfMessage st, string status);
+    public abstract LogMessageAbstract<Color, StorageClass> Add(TypeOfMessage messageType, string status);
 }

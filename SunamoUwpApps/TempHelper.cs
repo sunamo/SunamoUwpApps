@@ -21,8 +21,8 @@ using Windows.Storage;
             return GetResult<StorageFile>( folder.GetFileAsync(Path.GetTempFileName()).AsTask());
         }
 
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

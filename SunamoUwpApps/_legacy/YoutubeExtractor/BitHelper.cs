@@ -19,16 +19,16 @@ namespace YoutubeExtractor
 
             else
             {
-                int i;
+                int index;
 
-                for (i = 0; i < endByte - startByte; i++)
+                for (index = 0; index < endByte - startByte; index++)
                 {
-                    dst[i] = (byte)(bytes[startByte + i] << shiftA | bytes[startByte + i + 1] >> shiftB);
+                    dst[index] = (byte)(bytes[startByte + index] << shiftA | bytes[startByte + index + 1] >> shiftB);
                 }
 
-                if (i < dst.Length)
+                if (index < dst.Length)
                 {
-                    dst[i] = (byte)(bytes[startByte + i] << shiftA);
+                    dst[index] = (byte)(bytes[startByte + index] << shiftA);
                 }
             }
 
@@ -42,11 +42,11 @@ namespace YoutubeExtractor
             Buffer.BlockCopy(src, 0, dst, dstOffset, src.Length);
         }
 
-        public static int Read(ref ulong x, int length)
+        public static int Read(ref ulong value, int length)
         {
-            int r = (int)(x >> 64 - length);
-            x <<= length;
-            return r;
+            int result = (int)(value >> 64 - length);
+            value <<= length;
+            return result;
         }
 
         public static int Read(byte[] bytes, ref int offset, int length)
@@ -56,9 +56,9 @@ namespace YoutubeExtractor
             int skipBits = offset % 8;
             ulong bits = 0;
 
-            for (int i = 0; i <= Math.Min(endByte - startByte, 7); i++)
+            for (int index = 0; index <= Math.Min(endByte - startByte, 7); index++)
             {
-                bits |= (ulong)bytes[startByte + i] << 56 - i * 8;
+                bits |= (ulong)bytes[startByte + index] << 56 - index * 8;
             }
 
             if (skipBits != 0)
@@ -71,10 +71,10 @@ namespace YoutubeExtractor
             return Read(ref bits, length);
         }
 
-        public static void Write(ref ulong x, int length, int value)
+        public static void Write(ref ulong destination, int length, int value)
         {
             ulong mask = 0xFFFFFFFFFFFFFFFF >> 64 - length;
-            x = x << length | (ulong)value & mask;
+            destination = destination << length | (ulong)value & mask;
         }
     }
 }

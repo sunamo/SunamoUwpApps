@@ -113,7 +113,7 @@ using Windows.Storage.Streams;
         /// <param name="descriptor"></param>
         /// <param name="buffMsg"></param>
         /// <returns></returns>
-        public async static Task SaveSecureToDisc(String descriptor, String toSecured, StorageFile sf)
+        public async static Task SaveSecureToDisc(String descriptor, String toSecured, StorageFile storageFile)
         {
             descriptor = "LOCAL = user";
             IBuffer buffMsg = BufferHelper.ConvertFromStringToBuffer(toSecured);
@@ -147,7 +147,7 @@ using Windows.Storage.Streams;
             //IBuffer buffOriginalData = reader1.ReadBuffer((uint)inputData.Size);
             IBuffer buffProtectedData = reader2.ReadBuffer((uint)protectedData.Size);
 
-            await FileIO.WriteBufferAsync(sf, buffProtectedData);
+            await FileIO.WriteBufferAsync(storageFile, buffProtectedData);
 
         }
 

@@ -13,8 +13,8 @@ using Microsoft.UI.Xaml.Controls;
         /// Zjistí si rekurzivně všechny podřízené prvky A1.Child a aplikuje na ně barevné téma A2
         /// </summary>
         /// <param name="border"></param>
-        /// <param name="ct"></param>
-        public static void ApplyColorTheme(Border border, ColorTheme ct)
+        /// <param name="colorTheme"></param>
+        public static void ApplyColorTheme(Border border, ColorTheme colorTheme)
         {
 
         }

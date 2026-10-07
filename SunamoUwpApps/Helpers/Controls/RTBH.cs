@@ -18,20 +18,20 @@ using Microsoft.UI.Xaml.Documents;
             this.rtb = rtb;
         }
 
-        public void Run(string p)
+        public void Run(string path)
         {
-            rtb.Blocks.Add(GetParagraph(GetRun(p, fa)));
+            rtb.Blocks.Add(GetParagraph(GetRun(path, fa)));
         }
 
-        public void Bold(string p)
+        public void Bold(string path)
         {
-            rtb.Blocks.Add(GetParagraph( GetBold(p, fa)));
+            rtb.Blocks.Add(GetParagraph( GetBold(path, fa)));
         }
 
         private Paragraph GetParagraph(Inline bold)
         {
-            Paragraph p = new Paragraph();
-            p.Inlines.Add(bold);
-            return p;
+            Paragraph paragraph = new Paragraph();
+            paragraph.Inlines.Add(bold);
+            return paragraph;
         }
     }

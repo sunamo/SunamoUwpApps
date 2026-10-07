@@ -90,9 +90,9 @@ public class MainPage_Ctor : Page, IEssentialMainPage
 
     #endregion
 
-    protected async override void OnNavigatedTo(NavigationEventArgs e)
+    protected async override void OnNavigatedTo(NavigationEventArgs navigationEventArgs)
     {
-        base.OnNavigatedTo(e);
+        base.OnNavigatedTo(navigationEventArgs);
 
         await AppDataApps.ci.CreateAppFoldersIfDontExists();
 
@@ -288,12 +288,12 @@ public class MainPage_Ctor : Page, IEssentialMainPage
         MainPage_SizeChanged(null, null);
     }
 
-    private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
+    private void MainPage_SizeChanged(object sender, SizeChangedEventArgs sizeChangedEventArgs)
     {
 
     }
 
-    public void EnableAppInterface(bool en)
+    public void EnableAppInterface(bool enabled)
     {
         
     }

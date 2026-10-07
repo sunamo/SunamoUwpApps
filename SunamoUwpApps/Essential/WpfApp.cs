@@ -20,7 +20,7 @@ using Microsoft.UI.Xaml.Media;
             StatusSetted += WpfApp_StatusSetted;
         }
 
-        private void WpfApp_StatusSetted(TypeOfMessage t, string message)
+        private void WpfApp_StatusSetted(TypeOfMessage messageType, string message)
         {
             SetStatus(TypeOfMessage.Information, message);
         }
@@ -39,9 +39,9 @@ using Microsoft.UI.Xaml.Media;
         }
 #endif
 
-        public static void SetStatusTimeMeter( TimeMeter tm, string operation)
+        public static void SetStatusTimeMeter( TimeMeter timeMeter, string operation)
         {
-            operation = tm.Stop(operation);
+            operation = timeMeter.Stop(operation);
             if (operation != null)
             {
                  SetStatus( TypeOfMessage.Information, operation, true);
@@ -51,17 +51,17 @@ using Microsoft.UI.Xaml.Media;
         public static TextBlock tbLastOtherMessage;
         public static TextBlock tbLastErrorOrWarning;
 
-        public static void SetStatusToTextBlock(TypeOfMessage st, string status)
+        public static void SetStatusToTextBlock(TypeOfMessage messageType, string status)
         {
-            Color fg = LogService.Instance .GetForegroundBrushOfTypeOfMessage(st);
-            if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
+            Color color = LogService.Instance .GetForegroundBrushOfTypeOfMessage(messageType);
+            if (messageType == TypeOfMessage.Error || messageType == TypeOfMessage.Warning)
             {
-                 SetForeground(tbLastErrorOrWarning,  fg);
+                 SetForeground(tbLastErrorOrWarning,  color);
                  SetText(tbLastErrorOrWarning, status);
             }
             else
             {
-                 SetForeground(tbLastOtherMessage, fg);
+                 SetForeground(tbLastOtherMessage, color);
                  SetText(tbLastOtherMessage, status);
             }
         }
@@ -71,10 +71,10 @@ using Microsoft.UI.Xaml.Media;
         /// Use all Uap apps
         /// Another way is use ThisApp.StatusSetted redirected to this
         /// </summary>
-        /// <param name="st"></param>
+        /// <param name="messageType"></param>
         /// <param name="status"></param>
         /// <param name="alsoLb"></param>
-        public async static Task SetStatus(TypeOfMessage st, string status, bool alsoLb = true)
+        public async static Task SetStatus(TypeOfMessage messageType, string status, bool alsoLb = true)
         {
 #if DEBUG
             WriteDebug(status);
@@ -89,7 +89,7 @@ using Microsoft.UI.Xaml.Media;
             //}
             //else
             //{
-                lmn =  new LogMessage().Initialize(DateTime.Now, st, status, LogService.Instance.GetBackgroundBrushOfTypeOfMessage(st));
+                lmn =  new LogMessage().Initialize(DateTime.Now, messageType, status, LogService.Instance.GetBackgroundBrushOfTypeOfMessage(messageType));
             //}
             await PageHelper.SetStatus(lmn, alsoLb);
 
@@ -117,24 +117,24 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
-        public static void SetIsEnabled(Control uie, bool? v)
+        public static void SetIsEnabled(Control uie, bool? value)
         {
-            if (v.HasValue)
+            if (value.HasValue)
             {
                  cd.RunAsync(cdp, () =>
                 {
-                    uie.IsEnabled = v.Value;
+                    uie.IsEnabled = value.Value;
                 }).AsTask().Conf();
             }
         }
 
-        public static void SetVisibility(UIElement uie, Visibility? v)
+        public static void SetVisibility(UIElement uie, Visibility? visibility)
         {
-            if (v.HasValue)
+            if (visibility.HasValue)
             {
                 cd.RunAsync(cdp, () =>
                 {
-                    uie.Visibility = v.Value;
+                    uie.Visibility = visibility.Value;
                 }).AsTask().Conf();
             }
         }
@@ -156,11 +156,11 @@ using Microsoft.UI.Xaml.Media;
         /// <param name="borderDoManagePhotogallery"></param>
         public static SolidColorBrush GetBorderBrush(Border borderDoManagePhotogallery)
         {
-            SolidColorBrush vr = null;
+            SolidColorBrush solidColorBrush = null;
             AsyncHelperApps.ci.GetResult( cd.RunAsync(cdp, () =>
             {
-                vr = (SolidColorBrush)borderDoManagePhotogallery.BorderBrush;
+                solidColorBrush = (SolidColorBrush)borderDoManagePhotogallery.BorderBrush;
             }));
-            return vr;
+            return solidColorBrush;
         }
     }

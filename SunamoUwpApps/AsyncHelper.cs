@@ -17,14 +17,14 @@ public class AsyncHelperApps //: sunamo.AsyncHelper
 
     public  T GetResult<T>(IAsyncOperation<T> task)
     {
-        var op = task.AsTask();
-        return AsyncHelper.ci.GetResult<T>(op);
+        var asyncOperation = task.AsTask();
+        return AsyncHelper.ci.GetResult<T>(asyncOperation);
     }
 
     public  void GetResult(IAsyncAction task)
     {
-        var op = task.AsTask();
-        AsyncHelper.ci.GetResult(op);
+        var asyncOperation = task.AsTask();
+        AsyncHelper.ci.GetResult(asyncOperation);
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class AsyncHelperApps //: sunamo.AsyncHelper
     /// I think for return value it will be must use Thread 
     /// void I think is not good, because its intergrated feature of compiler. 
     /// </summary>
-    public  T RunAsyncWithoutAwait<T, p1>(IAsyncOperation<T> t, p1 pa1)
+    public  T RunAsyncWithoutAwait<T, p1>(IAsyncOperation<T> item, p1 pa1)
     {
         /*
          * Je to píčovina, je to protože může trvat vykonávání.

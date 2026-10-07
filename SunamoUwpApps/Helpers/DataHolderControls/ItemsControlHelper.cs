@@ -4,13 +4,13 @@ using Microsoft.UI.Xaml.Controls;
 
 public static class ItemsControlHelper
 {
-    public static bool HasIndexWithoutException(int p, ItemCollection nahledy)
+    public static bool HasIndexWithoutException(int value, ItemCollection nahledy)
     {
-        if (p < 0)
+        if (value < 0)
         {
             return false;
         }
-        if (nahledy.Count > p)
+        if (nahledy.Count > value)
         {
             return true;
         }

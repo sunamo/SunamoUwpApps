@@ -27,19 +27,19 @@ using Microsoft.UI.Xaml.Media;
             MinWidth = 300;
         }
 
-        private void SetSelectedFile(StorageFile v)
+        private void SetSelectedFile(StorageFile storageFile)
         {
-            selectedFile = v;
-            tbSelectedFile.Text = "Selected file: " + GetPathStorageFile(v);
+            selectedFile = storageFile;
+            tbSelectedFile.Text = "Selected file: " + GetPathStorageFile(storageFile);
         }
 
-        private string GetPathStorageFile(StorageFile v)
+        private string GetPathStorageFile(StorageFile storageFile)
         {
-            if (v == null)
+            if (storageFile == null)
             {
                 return "None";
             }
-            return v.Path;
+            return storageFile.Path;
         }
 
         public event VoidStorageFile FileSelected;
@@ -47,7 +47,7 @@ using Microsoft.UI.Xaml.Media;
         public PickerLocationId FileType = PickerLocationId.PicturesLibrary;
         public CollectionWithoutDuplicates<string> ext = new CollectionWithoutDuplicates<string>();
 
-        private async void btnSelectFile_Click(object sender, RoutedEventArgs e)
+        private async void btnSelectFile_Click(object sender, RoutedEventArgs eventArgs)
         {
             
             StorageFile file = null;
@@ -75,9 +75,9 @@ using Microsoft.UI.Xaml.Media;
 
         }
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
         StorageFile selectedFile = null;

@@ -10,7 +10,7 @@ using Windows.Storage;
 
     public static class XmlDocumentExtensions// : IAsync
     {
-        public static XmlDocument Load(this XmlDocument xd, string file)
+        public static XmlDocument Load(this XmlDocument xmlDocument, string file)
         {
             XmlDocument xd2 = new XmlDocument();
             StorageFile storageFile = AsyncHelper.ci.GetResult<StorageFile>(StorageFile.GetFileFromPathAsync(file).AsTask());

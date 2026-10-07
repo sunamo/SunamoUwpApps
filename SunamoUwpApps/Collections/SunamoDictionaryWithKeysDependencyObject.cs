@@ -6,10 +6,10 @@ using Microsoft.UI.Xaml;
 
 public class SunamoDictionaryWithKeysDependencyObject<T, U> : SunamoDictionary<T, U> where T : DependencyObject
 {
-    public List<U> GetValuesByValuesOfKeysProperty<X>(DependencyProperty dp, X co)
+    public List<U> GetValuesByValuesOfKeysProperty<X>(DependencyProperty dependencyProperty, X searchedValue)
     {
-        var vr = this.Where(d => EqualityComparer<X>.Default.Equals((X)d.Key.GetValue(dp), co));
-        return vr.Select(d => d.Value).ToList();
+        var matching = this.Where(pair => EqualityComparer<X>.Default.Equals((X)pair.Key.GetValue(dependencyProperty), searchedValue));
+        return matching.Select(matchingPair => matchingPair.Value).ToList();
         //return vr.SelectMany(d => d.Value);
     }
 }

@@ -41,7 +41,7 @@ using Microsoft.UI.Xaml.Controls;
 
         public ISunamoBrowser<Control> MainPage { get; set; }
 
-        private void SunamoBrowserControls_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void SunamoBrowserControls_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs eventArgs)
         {
              Initialize(apps._public.RL.l, "");
         }
@@ -58,7 +58,7 @@ using Microsoft.UI.Xaml.Controls;
         /// <param name="TextCustomButton"></param>
         /// <param name="homeAdressWithoutHttp"></param>
         /// <param name="loadCompleted"></param>
-        public void Initialize(Langs l, string TextCustomButton)
+        public void Initialize(Langs language, string TextCustomButton)
         {
             SetAwesomeFontIcon(afBtnBack, "\uf060");
             SetAwesomeFontIcon(afBtnNext, "\uf061");
@@ -86,7 +86,7 @@ using Microsoft.UI.Xaml.Controls;
             txtAddress.Text = uri;
         }
 
-        private void txtAddress_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        private void txtAddress_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs keyEventArgs)
         {
             var uri = UH.CreateUri(txtAddress.Text);
             if (uri != null)
@@ -96,34 +96,34 @@ using Microsoft.UI.Xaml.Controls;
             
         }
 
-        private void btnBack_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void btnBack_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs eventArgs)
         {
             BackButtonClick();
         }
 
-        private void btnNext_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void btnNext_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs eventArgs)
         {
             NextButtonClick();
         }
 
-        private void btnReload_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void btnReload_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs eventArgs)
         {
             ReloadButtonClick();
         }
 
-        private void btnHome_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void btnHome_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs eventArgs)
         {
             
         }
 
-        private void btnStopLoading_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void btnStopLoading_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs eventArgs)
         {
             StopButtonClick();
         }
 
-        private void txtSearch_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        private void txtSearch_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs keyEventArgs)
         {
-            if (e.Key == Windows.System.VirtualKey.Enter)
+            if (keyEventArgs.Key == Windows.System.VirtualKey.Enter)
             {
                 string text = txtSearch.Text.Trim();
                 if (text != "")

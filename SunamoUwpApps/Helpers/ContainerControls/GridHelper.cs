@@ -12,9 +12,9 @@ using Microsoft.UI.Xaml.Controls;
     public static class GridHelper
     {
 
-        public static void SetColumnWidthToGrid(Grid g, List<ColumnDefinition> cdn)
+        public static void SetColumnWidthToGrid(Grid grid, List<ColumnDefinition> cdn)
         {
-            var cdo = g.ColumnDefinitions;
+            var cdo = grid.ColumnDefinitions;
             cdo.Clear();
             foreach (var item in cdn)
             {
@@ -22,9 +22,9 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
-        public static void SetRowHeightToGrid(Grid g, List<RowDefinition> cdn)
+        public static void SetRowHeightToGrid(Grid grid, List<RowDefinition> cdn)
         {
-            var cdo = g.RowDefinitions;
+            var cdo = grid.RowDefinitions;
             cdo.Clear();
             foreach (var item in cdn)
             {
@@ -38,31 +38,31 @@ using Microsoft.UI.Xaml.Controls;
             var visibleColumns = CA.CountOfValue<bool>(true, columnsShow);
             double forEach = NH.Average(gridWidth, visibleColumns);
 
-            List<double> vr = new List<double>(columnsLength);
-            for (int i = 0; i < columnsLength; i++)
+            List<double> result = new List<double>(columnsLength);
+            for (int index = 0; index < columnsLength; index++)
             {
-                if (columnsShow[i])
+                if (columnsShow[index])
                 {
-                    vr.Add(forEach);
+                    result.Add(forEach);
                 }
                 else
                 {
-                    vr.Add(0);
+                    result.Add(0);
                 }
             }
-            return vr;
+            return result;
         }
 
         public static List<double> SameWidthForAllColumnsDouble(int columnsLength, double gridWidth)
         {
             double forEach = NH.Average(gridWidth, columnsLength);
 
-            List<double> vr = new List<double>(columnsLength);
-            for (int i = 0; i < columnsLength; i++)
+            List<double> result = new List<double>(columnsLength);
+            for (int index = 0; index < columnsLength; index++)
             {
-                vr.Add(forEach);
+                result.Add(forEach);
             }
-            return vr;
+            return result;
         }
 
         public static ColumnDefinition GetColumnDefinition(double oneC)
@@ -77,9 +77,9 @@ using Microsoft.UI.Xaml.Controls;
 
         public static ColumnDefinition GetColumnDefinition(GridLength oneC)
         {
-            ColumnDefinition cd = new ColumnDefinition();
-            cd.Width = oneC;
-            return cd;
+            ColumnDefinition columnDefinition = new ColumnDefinition();
+            columnDefinition.Width = oneC;
+            return columnDefinition;
         }
 
         public static GridLength GetGridLength(double oneC, GridUnitType gut)
@@ -102,73 +102,73 @@ using Microsoft.UI.Xaml.Controls;
         {
             double forEach = NH.Average(gridWidth, columnsLength);
                 
-                List<GridLength> vr = new List<GridLength>(columnsLength);
-                for (int i = 0; i < columnsLength; i++)
+                List<GridLength> result = new List<GridLength>(columnsLength);
+                for (int index = 0; index < columnsLength; index++)
                 {
-                    vr.Add(new GridLength(forEach, GridUnitType.Pixel));
+                    result.Add(new GridLength(forEach, GridUnitType.Pixel));
                 }
-                return vr;
+                return result;
            
         }
 
-        public static List<ColumnDefinition> GetColumnDefinitions(List<double> d)
+        public static List<ColumnDefinition> GetColumnDefinitions(List<double> items)
         {
-            List<ColumnDefinition> vr = new List<ColumnDefinition>();
-            foreach (var item in d)
+            List<ColumnDefinition> result = new List<ColumnDefinition>();
+            foreach (var item in items)
             {
-                vr.Add(GetColumnDefinition(item));
+                result.Add(GetColumnDefinition(item));
             }
-            return vr;
+            return result;
         }
 
-        public static List<RowDefinition> GetRowDefinitions(List<GridLength> d)
+        public static List<RowDefinition> GetRowDefinitions(List<GridLength> items)
         {
-            List<RowDefinition> vr = new List<RowDefinition>();
-            foreach (var item in d)
+            List<RowDefinition> result = new List<RowDefinition>();
+            foreach (var item in items)
             {
-                vr.Add(GetRowDefinition(item));
+                result.Add(GetRowDefinition(item));
             }
-            return vr;
+            return result;
         }
 
-        public static List<ColumnDefinition> GetColumnDefinitions(List<GridLength> d)
+        public static List<ColumnDefinition> GetColumnDefinitions(List<GridLength> items)
         {
-            List<ColumnDefinition> vr = new List<ColumnDefinition>();
-            foreach (var item in d)
+            List<ColumnDefinition> result = new List<ColumnDefinition>();
+            foreach (var item in items)
             {
-                vr.Add(GetColumnDefinition(item));
+                result.Add(GetColumnDefinition(item));
             }
-            return vr;
+            return result;
         }
 
         public static Grid CreateGrid(int extentElementAtElement, ButtonWithAction[] bwas)
         {
-            Grid vr = new Grid();
-            for (int i = 0; i < bwas.Length; i++)
+            Grid grid = new Grid();
+            for (int index = 0; index < bwas.Length; index++)
             {
-                if (extentElementAtElement == i)
+                if (extentElementAtElement == index)
                 {
-                    vr.ColumnDefinitions.Add(GetColumnDefinition(new GridLength(1, GridUnitType.Star)));
+                    grid.ColumnDefinitions.Add(GetColumnDefinition(new GridLength(1, GridUnitType.Star)));
                 }
                 else
                 {
-                    vr.ColumnDefinitions.Add(GetColumnDefinition(GridLength.Auto));
+                    grid.ColumnDefinitions.Add(GetColumnDefinition(GridLength.Auto));
                 }
             }
             
 
-            for (int i = 0; i < bwas.Length; i++)
+            for (int itemIndex = 0; itemIndex < bwas.Length; itemIndex++)
             {
-                Grid.SetColumn(bwas[i], i);
-                vr.Children.Add(bwas[i]);
+                Grid.SetColumn(bwas[itemIndex], itemIndex);
+                grid.Children.Add(bwas[itemIndex]);
             }
-            return vr;
+            return grid;
         }
 
         public static RowDefinition GetRowDefinition(GridLength auto)
         {
-            RowDefinition rd = new RowDefinition();
-            rd.Height = auto;
-            return rd;
+            RowDefinition rowDefinition = new RowDefinition();
+            rowDefinition.Height = auto;
+            return rowDefinition;
         }
     }

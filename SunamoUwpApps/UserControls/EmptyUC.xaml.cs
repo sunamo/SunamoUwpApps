@@ -25,7 +25,7 @@ using Microsoft.UI.Xaml.Navigation;
 
         public string Title => "";
 
-        public bool HandleKey(KeyEventArgs e)
+        public bool HandleKey(KeyEventArgs keyEventArgs)
         {
             return false;
         }

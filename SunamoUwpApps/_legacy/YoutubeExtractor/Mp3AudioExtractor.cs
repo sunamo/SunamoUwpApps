@@ -153,9 +153,9 @@ namespace YoutubeExtractor
                 if (frameOffsets.Count == 0)
                 {
                     // Check for an existing VBR header just to be safe (I haven't seen any in FLVs)
-                    int o = offset + GetFrameDataOffset(mpegVersion, channelMode);
+                    int value = offset + GetFrameDataOffset(mpegVersion, channelMode);
 
-                    if (BigEndianBitConverter.ToUInt32(buffer, o) == 0x58696E67)
+                    if (BigEndianBitConverter.ToUInt32(buffer, value) == 0x58696E67)
                     {
                         // "Xing"
                         isVbrHeaderFrame = true;
@@ -221,11 +221,11 @@ namespace YoutubeExtractor
                 BitHelper.CopyBytes(buffer, dataOffset + 8, BigEndianBitConverter.GetBytes((uint)frameOffsets.Count)); // Frame count
                 BitHelper.CopyBytes(buffer, dataOffset + 12, BigEndianBitConverter.GetBytes(totalFrameLength)); // File length
 
-                for (int i = 0; i < 100; i++)
+                for (int index = 0; index < 100; index++)
                 {
-                    int frameIndex = (int)((i / 100.0) * this.frameOffsets.Count);
+                    int frameIndex = (int)((index / 100.0) * this.frameOffsets.Count);
 
-                    buffer[dataOffset + 16 + i] = (byte)(this.frameOffsets[frameIndex] / (double)this.totalFrameLength * 256.0);
+                    buffer[dataOffset + 16 + index] = (byte)(this.frameOffsets[frameIndex] / (double)this.totalFrameLength * 256.0);
                 }
             }
 

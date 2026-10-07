@@ -7,19 +7,19 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
 public static partial class ImageHelper
 {
-    public static Image ReturnImage(ImageSource bs)
+    public static Image ReturnImage(ImageSource imageSource)
     {
         Image image = new Image();
         image.Stretch = Stretch.Uniform;
-        image.Source = bs;
+        image.Source = imageSource;
         return image;
     }
 
-    public static Image ReturnImage(ImageSource bs, double width, double height)
+    public static Image ReturnImage(ImageSource imageSource, double width, double height)
     {
         Image image = new Image();
         image.Stretch = Stretch.Uniform;
-        image.Source = bs;
+        image.Source = imageSource;
         image.Width = width;
         image.Height = height;
         return image;
@@ -37,8 +37,8 @@ public static partial class ImageHelper
     /// <param name="appPic2"></param>
     public static Image MsAppxI(string appPic2)
     {
-        BitmapSource bs = new BitmapImage(new Uri(protocol + "i/" + appPic2 + ".png"));
-        return ReturnImage(bs);
+        BitmapSource bitmapSource = new BitmapImage(new Uri(protocol + "i/" + appPic2 + ".png"));
+        return ReturnImage(bitmapSource);
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ public static partial class ImageHelper
     /// <param name="relPath"></param>
     public static Image MsAppx(string relPath)
     {
-        BitmapSource bs = new BitmapImage(new Uri(protocol + relPath));
-        return ReturnImage(bs);
+        BitmapSource bitmapSource = new BitmapImage(new Uri(protocol + relPath));
+        return ReturnImage(bitmapSource);
     }
 
     public static Image MsAppx(bool disabled, AppPics appPic)

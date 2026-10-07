@@ -21,13 +21,13 @@ public class FontArgs
         this.fontWeight = fontWeight;
     }
 
-    public FontArgs(FontArgs fa)
+    public FontArgs(FontArgs fontArgs)
     {
-        this.fontFamily = fa.fontFamily;
-        this.fontSize = fa.fontSize;
-        this.fontStretch = fa.fontStretch;
-        this.fontStyle = fa.fontStyle;
-        this.fontWeight = fa.fontWeight;
+        this.fontFamily = fontArgs.fontFamily;
+        this.fontSize = fontArgs.fontSize;
+        this.fontStretch = fontArgs.fontStretch;
+        this.fontStyle = fontArgs.fontStyle;
+        this.fontWeight = fontArgs.fontWeight;
     }
 
     public FontFamily fontFamily = null;
@@ -41,7 +41,7 @@ public class FontArgs
 
     public static FontArgs DefaultRun()
     {
-        Run r = new Run();
-        return new FontArgs(r.FontFamily, r.FontSize, r.FontStyle, r.FontStretch, r.FontWeight);
+        Run run = new Run();
+        return new FontArgs(run.FontFamily, run.FontSize, run.FontStyle, run.FontStretch, run.FontWeight);
     }
 }

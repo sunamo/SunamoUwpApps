@@ -12,36 +12,36 @@ using Microsoft.UI.Xaml.Controls;
     {
         public static TextBlock Get(Orientation orientation, string text)
         {
-            TextBlock tb = new TextBlock();
-            tb.Text = text;
+            TextBlock textBlock = new TextBlock();
+            textBlock.Text = text;
             if (orientation == Orientation.Horizontal)
             {
-                tb.VerticalAlignment = VerticalAlignment.Center;
+                textBlock.VerticalAlignment = VerticalAlignment.Center;
             }
             else
             {
-                tb.HorizontalAlignment = HorizontalAlignment.Center;
+                textBlock.HorizontalAlignment = HorizontalAlignment.Center;
             }
 
-            return tb;
+            return textBlock;
         }
 
         public static void SplitToWordsAndNewlineAfterEvery(TextBlock txt, int every)
         {
             every--;
-            StringBuilder sb = new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
             var text = SH.Split(txt.Text, AllStrings.space);
-            for (int i = 0; i < text.Count(); i++)
+            for (int index = 0; index < text.Count(); index++)
             {
-                if (i % every == 0 && i != 0)
+                if (index % every == 0 && index != 0)
                 {
-                    sb.AppendLine(text[i]);
+                    stringBuilder.AppendLine(text[index]);
                 }
                 else
                 {
-                    sb.Append(text[i] + AllStrings.space);
+                    stringBuilder.Append(text[index] + AllStrings.space);
                 }
             }
-            txt.Text = sb.ToString();
+            txt.Text = stringBuilder.ToString();
         }
     }

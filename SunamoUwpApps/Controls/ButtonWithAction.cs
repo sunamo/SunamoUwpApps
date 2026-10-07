@@ -23,10 +23,10 @@ using Microsoft.UI.Xaml.Controls;
             if (visible)
             {
                 this.Id = idObject;
-                string c = "";
+                string text = "";
                 if (content != null)
                 {
-                    c = content.ToString();
+                    text = content.ToString();
                 }
                 this.action = action;
                 if (action == null)
@@ -35,7 +35,7 @@ using Microsoft.UI.Xaml.Controls;
                     TextBlock textBlock = fe as TextBlock;
                     textBlock.HorizontalAlignment = HorizontalAlignment.Stretch;
                     textBlock.VerticalAlignment = VerticalAlignment.Center;
-                    textBlock.Text = c;
+                    textBlock.Text = text;
                 }
                 else
                 {
@@ -49,7 +49,7 @@ using Microsoft.UI.Xaml.Controls;
                     TextBlock textBlock = new TextBlock();
                     textBlock.HorizontalAlignment = HorizontalAlignment.Center;
                     textBlock.VerticalAlignment = VerticalAlignment.Center;
-                    textBlock.Text = c;
+                    textBlock.Text = text;
                     
                     button.Width = width;
                     button.Height = height;
@@ -74,7 +74,7 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs eventArgs)
         {
             if (action != null)
             {

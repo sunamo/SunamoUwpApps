@@ -41,15 +41,15 @@ using Microsoft.UI.Xaml.Media;
         public SelectorHelper sh = null;
 
 
-        public SelectorHelperItem(SelectorHelper sh, Visibility btnSaveToClipboardVisibility, Visibility btnRunOneVisibility, Visibility btnRemoveOneVisibility, string Row1, string Row2, object Id, string RemoveOneFa, string RunOneFa, string SaveToClipboardFa)
+        public SelectorHelperItem(SelectorHelper selectorHelper, Visibility btnSaveToClipboardVisibility, Visibility btnRunOneVisibility, Visibility btnRemoveOneVisibility, string Row1, string Row2, object value, string RemoveOneFa, string RunOneFa, string SaveToClipboardFa)
         {
-            this.sh = sh;
+            this.sh = selectorHelper;
             this.btnSaveToClipboardVisibility = btnSaveToClipboardVisibility;
             this.btnRunOneVisibility = btnRunOneVisibility;
             this.btnRemoveOneVisibility = btnRemoveOneVisibility;
             this.Row1 = Row1;
             this.Row2 = Row2;
-            this.Id = Id;
+            this.Id = value;
 
             this.RemoveOneFa = RemoveOneFa;
             this.RunOneFa = RunOneFa;

@@ -20,9 +20,9 @@ using Microsoft.UI.Xaml.Navigation;
         public event VoidT<object> ClickOK;
         public event VoidT<object> ClickCancel;
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
         /// <summary>
@@ -38,19 +38,19 @@ using Microsoft.UI.Xaml.Navigation;
             tbZprava.Text = message;
         }
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
             ClickOK(null);
         }
 
-        private void OnClickCancel(object sender, RoutedEventArgs e)
+        private void OnClickCancel(object sender, RoutedEventArgs eventArgs)
         {
             ClickCancel(null);
         }
 
-        public void ShowCheckbox(bool p)
+        public void ShowCheckbox(bool flag)
         {
-            if (p)
+            if (flag)
             {
                 chbFirst.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
             }
@@ -60,9 +60,9 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
-        public void ShowCancelButton(bool p)
+        public void ShowCancelButton(bool flag)
         {
-            if (p)
+            if (flag)
             {
                 btnCancel.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
             }

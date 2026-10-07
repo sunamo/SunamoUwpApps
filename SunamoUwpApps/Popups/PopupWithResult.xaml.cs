@@ -47,7 +47,7 @@ using Microsoft.UI.Xaml.Navigation;
             return size;
         }
 
-        private void PopupWithResult_Loaded(object sender, RoutedEventArgs e)
+        private void PopupWithResult_Loaded(object sender, RoutedEventArgs eventArgs)
         {
             //this.Measure(ControlHelper.SizePositiveInfinity);
             //DebugLogger.Instance.WriteLine("Popup: " + this.DesiredSize);
@@ -81,14 +81,14 @@ Popup: 175.2,52.8
 
         public event VoidBoolNullable ChangeDialogResult;
 
-        private void PopupButtons_ChangeDialogResult1(bool? b)
+        private void PopupButtons_ChangeDialogResult1(bool? flag)
         {
-            DialogResult = b;
+            DialogResult = flag;
         }
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
         FrameworkElement customControl = null;

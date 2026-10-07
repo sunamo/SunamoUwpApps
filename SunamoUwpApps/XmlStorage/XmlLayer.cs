@@ -74,18 +74,18 @@ static Type type = typeof(XmlLayer);
             var props = from p in MappedType.GetRuntimeProperties()
                         where ((p.GetMethod != null && p.GetMethod.IsPublic) || (p.SetMethod != null && p.SetMethod.IsPublic))// || (p.GetMethod != null && p.GetMethod.IsStatic) || (p.SetMethod != null && p.SetMethod.IsStatic))
                         select p;
-            foreach (var p in props)
+            foreach (var property in props)
             {
-                var ignore = p.GetCustomAttributes(typeof(IgnoreAttribute), true).Count() > 0;
-                if (p.CanWrite && !ignore)
+                var ignore = property.GetCustomAttributes(typeof(IgnoreAttribute), true).Count() > 0;
+                if (property.CanWrite && !ignore)
                 {
-                    outersMapping.propertyInfos.Add(p);
-                    var primaryKey = p.GetCustomAttributes(typeof(PrimaryKeyAttribute), true).Count() > 0;
+                    outersMapping.propertyInfos.Add(property);
+                    var primaryKey = property.GetCustomAttributes(typeof(PrimaryKeyAttribute), true).Count() > 0;
                     if (primaryKey)
                     {
                         if (outersMapping.primaryKey == null)
                         {
-                            outersMapping.primaryKey = p;
+                            outersMapping.primaryKey = property;
                         }
                         else
                         {
@@ -104,10 +104,10 @@ static Type type = typeof(XmlLayer);
             tMap = outersMapping;
             return outersMapping;
         }
-        public static void RenameDbFile(string d)
+        public static void RenameDbFile(string value)
         {
-            AsyncHelperApps.ci.GetResult( sf.RenameAsync(d + extOfDB, NameCollisionOption.GenerateUniqueName));
-            sf = sf2.CreateFileAsync(d + extOfDB, CreationCollisionOption.OpenIfExists).AsTask().Result;
+            AsyncHelperApps.ci.GetResult( sf.RenameAsync(value + extOfDB, NameCollisionOption.GenerateUniqueName));
+            sf = sf2.CreateFileAsync(value + extOfDB, CreationCollisionOption.OpenIfExists).AsTask().Result;
         }
         /// <summary>
         /// Pouze odstrní aktuální soubor, je pak na mě abych si otevřel zdejšími metodami jinou DB
@@ -116,8 +116,8 @@ static Type type = typeof(XmlLayer);
         {
             FSApps.DeleteFile(sf);
         }
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

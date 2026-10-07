@@ -7,7 +7,7 @@ using System.Xml.Linq;
     public static class XElementExtensions
     {
 static Type type = typeof(XElementExtensions);
-        public static XElement XPathSelectElement(this XElement xe, string xpath)
+        public static XElement XPathSelectElement(this XElement xmlElement, string xpath)
         {
             if (!xpath.StartsWith(AllStrings.slash))
             {
@@ -19,7 +19,7 @@ static Type type = typeof(XElementExtensions);
             {
                 xpps.Add(new XPathPart(part));
             }
-            XElement actual = xe;
+            XElement actual = xmlElement;
             foreach (var item in xpps)
             {
                 if (actual == null)

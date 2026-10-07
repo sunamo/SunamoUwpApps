@@ -33,8 +33,8 @@ using Windows.ApplicationModel.Resources;
             FrameworkElementHelper.SetMinMaxHeight(this, 932 / 2);
 
                 tbTitle.Text = sess.i18n("AboutApp") + AllStrings.space  + ThisApp.Name;
-            string ad = sess.i18n("AboutDeveloper");
-            tbAboutApp.Text = ad;
+            string text = sess.i18n("AboutDeveloper");
+            tbAboutApp.Text = text;
 
             WRTBH tbh2 = new WRTBH(475, 10, FontArgs.DefaultRun());
             tbh2.HyperLink(sess.i18n("CzechBlog"), "http://jepsano.net");
@@ -74,15 +74,15 @@ using Windows.ApplicationModel.Resources;
             }
         }
 
-        private void OnClickOK(object sender, RoutedEventArgs e)
+        private void OnClickOK(object sender, RoutedEventArgs eventArgs)
         {
            
             ClickOK(null);
         }
 
-        public void ApplyColorTheme(ColorTheme ct)
+        public void ApplyColorTheme(ColorTheme colorTheme)
         {
-            ColorThemeHelper.ApplyColorTheme(border, ct);
+            ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
         public Brush PopupBorderBrush

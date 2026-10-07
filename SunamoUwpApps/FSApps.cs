@@ -18,18 +18,18 @@ public static class FSApps //: IAsync
     public static StorageFile file = null;
     public static StorageFolder folder = null;
 
-    public static void DeleteFiles(StorageFolder tt)
+    public static void DeleteFiles(StorageFolder storageFolder)
     {
-        var files = GetResult<IReadOnlyList<StorageFile>>(tt.GetFilesAsync().AsTask());
+        var files = GetResult<IReadOnlyList<StorageFile>>(storageFolder.GetFilesAsync().AsTask());
         foreach (var item in files)
         {
             DeleteFile(item);
         }
     }
 
-    public static void DeleteFiles(List<StorageFile> tt)
+    public static void DeleteFiles(List<StorageFile> items)
     {
-        foreach (var item in tt)
+        foreach (var item in items)
         {
             DeleteFile(item);
         }
@@ -50,53 +50,53 @@ public static class FSApps //: IAsync
         {
             AsyncHelperApps.ci.GetResult( item.DeleteAsync(StorageDeleteOption.PermanentDelete));
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
         }
     }
 
-    public static void DeleteFilesWithSize(StorageFolder task, ulong v)
+    public static void DeleteFilesWithSize(StorageFolder task, ulong value)
     {
-        var q = GetResult<IReadOnlyList<StorageFile>>( task.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery).AsTask());
-        foreach (var item in q)
+        var files = GetResult<IReadOnlyList<StorageFile>>( task.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery).AsTask());
+        foreach (var item in files)
         {
-            if (FSApps.GetFileSize(item) == v)
+            if (FSApps.GetFileSize(item) == value)
             {
                 try
                 {
                     DeleteFile(item);
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
                 }
             }
         }
     }
 
-    public static IReadOnlyList<StorageFile> GetFilesOfExtensionCaseInsensitive(StorageFolder sf, string ext)
+    public static IReadOnlyList<StorageFile> GetFilesOfExtensionCaseInsensitive(StorageFolder storageFolder, string ext)
     {
         ext = ext.ToLower();
-        List<StorageFile> vr = new List<StorageFile>();
-        var dd = GetResult<IReadOnlyList<StorageFile>>( sf.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery).AsTask());
-        foreach (var item in dd)
+        List<StorageFile> result = new List<StorageFile>();
+        var files = GetResult<IReadOnlyList<StorageFile>>( storageFolder.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery).AsTask());
+        foreach (var item in files)
         {
             if (item.Name.ToLower().EndsWith(ext))
             {
-                vr.Add(item);
+                result.Add(item);
             }
         }
-        return vr;
+        return result;
     }
 
-    public static List<StorageFile> GetFilesOfExtensionCaseInsensitiveRecursively(StorageFolder sf, string ext)
+    public static List<StorageFile> GetFilesOfExtensionCaseInsensitiveRecursively(StorageFolder storageFolder, string ext)
     {
         List<StorageFile> files = new List<StorageFile>();
-        files = FSApps.GetFilesRek(sf, AllStrings.asterisk, files);
-        for (int i = files.Count - 1; i >= 0; i--)
+        files = FSApps.GetFilesRek(storageFolder, AllStrings.asterisk, files);
+        for (int index = files.Count - 1; index >= 0; index--)
         {
-            if (!files[i].Name.ToLower().EndsWith(ext))
+            if (!files[index].Name.ToLower().EndsWith(ext))
             {
-                files.RemoveAt(i);
+                files.RemoveAt(index);
             }
         }
         return files;
@@ -150,34 +150,34 @@ public static class FSApps //: IAsync
         return files;
     }
 
-    public static StorageFile ExistsFileCreateIfNot(StorageFolder sf, string fileName)
+    public static StorageFile ExistsFileCreateIfNot(StorageFolder storageFolder, string fileName)
     {
-        file = AsyncHelperApps.ci.GetResult<StorageFile>( sf.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists));
+        file = AsyncHelperApps.ci.GetResult<StorageFile>( storageFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists));
         return file;
     }
 
-    public static StorageFile RandomFileFromFolder(string v)
+    public static StorageFile RandomFileFromFolder(string value)
     {
-        StorageFolder sf = GetResult<StorageFolder>( StorageFolder.GetFolderFromPathAsync(v).AsTask());
-        IReadOnlyList<StorageFile> v2 = GetResult< IReadOnlyList < StorageFile >>( sf.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery).AsTask());
-        return RandomHelper.RandomElementOfCollectionT<StorageFile>(v2);
+        StorageFolder storageFolder = GetResult<StorageFolder>( StorageFolder.GetFolderFromPathAsync(value).AsTask());
+        IReadOnlyList<StorageFile> files = GetResult< IReadOnlyList < StorageFile >>( storageFolder.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery).AsTask());
+        return RandomHelper.RandomElementOfCollectionT<StorageFile>(files);
     }
 
-    public static StorageFolder ExistsFolderCreateIfNot(StorageFolder sf, string folderName)
+    public static StorageFolder ExistsFolderCreateIfNot(StorageFolder storageFolder, string folderName)
     {
-        folder = AsyncHelperApps.ci.GetResult<StorageFolder>( sf.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists));
+        folder = AsyncHelperApps.ci.GetResult<StorageFolder>( storageFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists));
         return folder;
     }
 
-    public static bool ExistsFileSync(StorageFile sf)
+    public static bool ExistsFileSync(StorageFile storageFile)
     {
-        if (sf == null)
+        if (storageFile == null)
         {
             return false;
         }
 
-        StorageFolder folder = GetResult<StorageFolder>( sf.GetParentAsync().AsTask());
-        return ExistsFile(folder, sf.Name); 
+        StorageFolder folder = GetResult<StorageFolder>( storageFile.GetParentAsync().AsTask());
+        return ExistsFile(folder, storageFile.Name); 
     }
 
     /// <summary>
@@ -185,9 +185,9 @@ public static class FSApps //: IAsync
     /// Vytvořím nebo získám soubor a vrátím zda jeho velikost není 0
     /// </summary>
     /// <param name="fileName"></param>
-    public static bool ExistsFile(StorageFolder sf, string fileName)
+    public static bool ExistsFile(StorageFolder storageFolder, string fileName)
     {
-        StorageFile file = TryGetStorageFile(sf, fileName);
+        StorageFile file = TryGetStorageFile(storageFolder, fileName);
 #if DEBUG
         Debug.WriteLine("Existuje soubor " + fileName + ": " + (file != null).ToString());
 #endif
@@ -205,21 +205,21 @@ public static class FSApps //: IAsync
 
     }
 
-    public static bool ExistsFile(StorageFile sf)
+    public static bool ExistsFile(StorageFile storageFile)
     {
-        var bp = sf.GetBasicPropertiesAsync();
-        return GetResult<BasicProperties>( bp.AsTask()).Size != 0;
+        var basicProperties = storageFile.GetBasicPropertiesAsync();
+        return GetResult<BasicProperties>( basicProperties.AsTask()).Size != 0;
     }
 
-    public static StorageFile TryGetStorageFile(StorageFolder sf, string fileName)
+    public static StorageFile TryGetStorageFile(StorageFolder storageFolder, string fileName)
     {
-        return GetResult<IStorageItem>( sf.TryGetItemAsync(fileName).AsTask()) as StorageFile;
+        return GetResult<IStorageItem>( storageFolder.TryGetItemAsync(fileName).AsTask()) as StorageFile;
     }
 
-    public static string GetPathIfNotExists(StorageFolder sf, string fileName)
+    public static string GetPathIfNotExists(StorageFolder storageFolder, string fileName)
     {
-        bool exists = FSApps.ExistsFile(sf, fileName);
-        StorageFile file = GetResult<StorageFile>( sf.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists).AsTask()) as StorageFile;
+        bool exists = FSApps.ExistsFile(storageFolder, fileName);
+        StorageFile file = GetResult<StorageFile>( storageFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists).AsTask()) as StorageFile;
         if (GetFileSize(file) != 0)
         {
             return null;
@@ -236,10 +236,10 @@ public static class FSApps //: IAsync
         return null;
     }
 
-    public static ulong GetFileSize(StorageFile sf)
+    public static ulong GetFileSize(StorageFile storageFile)
     {
-        var bp = sf.GetBasicPropertiesAsync();
-        return GetResult<BasicProperties>( bp.AsTask()).Size;
+        var basicProperties = storageFile.GetBasicPropertiesAsync();
+        return GetResult<BasicProperties>( basicProperties.AsTask()).Size;
     }
 
     public static IRandomAccessStreamWithContentType OpenReadAsync(StorageFile item)
@@ -273,21 +273,21 @@ public static class FSApps //: IAsync
 
     public static List<StorageFolder> RecursivelyReturnAllFolders(string nameOfFolder, StorageFolder storageFolder)
     {
-        List<StorageFolder> vr = new List<StorageFolder>();
-        RecursivelyReturnAllFolders(nameOfFolder, storageFolder, vr);
-        return vr;
+        List<StorageFolder> result = new List<StorageFolder>();
+        RecursivelyReturnAllFolders(nameOfFolder, storageFolder, result);
+        return result;
     }
 
-    private static void RecursivelyReturnAllFolders(string nameOfFolder, StorageFolder storageFolder, List<StorageFolder> vr)
+    private static void RecursivelyReturnAllFolders(string nameOfFolder, StorageFolder storageFolder, List<StorageFolder> result)
     {
         IReadOnlyList<StorageFolder> sfs = GetResult< IReadOnlyList < StorageFolder >>( storageFolder.GetFoldersAsync().AsTask());
         foreach (StorageFolder item in sfs)
         {
             if (item.Name == nameOfFolder)
             {
-                vr.Add(item);
+                result.Add(item);
             }
-            RecursivelyReturnAllFolders(nameOfFolder, item, vr);
+            RecursivelyReturnAllFolders(nameOfFolder, item, result);
         }
     }
 
@@ -302,27 +302,27 @@ public static class FSApps //: IAsync
     /// Pokud A3, odstraním prázdné složky z A1
     /// Pokud A4, vrátím objekt StorageFolder z A2 bez ohledu na jeho hodnotu nebo zda složka existuje
     /// </summary>
-    /// <param name="sf"></param>
+    /// <param name="storageFolder"></param>
     /// <param name="slozka2"></param>
     /// <param name="odstranitPrazdneSlozky"></param>
     /// <param name="forceReturn"></param>
-    public static StorageFolder GetStorageFolder(StorageFolder sf, string slozka2, bool odstranitPrazdneSlozky, bool forceReturn)
+    public static StorageFolder GetStorageFolder(StorageFolder storageFolder, string slozka2, bool odstranitPrazdneSlozky, bool forceReturn)
     {
         // Vytvořím složku A2 v A1, když se podaří, vrátím nově vytvořenou složku
         slozka2 = SH.RemoveLastCharIfIs(slozka2, AllChars.bs);
-        StorageFolder vr = GetResult<StorageFolder>( sf.CreateFolderAsync(slozka2, CreationCollisionOption.OpenIfExists).AsTask());
-        if (ExistsFolder(vr))
+        StorageFolder createdFolder = GetResult<StorageFolder>( storageFolder.CreateFolderAsync(slozka2, CreationCollisionOption.OpenIfExists).AsTask());
+        if (ExistsFolder(createdFolder))
         {
-            return vr;
+            return createdFolder;
         }
         // Odstraním všechny soubory z A2
         int pocetSlozek = SH.SplitNone(slozka2, AllStrings.bs).Length();
-        FSApps.DeleteFiles(vr);
+        FSApps.DeleteFiles(createdFolder);
 
         // Pokud A3, odstraním prázdné složky z A1
         if (odstranitPrazdneSlozky)
         {
-            string slozka = FS.GetDirectoryName(vr.Path);
+            string slozka = FS.GetDirectoryName(createdFolder.Path);
 
             while (pocetSlozek > 1)
             {
@@ -350,7 +350,7 @@ public static class FSApps //: IAsync
         // Pokud A4, vrátím objekt StorageFolder bez ohledu na jeho hodnotu nebo zda složka existuje
         if (forceReturn)
         {
-            return vr;
+            return createdFolder;
         }
         return null;
     }
@@ -367,7 +367,7 @@ public static class FSApps //: IAsync
         {
             rootFolder = GetResult<StorageFolder>( StorageFolder.GetFolderFromPathAsync(path).AsTask());
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
             // For example I try to access xlf in sunamo project. This is impossible in UWP and when return null, it's signal for use in other way
             return null;
@@ -406,24 +406,24 @@ public static class FSApps //: IAsync
         return GetStorageFile(folder, file);
     }
 
-    public static StorageFile GetStorageFile(StorageFolder sf, string soubor)
+    public static StorageFile GetStorageFile(StorageFolder storageFolder, string soubor)
     {
-        return GetStorageFile(sf, soubor, false);
+        return GetStorageFile(storageFolder, soubor, false);
     }
 
-    public static StorageFile GetStorageFile(StorageFolder sf, string soubor, bool odstranitPrazdneSlozky)
+    public static StorageFile GetStorageFile(StorageFolder storageFolder, string soubor, bool odstranitPrazdneSlozky)
     {
-        StorageFile vr = GetResult<StorageFile>( sf.CreateFileAsync(soubor, CreationCollisionOption.OpenIfExists).AsTask());
-        if (ExistsFile(sf, soubor))
+        StorageFile storageFile = GetResult<StorageFile>( storageFolder.CreateFileAsync(soubor, CreationCollisionOption.OpenIfExists).AsTask());
+        if (ExistsFile(storageFolder, soubor))
         {
-            return vr;
+            return storageFile;
         }
 
         int pocetSlozek = SH.SplitNone(soubor, AllStrings.bs).Length();
-        FSApps.DeleteFile(vr);
+        FSApps.DeleteFile(storageFile);
         if (odstranitPrazdneSlozky)
         {
-            string slozka = FS.GetDirectoryName(vr.Path);
+            string slozka = FS.GetDirectoryName(storageFile.Path);
 
             while (pocetSlozek > 1)
             {
@@ -450,9 +450,9 @@ public static class FSApps //: IAsync
         return null;
     }
 
-    public static T GetResult<T>(Task<T> t)
+    public static T GetResult<T>(Task<T> task)
     {
-        return AsyncHelper.ci.GetResult<T>(t);
+        return AsyncHelper.ci.GetResult<T>(task);
     }
 
     //public static StorageFile> GetStorageFile(StorageFile file)

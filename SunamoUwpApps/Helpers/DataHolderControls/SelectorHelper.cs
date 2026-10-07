@@ -20,21 +20,21 @@ using Microsoft.UI.Xaml.Media;
         /// <summary>
         /// Výchozí pro A2 bylo SelectionMode.Extended
         /// </summary>
-        /// <param name="lb"></param>
+        /// <param name="selector"></param>
         /// <param name="sm"></param>
-        public SelectorHelper(Selector lb, ObservableCollection<SelectorHelperItem> boc)
-            : base(lb, boc)
+        public SelectorHelper(Selector selector, ObservableCollection<SelectorHelperItem> boc)
+            : base(selector, boc)
         {
 
-            lb.SelectionChanged += Lb_SelectionChanged;
+            selector.SelectionChanged += Lb_SelectionChanged;
         }
 
-        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
         {
             if (selector.SelectedItem is T)
             {
-                T t = (T)selector.SelectedItem;
-                SelectedO = t;
+                T item = (T)selector.SelectedItem;
+                SelectedO = item;
                 if (this.SelectionChanged != null)
                 {
                     this.SelectionChanged(SelectedU);
@@ -50,25 +50,25 @@ using Microsoft.UI.Xaml.Media;
             {
                 if (SelectedO != null)
                 {
-                    var id = (SelectedO as IIdentificator);
-                    return (U)id.Id;
+                    var identificator = (SelectedO as IIdentificator);
+                    return (U)identificator.Id;
                 }
 
                 return default(U);
             }
         }
 
-        public static List<T> GetItemsListT(ItemCollection oc)
+        public static List<T> GetItemsListT(ItemCollection items)
         {
-            List<T> vr = new List<T>();
-            foreach (object var in oc)
+            List<T> result = new List<T>();
+            foreach (object var in items)
             {
                 if (var is T)
                 {
-                    vr.Add((T)var);
+                    result.Add((T)var);
                 }
             }
-            return vr;
+            return result;
         }
     }
 
@@ -87,12 +87,12 @@ using Microsoft.UI.Xaml.Media;
                 return SelectedO != null;
             } }
 
-        public SelectorHelper(Selector lb, ObservableCollection<SelectorHelperItem> boc)
+        public SelectorHelper(Selector selectorControl, ObservableCollection<SelectorHelperItem> boc)
         {
-            selector = lb;
+            selector = selectorControl;
             oc = boc;
 
-            lb.SelectionChanged += Lb_SelectionChanged;
+            selectorControl.SelectionChanged += Lb_SelectionChanged;
         }
 
         public void UpdateItemsSource()
@@ -101,50 +101,50 @@ using Microsoft.UI.Xaml.Media;
             selector.ItemsSource = oc;
         }
 
-        public void RunOne(object o)
+        public void RunOne(object value)
         {
-            if (o != null)
+            if (value != null)
             {
-                StorageFile sf = GetResult<StorageFile>( StorageFile.GetFileFromPathAsync(o.ToString()).AsTask());
-                if (FSApps.ExistsFile(sf))
+                StorageFile storageFile = GetResult<StorageFile>( StorageFile.GetFileFromPathAsync(value.ToString()).AsTask());
+                if (FSApps.ExistsFile(storageFile))
                 {
-                    AsyncHelperApps.ci.GetResult( Launcher.LaunchFileAsync(sf));
+                    AsyncHelperApps.ci.GetResult( Launcher.LaunchFileAsync(storageFile));
                 }
             }
         }
 
-        public void SaveToClipboard(object o)
+        public void SaveToClipboard(object value)
         {
-            if (o != null)
+            if (value != null)
             {
-                ClipboardHelper.SetText(o.ToString());
+                ClipboardHelper.SetText(value.ToString());
             }
         }
 
-        public void RemoveOne(object o)
+        public void RemoveOne(object value)
         {
-            if (o != null)
+            if (value != null)
             {
                 if (ItemRemovedObject != null)
                 {
-                    ItemRemovedObject(o);
+                    ItemRemovedObject(value);
                 }
 
-                RemoveFromSelector(o);
+                RemoveFromSelector(value);
             }
         }
 
-        protected abstract void RemoveFromSelector(object o);
+        protected abstract void RemoveFromSelector(object value);
 
-        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
         {
             if (selector.SelectedItem != null)
             {
-                object t = selector.SelectedItem;
-                SelectedO = t;
+                object value = selector.SelectedItem;
+                SelectedO = value;
                 if (this.SelectionChangedObject != null)
                 {
-                    this.SelectionChangedObject(t);
+                    this.SelectionChangedObject(value);
                 }
             }
         }
@@ -155,78 +155,78 @@ using Microsoft.UI.Xaml.Media;
         /// </summary>
         public void CopyToClipboard()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
             foreach (object var in selector.Items)
             {
-                sb.AppendLine(var.ToString());
+                stringBuilder.AppendLine(var.ToString());
             }
-            ClipboardHelper.SetText(sb.ToString());
+            ClipboardHelper.SetText(stringBuilder.ToString());
         }
 
-        AwesomeFontButtonWithAction CreateAwesomeFontButtonWithAction(bool visible, double wh, VoidObject runOne, string otf, SolidColorBrush brush, object idObject)
+        AwesomeFontButtonWithAction CreateAwesomeFontButtonWithAction(bool visible, double size, VoidObject runOne, string otf, SolidColorBrush brush, object idObject)
         {
-            var vr = new AwesomeFontButtonWithAction();
-            vr.InitAwesomeFontButtonWithAction(visible, wh, wh, runOne, otf, brush, idObject);
-            return vr;
+            var button = new AwesomeFontButtonWithAction();
+            button.InitAwesomeFontButtonWithAction(visible, size, size, runOne, otf, brush, idObject);
+            return button;
 
         }
 
-        ButtonWithAction CreateButtonWithAction(bool visible, double wh, VoidObject runOne, object content, object idObject)
+        ButtonWithAction CreateButtonWithAction(bool visible, double size, VoidObject runOne, object content, object idObject)
         {
-            var vr = new ButtonWithAction();
-            vr.InitButtonWithAction(visible, wh, wh, runOne, content, idObject);
-            return vr;
+            var button = new ButtonWithAction();
+            button.InitButtonWithAction(visible, size, size, runOne, content, idObject);
+            return button;
         }
 
 
         public List<string> GetItemsListString()
         {
-            List<string> vr = new List<string>();
+            List<string> result = new List<string>();
             foreach (object item in selector.Items)
             {
-                vr.Add(item.ToString());
+                result.Add(item.ToString());
             }
-            return vr;
+            return result;
         }
 
         public static List<string> GetSelectedListString(IList selectedObjectCollection)
         {
-            List<string> vr = new List<string>();
+            List<string> result = new List<string>();
             foreach (object var in selectedObjectCollection)
             {
-                vr.Add(var.ToString());
+                result.Add(var.ToString());
             }
-            return vr;
+            return result;
         }
 
         public static List<T1> GetItemsListT<T1>(ItemCollection objectCollection)
         {
-            List<T1> t1 = new List<T1>();
+            List<T1> items = new List<T1>();
             foreach (T1 var in objectCollection)
             {
-                t1.Add(var);
+                items.Add(var);
             }
-            return t1;
+            return items;
         }
 
         public static List<string> GetItemsListString(ItemCollection objectCollection)
         {
-            List<string> t1 = new List<string>();
+            List<string> items = new List<string>();
             foreach (object var in objectCollection)
             {
-                t1.Add(var.ToString());
+                items.Add(var.ToString());
             }
-            return t1;
+            return items;
         }
 
-        public static bool IsSelectedStatic(ListView lv)
+        public static bool IsSelectedStatic(ListView listView)
         {
-            return lv.SelectedItem != null;
+            return listView.SelectedItem != null;
         }
 
-        public T GetResult<T>(Task<T> t)
+        public T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }
 
@@ -239,24 +239,24 @@ using Microsoft.UI.Xaml.Media;
             /// <summary>
             /// Výchozí pro A2 bylo SelectionMode.Extended
             /// </summary>
-            /// <param name="lb"></param>
+            /// <param name="selector"></param>
             /// <param name="sm"></param>
-            public SelectorHelper(Selector lb, ObservableCollection<SelectorHelperItem> boc)
-                : base(lb, boc)
+            public SelectorHelper(Selector selector, ObservableCollection<SelectorHelperItem> boc)
+                : base(selector, boc)
             {
 
-                lb.SelectionChanged += Lb_SelectionChanged;
+                selector.SelectionChanged += Lb_SelectionChanged;
             }
 
-            private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
             {
                 if (selector.SelectedItem is T)
                 {
-                    T t = (T)selector.SelectedItem;
-                SelectedO = t;
+                    T item = (T)selector.SelectedItem;
+                SelectedO = item;
                     if (this.SelectionChanged != null)
                     {
-                        this.SelectionChanged(t);
+                        this.SelectionChanged(item);
                     }
                 }
             }
@@ -271,16 +271,16 @@ using Microsoft.UI.Xaml.Media;
                 }
             }
 
-            public static List<T> GetItemsListT(ItemCollection oc)
+            public static List<T> GetItemsListT(ItemCollection items)
             {
-                List<T> vr = new List<T>();
-                foreach (object var in oc)
+                List<T> result = new List<T>();
+                foreach (object var in items)
                 {
                     if (var is T)
                     {
-                        vr.Add((T)var);
+                        result.Add((T)var);
                     }
                 }
-                return vr;
+                return result;
             }
         }

@@ -30,65 +30,65 @@ using Microsoft.UI.Xaml.Media.Imaging;
         /// <param name="bi"></param>
         /// <param name="trans"></param>
         /// <param name="white2"></param>
-        public async static Task<WriteableBitmap> MakeWriteableBitmapTransparentAllOther(WriteableBitmap wb, Color trans, Color white2, int pixelWidth, int pixelHeight)
+        public async static Task<WriteableBitmap> MakeWriteableBitmapTransparentAllOther(WriteableBitmap writeableBitmap, Color trans, Color white2, int pixelWidth, int pixelHeight)
         {
             white2.A = 255;
 
             gridCreateWithImage.Background = new SolidColorBrush(trans);
-            int nt = 0;
+            int number = 0;
             int nt2 = 0;
             int nt3 = 0;
-            using (BitmapContext ctx = wb.GetBitmapContext(ReadWriteMode.ReadWrite))
+            using (BitmapContext ctx = writeableBitmap.GetBitmapContext(ReadWriteMode.ReadWrite))
             {
-                wb = ctx.WriteableBitmap;
-                int to = wb.PixelWidth * wb.PixelHeight + 1;
-                Color[,] pxs = new Color[wb.PixelWidth, wb.PixelHeight];
+                writeableBitmap = ctx.WriteableBitmap;
+                int toIndex = writeableBitmap.PixelWidth * writeableBitmap.PixelHeight + 1;
+                Color[,] pxs = new Color[writeableBitmap.PixelWidth, writeableBitmap.PixelHeight];
 
-                for (int x = 0; x < wb.PixelWidth; x++)
+                for (int columnIndex = 0; columnIndex < writeableBitmap.PixelWidth; columnIndex++)
                 {
-                    for (int y = 0; y < wb.PixelHeight; y++)
+                    for (int second = 0; second < writeableBitmap.PixelHeight; second++)
                     {
-                        pxs[x, y] = wb.GetPixel(x, y);
+                        pxs[columnIndex, second] = writeableBitmap.GetPixel(columnIndex, second);
                     }
                 }
 
                 var first = pxs[0, 0];
                 
-                for (int i = 0; i < pxs.GetLength(0); i++)
+                for (int index = 0; index < pxs.GetLength(0); index++)
                 {
-                    for (int y = 0; y < pxs.GetLength(1); y++)
+                    for (int rowIndex = 0; rowIndex < pxs.GetLength(1); rowIndex++)
                     {
                         
-                        var pxsi = pxs[i, y];
+                        var pxsi = pxs[index, rowIndex];
 #if DEBUG
                         //ColorH.DebugWrite(pxsi);
 #endif
 
-                        bool b1 = false;
+                        bool isBackgroundColor = false;
                         ColorH.IsColorSame(first, pxsi);
 
                         //bool b2 = pxsi.A < 254;
-                        bool b2 = pxsi.A != 0;
-                        if (b1)
+                        bool isVisible = pxsi.A != 0;
+                        if (isBackgroundColor)
                         {
                             nt3++;
-                            pxs[i, y] = trans;
-                            wb.SetPixel(i, y, trans);
+                            pxs[index, rowIndex] = trans;
+                            writeableBitmap.SetPixel(index, rowIndex, trans);
                         }
                         else
                         {
                             ////DebugLogger.Instance.Write(pxsi.Alpha + AllStrings.dash + pxsi.Red + AllStrings.dash + pxsi.Green + AllStrings.dash + pxsi.Blue);
-                            if (b2)
+                            if (isVisible)
                             {
-                                nt++;
-                                pxs[i, y] = white2;
-                                wb.SetPixel(i, y, white2);
+                                number++;
+                                pxs[index, rowIndex] = white2;
+                                writeableBitmap.SetPixel(index, rowIndex, white2);
                             }
                             else
                             {
                                 nt2++;
-                                pxs[i, y] = trans;
-                                wb.SetPixel(i, y, trans);
+                                pxs[index, rowIndex] = trans;
+                                writeableBitmap.SetPixel(index, rowIndex, trans);
                             }
 
 
@@ -99,7 +99,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
 
             }
-            return wb;
+            return writeableBitmap;
             
                 
             
@@ -134,9 +134,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
                 await encoder.FlushAsync();
 
-                WriteableBitmap wb = BitmapFactory.New(renderTargetBitmap.PixelWidth, renderTargetBitmap.PixelHeight);
+                WriteableBitmap writeableBitmap = BitmapFactory.New(renderTargetBitmap.PixelWidth, renderTargetBitmap.PixelHeight);
             
-                return await wb.FromStream(stream, bpf);
+                return await writeableBitmap.FromStream(stream, bpf);
             
         }
 

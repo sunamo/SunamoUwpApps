@@ -42,37 +42,37 @@ public static class SHWithControls
     public static List<string> DivideStringToRowsList(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text, Size maxSize)
     {
         maxSize.Width = maxSize.Width * 0.95d;
-        List<string> vr = new List<string>();
+        List<string> result = new List<string>();
         double maxWidth = maxSize.Width; //  (fontSize * 3);
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         StringBuilder sbCelaSlova = new StringBuilder();
         foreach (char item in text)
         {
             if (item == AllChars.space)
             {
                 sbCelaSlova.Clear();
-                sbCelaSlova.Append(sb);
+                sbCelaSlova.Append(stringBuilder);
             }
-            sb.Append(item);
+            stringBuilder.Append(item);
 
-            double measureString = MeasureString(fontFamily, fontSize, fontStyle, fontStretch, fontWeight, sb.ToString(), maxSize);
+            double measureString = MeasureString(fontFamily, fontSize, fontStyle, fontStretch, fontWeight, stringBuilder.ToString(), maxSize);
             ////Debug.WriteLine(measureString.ToString());
             if (measureString > maxWidth)
             {
                 // Získat řetězec z sb
-                string sb2 = sb.ToString();
+                string sb2 = stringBuilder.ToString();
                 // Nahradit v tomto řetězci a substringovat od prvního znaku
                 sb2 = sb2.Replace(sbCelaSlova.ToString(), "").Substring(1);
-                vr.Add(sbCelaSlova.ToString());
+                result.Add(sbCelaSlova.ToString());
                 //vystup.AppendLine(sbCelaSlova.ToString());
-                sb.Clear();
+                stringBuilder.Clear();
                 sbCelaSlova.Clear();
                 sbCelaSlova.Append(sb2);
-                sb.Append(sb2);
+                stringBuilder.Append(sb2);
             }
         }
-        vr.Add(sb.ToString());
-        return vr;
+        result.Add(stringBuilder.ToString());
+        return result;
     }
 
 

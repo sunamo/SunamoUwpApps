@@ -57,8 +57,8 @@ using Windows.Storage.Pickers;
             return GetResult<StorageFolder>(picker.PickSingleFolderAsync().AsTask());
         }
 
-        public static T GetResult<T>(Task<T> t)
+        public static T GetResult<T>(Task<T> task)
         {
-            return AsyncHelper.ci.GetResult<T>(t);
+            return AsyncHelper.ci.GetResult<T>(task);
         }
     }

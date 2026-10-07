@@ -18,21 +18,21 @@ using Microsoft.UI.Xaml.Media.Imaging;
         /// <param name="appPic2"></param>
         public static Image MsAppxI(string appPic2)
         {
-            BitmapSource bs = new BitmapImage(new Uri("ms-appx:///i/" + appPic2 + ".png"));
-            return ReturnImage(bs);
+            BitmapSource bitmapSource = new BitmapImage(new Uri("ms-appx:///i/" + appPic2 + ".png"));
+            return ReturnImage(bitmapSource);
         }
 
         public static Image MsAppx(string relPath)
         {
-            BitmapSource bs = new BitmapImage(new Uri("ms-appx:///" + relPath));
-            return ReturnImage(bs);
+            BitmapSource bitmapSource = new BitmapImage(new Uri("ms-appx:///" + relPath));
+            return ReturnImage(bitmapSource);
         }
 
-        private static Image ReturnImage(BitmapSource bs)
+        private static Image ReturnImage(BitmapSource bitmapSource)
         {
             Image image = new Image();
             image.Stretch = Stretch.Uniform;
-            image.Source = bs;
+            image.Source = bitmapSource;
             return image;
         }
 

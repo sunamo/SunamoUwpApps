@@ -15,35 +15,35 @@ using Microsoft.UI.Xaml.Media;
 
     public static class WpfControlGenerator
     {
-        public static StackPanel VerticalColoredList(List<ILogMessage<Color, StorageFile>> c)
+        public static StackPanel VerticalColoredList(List<ILogMessage<Color, StorageFile>> items)
         {
-            StackPanel sp = new StackPanel();
-            sp.Orientation = Orientation.Vertical;
-            foreach (var item in c)
+            StackPanel stackPanel = new StackPanel();
+            stackPanel.Orientation = Orientation.Vertical;
+            foreach (var item in items)
             {
-                Grid g = new Grid();
-                g.Background = new SolidColorBrush( item.Bg);
-                TextBlock tb = new TextBlock();
-                tb.Text = item.Message;
-                Grid.SetColumn(tb, 0);
-                Grid.SetRow(tb, 0);
-                g.Children.Add(tb);
-                sp.Children.Add(g);
+                Grid grid = new Grid();
+                grid.Background = new SolidColorBrush( item.Bg);
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = item.Message;
+                Grid.SetColumn(textBlock, 0);
+                Grid.SetRow(textBlock, 0);
+                grid.Children.Add(textBlock);
+                stackPanel.Children.Add(grid);
             }
-            return sp;
+            return stackPanel;
         }
 
-        public static Grid LogMessage(ILogMessage<Color, StorageFile> c)
+        public static Grid LogMessage(ILogMessage<Color, StorageFile> logMessage)
         {
-                Grid g = new Grid();
-                g.Background = new SolidColorBrush(c.Bg);
-                TextBlock tb = new TextBlock();
-                tb.Text = c.Message;
-            tb.TextWrapping = TextWrapping.WrapWholeWords;
-                Grid.SetColumn(tb, 0);
-                Grid.SetRow(tb, 0);
-                g.Children.Add(tb);
-            return g;
+                Grid grid = new Grid();
+                grid.Background = new SolidColorBrush(logMessage.Bg);
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = logMessage.Message;
+            textBlock.TextWrapping = TextWrapping.WrapWholeWords;
+                Grid.SetColumn(textBlock, 0);
+                Grid.SetRow(textBlock, 0);
+                grid.Children.Add(textBlock);
+            return grid;
         }
 
         /// <summary>
@@ -53,30 +53,30 @@ using Microsoft.UI.Xaml.Media;
         /// <param name="widthColumn"></param>
         public static ListViewItem GetListViewItemsWithFixedWidthOfColumn(List<string> rows, List<GridLength> widthColumn)
         {
-            Grid g = GetGridWithFixedWidthOfColumn(rows, widthColumn);
+            Grid grid = GetGridWithFixedWidthOfColumn(rows, widthColumn);
 
             ListViewItem lvi = new ListViewItem();
-            lvi.Content = g;
+            lvi.Content = grid;
             return lvi;
             //return g;
         }
 
         public static Grid GetGridWithFixedWidthOfColumn(List<string> rows, List<GridLength> widthColumn)
         {
-            Grid g = new Grid();
+            Grid grid = new Grid();
             foreach (var item in widthColumn)
             {
-                g.ColumnDefinitions.Add(GridHelper.GetColumnDefinition( item));
+                grid.ColumnDefinitions.Add(GridHelper.GetColumnDefinition( item));
             }
-            for (int y = 0; y < rows.Count; y++)
+            for (int second = 0; second < rows.Count; second++)
             {
-                TextBlock tb = new TextBlock();
-                tb.Text = rows[y];
-                Grid.SetColumn(tb, y);
-                g.Children.Add(tb);
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = rows[second];
+                Grid.SetColumn(textBlock, second);
+                grid.Children.Add(textBlock);
             }
             //}
-            return g;
+            return grid;
         }
 
         public static UIElement ListViewWithFixedHeader(double ActualWidth, List<List<string>> rows, List<string> header, List<double> widthColumn)
@@ -93,26 +93,26 @@ using Microsoft.UI.Xaml.Media;
                 koef = ActualWidth / sum;
             }
 
-            List<GridLength> d = new List<GridLength>(showColumns.Count);
-            for (int i = 0; i < widthColumn.Count; i++)
+            List<GridLength> items = new List<GridLength>(showColumns.Count);
+            for (int index = 0; index < widthColumn.Count; index++)
             {
-                double d2 = widthColumn[i];
-                if (d2 == 0)
+                double columnWidth = widthColumn[index];
+                if (columnWidth == 0)
                 {
-                    showColumns.Add(i, false);
-                    d.Add(GridHelper.GetGridLength(0));
+                    showColumns.Add(index, false);
+                    items.Add(GridHelper.GetGridLength(0));
                 }
                 else
                 {
                     if (koef != 0)
                     {
-                        showColumns.Add(i, true);
-                        d.Add(GridHelper.GetGridLength(d2 * koef));
+                        showColumns.Add(index, true);
+                        items.Add(GridHelper.GetGridLength(columnWidth * koef));
                     }
                     else
                     {
-                        showColumns.Add(i, true);
-                        d.Add(GridHelper.GetGridLength(d2));
+                        showColumns.Add(index, true);
+                        items.Add(GridHelper.GetGridLength(columnWidth));
                     }
                 }
             }
@@ -120,9 +120,9 @@ using Microsoft.UI.Xaml.Media;
             VirtualizingStackPanel vsp = new VirtualizingStackPanel();
 
             //ObservableCollection<ListViewItem> lvi = new ObservableCollection<ListViewItem>();
-            for (int i = 0; i < rows.Count; i++)
+            for (int itemIndex = 0; itemIndex < rows.Count; itemIndex++)
             {
-                var lvi = GetListViewItemsWithFixedWidthOfColumn(rows[i], d);
+                var lvi = GetListViewItemsWithFixedWidthOfColumn(rows[itemIndex], items);
                 //lvi.Add( );
                 vsp.Children.Add(lvi);
             }

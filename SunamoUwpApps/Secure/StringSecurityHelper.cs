@@ -10,10 +10,10 @@ public static class StringSecurityHelper
 
     public static CryptDelegates CreateCryptDelegates()
     {
-        CryptDelegates cd = new CryptDelegates();
-        cd.decryptString = DecryptString;
-        cd.encryptString = EncryptString;
-        return cd;
+        CryptDelegates cryptDelegates = new CryptDelegates();
+        cryptDelegates.decryptString = DecryptString;
+        cryptDelegates.encryptString = EncryptString;
+        return cryptDelegates;
     }
 
     /// <summary>

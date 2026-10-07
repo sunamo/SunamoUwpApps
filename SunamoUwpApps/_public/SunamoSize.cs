@@ -14,16 +14,16 @@ public class SunamoSize //: IParser
     }
     public bool IsNegativeOrZero()
     {
-        bool w = Width <= 0;
-        bool h = Height <= 0;
-        return w || h;
+        bool flag = Width <= 0;
+        bool handled = Height <= 0;
+        return flag || handled;
     }
     public void Parse(string input)
     {
-        var d = input.Split(',');
+        var parts = input.Split(',');
         //ParserTwoValues.ParseDouble(",", SHParts.RemoveAfterFirstFunc(input, char.IsLetter, new char[] { ',' }));
-        Width = double.Parse(d[0]);
-        Height = double.Parse(d[1]);
+        Width = double.Parse(parts[0]);
+        Height = double.Parse(parts[1]);
     }
     public override string ToString()
     {

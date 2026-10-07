@@ -13,14 +13,14 @@ using Microsoft.UI.Xaml.Controls;
         /// <summary>
         /// A1 může být cokoliv - panel nebo jeho odvozeniny
         /// </summary>
-        /// <param name="o"></param>
-        public static UIElement GetFirstChildren(object o)
+        /// <param name="value"></param>
+        public static UIElement GetFirstChildren(object value)
         {
-            Panel p = (Panel)o;
-            if (p != null)
+            Panel panel = (Panel)value;
+            if (panel != null)
             {
-                UIElementCollection c = p.Children;
-                return c[0];
+                UIElementCollection children = panel.Children;
+                return children[0];
             }
             return null;
         }

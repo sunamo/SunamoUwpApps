@@ -15,24 +15,24 @@ public class GridViewItem2 : GridViewItem
         return ((StackPanel)this.Content).Children.Count;
     }
 
-    public double WidthOfItem(int nt)
+    public double WidthOfItem(int number)
     {
-        StackPanel sp = (StackPanel)this.Content;
-        var d = (FrameworkElement)sp.Children[nt];
-        return d.Width;
+        StackPanel stackPanel = (StackPanel)this.Content;
+        var element = (FrameworkElement)stackPanel.Children[number];
+        return element.Width;
     }
 
-    public void WidthOfItem(int nt, double w)
+    public void WidthOfItem(int number, double width)
     {
-        StackPanel sp = (StackPanel)this.Content;
-        var d = (FrameworkElement)sp.Children[nt];
-        d.Width = w;
+        StackPanel stackPanel = (StackPanel)this.Content;
+        var element = (FrameworkElement)stackPanel.Children[number];
+        element.Width = width;
     }
 
     public UIElementCollection Children()
     {
-        StackPanel sp = (StackPanel)this.Content;
-        var d = sp.Children;
-        return d;
+        StackPanel stackPanel = (StackPanel)this.Content;
+        var children = stackPanel.Children;
+        return children;
     }
 }

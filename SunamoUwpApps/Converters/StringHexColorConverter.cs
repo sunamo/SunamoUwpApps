@@ -10,54 +10,54 @@ using Windows.UI;
     public static class StringHexColorConverter //: ISimpleConverter<string, Color>
     {
 
-        public static string ConvertTo(Color u)
+        public static string ConvertTo(Color color)
         {
-            return SH.Format2("#{0:X2}{1:X2}{2:X2}{3:X2}", u.A, u.R, u.G, u.B);
+            return SH.Format2("#{0:X2}{1:X2}{2:X2}{3:X2}", color.A, color.R, color.G, color.B);
         }
 
-        public static Color ConvertFrom(string t)
+        public static Color ConvertFrom(string task)
         {
-            Color vr = new Color();
-            t = t.TrimStart('#');
-            if (t.Length == 8)
+            Color color = new Color();
+            task = task.TrimStart('#');
+            if (task.Length == 8)
             {
-                vr.A = GetGroup(0,t);
-                vr.R = GetGroup(1, t);
-                vr.G = GetGroup(2, t);
-                vr.B = GetGroup(3, t);
+                color.A = GetGroup(0,task);
+                color.R = GetGroup(1, task);
+                color.G = GetGroup(2, task);
+                color.B = GetGroup(3, task);
             }
-            else if (t.Length == 6)
+            else if (task.Length == 6)
             {
-                vr.R = GetGroup(0, t);
-                vr.G = GetGroup(1, t);
-                vr.B = GetGroup(2, t);
+                color.R = GetGroup(0, task);
+                color.G = GetGroup(1, task);
+                color.B = GetGroup(2, task);
             }
             else
             {
                 return Colors.Black;
             }
-            return vr;
+            return color;
         }
 
-        private static byte GetGroup(int p, string t)
+        private static byte GetGroup(int value, string task)
         {
-            string s = "";
-            if (p == 0)
+            string text = "";
+            if (value == 0)
             {
-                s = t[0].ToString() + t[1].ToString();
+                text = task[0].ToString() + task[1].ToString();
             }
-            else if (p == 1)
+            else if (value == 1)
             {
-                s = t[2].ToString() + t[3].ToString();
+                text = task[2].ToString() + task[3].ToString();
             }
-            else if (p == 2)
+            else if (value == 2)
             {
-                s = t[4].ToString() + t[5].ToString();
+                text = task[4].ToString() + task[5].ToString();
             }
             else 
             {
-                s = t[6].ToString() + t[7].ToString();
+                text = task[6].ToString() + task[7].ToString();
             }
-            return Convert.ToByte(s, 16);
+            return Convert.ToByte(text, 16);
         }
     }

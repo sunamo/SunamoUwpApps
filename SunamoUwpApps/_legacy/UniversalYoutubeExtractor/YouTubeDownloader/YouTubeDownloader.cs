@@ -74,19 +74,19 @@ namespace UniversalYouTubeExtractor
         /// </summary>
         public  abstract Task<string> DoWork();
 
-        protected void OnDownloadFinished(EventArgs e)
+        protected void OnDownloadFinished(EventArgs eventArgs)
         {
             if (this.DownloadFinished != null)
             {
-                this.DownloadFinished(this, e);
+                this.DownloadFinished(this, eventArgs);
             }
         }
 
-        protected void OnDownloadStarted(EventArgs e)
+        protected void OnDownloadStarted(EventArgs eventArgs)
         {
             if (this.DownloadStarted != null)
             {
-                this.DownloadStarted(this, e);
+                this.DownloadStarted(this, eventArgs);
             }
         }
     }
