@@ -28,7 +28,6 @@ public sealed partial class PluralConverter : ISimpleConverter
             s_dictionary.Add("axis", "axes");
             s_dictionary.Add("bacillus", "bacilli");
             s_dictionary.Add("basis", "bases");
-            //s_dictionary.Add(Translate.FromKey(XlfKeys.Bedouin), Translate.FromKey(XlfKeys.Bedouin));
             s_dictionary.Add("cactus", "cacti");
             s_dictionary.Add("calf", "calves");
             s_dictionary.Add("cherub", "cherubim");
