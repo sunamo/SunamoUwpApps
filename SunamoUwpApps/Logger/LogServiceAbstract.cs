@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
+/// <summary>
+/// Represents the log service abstract color storage file type.
+/// </summary>
 public abstract class LogServiceAbstract<Color, StorageFile> : LogServiceAbstract<Color, StorageFile, TextBlock>
     {
     }

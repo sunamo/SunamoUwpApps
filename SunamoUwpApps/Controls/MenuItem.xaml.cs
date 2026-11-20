@@ -16,8 +16,14 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the su menu item type.
+    /// </summary>
     public sealed partial class SuMenuItem : UserControl
     {
+        /// <summary>
+        /// The items.
+        /// </summary>
         public List<SuMenuItem> Items = new List<SuMenuItem>();
 
         double widthOfIconControl = 50;
@@ -40,11 +46,25 @@ using Microsoft.UI.Xaml.Navigation;
             double contentHeight = gridButtonContent.ActualHeight;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the su menu item class.
+        /// </summary>
+        /// <param name="fgIcon">The fg icon.</param>
+        /// <param name="otfIcon">The otf icon.</param>
+        /// <param name="fgText">The fg text.</param>
+        /// <param name="text">The text.</param>
         public SuMenuItem(Brush fgIcon, string otfIcon, Brush fgText, string text) : this()
         {
             Initialize(fgIcon, otfIcon, fgText, text);
         }
 
+        /// <summary>
+        /// Initialize.
+        /// </summary>
+        /// <param name="fgIcon">The fg icon.</param>
+        /// <param name="otfIcon">The otf icon.</param>
+        /// <param name="fgText">The fg text.</param>
+        /// <param name="text">The text.</param>
         public void Initialize(Brush fgIcon, string otfIcon, Brush fgText, string text)
         {
             txtIconBorder.Width = widthOfIconControl;
@@ -60,12 +80,21 @@ using Microsoft.UI.Xaml.Navigation;
             
         }
 
+        /// <summary>
+        /// Set action.
+        /// </summary>
+        /// <param name="reh">The reh.</param>
+        /// <param name="tag">The tag.</param>
         public void SetAction(RoutedEventHandler reh, object tag)
         {
             btn.Click += reh;
             btn.Tag = tag;
         }
 
+        /// <summary>
+        /// Set action.
+        /// </summary>
+        /// <param name="reh">The reh.</param>
         public void SetAction(RoutedEventHandler reh)
         {
             btn.Click += reh;

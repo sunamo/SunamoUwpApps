@@ -16,10 +16,16 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the color picker type.
+    /// </summary>
     public sealed partial class ColorPicker : UserControl
     {
 static Type type = typeof(ColorPicker);
         Color result = new Color();
+        /// <summary>
+        /// The result.
+        /// </summary>
         public Color Result
         {
             get
@@ -45,7 +51,13 @@ static Type type = typeof(ColorPicker);
             RSlider.BorderBrush = GSlider.BorderBrush = BSlider.BorderBrush = ASlider.BorderBrush = scb;
             //return value;
         }
+        /// <summary>
+        /// The color changed.
+        /// </summary>
         public event VoidColor ColorChanged;
+        /// <summary>
+        /// Initializes a new instance of the color picker class.
+        /// </summary>
         public ColorPicker()
         {
             this.InitializeComponent();

@@ -11,6 +11,9 @@ using Windows.Storage;
 using System.IO;
 using Windows.Storage.Streams;
 
+    /// <summary>
+    /// Represents the xml layer type.
+    /// </summary>
     public static class XmlLayer //: IAsync
     {
 static Type type = typeof(XmlLayer);
@@ -19,6 +22,9 @@ static Type type = typeof(XmlLayer);
         {
         }
         static OuterObjectMapping _tMap = null;
+        /// <summary>
+        /// The t map.
+        /// </summary>
         public static OuterObjectMapping tMap
         {
             get
@@ -31,7 +37,13 @@ static Type type = typeof(XmlLayer);
                 _conn = new XmlConnection(value);
             }
         }
+        /// <summary>
+        /// The conn.
+        /// </summary>
         public static XmlConnection _conn = null;
+        /// <summary>
+        /// The conn.
+        /// </summary>
         public static XmlConnection conn
         {
             get
@@ -39,10 +51,22 @@ static Type type = typeof(XmlLayer);
                 return _conn;
             }
         }
+        /// <summary>
+        /// The ext of DB.
+        /// </summary>
         public static string extOfDB;
+        /// <summary>
+        /// The plural converter.
+        /// </summary>
         public static PluralConverter pluralConverter;
+        /// <summary>
+        /// The save immediately.
+        /// </summary>
         public static bool SaveImmediately = true;
         //public static IRandomAccessStream storageFile;
+        /// <summary>
+        /// The sf.
+        /// </summary>
         public static StorageFile sf = null;
         /// <summary>
         /// Může se ukládat pouze když věci neukládám okamžitě, resp. nemusí se používat pouze takhle ale je to zbytečné mrhání výpočetním výkonem
@@ -52,6 +76,10 @@ static Type type = typeof(XmlLayer);
         {
             SaveDbFile(xml);
         }
+        /// <summary>
+        /// Save db file.
+        /// </summary>
+        /// <param name="content">The content.</param>
         public static void SaveDbFile(IXmlParserCollection content)
         {
             TFApps.SaveFile(content.ToXml(), sf);
@@ -64,6 +92,11 @@ static Type type = typeof(XmlLayer);
         {
             return TFApps.ReadFile(sf);
         }
+        /// <summary>
+        /// Generate mapping t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <returns>The generate mapping t result.</returns>
         public static OuterObjectMapping GenerateMapping<T>()
         {
             OuterObjectMapping outersMapping = new OuterObjectMapping();
@@ -104,6 +137,10 @@ static Type type = typeof(XmlLayer);
             tMap = outersMapping;
             return outersMapping;
         }
+        /// <summary>
+        /// Rename db file.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public static void RenameDbFile(string value)
         {
             AsyncHelperApps.ci.GetResult( sf.RenameAsync(value + extOfDB, NameCollisionOption.GenerateUniqueName));
@@ -116,6 +153,12 @@ static Type type = typeof(XmlLayer);
         {
             FSApps.DeleteFile(sf);
         }
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public static T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

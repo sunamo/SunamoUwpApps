@@ -9,16 +9,28 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Storage;
 
+    /// <summary>
+    /// Represents the xml connection type.
+    /// </summary>
     public class XmlConnection
     {
         Type type = typeof(XmlConnection);
         OuterObjectMapping tMap = null;
 
+        /// <summary>
+        /// Initializes a new instance of the xml connection class.
+        /// </summary>
+        /// <param name="tMap">The t map.</param>
         public XmlConnection(OuterObjectMapping tMap)
         {
             this.tMap = tMap;
         }
 
+        /// <summary>
+        /// Create table async t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="emptyCol">The empty col.</param>
         public void CreateTableAsync<T>(IXmlParserCollectionEnumerable<T> emptyCol) where T : new()
         {
             XmlLayer.SaveDbFile(emptyCol);
@@ -56,6 +68,13 @@ using Windows.Storage;
             //type.Pro
         }
 
+        /// <summary>
+        /// Get async t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="value">The value.</param>
+        /// <param name="elements">The elements.</param>
+        /// <returns>The get async t result.</returns>
         public  T GetAsync<T>(object value, IXmlParserCollectionEnumerable<T> elements) where T : new()
         {
             string path = value.ToString();
@@ -70,6 +89,11 @@ using Windows.Storage;
             return default(T);
         }
 
+        /// <summary>
+        /// Drop table async t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="emptyElements">The empty elements.</param>
         public void DropTableAsync<T>(IXmlParserCollectionEnumerable<T> emptyElements)
         {
             XmlLayer.SaveDbFile(emptyElements);
@@ -102,6 +126,12 @@ using Windows.Storage;
             XmlLayer.SaveDbFile(elements);
         }
 
+        /// <summary>
+        /// Query async t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="path">The path.</param>
+        /// <returns>The query async t result.</returns>
         public List<T> QueryAsync<T>(string path)
         {
             ThrowEx.NotImplementedMethod();

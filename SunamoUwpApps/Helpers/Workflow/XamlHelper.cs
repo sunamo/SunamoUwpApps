@@ -12,8 +12,16 @@ using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+    /// <summary>
+    /// Represents the xaml helper type.
+    /// </summary>
     public static class XamlHelper //: IAsync
     {
+        /// <summary>
+        /// Create bitmap image from visual.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>The create bitmap image from visual result.</returns>
         public static BitmapImage CreateBitmapImageFromVisual(FrameworkElement text)
         {
             if (text.ActualHeight != 0 && text.ActualWidth != 0 && false)
@@ -43,6 +51,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return null;
         }
 
+        /// <summary>
+        /// Save image.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="storageFile">The storage file.</param>
         public static void SaveImage(FrameworkElement text, StorageFile storageFile)
         {
             var renderTargetBitmap = new RenderTargetBitmap();
@@ -63,6 +76,12 @@ using Microsoft.UI.Xaml.Media.Imaging;
             AsyncHelperApps.ci.GetResult(encoder.FlushAsync());
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public static T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

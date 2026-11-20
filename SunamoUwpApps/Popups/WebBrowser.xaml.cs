@@ -20,6 +20,9 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the web browser type.
+    /// </summary>
     public sealed partial class WebBrowser : UserControl, IPopupWholeScreen
     {
         Uri uri = null;
@@ -27,18 +30,36 @@ using Microsoft.UI.Xaml.Navigation;
         bool canGoNext = false;
         List<Uri> lastUri = new List<Uri>();
         int actualIndex = 0;
+        /// <summary>
+        /// The custom button click.
+        /// </summary>
         public event UriEventHandler CustomButtonClick;
+        /// <summary>
+        /// The close button click.
+        /// </summary>
         public event VoidVoid CloseButtonClick;
         string homeAdressWithoutHttp = null;
+        /// <summary>
+        /// The load completed.
+        /// </summary>
         public event LoadCompletedEventHandler LoadCompleted;
         bool reload = false;
         List<bool> backnext = new List<bool>();
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the web browser class.
+        /// </summary>
+        /// <param name="TextCustomButton">The text custom button.</param>
+        /// <param name="homeAdressWithoutHttp">The home adress without http.</param>
         public WebBrowser(string TextCustomButton, string homeAdressWithoutHttp)
         {
             this.InitializeComponent();
@@ -83,6 +104,9 @@ using Microsoft.UI.Xaml.Navigation;
             NavigateHome();
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -97,11 +121,17 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// Hide web view.
+        /// </summary>
         public void HideWebView()
         {
             webView.Visibility = Microsoft.UI.Xaml.Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Show web view.
+        /// </summary>
         public void ShowWebView()
         {
             webView.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
@@ -144,6 +174,10 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// Enable custom button.
+        /// </summary>
+        /// <param name="enable">The enable.</param>
         public void EnableCustomButton(bool enable)
         {
             btnCustom.IsEnabled = enable;
@@ -198,6 +232,10 @@ using Microsoft.UI.Xaml.Navigation;
             Navigate(new Uri("http://" + homeAdressWithoutHttp));
         }
 
+        /// <summary>
+        /// Navigate.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
         public async Task Navigate(Uri uri)
         {
              webView.Source = uri;
@@ -232,11 +270,17 @@ using Microsoft.UI.Xaml.Navigation;
 
 
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
 
+        /// <summary>
+        /// The x name.
+        /// </summary>
         public string xName
         {
             set { border.Name = value; }

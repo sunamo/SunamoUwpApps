@@ -2,6 +2,9 @@
 
 using System.Reflection;
 
+/// <summary>
+/// Represents the x path part type.
+/// </summary>
 public class XPathPart
 {
     /// <summary>Name of the tag.</summary>

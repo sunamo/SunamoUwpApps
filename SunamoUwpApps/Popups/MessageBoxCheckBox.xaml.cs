@@ -15,11 +15,24 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the message box check box type.
+    /// </summary>
     public sealed partial class MessageBoxCheckBox : UserControl, IPopupResponsive, IPopupEvents<object>
     {
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event VoidT<object> ClickOK;
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event VoidT<object> ClickCancel;
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
@@ -48,6 +61,10 @@ using Microsoft.UI.Xaml.Navigation;
             ClickCancel(null);
         }
 
+        /// <summary>
+        /// Show checkbox.
+        /// </summary>
+        /// <param name="flag">The flag.</param>
         public void ShowCheckbox(bool flag)
         {
             if (flag)
@@ -60,6 +77,10 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// Show cancel button.
+        /// </summary>
+        /// <param name="flag">The flag.</param>
         public void ShowCancelButton(bool flag)
         {
             if (flag)
@@ -72,11 +93,17 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get

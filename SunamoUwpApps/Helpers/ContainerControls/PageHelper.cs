@@ -13,6 +13,9 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Xaml;
 
+    /// <summary>
+    /// Represents the page helper type.
+    /// </summary>
     public static class PageHelper
     {
         /// <summary>
@@ -36,6 +39,11 @@ using Microsoft.UI.Xaml;
             
         }
 
+        /// <summary>
+        /// Set status.
+        /// </summary>
+        /// <param name="lmn">The lmn.</param>
+        /// <param name="alsoLb">The also lb.</param>
         public async static Task SetStatus(LogMessageAbstract<Color, StorageFile> lmn, bool alsoLb)
         {
             if (alsoLb)

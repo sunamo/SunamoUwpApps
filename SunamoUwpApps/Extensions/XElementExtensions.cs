@@ -4,9 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
+    /// <summary>
+    /// Represents the x element extensions type.
+    /// </summary>
     public static class XElementExtensions
     {
 static Type type = typeof(XElementExtensions);
+        /// <summary>
+        /// X path select element.
+        /// </summary>
+        /// <param name="xmlElement">The xml element.</param>
+        /// <param name="xpath">The xpath.</param>
+        /// <returns>The x path select element result.</returns>
         public static XElement XPathSelectElement(this XElement xmlElement, string xpath)
         {
             if (!xpath.StartsWith(AllStrings.slash))

@@ -14,16 +14,34 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the enter one value type.
+    /// </summary>
     public sealed partial class EnterOneValue : UserControl, IPopupSmall
     {
         Langs l = Langs.cs;
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event RoutedEventHandler ClickOK;
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event RoutedEventHandler ClickCancel;
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the enter one value class.
+        /// </summary>
+        /// <param name="coZadat">The co zadat.</param>
+        /// <param name="language">The language.</param>
         public EnterOneValue(string coZadat, Langs language)
         {
             this.InitializeComponent();
@@ -32,6 +50,9 @@ using Microsoft.UI.Xaml.Navigation;
             
         }
 
+        /// <summary>
+        /// The entered text.
+        /// </summary>
         public string EnteredText
         {
             get
@@ -50,6 +71,9 @@ using Microsoft.UI.Xaml.Navigation;
             ClickOK(this, null);
         }
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
@@ -58,6 +82,10 @@ using Microsoft.UI.Xaml.Navigation;
 
 
 
+        /// <summary>
+        /// Reset.
+        /// </summary>
+        /// <param name="coZadat">The co zadat.</param>
         public void Reset(string coZadat)
         {
             tbTitle.Text = SH.FirstCharUpper(coZadat);

@@ -13,8 +13,18 @@ using Windows.Storage.Streams;
 using Windows.UI;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+    /// <summary>
+    /// Represents the writeable bitmap helper type.
+    /// </summary>
     public static class WriteableBitmapHelper 
     {
+        /// <summary>
+        /// Encode writeable bitmap.
+        /// </summary>
+        /// <param name="bmp">The bmp.</param>
+        /// <param name="writeStream">The write stream.</param>
+        /// <param name="encoderId">The encoder id.</param>
+        /// <returns>The encode writeable bitmap result.</returns>
         public static IRandomAccessStream EncodeWriteableBitmap(WriteableBitmap bmp, IRandomAccessStream writeStream, Guid encoderId)
         {
             // Copy buffer to pixels
@@ -35,6 +45,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return writeStream;
         }
 
+        /// <summary>
+        /// To bitmap image.
+        /// </summary>
+        /// <param name="writeableBitmap">The writeable bitmap.</param>
+        /// <returns>The to bitmap image result.</returns>
         public static  BitmapImage ToBitmapImage(WriteableBitmap writeableBitmap)
         {
             var stream = new InMemoryRandomAccessStream();
@@ -50,6 +65,12 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return bitmapImage;
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public static T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

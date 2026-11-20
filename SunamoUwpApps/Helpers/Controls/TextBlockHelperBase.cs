@@ -12,10 +12,21 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the text block helper base type.
+    /// </summary>
     public class TextBlockHelperBase : ITextBlockHelperBase<FontWeight, Italic, Inline, Bold, Run, InlineUIContainer, FontArgs>
     {
+        /// <summary>
+        /// The texts.
+        /// </summary>
         protected List<MeasureStringArgs> texts = new List<MeasureStringArgs>();
 
+        /// <summary>
+        /// Get font weight.
+        /// </summary>
+        /// <param name="fontWeight">The font weight.</param>
+        /// <returns>The get font weight result.</returns>
         protected FontWeight GetFontWeight(FontWeight2 fontWeight)
         {
             FontWeight convertedFontWeight = new FontWeight();
@@ -23,6 +34,12 @@ using Microsoft.UI.Xaml.Media;
             return convertedFontWeight;
         }
 
+        /// <summary>
+        /// Get italic.
+        /// </summary>
+        /// <param name="run">The run.</param>
+        /// <param name="fontArgs">The font args.</param>
+        /// <returns>The get italic result.</returns>
         public Italic GetItalic(string run, FontArgs fontArgs)
         {
             Italic italic = new Italic();
@@ -32,11 +49,23 @@ using Microsoft.UI.Xaml.Media;
 
             return italic;
         }
+        /// <summary>
+        /// Get bullet.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="fontArgs">The font args.</param>
+        /// <returns>The get bullet result.</returns>
         public Inline GetBullet(string path, FontArgs fontArgs)
         {
             return GetRun("• " + path, fontArgs);
         }
 
+        /// <summary>
+        /// Get error.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="fontArgs">The font args.</param>
+        /// <returns>The get error result.</returns>
         public Bold GetError(string path, FontArgs fontArgs)
         {
             Bold bold = GetBold(path, fontArgs);
@@ -45,6 +74,12 @@ using Microsoft.UI.Xaml.Media;
             return bold;
         }
 
+        /// <summary>
+        /// Get bold.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="fontArgs">The font args.</param>
+        /// <returns>The get bold result.</returns>
         public Bold GetBold(string path, FontArgs fontArgs)
         {
             Bold bold = new Bold();
@@ -56,6 +91,12 @@ using Microsoft.UI.Xaml.Media;
             return bold;
         }
 
+        /// <summary>
+        /// Get run.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="fontArgs">The font args.</param>
+        /// <returns>The get run result.</returns>
         public Run GetRun(string text, FontArgs fontArgs)
         {
             Run run = new Run();
@@ -70,6 +111,15 @@ using Microsoft.UI.Xaml.Media;
             return run;
         }
 
+        /// <summary>
+        /// Get hyperlink.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="uri">The uri.</param>
+        /// <param name="margin">The margin.</param>
+        /// <param name="padding">The padding.</param>
+        /// <param name="fontArgs">The font args.</param>
+        /// <returns>The get hyperlink result.</returns>
         public InlineUIContainer GetHyperlink(string text, string uri, Thickness margin, Thickness padding, FontArgs fontArgs)
         {
             HyperlinkButton link = new HyperlinkButton();
@@ -97,6 +147,13 @@ using Microsoft.UI.Xaml.Media;
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get hyperlink.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="uri">The uri.</param>
+        /// <param name="fontArgs">The font args.</param>
+        /// <returns>The get hyperlink result.</returns>
         public InlineUIContainer GetHyperlink(string text, string uri, FontArgs fontArgs)
         {
             throw new NotImplementedException();

@@ -15,6 +15,9 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the selector helper t u type.
+    /// </summary>
     public abstract class SelectorHelper<T, U> : SelectorHelper where T : IIdentificator
     {
         /// <summary>
@@ -42,8 +45,14 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The selection changed.
+        /// </summary>
         public event VoidT<U> SelectionChanged;
 
+        /// <summary>
+        /// The selected u.
+        /// </summary>
         public U SelectedU
         {
             get
@@ -58,6 +67,11 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Get items list t.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <returns>The get items list t result.</returns>
         public static List<T> GetItemsListT(ItemCollection items)
         {
             List<T> result = new List<T>();
@@ -77,16 +91,36 @@ using Microsoft.UI.Xaml.Media;
     /// </summary>
     public abstract class SelectorHelper : IAsync
     {
+        /// <summary>
+        /// The selected o.
+        /// </summary>
         public object SelectedO = null;
+        /// <summary>
+        /// The selector.
+        /// </summary>
         protected Selector selector = null;
+        /// <summary>
+        /// The item removed object.
+        /// </summary>
         public event VoidObject ItemRemovedObject;
 
         //protected object Selected = null;
+        /// <summary>
+        /// The oc.
+        /// </summary>
         public IList oc = null;
+        /// <summary>
+        /// Gets the is selected.
+        /// </summary>
         public bool IsSelected { get {
                 return SelectedO != null;
             } }
 
+        /// <summary>
+        /// Initializes a new instance of the selector helper class.
+        /// </summary>
+        /// <param name="selectorControl">The selector control.</param>
+        /// <param name="boc">The boc.</param>
         public SelectorHelper(Selector selectorControl, ObservableCollection<SelectorHelperItem> boc)
         {
             selector = selectorControl;
@@ -95,12 +129,19 @@ using Microsoft.UI.Xaml.Media;
             selectorControl.SelectionChanged += Lb_SelectionChanged;
         }
 
+        /// <summary>
+        /// Update items source.
+        /// </summary>
         public void UpdateItemsSource()
         {
             selector.ItemsSource = null;
             selector.ItemsSource = oc;
         }
 
+        /// <summary>
+        /// Run one.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void RunOne(object value)
         {
             if (value != null)
@@ -113,6 +154,10 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Save to clipboard.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void SaveToClipboard(object value)
         {
             if (value != null)
@@ -121,6 +166,10 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Remove one.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void RemoveOne(object value)
         {
             if (value != null)
@@ -134,6 +183,10 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Remove from selector.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected abstract void RemoveFromSelector(object value);
 
         private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
@@ -149,6 +202,9 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The selection changed object.
+        /// </summary>
         public event VoidObject SelectionChangedObject;
         /// <summary>
         /// Zkopiruje do schranky vsechny polozky v lb
@@ -179,6 +235,10 @@ using Microsoft.UI.Xaml.Media;
         }
 
 
+        /// <summary>
+        /// Get items list string.
+        /// </summary>
+        /// <returns>The get items list string result.</returns>
         public List<string> GetItemsListString()
         {
             List<string> result = new List<string>();
@@ -189,6 +249,11 @@ using Microsoft.UI.Xaml.Media;
             return result;
         }
 
+        /// <summary>
+        /// Get selected list string.
+        /// </summary>
+        /// <param name="selectedObjectCollection">The selected object collection.</param>
+        /// <returns>The get selected list string result.</returns>
         public static List<string> GetSelectedListString(IList selectedObjectCollection)
         {
             List<string> result = new List<string>();
@@ -199,6 +264,12 @@ using Microsoft.UI.Xaml.Media;
             return result;
         }
 
+        /// <summary>
+        /// Get items list t t 1.
+        /// </summary>
+        /// <typeparam name="T1">The type T1.</typeparam>
+        /// <param name="objectCollection">The object collection.</param>
+        /// <returns>The get items list t t 1 result.</returns>
         public static List<T1> GetItemsListT<T1>(ItemCollection objectCollection)
         {
             List<T1> items = new List<T1>();
@@ -209,6 +280,11 @@ using Microsoft.UI.Xaml.Media;
             return items;
         }
 
+        /// <summary>
+        /// Get items list string.
+        /// </summary>
+        /// <param name="objectCollection">The object collection.</param>
+        /// <returns>The get items list string result.</returns>
         public static List<string> GetItemsListString(ItemCollection objectCollection)
         {
             List<string> items = new List<string>();
@@ -219,11 +295,22 @@ using Microsoft.UI.Xaml.Media;
             return items;
         }
 
+        /// <summary>
+        /// Is selected static.
+        /// </summary>
+        /// <param name="listView">The list view.</param>
+        /// <returns>The is selected static result.</returns>
         public static bool IsSelectedStatic(ListView listView)
         {
             return listView.SelectedItem != null;
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);
@@ -261,8 +348,14 @@ using Microsoft.UI.Xaml.Media;
                 }
             }
 
+            /// <summary>
+            /// The selection changed.
+            /// </summary>
             public event VoidT<T> SelectionChanged;
 
+            /// <summary>
+            /// The selected t.
+            /// </summary>
             public T SelectedT
             {
                 get
@@ -271,6 +364,11 @@ using Microsoft.UI.Xaml.Media;
                 }
             }
 
+            /// <summary>
+            /// Get items list t.
+            /// </summary>
+            /// <param name="items">The items.</param>
+            /// <returns>The get items list t result.</returns>
             public static List<T> GetItemsListT(ItemCollection items)
             {
                 List<T> result = new List<T>();

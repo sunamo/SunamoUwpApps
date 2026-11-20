@@ -10,13 +10,24 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the font awesome type.
+    /// </summary>
     public static class FontAwesome
     {
+        /// <summary>
+        /// Get symbol.
+        /// </summary>
+        /// <param name="dependencyObject">The dependency object.</param>
+        /// <returns>The get symbol result.</returns>
         public static FontAwesomeIcon GetSymbol(DependencyObject dependencyObject)
         {
             return (FontAwesomeIcon)dependencyObject.GetValue(SymbolProperty);
         }
 
+        /// <summary>
+        /// Gets or sets the font family.
+        /// </summary>
         public static FontFamily FontFamily { get; set; }
 
         static FontAwesome()
@@ -24,6 +35,11 @@ using Microsoft.UI.Xaml.Media;
             FontFamily = new FontFamily(AwesomeFontControls.awesomeFontPath);
         }
 
+        /// <summary>
+        /// Set symbol.
+        /// </summary>
+        /// <param name="dependencyObject">The dependency object.</param>
+        /// <param name="value">The value.</param>
         public static void SetSymbol(DependencyObject dependencyObject, FontAwesomeIcon value)
         {
             string hex = ((int)value).ToString("X").ToLower();
@@ -43,5 +59,8 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The symbol property.
+        /// </summary>
         public static readonly DependencyProperty SymbolProperty = DependencyProperty.RegisterAttached("Symbol", typeof(FontAwesomeIcon), typeof(TextBlock), new PropertyMetadata(FontAwesomeIcon.None));
     }

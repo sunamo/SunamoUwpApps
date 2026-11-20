@@ -1,5 +1,8 @@
 namespace apps._public;
 
+/// <summary>
+/// Represents the bad good collection t type.
+/// </summary>
 public class BadGoodCollection<T>
 {
     /// <summary>

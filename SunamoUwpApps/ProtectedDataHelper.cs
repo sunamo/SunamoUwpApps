@@ -10,6 +10,9 @@ using Windows.Security.Cryptography.DataProtection;
 using Windows.Storage;
 using Windows.Storage.Streams;
 
+    /// <summary>
+    /// Represents the protected data helper type.
+    /// </summary>
     public static class ProtectedDataHelper
     {
         #region Newest from 3/4/20 but not working

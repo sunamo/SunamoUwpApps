@@ -9,6 +9,9 @@ using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the button switch type.
+    /// </summary>
     public class ButtonSwitch : Button
     {
         SolidColorBrush panel1 = new SolidColorBrush(Colors.LightBlue);
@@ -18,6 +21,9 @@ using Microsoft.UI.Xaml.Media;
         SolidColorBrush colorE = new SolidColorBrush(Colors.LightBlue);
 
 
+        /// <summary>
+        /// To left.
+        /// </summary>
         public void ToLeft()
         {
             if (panel3 == colorE)
@@ -37,6 +43,9 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// To right.
+        /// </summary>
         public void ToRight()
         {
             if (panel3 == colorE)
@@ -56,6 +65,9 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The panel 1.
+        /// </summary>
         public SolidColorBrush Panel1
         {
             get
@@ -64,6 +76,9 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The panel 2.
+        /// </summary>
         public SolidColorBrush Panel2
         {
             get
@@ -72,6 +87,9 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The panel 3.
+        /// </summary>
         public SolidColorBrush Panel3
         {
             get

@@ -2,6 +2,9 @@ namespace apps._public;
 
 using Microsoft.Web.WebView2.Core;
 
+/// <summary>
+/// Represents the string string type.
+/// </summary>
 public delegate string StringString(string text);
 /// <summary>Delegate taking a generic value and returning void.</summary>
 public delegate void VoidT<T>(T item);

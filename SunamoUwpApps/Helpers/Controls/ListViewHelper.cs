@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the list view helper t u type.
+    /// </summary>
     public class ListViewHelper<T, U> : SelectorHelper<T, U> where T :IIdentificator
     {
         /// <summary>
@@ -23,6 +26,10 @@ using Microsoft.UI.Xaml.Controls;
             listView.SelectionMode = selectionMode;
         }
 
+        /// <summary>
+        /// Remove from selector.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected override void RemoveFromSelector(object value)
         {
             if (oc != null)
@@ -43,6 +50,9 @@ using Microsoft.UI.Xaml.Controls;
         }
     }
 
+    /// <summary>
+    /// Represents the list view helper t type.
+    /// </summary>
     public class ListViewHelper<T> : SelectorHelper<T>
         {
             /// <summary>
@@ -55,6 +65,10 @@ using Microsoft.UI.Xaml.Controls;
                 listView.SelectionMode = selectionMode;
             }
 
+        /// <summary>
+        /// Remove from selector.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected override void RemoveFromSelector(object value)
         {
             if (oc != null)
@@ -75,6 +89,9 @@ using Microsoft.UI.Xaml.Controls;
         }
     }
 
+        /// <summary>
+        /// Represents the list view helper type.
+        /// </summary>
         public class ListViewHelper : SelectorHelper
         {
             /// <summary>
@@ -87,6 +104,10 @@ using Microsoft.UI.Xaml.Controls;
                 listView.SelectionMode = selectionMode;
             }
 
+        /// <summary>
+        /// Remove from selector.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected override void RemoveFromSelector(object value)
         {
             if (oc != null)

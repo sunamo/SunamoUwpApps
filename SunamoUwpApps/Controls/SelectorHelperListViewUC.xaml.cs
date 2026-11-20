@@ -16,12 +16,21 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the selector helper list view UC type.
+    /// </summary>
     public sealed partial class SelectorHelperListViewUC : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the selector helper list view UC class.
+        /// </summary>
         public SelectorHelperListViewUC()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets or sets the selected item.
+        /// </summary>
         public object SelectedItem { get; set; }
     }

@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
+    /// <summary>
+    /// Represents the storage folder info type.
+    /// </summary>
     public class StorageFolderInfo
     {
         string path = null;
@@ -14,6 +17,12 @@ using Windows.Storage;
         List<string> fileNames = null;
         List<string> folderNames = null;
 
+        /// <summary>
+        /// Initializes a new instance of the storage folder info class.
+        /// </summary>
+        /// <param name="info">The info.</param>
+        /// <param name="folders">The folders.</param>
+        /// <param name="files">The files.</param>
         public StorageFolderInfo(StorageFolder info, IReadOnlyList<StorageFolder> folders, IReadOnlyList<StorageFile> files)
         {
             path =  info.Path;
@@ -34,6 +43,9 @@ using Windows.Storage;
 
 
 
+        /// <summary>
+        /// The name.
+        /// </summary>
         public string Name
         {
             get
@@ -42,6 +54,9 @@ using Windows.Storage;
             }
         }
 
+        /// <summary>
+        /// The path.
+        /// </summary>
         public string Path
         {
             get
@@ -50,6 +65,9 @@ using Windows.Storage;
             }
         }
 
+        /// <summary>
+        /// The file names.
+        /// </summary>
         public List<string> FileNames
         {
             get
@@ -58,6 +76,9 @@ using Windows.Storage;
             }
         }
 
+        /// <summary>
+        /// The folder names.
+        /// </summary>
         public List<string> FolderNames
         {
             get

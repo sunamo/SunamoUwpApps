@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 
+    /// <summary>
+    /// Represents the universal interop type.
+    /// </summary>
     public static class UniversalInterop
     {
         /// <summary>
@@ -29,6 +32,11 @@ using Windows.Foundation.Metadata;
             }
         }
 
+        /// <summary>
+        /// Is portrait.
+        /// </summary>
+        /// <param name="noScaleFactor">The no scale factor.</param>
+        /// <returns>The is portrait result.</returns>
         public static bool IsPortrait(bool noScaleFactor)
         {
             Size size = PageHelper.WindowSize(noScaleFactor);

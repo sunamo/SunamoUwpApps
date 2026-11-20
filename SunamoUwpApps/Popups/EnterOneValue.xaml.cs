@@ -15,11 +15,25 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using apps;
 
+    /// <summary>
+    /// Represents the enter one value type.
+    /// </summary>
     public sealed partial class EnterOneValue : UserControl, IPopupResponsive, IPopupEvents<EnterOneValueEventArgs>
     {
         Langs l = Langs.cs;
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event VoidT<EnterOneValueEventArgs> ClickOK;
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event VoidT<EnterOneValueEventArgs> ClickCancel;
+        /// <summary>
+        /// Initializes a new instance of the enter one value class.
+        /// </summary>
+        /// <param name="coZadat">The co zadat.</param>
+        /// <param name="language">The language.</param>
         public EnterOneValue(string coZadat, Langs language)
         {
             this.InitializeComponent();
@@ -27,6 +41,9 @@ using apps;
             Reset(coZadat);
         }
 
+        /// <summary>
+        /// The entered text.
+        /// </summary>
         public string EnteredText
         {
             get
@@ -45,11 +62,17 @@ using apps;
             ClickOK(new EnterOneValueEventArgs { EnteredText = EnteredText });
         }
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -64,6 +87,10 @@ using apps;
             }
         }
 
+        /// <summary>
+        /// Reset.
+        /// </summary>
+        /// <param name="coZadat">The co zadat.</param>
         public void Reset(string coZadat)
         {
             tbTitle.Text = SH.FirstCharUpper(coZadat);
@@ -72,6 +99,10 @@ using apps;
             tbCoZadat.Text += AllStrings.colon;
         }
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);

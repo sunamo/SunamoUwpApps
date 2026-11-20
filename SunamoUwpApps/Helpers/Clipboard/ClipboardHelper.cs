@@ -7,10 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
+    /// <summary>
+    /// Represents the clipboard helper apps 2 type.
+    /// </summary>
     public static class ClipboardHelperApps2
     {
+        /// <summary>
+        /// The content changed.
+        /// </summary>
         public static event Action<object, object> ContentChanged;
 
+        /// <summary>
+        /// Get text.
+        /// </summary>
+        /// <returns>The get text result.</returns>
         public static string GetText()
         {
             string dataFormat = StandardDataFormats.Text;
@@ -32,6 +42,10 @@ using Windows.ApplicationModel.DataTransfer;
             return null;
         }
 
+        /// <summary>
+        /// Set text.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public static void SetText(string value)
         {
             DataPackage dataPackage = new DataPackage();

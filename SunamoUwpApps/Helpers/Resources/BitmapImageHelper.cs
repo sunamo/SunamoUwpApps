@@ -8,8 +8,16 @@ using Windows.Storage.Streams;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+/// <summary>
+/// Represents the bitmap image helper type.
+/// </summary>
 public static class BitmapImageHelper
     {
+        /// <summary>
+        /// Ms appx.
+        /// </summary>
+        /// <param name="relPath">The rel path.</param>
+        /// <returns>The ms appx result.</returns>
         public static BitmapImage MsAppx(string relPath)
         {
             
@@ -29,6 +37,12 @@ public static class BitmapImageHelper
             return bitmapImage;
         }
 
+        /// <summary>
+        /// Ms appx.
+        /// </summary>
+        /// <param name="disabled">The disabled.</param>
+        /// <param name="appPic">The app pic.</param>
+        /// <returns>The ms appx result.</returns>
         public static BitmapImage MsAppx(bool disabled, AppPics appPic)
         {
             string cesta = "";
@@ -44,33 +58,64 @@ public static class BitmapImageHelper
             return MsAppx(cesta);
         }
 
+    /// <summary>
+    /// Path to bitmap image.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    /// <returns>The path to bitmap image result.</returns>
     public static BitmapImage PathToBitmapImage(string path)
     {
         return UriToBitmapImage(new Uri(path, UriKind.Absolute));
     }
 
+    /// <summary>
+    /// Uri to bitmap image.
+    /// </summary>
+    /// <param name="uri">The uri.</param>
+    /// <returns>The uri to bitmap image result.</returns>
     public static BitmapImage UriToBitmapImage(Uri uri)
     {
         BitmapImage bitmapImage = new BitmapImage(uri);
         return bitmapImage;
     }
 
+    /// <summary>
+    /// Path.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    /// <returns>The path result.</returns>
     public static ImageSource Path(string path)
         {
             return Uri(new Uri(path, UriKind.Absolute));
         }
 
+        /// <summary>
+        /// Uri.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
+        /// <returns>The uri result.</returns>
         public static ImageSource Uri(Uri uri)
         {
             BitmapImage bitmapImage = new BitmapImage(uri);
             return bitmapImage;
         }
 
+        /// <summary>
+        /// Ms appx root.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>The ms appx root result.</returns>
         public static BitmapImage MsAppxRoot(string path)
         {
             return new BitmapImage(new Uri( ImageHelper.protocol+ path, UriKind.Absolute));
         }
 
+    /// <summary>
+    /// Resize.
+    /// </summary>
+    /// <param name="source">The source.</param>
+    /// <param name="rate">The rate.</param>
+    /// <returns>The resize result.</returns>
     public static BitmapImage Resize(BitmapImage source, int rate)
     {
         

@@ -19,9 +19,18 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+    /// <summary>
+    /// Represents the sunamo writeable bitmap type.
+    /// </summary>
     public static class SunamoWriteableBitmap
     {
+        /// <summary>
+        /// The grid create with image.
+        /// </summary>
         public static Grid gridCreateWithImage = null;
+        /// <summary>
+        /// The grid.
+        /// </summary>
         public static Grid grid = null;
 
         /// <summary>
@@ -105,6 +114,13 @@ using Microsoft.UI.Xaml.Media.Imaging;
             
         }
 
+        /// <summary>
+        /// Buffer to writeable bitmap.
+        /// </summary>
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <returns>The buffer to writeable bitmap result.</returns>
         public async static Task<WriteableBitmap> BufferToWriteableBitmap(IBuffer buffer, int width, int height)
         {
             WriteableBitmap bmp = BitmapFactory.New(width, height);
@@ -113,6 +129,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return bmp;
         }
 
+        /// <summary>
+        /// Create from visual.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>The create from visual result.</returns>
         public async static Task<WriteableBitmap> CreateFromVisual(FrameworkElement text)
         {
             FrameworkElementHelper.SizeToContent(text);

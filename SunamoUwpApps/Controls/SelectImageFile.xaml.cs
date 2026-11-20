@@ -12,8 +12,14 @@ using Windows.Storage.Streams;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+    /// <summary>
+    /// Represents the select image file type.
+    /// </summary>
     public partial class SelectImageFile : UserControl, IAsync
     {
+        /// <summary>
+        /// Initializes a new instance of the select image file class.
+        /// </summary>
         public SelectImageFile()
         {
             InitializeComponent();
@@ -36,6 +42,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
             tbSelectedFile.Text = "Selected file: " + GetPathFile( storageFile);
         }
 
+        /// <summary>
+        /// The file selected.
+        /// </summary>
         public event VoidStorageFileBitmapImage FileSelected;
 
         private async void btnSelectFile_Click(object sender, RoutedEventArgs eventArgs)
@@ -48,6 +57,10 @@ using Microsoft.UI.Xaml.Media.Imaging;
             }
         }
 
+        /// <summary>
+        /// On selected file.
+        /// </summary>
+        /// <param name="file">The file.</param>
         public void OnSelectedFile(StorageFile file)
         {
             if ( FSApps.ExistsFile(file))
@@ -60,6 +73,12 @@ using Microsoft.UI.Xaml.Media.Imaging;
             }
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);
@@ -67,6 +86,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
         BitmapImage bi = null;
 
+        /// <summary>
+        /// The selected bitmap image.
+        /// </summary>
         public BitmapImage SelectedBitmapImage
         {
             get
@@ -81,6 +103,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
         StorageFile selectedFile = null;
 
+        /// <summary>
+        /// The selected file.
+        /// </summary>
         public StorageFile SelectedFile
         {
             get

@@ -10,8 +10,16 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the sunamo list view type.
+    /// </summary>
     public class SunamoListView : ListView
     {
+        /// <summary>
+        /// Prepare container for item override.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="item">The item.</param>
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
         {
             base.PrepareContainerForItemOverride(element, item);

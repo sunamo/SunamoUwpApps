@@ -14,16 +14,34 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the message box metro type.
+    /// </summary>
     public sealed partial class MessageBoxMetro : UserControl, IPopupSmall
     {
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event RoutedEventHandler ClickOK;
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event RoutedEventHandler ClickCancel;
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the message box metro class.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <param name="message">The message.</param>
         public MessageBoxMetro(string title, string message)
         {
             this.InitializeComponent();
@@ -44,6 +62,10 @@ using Microsoft.UI.Xaml.Navigation;
             ClickCancel(sender, eventArgs);
         }
 
+        /// <summary>
+        /// Show cancel button.
+        /// </summary>
+        /// <param name="flag">The flag.</param>
         public void ShowCancelButton(bool flag)
         {
             if (flag)
@@ -58,6 +80,9 @@ using Microsoft.UI.Xaml.Navigation;
 
 
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }

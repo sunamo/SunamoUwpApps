@@ -1,5 +1,8 @@
 namespace apps._public;
 
+/// <summary>
+/// Represents the plural converter type.
+/// </summary>
 public sealed partial class PluralConverter : ISimpleConverter
 {
     /// <summary>

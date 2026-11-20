@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+    /// <summary>
+    /// Represents the i flyout type.
+    /// </summary>
     public interface IFlyout : IPopup
     {
     }

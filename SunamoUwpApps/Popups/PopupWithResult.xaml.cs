@@ -15,8 +15,15 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the popup with result type.
+    /// </summary>
     public sealed partial class PopupWithResult : UserControl, IPopupDialogResult, IPopupResponsive
     {
+        /// <summary>
+        /// Initializes a new instance of the popup with result class.
+        /// </summary>
+        /// <param name="customControl">The custom control.</param>
         public PopupWithResult(FrameworkElement customControl)
         {
             this.InitializeComponent();
@@ -77,8 +84,14 @@ Popup: 175.2,52.8
             //DebugLogger.Instance.WriteLine(this.ActualWidth);
         }
 
+        /// <summary>
+        /// Gets or sets the dialog result.
+        /// </summary>
         public bool? DialogResult { set  { if (ChangeDialogResult != null) { ChangeDialogResult(true); } } }
 
+        /// <summary>
+        /// The change dialog result.
+        /// </summary>
         public event VoidBoolNullable ChangeDialogResult;
 
         private void PopupButtons_ChangeDialogResult1(bool? flag)
@@ -86,6 +99,10 @@ Popup: 175.2,52.8
             DialogResult = flag;
         }
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
@@ -93,6 +110,9 @@ Popup: 175.2,52.8
 
         FrameworkElement customControl = null;
 
+        /// <summary>
+        /// The custom control.
+        /// </summary>
         public FrameworkElement CustomControl
         {
             set
@@ -112,6 +132,9 @@ Popup: 175.2,52.8
             }
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -124,5 +147,8 @@ Popup: 175.2,52.8
             }
         }
     
+        /// <summary>
+        /// Gets the popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush { set => border.BorderBrush = value; }
     }

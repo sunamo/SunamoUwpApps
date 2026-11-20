@@ -7,16 +7,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the combo box enum helper with custom labels t type.
+    /// </summary>
     public class ComboBoxEnumHelperWithCustomLabels<T> : ComboBoxEnumHelperBase<T>
     {
         Dictionary<string, string> d = null;
 
+        /// <summary>
+        /// Initializes a new instance of the combo box enum helper with custom labels class.
+        /// </summary>
+        /// <param name="comboBox">The combo box.</param>
+        /// <param name="labels">The labels.</param>
         public ComboBoxEnumHelperWithCustomLabels(ComboBox comboBox, Dictionary<string, string> labels) : base(comboBox)
         {
             this.d = labels;
             AddItems();
         }
 
+        /// <summary>
+        /// Get selected.
+        /// </summary>
+        /// <returns>The get selected result.</returns>
         public override T GetSelected()
         {
             string cbi = cb.SelectedItem.ToString();
@@ -30,6 +42,10 @@ using Microsoft.UI.Xaml.Controls;
             return default(T);
         }
 
+        /// <summary>
+        /// Remove item.
+        /// </summary>
+        /// <param name="item">The item.</param>
         public override void RemoveItem(T item)
         {
             string cbi = d[item.ToString()];
@@ -44,6 +60,10 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
+        /// <summary>
+        /// Set value.
+        /// </summary>
+        /// <param name="cbi">The cbi.</param>
         public override void SetValue(string cbi)
         {
 
@@ -58,12 +78,19 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
+        /// <summary>
+        /// Set value.
+        /// </summary>
+        /// <param name="sablonyProjektu">The sablony projektu.</param>
         public override void SetValue(T sablonyProjektu)
         {
             string cbi = d[sablonyProjektu.ToString()];
             SetValue(cbi);
         }
 
+        /// <summary>
+        /// Add items.
+        /// </summary>
         protected override void AddItems()
         {
             foreach (string item in Enum.GetNames(typeof(T)))

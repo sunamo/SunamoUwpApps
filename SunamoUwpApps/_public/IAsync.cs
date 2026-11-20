@@ -1,5 +1,8 @@
 namespace apps._public;
 
+/// <summary>
+/// Represents the i async type.
+/// </summary>
 public interface IAsync
 {
     /// <summary>

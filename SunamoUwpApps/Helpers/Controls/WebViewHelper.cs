@@ -9,12 +9,18 @@ using Windows.Foundation;
 using Windows.System.Threading;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the web view helper type.
+    /// </summary>
     public class WebViewHelper
     {
          WebView2 wv = new WebView2();
          bool loaded = false;
          string loadedSource = "";
 
+        /// <summary>
+        /// Initializes a new instance of the web view helper class.
+        /// </summary>
         public WebViewHelper()
         {
             wv.NavigationCompleted += wv_LoadCompleted;
@@ -26,6 +32,11 @@ using Microsoft.UI.Xaml.Controls;
             loadedSource = sender.Source?.ToString();
         }
 
+        /// <summary>
+        /// Get string async.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
+        /// <returns>The get string async result.</returns>
         public  string GetStringAsync(string uri)
         {
             loadedSource = "";

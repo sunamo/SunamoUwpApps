@@ -15,10 +15,19 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the up down numeric type.
+    /// </summary>
     public sealed partial class UpDownNumeric : UserControl
     {
+        /// <summary>
+        /// The value changed.
+        /// </summary>
         public event ValueChangedRoutedHandler<uint> ValueChanged;
 
+        /// <summary>
+        /// Initializes a new instance of the up down numeric class.
+        /// </summary>
         public UpDownNumeric()
         {
             this.InitializeComponent();
@@ -26,6 +35,9 @@ using Microsoft.UI.Xaml.Navigation;
 
         string latest = "";
 
+        /// <summary>
+        /// The value.
+        /// </summary>
         public int Value
         {
             get
@@ -69,9 +81,15 @@ using Microsoft.UI.Xaml.Navigation;
             
         }
 
+        /// <summary>
+        /// The value property.
+        /// </summary>
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
             "Value", typeof(double), typeof(UpDownNumeric), new PropertyMetadata(100));
 
+        /// <summary>
+        /// The property changed.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
 

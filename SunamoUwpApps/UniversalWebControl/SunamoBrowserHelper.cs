@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UniversalWebControl;
 
+/// <summary>
+/// Represents the sunamo browser helper type.
+/// </summary>
 public static class SunamoBrowserHelper
 {
     /// <summary>

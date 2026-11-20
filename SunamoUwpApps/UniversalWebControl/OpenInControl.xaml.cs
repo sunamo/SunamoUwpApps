@@ -16,9 +16,15 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the open in control type.
+    /// </summary>
     public sealed partial class OpenInControl : UserControl
     {
 static Type type = typeof(OpenInControl);
+        /// <summary>
+        /// Initializes a new instance of the open in control class.
+        /// </summary>
         public OpenInControl()
         {
             this.InitializeComponent();
@@ -28,6 +34,9 @@ static Type type = typeof(OpenInControl);
                 rbPrompt.Content = sess.i18n( "Prompt");
             OpenIn = OpenInNewTab.Always;
         }
+        /// <summary>
+        /// The open in.
+        /// </summary>
         public OpenInNewTab openIn = OpenInNewTab.Always;
         
         /// <summary>

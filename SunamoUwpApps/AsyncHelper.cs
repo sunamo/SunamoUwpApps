@@ -7,20 +7,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 
+/// <summary>
+/// Represents the async helper apps type.
+/// </summary>
 public class AsyncHelperApps //: sunamo.AsyncHelper
 {
+    /// <summary>
+    /// The ci.
+    /// </summary>
     public static AsyncHelperApps ci = new AsyncHelperApps();
     private AsyncHelperApps()
     {
 
     }
 
+    /// <summary>
+    /// Get result t.
+    /// </summary>
+    /// <typeparam name="T">The type T.</typeparam>
+    /// <param name="task">The task.</param>
+    /// <returns>The get result t result.</returns>
     public  T GetResult<T>(IAsyncOperation<T> task)
     {
         var asyncOperation = task.AsTask();
         return AsyncHelper.ci.GetResult<T>(asyncOperation);
     }
 
+    /// <summary>
+    /// Get result.
+    /// </summary>
+    /// <param name="task">The task.</param>
     public  void GetResult(IAsyncAction task)
     {
         var asyncOperation = task.AsTask();

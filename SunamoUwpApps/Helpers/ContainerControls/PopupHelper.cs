@@ -7,8 +7,16 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the popup helper type.
+    /// </summary>
     public static class PopupHelper
     {
+        /// <summary>
+        /// Assign new size popup center.
+        /// </summary>
+        /// <param name="windowSize">The window size.</param>
+        /// <param name="popup">The popup.</param>
         public static void AssignNewSizePopupCenter(Size windowSize, Popup popup)
         {
             //Size s = new Size(p.RenderSize.Width, p.RenderSize.Height);
@@ -108,6 +116,9 @@ using Microsoft.UI.Xaml.Media;
             return popup;
         }
 
+       /// <summary>
+       /// Close popup.
+       /// </summary>
        public static void ClosePopup()
         {
             var popupHolder = WpfApp.mp;

@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 
+    /// <summary>
+    /// Represents the i popup responsive type.
+    /// </summary>
     public interface IPopupResponsive : IPopup
     {
         /// <summary>

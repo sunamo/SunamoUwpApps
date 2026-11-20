@@ -9,6 +9,9 @@ using Windows.UI;
 using System.Reflection;
 using System.Diagnostics;
 
+    /// <summary>
+    /// Represents the known colors hex color converter type.
+    /// </summary>
     public static class KnownColorsHexColorConverter //: ISimpleConverter<ColorConverter, string>
     {
         static Dictionary<string, Color> hexKnownColors = new Dictionary<string, Color>();
@@ -37,6 +40,11 @@ using System.Diagnostics;
             }
         }
 
+        /// <summary>
+        /// Convert to.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <returns>The convert to result.</returns>
         public  static Color ConvertTo(string url)
         {
             Color color = Colors.AliceBlue;
@@ -82,6 +90,11 @@ using System.Diagnostics;
             //return (Color)typeof(Colors).GetRuntimeProperty(u).GetValue(null);
         }
 
+        /// <summary>
+        /// Convert from.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        /// <returns>The convert from result.</returns>
         public static string ConvertFrom(Color color)
         {
             return StringHexColorConverter.ConvertTo(color);

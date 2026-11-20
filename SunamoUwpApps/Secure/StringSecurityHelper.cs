@@ -4,10 +4,17 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
+/// <summary>
+/// Represents the string security helper type.
+/// </summary>
 public static class StringSecurityHelper
 {
     private static readonly byte[] entropy = Encoding.Unicode.GetBytes("5ID'&mc %sJo@lGtbi%n!G^ fiVn8 *tNh3eB %rDaVijn!.c b");
 
+    /// <summary>
+    /// Create crypt delegates.
+    /// </summary>
+    /// <returns>The create crypt delegates result.</returns>
     public static CryptDelegates CreateCryptDelegates()
     {
         CryptDelegates cryptDelegates = new CryptDelegates();

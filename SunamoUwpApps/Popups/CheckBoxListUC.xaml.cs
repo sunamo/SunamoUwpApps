@@ -11,13 +11,29 @@ using Windows.Foundation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the check box list UC type.
+    /// </summary>
     public partial class CheckBoxListUC : UserControl, IPopupResponsive, IPopupEvents<object> //, IUserControlInPopup
     {
+        /// <summary>
+        /// The checked length.
+        /// </summary>
         public int checkedLength = 0;
 
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event VoidT<object> ClickOK;
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event VoidT<object> ClickCancel;
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
@@ -40,6 +56,9 @@ using Microsoft.UI.Xaml.Media;
         }
 
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -53,18 +72,27 @@ using Microsoft.UI.Xaml.Media;
         }
 
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
 
 
+        /// <summary>
+        /// The background brush.
+        /// </summary>
         public Brush BackgroundBrush
         {
             set { border.Background = value; }
         }
 
 
+        /// <summary>
+        /// The title foreground brush.
+        /// </summary>
         public Brush TitleForegroundBrush
         {
             set
@@ -73,6 +101,10 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Checked.
+        /// </summary>
+        /// <returns>The checked result.</returns>
         public List<CheckBox> Checked()
         {
             List<CheckBox> chb = new List<CheckBox>(checkedLength);
@@ -86,6 +118,11 @@ using Microsoft.UI.Xaml.Media;
             return chb;
         }
 
+        /// <summary>
+        /// Get check box from tag.
+        /// </summary>
+        /// <param name="tag2">The tag 2.</param>
+        /// <returns>The get check box from tag result.</returns>
         public bool GetCheckBoxFromTag(object tag2)
         {
             foreach (var item in spCheckBoxes.Children)
@@ -151,12 +188,19 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the check box list UC class.
+        /// </summary>
         public CheckBoxListUC()
         {
             InitializeComponent();
             SetContentToChbTickAll();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the check box list UC class.
+        /// </summary>
+        /// <param name="uie">The uie.</param>
         public CheckBoxListUC(params UIElement[] uie) : this()
         {
             foreach (var item in uie)

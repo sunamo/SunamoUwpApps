@@ -1,5 +1,8 @@
 namespace apps._public;
 
+/// <summary>
+/// Represents the collection without duplicates t type.
+/// </summary>
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
 {
     /// <summary>

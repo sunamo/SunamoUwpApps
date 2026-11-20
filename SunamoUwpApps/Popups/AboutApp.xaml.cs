@@ -19,12 +19,21 @@ using apps.Helpers;
 using Windows.UI.Popups;
 using Windows.ApplicationModel.Resources;
 
+    /// <summary>
+    /// Represents the about app type.
+    /// </summary>
     public sealed partial class AboutApp : UserControl, IPopupResponsive, IPopupEvents<object>
     {
         
 
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event VoidT<object> ClickOK;
 
+        /// <summary>
+        /// Initializes a new instance of the about app class.
+        /// </summary>
         public AboutApp()
         {
             this.InitializeComponent();
@@ -60,6 +69,9 @@ using Windows.ApplicationModel.Resources;
 
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -80,16 +92,26 @@ using Windows.ApplicationModel.Resources;
             ClickOK(null);
         }
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
 
 
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event VoidT<object> ClickCancel;
     }

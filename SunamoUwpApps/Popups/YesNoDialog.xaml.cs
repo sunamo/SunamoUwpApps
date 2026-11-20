@@ -15,6 +15,9 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the yes no dialog type.
+    /// </summary>
     public sealed partial class YesNoDialog : UserControl, IPopupResponsive, IPopupEvents<YesNoDialogEventArgs>
     {
         //Langs l = apps.Essential.WpfApp.l;
@@ -37,6 +40,9 @@ using Microsoft.UI.Xaml.Navigation;
             tbPromptMessage.Text = prompt;
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -51,6 +57,9 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set
@@ -59,9 +68,19 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event VoidT<YesNoDialogEventArgs> ClickCancel;
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event VoidT<YesNoDialogEventArgs> ClickOK;
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);

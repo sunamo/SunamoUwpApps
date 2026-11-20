@@ -9,6 +9,9 @@ using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the margin setter type.
+    /// </summary>
     public static class MarginSetter
     {
         /// <summary>

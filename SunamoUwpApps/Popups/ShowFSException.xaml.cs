@@ -14,15 +14,28 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the show FS exception type.
+    /// </summary>
     public sealed partial class ShowFSException : UserControl, IPopupResponsive, IPopupEvents<object>
     {
         Langs l = Langs.cs;
         string fileOrFolder = null;
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
         }
+        /// <summary>
+        /// Initializes a new instance of the show FS exception class.
+        /// </summary>
+        /// <param name="fileOrFolder">The file or folder.</param>
+        /// <param name="fsExc">The fs exc.</param>
+        /// <param name="language">The language.</param>
         public ShowFSException(string fileOrFolder, FileExceptions fsExc, Langs language)
         {
             this.InitializeComponent();
@@ -60,6 +73,9 @@ using Microsoft.UI.Xaml.Navigation;
             tbZprava.Text = path;
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -93,13 +109,22 @@ using Microsoft.UI.Xaml.Navigation;
 
         
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
 
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event VoidT<object> ClickCancel;
 
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event VoidT<object> ClickOK;
 
         private void OnClickOK(object sender, RoutedEventArgs eventArgs)

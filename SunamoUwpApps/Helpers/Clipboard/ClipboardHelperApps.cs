@@ -11,15 +11,36 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 
+/// <summary>
+/// Represents the clipboard helper apps type.
+/// </summary>
 public class ClipboardHelperApps : IClipboardHelperApps
 {
 static Type type = typeof(ClipboardHelperApps);
+    /// <summary>
+    /// The CF UNICODETEXT constant.
+    /// </summary>
     public const uint CF_UNICODETEXT = 13U;
+    /// <summary>
+    /// The CF DSPTEXT constant.
+    /// </summary>
     public const uint CF_DSPTEXT = 0x0081;
+    /// <summary>
+    /// The CF LOCALE constant.
+    /// </summary>
     public const uint CF_LOCALE = 16U;
+    /// <summary>
+    /// The CF OEMTEXT constant.
+    /// </summary>
     public const uint CF_OEMTEXT = 7U;
+    /// <summary>
+    /// The CF TEXT constant.
+    /// </summary>
     public const uint CF_TEXT = 1U;
     IClipboardMonitor clipboardMonitor = null;
+    /// <summary>
+    /// The instance.
+    /// </summary>
     public static ClipboardHelperApps Instance = new ClipboardHelperApps();
     private ClipboardHelperApps()
     {
@@ -57,6 +78,10 @@ static Type type = typeof(ClipboardHelperApps);
         Clipboard.SetContent(dataPackage);
     }
   
+    /// <summary>
+    /// Set text 2.
+    /// </summary>
+    /// <param name="text">The text.</param>
     public void SetText2(string text)
     {
         // Nastavím text a místo toho se mi  uloží nějaký úplně starý
@@ -64,6 +89,9 @@ static Type type = typeof(ClipboardHelperApps);
     }
    
     #endregion
+    /// <summary>
+    /// Get first word of list.
+    /// </summary>
     public async Task GetFirstWordOfList()
     {
         Console.WriteLine("Copy text to clipboard.");
@@ -88,15 +116,27 @@ static Type type = typeof(ClipboardHelperApps);
         }
         SetText(stringBuilder.ToString());
     }
+    /// <summary>
+    /// Set list.
+    /// </summary>
+    /// <param name="items">The items.</param>
     public void SetList(List<string> items)
     {
         SetLines(items);
     }
+    /// <summary>
+    /// Set lines.
+    /// </summary>
+    /// <param name="lines">The lines.</param>
     public void SetLines(List<string> lines)
     {
         string text = SH.JoinNL(lines);
         SetText(text);
     }
+    /// <summary>
+    /// Cut files.
+    /// </summary>
+    /// <param name="selected">The selected.</param>
     public void CutFiles(params string[] selected)
     {
         //byte[] moveEffect = { 2, 0, 0, 0 };
@@ -109,23 +149,43 @@ static Type type = typeof(ClipboardHelperApps);
         //Clipboard.Clear();
         //Clipboard.SetDataObject(data, true);
     }
+    /// <summary>
+    /// Set text.
+    /// </summary>
+    /// <param name="stringBuilder">The string builder.</param>
     public void SetText(TextBuilder stringBuilder)
     {
         SetText(stringBuilder.ToString());
     }
+    /// <summary>
+    /// Set text.
+    /// </summary>
+    /// <param name="stringBuilder">The string builder.</param>
     public void SetText(StringBuilder stringBuilder)
     {
         SetText(stringBuilder.ToString());
     }
+    /// <summary>
+    /// Set text 3.
+    /// </summary>
+    /// <param name="text">The text.</param>
     public void SetText3(string text)
     {
      
     }
  
+    /// <summary>
+    /// Set lines.
+    /// </summary>
+    /// <param name="lines">The lines.</param>
     public void SetLines(IEnumerable lines)
     {
         ThrowEx.NotImplementedMethod();
     }
+    /// <summary>
+    /// Contains text.
+    /// </summary>
+    /// <returns>The contains text result.</returns>
     public bool ContainsText()
     {
         return !string.IsNullOrWhiteSpace(GetText());
@@ -145,6 +205,10 @@ static Type type = typeof(ClipboardHelperApps);
         result = AsyncHelperApps.ci.GetResult<string>(Clipboard.GetContent().GetTextAsync());
         return result;
     }
+    /// <summary>
+    /// Get lines.
+    /// </summary>
+    /// <returns>The get lines result.</returns>
     public List<string> GetLines()
     {
         var text = GetText();

@@ -9,9 +9,18 @@ using Windows.Foundation;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the control helper type.
+    /// </summary>
     public static class ControlHelper
     {
 static Type type = typeof(ControlHelper);
+        /// <summary>
+        /// Get on center.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        /// <param name="child">The child.</param>
+        /// <returns>The get on center result.</returns>
         public static Point GetOnCenter(Size parent, Size child)
         {
             Point point = new Point();
@@ -41,6 +50,9 @@ static Type type = typeof(ControlHelper);
             }
             return point;
         }
+        /// <summary>
+        /// The size positive infinity.
+        /// </summary>
         public static readonly Size SizePositiveInfinity = new Size(double.PositiveInfinity, double.PositiveInfinity);
         /// <summary>
         /// ControlHelper.GetMinimumSize - call only measure
@@ -63,6 +75,12 @@ static Type type = typeof(ControlHelper);
             uie.Measure(SizePositiveInfinity);
             return uie.DesiredSize; //SizeHelper.RecalculateSizeWithScaleFactor( uie.DesiredSize.Width, uie.DesiredSize.Height);
         }
+        /// <summary>
+        /// Get minimum height maximum width.
+        /// </summary>
+        /// <param name="uie">The uie.</param>
+        /// <param name="windowSize">The window size.</param>
+        /// <returns>The get minimum height maximum width result.</returns>
         public static Size GetMinimumHeightMaximumWidth(UIElement uie, Size windowSize)
         {
             uie.Measure(SizePositiveInfinity);
@@ -71,10 +89,21 @@ static Type type = typeof(ControlHelper);
             desiredSize.Width = windowSize.Width;
             return desiredSize;
         }
+        /// <summary>
+        /// Get minimum height minimum width.
+        /// </summary>
+        /// <param name="uie">The uie.</param>
+        /// <returns>The get minimum height minimum width result.</returns>
         public static Size GetMinimumHeightMinimumWidth(UIElement uie)
         {
             return GetMinimumHeightMinimumWidth(uie, SizePositiveInfinity);
         }
+        /// <summary>
+        /// Get minimum height minimum width.
+        /// </summary>
+        /// <param name="uie">The uie.</param>
+        /// <param name="windowSize">The window size.</param>
+        /// <returns>The get minimum height minimum width result.</returns>
         public static Size GetMinimumHeightMinimumWidth(UIElement uie, Size windowSize)
         {
             uie.Measure(windowSize);
@@ -122,6 +151,11 @@ static Type type = typeof(ControlHelper);
             result = frameworkElement.Name;
             return result;
         }
+        /// <summary>
+        /// Get name chb.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <returns>The get name chb result.</returns>
         public static string GetNameChb(object sender)
         {
             return GetName(sender, "chb");

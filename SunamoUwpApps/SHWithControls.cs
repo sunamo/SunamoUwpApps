@@ -8,10 +8,24 @@ using Windows.Foundation;
 using Windows.UI.Text;
 using Microsoft.UI.Xaml.Controls;
 
+/// <summary>
+/// Represents the SH with controls type.
+/// </summary>
 public static class SHWithControls
 {
     static TextBlock tb = new TextBlock();
 
+    /// <summary>
+    /// Divide string to rows.
+    /// </summary>
+    /// <param name="fontFamily">The font family.</param>
+    /// <param name="fontSize">The font size.</param>
+    /// <param name="fontStyle">The font style.</param>
+    /// <param name="fontStretch">The font stretch.</param>
+    /// <param name="fontWeight">The font weight.</param>
+    /// <param name="text">The text.</param>
+    /// <param name="maxSize">The max size.</param>
+    /// <returns>The divide string to rows result.</returns>
     public static string DivideStringToRows(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text, Size maxSize)
     {
         StringBuilder vystup = new StringBuilder();
@@ -25,6 +39,17 @@ public static class SHWithControls
     #region wsf
 
 
+    /// <summary>
+    /// Measure string.
+    /// </summary>
+    /// <param name="fontFamily">The font family.</param>
+    /// <param name="fontSize">The font size.</param>
+    /// <param name="fontStyle">The font style.</param>
+    /// <param name="fontStretch">The font stretch.</param>
+    /// <param name="fontWeight">The font weight.</param>
+    /// <param name="text">The text.</param>
+    /// <param name="maxSize">The max size.</param>
+    /// <returns>The measure string result.</returns>
     public static double MeasureString(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text, Size maxSize)
     {
         //tb.Height = Double.PositiveInfinity;
@@ -39,6 +64,17 @@ public static class SHWithControls
         return tb.DesiredSize.Width;
     }
 
+    /// <summary>
+    /// Divide string to rows list.
+    /// </summary>
+    /// <param name="fontFamily">The font family.</param>
+    /// <param name="fontSize">The font size.</param>
+    /// <param name="fontStyle">The font style.</param>
+    /// <param name="fontStretch">The font stretch.</param>
+    /// <param name="fontWeight">The font weight.</param>
+    /// <param name="text">The text.</param>
+    /// <param name="maxSize">The max size.</param>
+    /// <returns>The divide string to rows list result.</returns>
     public static List<string> DivideStringToRowsList(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text, Size maxSize)
     {
         maxSize.Width = maxSize.Width * 0.95d;

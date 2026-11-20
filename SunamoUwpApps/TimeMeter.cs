@@ -5,6 +5,9 @@ using System;
 using System.Diagnostics;
 using apps;
 
+/// <summary>
+/// Represents the time meter type.
+/// </summary>
 public class TimeMeter
 {
     Stopwatch sw = null;

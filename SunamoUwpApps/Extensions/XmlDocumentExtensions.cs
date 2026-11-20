@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.Storage;
 
+    /// <summary>
+    /// Represents the xml document extensions type.
+    /// </summary>
     public static class XmlDocumentExtensions// : IAsync
     {
+        /// <summary>
+        /// Load.
+        /// </summary>
+        /// <param name="xmlDocument">The xml document.</param>
+        /// <param name="file">The file.</param>
+        /// <returns>The load result.</returns>
         public static XmlDocument Load(this XmlDocument xmlDocument, string file)
         {
             XmlDocument xd2 = new XmlDocument();

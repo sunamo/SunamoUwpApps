@@ -11,13 +11,32 @@ using Windows.Storage;
 using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
 
+/// <summary>
+/// Represents the FS apps type.
+/// </summary>
 public static class FSApps //: IAsync
 {
+    /// <summary>
+    /// The folder exc.
+    /// </summary>
     public static FileExceptions folderExc = FileExceptions.None;
+    /// <summary>
+    /// The file exc.
+    /// </summary>
     public static FileExceptions fileExc = FileExceptions.None;
+    /// <summary>
+    /// The file.
+    /// </summary>
     public static StorageFile file = null;
+    /// <summary>
+    /// The folder.
+    /// </summary>
     public static StorageFolder folder = null;
 
+    /// <summary>
+    /// Delete files.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
     public static void DeleteFiles(StorageFolder storageFolder)
     {
         var files = GetResult<IReadOnlyList<StorageFile>>(storageFolder.GetFilesAsync().AsTask());
@@ -27,6 +46,10 @@ public static class FSApps //: IAsync
         }
     }
 
+    /// <summary>
+    /// Delete files.
+    /// </summary>
+    /// <param name="items">The items.</param>
     public static void DeleteFiles(List<StorageFile> items)
     {
         foreach (var item in items)
@@ -35,6 +58,11 @@ public static class FSApps //: IAsync
         }
     }
 
+    /// <summary>
+    /// Get file name without extension.
+    /// </summary>
+    /// <param name="storageFile">The storage file.</param>
+    /// <returns>The get file name without extension result.</returns>
     public static string GetFileNameWithoutExtension(StorageFile storageFile)
     {
         return storageFile.Name.Substring(0, storageFile.Name.Length - storageFile.FileType.Length);
@@ -55,6 +83,11 @@ public static class FSApps //: IAsync
         }
     }
 
+    /// <summary>
+    /// Delete files with size.
+    /// </summary>
+    /// <param name="task">The task.</param>
+    /// <param name="value">The value.</param>
     public static void DeleteFilesWithSize(StorageFolder task, ulong value)
     {
         var files = GetResult<IReadOnlyList<StorageFile>>( task.GetFilesAsync(Windows.Storage.Search.CommonFileQuery.DefaultQuery).AsTask());
@@ -73,6 +106,12 @@ public static class FSApps //: IAsync
         }
     }
 
+    /// <summary>
+    /// Get files of extension case insensitive.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="ext">The ext.</param>
+    /// <returns>The get files of extension case insensitive result.</returns>
     public static IReadOnlyList<StorageFile> GetFilesOfExtensionCaseInsensitive(StorageFolder storageFolder, string ext)
     {
         ext = ext.ToLower();
@@ -88,6 +127,12 @@ public static class FSApps //: IAsync
         return result;
     }
 
+    /// <summary>
+    /// Get files of extension case insensitive recursively.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="ext">The ext.</param>
+    /// <returns>The get files of extension case insensitive recursively result.</returns>
     public static List<StorageFile> GetFilesOfExtensionCaseInsensitiveRecursively(StorageFolder storageFolder, string ext)
     {
         List<StorageFile> files = new List<StorageFile>();
@@ -102,6 +147,13 @@ public static class FSApps //: IAsync
         return files;
     }
 
+    /// <summary>
+    /// Get files sync.
+    /// </summary>
+    /// <param name="folder">The folder.</param>
+    /// <param name="mask">The mask.</param>
+    /// <param name="recursively">The recursively.</param>
+    /// <returns>The get files sync result.</returns>
     public static List<StorageFile> GetFilesSync(StorageFolder folder, string mask, bool recursively )
     {
         List<StorageFile> files = new List<StorageFile>();
@@ -150,12 +202,23 @@ public static class FSApps //: IAsync
         return files;
     }
 
+    /// <summary>
+    /// Exists file create if not.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="fileName">The file name.</param>
+    /// <returns>The exists file create if not result.</returns>
     public static StorageFile ExistsFileCreateIfNot(StorageFolder storageFolder, string fileName)
     {
         file = AsyncHelperApps.ci.GetResult<StorageFile>( storageFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists));
         return file;
     }
 
+    /// <summary>
+    /// Random file from folder.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>The random file from folder result.</returns>
     public static StorageFile RandomFileFromFolder(string value)
     {
         StorageFolder storageFolder = GetResult<StorageFolder>( StorageFolder.GetFolderFromPathAsync(value).AsTask());
@@ -163,12 +226,23 @@ public static class FSApps //: IAsync
         return RandomHelper.RandomElementOfCollectionT<StorageFile>(files);
     }
 
+    /// <summary>
+    /// Exists folder create if not.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="folderName">The folder name.</param>
+    /// <returns>The exists folder create if not result.</returns>
     public static StorageFolder ExistsFolderCreateIfNot(StorageFolder storageFolder, string folderName)
     {
         folder = AsyncHelperApps.ci.GetResult<StorageFolder>( storageFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists));
         return folder;
     }
 
+    /// <summary>
+    /// Exists file sync.
+    /// </summary>
+    /// <param name="storageFile">The storage file.</param>
+    /// <returns>The exists file sync result.</returns>
     public static bool ExistsFileSync(StorageFile storageFile)
     {
         if (storageFile == null)
@@ -205,17 +279,34 @@ public static class FSApps //: IAsync
 
     }
 
+    /// <summary>
+    /// Exists file.
+    /// </summary>
+    /// <param name="storageFile">The storage file.</param>
+    /// <returns>The exists file result.</returns>
     public static bool ExistsFile(StorageFile storageFile)
     {
         var basicProperties = storageFile.GetBasicPropertiesAsync();
         return GetResult<BasicProperties>( basicProperties.AsTask()).Size != 0;
     }
 
+    /// <summary>
+    /// Try get storage file.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="fileName">The file name.</param>
+    /// <returns>The try get storage file result.</returns>
     public static StorageFile TryGetStorageFile(StorageFolder storageFolder, string fileName)
     {
         return GetResult<IStorageItem>( storageFolder.TryGetItemAsync(fileName).AsTask()) as StorageFile;
     }
 
+    /// <summary>
+    /// Get path if not exists.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="fileName">The file name.</param>
+    /// <returns>The get path if not exists result.</returns>
     public static string GetPathIfNotExists(StorageFolder storageFolder, string fileName)
     {
         bool exists = FSApps.ExistsFile(storageFolder, fileName);
@@ -236,12 +327,22 @@ public static class FSApps //: IAsync
         return null;
     }
 
+    /// <summary>
+    /// Get file size.
+    /// </summary>
+    /// <param name="storageFile">The storage file.</param>
+    /// <returns>The get file size result.</returns>
     public static ulong GetFileSize(StorageFile storageFile)
     {
         var basicProperties = storageFile.GetBasicPropertiesAsync();
         return GetResult<BasicProperties>( basicProperties.AsTask()).Size;
     }
 
+    /// <summary>
+    /// Open read async.
+    /// </summary>
+    /// <param name="item">The item.</param>
+    /// <returns>The open read async result.</returns>
     public static IRandomAccessStreamWithContentType OpenReadAsync(StorageFile item)
     {
         //bool found = false;
@@ -271,6 +372,12 @@ public static class FSApps //: IAsync
         return tem;
     }
 
+    /// <summary>
+    /// Recursively return all folders.
+    /// </summary>
+    /// <param name="nameOfFolder">The name of folder.</param>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <returns>The recursively return all folders result.</returns>
     public static List<StorageFolder> RecursivelyReturnAllFolders(string nameOfFolder, StorageFolder storageFolder)
     {
         List<StorageFolder> result = new List<StorageFolder>();
@@ -291,6 +398,11 @@ public static class FSApps //: IAsync
         }
     }
 
+    /// <summary>
+    /// Path from storage file.
+    /// </summary>
+    /// <param name="arg">The arg.</param>
+    /// <returns>The path from storage file result.</returns>
     public static string PathFromStorageFile(StorageFile arg)
     {
         return arg.Path;
@@ -355,6 +467,11 @@ public static class FSApps //: IAsync
         return null;
     }
 
+    /// <summary>
+    /// Exists directory sync.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    /// <returns>The exists directory sync result.</returns>
     public  static bool? ExistsDirectorySync(string path)
     {
         //: 'Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))'
@@ -376,6 +493,11 @@ public static class FSApps //: IAsync
         return ExistsFolder(rootFolder) ;
     }
 
+    /// <summary>
+    /// Exists directory.
+    /// </summary>
+    /// <param name="rootFolder">The root folder.</param>
+    /// <returns>The exists directory result.</returns>
     public static bool ExistsDirectory(StorageFolder rootFolder)
     {
         return  ExistsFolder(rootFolder);
@@ -401,16 +523,35 @@ public static class FSApps //: IAsync
         return true;
     }
 
+    /// <summary>
+    /// Get storage file sync.
+    /// </summary>
+    /// <param name="folder">The folder.</param>
+    /// <param name="file">The file.</param>
+    /// <returns>The get storage file sync result.</returns>
     public static StorageFile GetStorageFileSync(StorageFolder folder, string file)
     {
         return GetStorageFile(folder, file);
     }
 
+    /// <summary>
+    /// Get storage file.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="soubor">The soubor.</param>
+    /// <returns>The get storage file result.</returns>
     public static StorageFile GetStorageFile(StorageFolder storageFolder, string soubor)
     {
         return GetStorageFile(storageFolder, soubor, false);
     }
 
+    /// <summary>
+    /// Get storage file.
+    /// </summary>
+    /// <param name="storageFolder">The storage folder.</param>
+    /// <param name="soubor">The soubor.</param>
+    /// <param name="odstranitPrazdneSlozky">The odstranit prazdne slozky.</param>
+    /// <returns>The get storage file result.</returns>
     public static StorageFile GetStorageFile(StorageFolder storageFolder, string soubor, bool odstranitPrazdneSlozky)
     {
         StorageFile storageFile = GetResult<StorageFile>( storageFolder.CreateFileAsync(soubor, CreationCollisionOption.OpenIfExists).AsTask());
@@ -450,6 +591,12 @@ public static class FSApps //: IAsync
         return null;
     }
 
+    /// <summary>
+    /// Get result t.
+    /// </summary>
+    /// <typeparam name="T">The type T.</typeparam>
+    /// <param name="task">The task.</param>
+    /// <returns>The get result t result.</returns>
     public static T GetResult<T>(Task<T> task)
     {
         return AsyncHelper.ci.GetResult<T>(task);

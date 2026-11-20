@@ -15,15 +15,24 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the popup buttons type.
+    /// </summary>
     public sealed partial class PopupButtons : UserControl
     {
 static Type type = typeof(PopupButtons);
+        /// <summary>
+        /// Initializes a new instance of the popup buttons class.
+        /// </summary>
         public PopupButtons()
         {
             this.InitializeComponent();
             
             MinWidth = 300;
         }
+        /// <summary>
+        /// The custom control.
+        /// </summary>
         public UIElement CustomControl
         {
             set
@@ -35,6 +44,9 @@ static Type type = typeof(PopupButtons);
                 return sp.Children[0];
             }
         }
+        /// <summary>
+        /// The dialog result.
+        /// </summary>
         public bool? DialogResult
         {
             set
@@ -42,7 +54,13 @@ static Type type = typeof(PopupButtons);
                 ChangeDialogResult(value);
             }
         }
+        /// <summary>
+        /// The change dialog result.
+        /// </summary>
         public event VoidBoolNullable ChangeDialogResult;
+        /// <summary>
+        /// The is enabled btn ok.
+        /// </summary>
         public bool IsEnabledBtnOk
         {
             set
@@ -50,6 +68,9 @@ static Type type = typeof(PopupButtons);
                 btnOk.IsEnabled = value;
             }
         }
+        /// <summary>
+        /// The is enabled btn apply.
+        /// </summary>
         public bool IsEnabledBtnApply
         {
             set
@@ -57,6 +78,9 @@ static Type type = typeof(PopupButtons);
                 btnApply.IsEnabled = value;
             }
         }
+        /// <summary>
+        /// The visibility btn apply.
+        /// </summary>
         public Visibility VisibilityBtnApply
         {
             set
@@ -76,6 +100,10 @@ static Type type = typeof(PopupButtons);
         {
             DialogResult = null;
         }
+        /// <summary>
+        /// Accept.
+        /// </summary>
+        /// <param name="input">The input.</param>
         public void Accept(object input)
         {
             ThrowEx.Custom("Only buttons cant be accepted, because hasnt data for accept.");

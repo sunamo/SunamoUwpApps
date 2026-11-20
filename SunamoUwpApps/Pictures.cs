@@ -12,12 +12,23 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+    /// <summary>
+    /// Represents the pictures type.
+    /// </summary>
     public static class Pictures 
     {
 
 
         
 
+        /// <summary>
+        /// Transform image.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="newWidth">The new width.</param>
+        /// <param name="newHeight">The new height.</param>
+        /// <param name="newFullPath">The new full path.</param>
+        /// <returns>The transform image result.</returns>
         public static  Stream TransformImage(StorageFile file, double newWidth, double newHeight, string newFullPath)
         {
             Stream result = null;
@@ -60,6 +71,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
         }
 
 
+        /// <summary>
+        /// UI element to image.
+        /// </summary>
+        /// <param name="uie">The uie.</param>
+        /// <returns>The UI element to image result.</returns>
         public static BitmapImage UIElementToImage(UIElement uie)
         {
             var renderTargetBitmap = new RenderTargetBitmap();
@@ -87,6 +103,12 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return null;
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public static T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

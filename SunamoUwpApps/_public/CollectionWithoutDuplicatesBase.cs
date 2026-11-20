@@ -2,6 +2,9 @@
 
 using System.Diagnostics;
 
+/// <summary>
+/// Represents the collection without duplicates base t type.
+/// </summary>
 public abstract class CollectionWithoutDuplicatesBase<T>
 {
     /// <summary>
@@ -33,6 +36,9 @@ public abstract class CollectionWithoutDuplicatesBase<T>
     /// </summary>
     public List<string> StringRepresentations { get; set; }
 
+    /// <summary>
+    /// Initializes a new instance of the collection without duplicates base class.
+    /// </summary>
     public CollectionWithoutDuplicatesBase()
     {
         if (ShouldBreakOnConstruction) Debugger.Break();

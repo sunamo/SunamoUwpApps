@@ -17,12 +17,24 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 
+    /// <summary>
+    /// Represents the sunamo browser type.
+    /// </summary>
     public sealed partial class SunamoBrowser : UserControl, ISunamoAppsBrowser<Control>, IAsync
     {
+        /// <summary>
+        /// The web view to sunamo browser.
+        /// </summary>
         public static Dictionary<WebView2, SunamoBrowser> webViewToSunamoBrowser = new Dictionary<WebView2, SunamoBrowser>();
         bool isNavigating = false;
+        /// <summary>
+        /// Gets or sets the sb host.
+        /// </summary>
         public ISunamoBrowserHost sbHost { get; set; }
 
+        /// <summary>
+        /// The is navigating.
+        /// </summary>
         public bool IsNavigating
         {
             get
@@ -36,6 +48,9 @@ using System.Threading.Tasks;
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the sunamo browser class.
+        /// </summary>
         public SunamoBrowser()
         {
             
@@ -59,6 +74,9 @@ using System.Threading.Tasks;
             StopLoadingCommand.Set(this);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the sunamo browser class.
+        /// </summary>
         ~SunamoBrowser()
         {
             if (webView != null)
@@ -68,6 +86,9 @@ using System.Threading.Tasks;
             
         }
 
+        /// <summary>
+        /// The source.
+        /// </summary>
         public Uri Source
         {
             get
@@ -82,6 +103,9 @@ using System.Threading.Tasks;
 
         static SunamoBrowser instance = null;
 
+        /// <summary>
+        /// The instance.
+        /// </summary>
         public static SunamoBrowser Instance
         {
             get
@@ -94,6 +118,9 @@ using System.Threading.Tasks;
             }
         }
 
+        /// <summary>
+        /// The web view.
+        /// </summary>
         public WebView2 WebView
         {
             get
@@ -113,6 +140,9 @@ using System.Threading.Tasks;
         
         HtmlDocument hd = null;
 
+        /// <summary>
+        /// The html document.
+        /// </summary>
         public HtmlDocument HtmlDocument
         {
             
@@ -124,6 +154,10 @@ using System.Threading.Tasks;
 
         string ISunamoBrowser.HTML => html;
 
+        /// <summary>
+        /// Get html document.
+        /// </summary>
+        /// <returns>The get html document result.</returns>
         public async Task <HtmlDocument> GetHtmlDocument()
         {
             if (IsNavigating)
@@ -136,6 +170,10 @@ using System.Threading.Tasks;
             return hd;
         }
 
+        /// <summary>
+        /// Click.
+        /// </summary>
+        /// <param name="buttonId">The button id.</param>
         public void Click(string buttonId)
         {
              Eval("document.getElementById('" + buttonId + "').click();");
@@ -163,6 +201,11 @@ using System.Threading.Tasks;
             return tag.content;
         }
 
+        /// <summary>
+        /// Eval.
+        /// </summary>
+        /// <param name="javascript">The javascript.</param>
+        /// <returns>The eval result.</returns>
         public async Task<string> Eval(string javascript)
         {
             WebViewTag tag = webView.Tag as WebViewTag;
@@ -211,12 +254,20 @@ using System.Threading.Tasks;
             return string.Empty;
         }
 
+        /// <summary>
+        /// To string.
+        /// </summary>
+        /// <returns>The to string result.</returns>
         public override string ToString()
         {
             return (webView.Tag as WebViewTag).toString;
 
         }
 
+        /// <summary>
+        /// HTML.
+        /// </summary>
+        /// <returns>The HTML result.</returns>
         public string HTML()
         {
             return (webView.Tag as WebViewTag).content;
@@ -234,6 +285,9 @@ using System.Threading.Tasks;
         }
 
 
+        /// <summary>
+        /// The source updated.
+        /// </summary>
         public event VoidUri SourceUpdated;
 
         private void webView_NavigationStarting(WebView2 sender, CoreWebView2NavigationStartingEventArgs args)
@@ -254,6 +308,10 @@ using System.Threading.Tasks;
             //bool b = cmdStopLoadingCommand.CanExecute(null);
         }
 
+        /// <summary>
+        /// Navigate.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
         public async Task Navigate(Uri uri)
         {
             webView.Source = uri;
@@ -261,21 +319,38 @@ using System.Threading.Tasks;
 
         }
 
+        /// <summary>
+        /// Scroll to end.
+        /// </summary>
+        /// <returns>The scroll to end result.</returns>
         public bool ScrollToEnd()
         {
             return false;
         }
 
+        /// <summary>
+        /// Init.
+        /// </summary>
         public void Init()
         {
             
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);
         }
 
+        /// <summary>
+        /// Navigate.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
         public void Navigate(string uri)
         {
              Navigate(new Uri(uri));

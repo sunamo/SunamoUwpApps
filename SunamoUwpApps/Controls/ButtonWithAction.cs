@@ -9,15 +9,31 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the button with action type.
+    /// </summary>
     public  class ButtonWithAction : UserControl, IIdentificator
     {
         VoidObject action = null;
         FrameworkElement fe = null;
         //sunamo.Action action = sunamo.Action.Nope;
+        /// <summary>
+        /// The id.
+        /// </summary>
         public object Id
         {
             get; set;
         }
+        /// <summary>
+        /// Init button with action.
+        /// </summary>
+        /// <param name="visible">The visible.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="action">The action.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="idObject">The id object.</param>
+        /// <returns>The init button with action result.</returns>
         public ButtonWithAction InitButtonWithAction(bool visible, double width, double height, VoidObject action, object content, object idObject)
         {
             if (visible)
@@ -64,6 +80,10 @@ using Microsoft.UI.Xaml.Controls;
         }
 
 
+        /// <summary>
+        /// Set button content.
+        /// </summary>
+        /// <param name="content">The content.</param>
         protected void SetButtonContent(object content)
         {
             if (fe is Button)

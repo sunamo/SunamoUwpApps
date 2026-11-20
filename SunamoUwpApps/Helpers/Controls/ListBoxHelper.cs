@@ -21,6 +21,9 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using apps.Helpers;
 using System.Collections.ObjectModel;
 
+    /// <summary>
+    /// Represents the list box helper t type.
+    /// </summary>
     public class ListBoxHelper<T> : SelectorHelper<T> where T : IIdentificator
     {
         static Type type = typeof(ListBoxHelper);
@@ -35,12 +38,19 @@ using System.Collections.ObjectModel;
                 listBox.SelectionMode = selectionMode;
         }
 
+        /// <summary>
+        /// Remove from selector.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected override void RemoveFromSelector(object value)
         {
             ThrowEx.NotImplementedMethod();
         }
     }
 
+    /// <summary>
+    /// Represents the list box helper type.
+    /// </summary>
     public class ListBoxHelper : SelectorHelper
     {
         static Type type = typeof(SelectorHelper);
@@ -55,6 +65,10 @@ using System.Collections.ObjectModel;
             listBox.SelectionMode = selectionMode;
         }
 
+        /// <summary>
+        /// Remove from selector.
+        /// </summary>
+        /// <param name="value">The value.</param>
         protected override void RemoveFromSelector(object value)
         {
             ThrowEx.NotImplementedMethod();
