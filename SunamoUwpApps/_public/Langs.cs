@@ -1,5 +1,8 @@
 namespace apps._public;
 
+/// <summary>
+/// Represents the langs type.
+/// </summary>
 public enum Langs
 {
     #region For easy copying to other files

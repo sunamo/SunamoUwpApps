@@ -13,8 +13,16 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the wpf control generator type.
+    /// </summary>
     public static class WpfControlGenerator
     {
+        /// <summary>
+        /// Vertical colored list.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <returns>The vertical colored list result.</returns>
         public static StackPanel VerticalColoredList(List<ILogMessage<Color, StorageFile>> items)
         {
             StackPanel stackPanel = new StackPanel();
@@ -33,6 +41,11 @@ using Microsoft.UI.Xaml.Media;
             return stackPanel;
         }
 
+        /// <summary>
+        /// Log message.
+        /// </summary>
+        /// <param name="logMessage">The log message.</param>
+        /// <returns>The log message result.</returns>
         public static Grid LogMessage(ILogMessage<Color, StorageFile> logMessage)
         {
                 Grid grid = new Grid();
@@ -61,6 +74,12 @@ using Microsoft.UI.Xaml.Media;
             //return g;
         }
 
+        /// <summary>
+        /// Get grid with fixed width of column.
+        /// </summary>
+        /// <param name="rows">The rows.</param>
+        /// <param name="widthColumn">The width column.</param>
+        /// <returns>The get grid with fixed width of column result.</returns>
         public static Grid GetGridWithFixedWidthOfColumn(List<string> rows, List<GridLength> widthColumn)
         {
             Grid grid = new Grid();
@@ -79,6 +98,14 @@ using Microsoft.UI.Xaml.Media;
             return grid;
         }
 
+        /// <summary>
+        /// List view with fixed header.
+        /// </summary>
+        /// <param name="ActualWidth">The actual width.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="header">The header.</param>
+        /// <param name="widthColumn">The width column.</param>
+        /// <returns>The list view with fixed header result.</returns>
         public static UIElement ListViewWithFixedHeader(double ActualWidth, List<List<string>> rows, List<string> header, List<double> widthColumn)
         {
             SunamoDictionary<int, bool> showColumns = new SunamoDictionary<int, bool>();

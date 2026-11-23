@@ -8,13 +8,29 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the check box helper type.
+    /// </summary>
     public static class CheckBoxHelper
     {
+        /// <summary>
+        /// Get.
+        /// </summary>
+        /// <param name="noWrap">The no wrap.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>The get result.</returns>
         public static CheckBox Get(TextWrapping noWrap, string value)
         {
             return Get(noWrap, value, null);
         }
 
+        /// <summary>
+        /// Get.
+        /// </summary>
+        /// <param name="noWrap">The no wrap.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="tag">The tag.</param>
+        /// <returns>The get result.</returns>
         public static CheckBox Get(TextWrapping noWrap, string value, object tag)
         {
             CheckBox chb = new CheckBox();

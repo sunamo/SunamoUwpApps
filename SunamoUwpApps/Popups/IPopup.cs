@@ -9,9 +9,18 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the i popup events t type.
+    /// </summary>
     public interface IPopupEvents<T>
     {
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         event VoidT<T> ClickCancel;
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         event VoidT<T> ClickOK;
     }
 

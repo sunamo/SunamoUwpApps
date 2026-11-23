@@ -16,20 +16,37 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the log UC type.
+    /// </summary>
     public sealed partial class LogUC : UserControl, IUserControl, IKeysHandler
     {
+        /// <summary>
+        /// Initializes a new instance of the log UC class.
+        /// </summary>
         public LogUC()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets the title.
+        /// </summary>
         public string Title => "Log";
 
+        /// <summary>
+        /// Handle key.
+        /// </summary>
+        /// <param name="keyEventArgs">The key event args.</param>
+        /// <returns>The handle key result.</returns>
         public bool HandleKey(KeyEventArgs keyEventArgs)
         {
             return false;
         }
 
+        /// <summary>
+        /// Init.
+        /// </summary>
         public void Init()
         {
             

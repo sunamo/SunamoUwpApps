@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI;
 
+/// <summary>
+/// Represents the log message abstract type.
+/// </summary>
 public class LogMessageAbstract : LogMessageAbstract<Color, StorageFile>
 {
 }

@@ -14,10 +14,16 @@ using Windows.Storage.Pickers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the select file type.
+    /// </summary>
     public partial class SelectFile : UserControl, IPopupResponsive
     {
         Border border = new Border();
 
+        /// <summary>
+        /// Initializes a new instance of the select file class.
+        /// </summary>
         public SelectFile()
         {
             InitializeComponent();
@@ -42,9 +48,18 @@ using Microsoft.UI.Xaml.Media;
             return storageFile.Path;
         }
 
+        /// <summary>
+        /// The file selected.
+        /// </summary>
         public event VoidStorageFile FileSelected;
 
+        /// <summary>
+        /// The file type.
+        /// </summary>
         public PickerLocationId FileType = PickerLocationId.PicturesLibrary;
+        /// <summary>
+        /// The ext.
+        /// </summary>
         public CollectionWithoutDuplicates<string> ext = new CollectionWithoutDuplicates<string>();
 
         private async void btnSelectFile_Click(object sender, RoutedEventArgs eventArgs)
@@ -75,6 +90,10 @@ using Microsoft.UI.Xaml.Media;
 
         }
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
@@ -82,6 +101,9 @@ using Microsoft.UI.Xaml.Media;
 
         StorageFile selectedFile = null;
 
+        /// <summary>
+        /// The selected file.
+        /// </summary>
         public StorageFile SelectedFile
         {
             get
@@ -94,6 +116,9 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -107,6 +132,9 @@ using Microsoft.UI.Xaml.Media;
         }
 
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }

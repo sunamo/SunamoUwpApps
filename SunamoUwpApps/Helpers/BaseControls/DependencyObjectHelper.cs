@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the dependency object helper type.
+    /// </summary>
     public static class DependencyObjectHelper
     {
+        /// <summary>
+        /// Find visual child t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="obj">The obj.</param>
+        /// <returns>The find visual child t result.</returns>
         public static T FindVisualChild<T>(DependencyObject obj)
     where T : DependencyObject
         {

@@ -15,8 +15,15 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+    /// <summary>
+    /// Represents the framework element helper type.
+    /// </summary>
     public static class FrameworkElementHelper 
     {
+        /// <summary>
+        /// Debug all sizes.
+        /// </summary>
+        /// <param name="frameworkElement">The framework element.</param>
         public static void DebugAllSizes(FrameworkElement frameworkElement)
         {
             DebugLogger.Instance.WriteLine("***");
@@ -31,6 +38,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
             DebugLogger.Instance.WriteLine("***");
         }
 
+        /// <summary>
+        /// Get element rect.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <returns>The get element rect result.</returns>
         public static Rect GetElementRect(FrameworkElement element)
         {
             GeneralTransform buttonTransform = element.TransformToVisual(null);
@@ -38,11 +50,21 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return new Rect(point, new Size(element.ActualWidth, element.ActualHeight));
         }
 
+        /// <summary>
+        /// Set min max width.
+        /// </summary>
+        /// <param name="frameworkElement">The framework element.</param>
+        /// <param name="value">The value.</param>
         public static void SetMinMaxWidth(FrameworkElement frameworkElement, double value)
         {
             frameworkElement.MinWidth = frameworkElement.MaxWidth = value;
         }
 
+        /// <summary>
+        /// Set min max height.
+        /// </summary>
+        /// <param name="frameworkElement">The framework element.</param>
+        /// <param name="value">The value.</param>
         public static void SetMinMaxHeight(FrameworkElement frameworkElement, double value)
         {
             frameworkElement.MinHeight = frameworkElement.MaxHeight = value;
@@ -57,6 +79,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return new Size(frameworkElement.ActualWidth, frameworkElement.ActualHeight);
         }
 
+        /// <summary>
+        /// Set max content size.
+        /// </summary>
+        /// <param name="frameworkElement">The framework element.</param>
+        /// <param name="size">The size.</param>
         public static void SetMaxContentSize(FrameworkElement frameworkElement, Size size)
         {
             frameworkElement.MaxWidth = size.Width;
@@ -75,6 +102,13 @@ using Microsoft.UI.Xaml.Media.Imaging;
 
         
 
+        /// <summary>
+        /// Capture to stream async.
+        /// </summary>
+        /// <param name="uielement">The uielement.</param>
+        /// <param name="stream">The stream.</param>
+        /// <param name="encoderId">The encoder id.</param>
+        /// <returns>The capture to stream async result.</returns>
         public static RenderTargetBitmap CaptureToStreamAsync(FrameworkElement uielement, IRandomAccessStream stream, Guid encoderId)
         {
             try
@@ -118,6 +152,12 @@ using Microsoft.UI.Xaml.Media.Imaging;
             window.Arrange(new Rect(0, 0, window.DesiredSize.Width, window.DesiredSize.Height));
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public static T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

@@ -9,14 +9,24 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Search;
 
+    /// <summary>
+    /// Represents the app data apps type.
+    /// </summary>
     public class AppDataApps : AppDataAppsAbstractBase<StorageFolder, StorageFile>, IAsync
     {
 static Type type = typeof(AppDataApps);
+        /// <summary>
+        /// The ci.
+        /// </summary>
         public static AppDataApps ci = new AppDataApps();
         private AppDataApps()
         {
             rootFolder = GetRootFolder();
         }
+        /// <summary>
+        /// Create app folders if dont exists.
+        /// </summary>
+        /// <returns>The create app folders if dont exists result.</returns>
         public async Task< bool> CreateAppFoldersIfDontExists()
         {
             if (!string.IsNullOrEmpty(ThisApp.Name))
@@ -48,10 +58,25 @@ static Type type = typeof(AppDataApps);
             }
             return _def;
         }
+        /// <summary>
+        /// Read file of settings int.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="def">The def.</param>
+        /// <returns>The read file of settings int result.</returns>
         public int ReadFileOfSettingsInt(string name, int def)
         {
             return BTS.TryParseInt( ReadFile(AppFolders.Settings, name), def);
         }
+        /// <summary>
+        /// Read file of settings int values.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="def">The def.</param>
+        /// <param name="items">The items.</param>
+        /// <param name="lowerOrEqual">The lower or equal.</param>
+        /// <param name="larger">The larger.</param>
+        /// <returns>The read file of settings int values result.</returns>
         public int ReadFileOfSettingsIntValues(string name, int def, List<int> items, bool lowerOrEqual, bool larger)
         {
             int number = BTS.TryParseInt( ReadFile(AppFolders.Settings, name), def);
@@ -106,14 +131,31 @@ static Type type = typeof(AppDataApps);
             }
             return number;
         }
+        /// <summary>
+        /// Read file of controls int.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="def">The def.</param>
+        /// <returns>The read file of controls int result.</returns>
         public int ReadFileOfControlsInt(string name, int def)
         {
             return BTS.TryParseInt( ReadFile(AppFolders.Controls, name), def);
         }
+        /// <summary>
+        /// Read file of controls bool.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="def">The def.</param>
+        /// <returns>The read file of controls bool result.</returns>
         public bool ReadFileOfControlsBool(string name, bool def)
         {
             return BTS.TryParseBool( ReadFile(AppFolders.Controls, name), def);
         }
+        /// <summary>
+        /// Read file of controls.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>The read file of controls result.</returns>
         public  string ReadFileOfControls(string name)
         {
             return  AppDataApps.ci.ReadFile(AppFolders.Controls, name);
@@ -129,6 +171,12 @@ static Type type = typeof(AppDataApps);
             string result = TFApps.ReadFile(storageFile);
             return result;
         }
+        /// <summary>
+        /// Read file.
+        /// </summary>
+        /// <param name="appFolder">The app folder.</param>
+        /// <param name="filename">The filename.</param>
+        /// <returns>The read file result.</returns>
         public  string ReadFile(AppFolders appFolder, string filename)
         {
             StorageFile storageFile = null;
@@ -158,6 +206,13 @@ static Type type = typeof(AppDataApps);
             StorageFile fileToSave =  GetFile(appFolder, file);
              TFApps.SaveFile(value, fileToSave);
         }
+        /// <summary>
+        /// Read file of settings enum t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="fnAudioType">The fn audio type.</param>
+        /// <param name="def">The def.</param>
+        /// <returns>The read file of settings enum t result.</returns>
         public T ReadFileOfSettingsEnum<T>(string fnAudioType, T def) where T : struct, IConvertible
         {
             T item = default(T);
@@ -188,6 +243,13 @@ static Type type = typeof(AppDataApps);
             StorageFile fileToSave =  GetFile(appFolder, file);
              TFApps.AppendToFile(value, fileToSave);
         }
+        /// <summary>
+        /// Combine.
+        /// </summary>
+        /// <param name="appFolders">The app folders.</param>
+        /// <param name="first">The first.</param>
+        /// <param name="second">The second.</param>
+        /// <returns>The combine result.</returns>
         public StorageFile Combine(AppFolders appFolders, string first, string second)
         {
             StorageFolder storageFolder =  GetFolder(appFolders);
@@ -195,6 +257,13 @@ static Type type = typeof(AppDataApps);
             StorageFile storageFile =  FSApps.ExistsFileCreateIfNot(subFolder, second);
             return storageFile;
         }
+        /// <summary>
+        /// Get files.
+        /// </summary>
+        /// <param name="cache">The cache.</param>
+        /// <param name="mask">The mask.</param>
+        /// <param name="ext">The ext.</param>
+        /// <returns>The get files result.</returns>
         public List<StorageFile> GetFiles(AppFolders cache, string mask, string ext)
         {
             List<StorageFile> result = new List<StorageFile>();
@@ -213,6 +282,12 @@ static Type type = typeof(AppDataApps);
             }
             return result;
         }
+        /// <summary>
+        /// Read file of controls bool.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>The read file of controls bool result.</returns>
         public bool ReadFileOfControlsBool(object name, bool value)
         {
             ThrowEx.NotImplementedMethod();
@@ -227,6 +302,11 @@ static Type type = typeof(AppDataApps);
             StorageFolder storageFolder =  FSApps.ExistsFolderCreateIfNot(sunamo, ThisApp.Name);
             return storageFolder;
         }
+        /// <summary>
+        /// Get folder.
+        /// </summary>
+        /// <param name="appFolderType">The app folder type.</param>
+        /// <returns>The get folder result.</returns>
         public override  StorageFolder GetFolder(AppFolders appFolderType)
         {
             // Toto je protože to zpomaluje, proto následující řádek je hovadina
@@ -235,6 +315,10 @@ static Type type = typeof(AppDataApps);
             StorageFolder appFolder = FSApps.ExistsFolderCreateIfNot(rootFolder, appFolderType.ToString());
             return appFolder;
         }
+        /// <summary>
+        /// Is root folder ok.
+        /// </summary>
+        /// <returns>The is root folder ok result.</returns>
         public override  bool IsRootFolderOk()
         {
             if (IsRootFolderNull())
@@ -257,19 +341,37 @@ static Type type = typeof(AppDataApps);
             StorageFile storageFile = GetResult<StorageFile>( appFolder.CreateFileAsync(file, CreationCollisionOption.OpenIfExists).AsTask());
             return storageFile;
         }
+        /// <summary>
+        /// Save file.
+        /// </summary>
+        /// <param name="content">The content.</param>
+        /// <param name="storageFile">The storage file.</param>
         protected override void SaveFile(string content, StorageFile storageFile)
         {
             TFApps.SaveFile(content, storageFile);
         }
+        /// <summary>
+        /// Append to file.
+        /// </summary>
+        /// <param name="content">The content.</param>
+        /// <param name="storageFile">The storage file.</param>
         public override void AppendToFile(string content, StorageFile storageFile)
         {
              TFApps.AppendToFile(content, storageFile);
         }
+        /// <summary>
+        /// Is root folder null.
+        /// </summary>
+        /// <returns>The is root folder null result.</returns>
         public override bool IsRootFolderNull()
         {
             StorageFolder def = default(StorageFolder);
             return EqualityComparer<StorageFolder>.Default.Equals(rootFolder, def);
         }
+        /// <summary>
+        /// Get sunamo folder.
+        /// </summary>
+        /// <returns>The get sunamo folder result.</returns>
         public override  StorageFolder GetSunamoFolder()
         {
             var result =  FSApps.ExistsFolderCreateIfNot(Windows.Storage.ApplicationData.Current.LocalFolder, "sunamo");
@@ -303,10 +405,24 @@ static Type type = typeof(AppDataApps);
             }
             return sunamo2;
         }
+        /// <summary>
+        /// Get file in subfolder.
+        /// </summary>
+        /// <param name="output">The output.</param>
+        /// <param name="subfolder">The subfolder.</param>
+        /// <param name="file">The file.</param>
+        /// <param name="ext">The ext.</param>
+        /// <returns>The get file in subfolder result.</returns>
         public override StorageFile GetFileInSubfolder(AppFolders output, string subfolder, string file, string ext)
         {
             return AppDataApps.ci.GetFile(AppFolders.Output, subfolder + "\\" + file + ext);
         }
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the panel helper type.
+    /// </summary>
     public static class PanelHelper
     {
         /// <summary>

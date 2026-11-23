@@ -7,14 +7,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
 
+    /// <summary>
+    /// Represents the string hex color converter type.
+    /// </summary>
     public static class StringHexColorConverter //: ISimpleConverter<string, Color>
     {
 
+        /// <summary>
+        /// Convert to.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        /// <returns>The convert to result.</returns>
         public static string ConvertTo(Color color)
         {
             return SH.Format2("#{0:X2}{1:X2}{2:X2}{3:X2}", color.A, color.R, color.G, color.B);
         }
 
+        /// <summary>
+        /// Convert from.
+        /// </summary>
+        /// <param name="task">The task.</param>
+        /// <returns>The convert from result.</returns>
         public static Color ConvertFrom(string task)
         {
             Color color = new Color();

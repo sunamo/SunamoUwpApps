@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the go back command type.
+    /// </summary>
     public class GoBackCommand : ISunamoAsyncCommand
     {
         static bool? previousCanExecute = null;
@@ -21,6 +24,11 @@ using Microsoft.UI.Xaml.Controls;
         /// </summary>
         static SunamoBrowser sunamoBrowser = null;
 
+        /// <summary>
+        /// Set.
+        /// </summary>
+        /// <param name="sunamoBrowser2">The sunamo browser 2.</param>
+        /// <returns>The set result.</returns>
         public async static Task< bool> Set(SunamoBrowser sunamoBrowser2)
         {
             ISunamoAsyncCommand currentCommand = SunamoBrowser.Instance.cmdGoBackCommand;
@@ -51,6 +59,10 @@ using Microsoft.UI.Xaml.Controls;
             return canExecute;
         }
 
+        /// <summary>
+        /// Raise can execute changed.
+        /// </summary>
+        /// <param name="canNow">The can now.</param>
         public void RaiseCanExecuteChanged(bool canNow)
         {
             if (CanExecuteChanged != null)
@@ -59,8 +71,16 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
+        /// <summary>
+        /// The can execute changed.
+        /// </summary>
         public event VoidObjectBool CanExecuteChanged;
 
+        /// <summary>
+        /// Can execute.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>The can execute result.</returns>
         public async Task< bool> CanExecute(object parameter)
         {
             if (webView != null)
@@ -87,6 +107,9 @@ using Microsoft.UI.Xaml.Controls;
         }
     }
 
+    /// <summary>
+    /// Represents the go forward command type.
+    /// </summary>
     public class GoForwardCommand : ISunamoAsyncCommand
     {
         static bool? previousCanExecute = null;
@@ -99,6 +122,11 @@ using Microsoft.UI.Xaml.Controls;
         /// </summary>
         static SunamoBrowser sunamoBrowser = null;
 
+        /// <summary>
+        /// Set.
+        /// </summary>
+        /// <param name="sunamoBrowser2">The sunamo browser 2.</param>
+        /// <returns>The set result.</returns>
         public async static Task< bool> Set(SunamoBrowser sunamoBrowser2)
         {
             ISunamoAsyncCommand currentCommand = SunamoBrowser.Instance.cmdGoForwardCommand;
@@ -128,6 +156,10 @@ using Microsoft.UI.Xaml.Controls;
             return canExecute;
         }
 
+        /// <summary>
+        /// Raise can execute changed.
+        /// </summary>
+        /// <param name="canNow">The can now.</param>
         public void RaiseCanExecuteChanged(bool canNow)
         {
             if (CanExecuteChanged != null)
@@ -136,8 +168,16 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
+        /// <summary>
+        /// The can execute changed.
+        /// </summary>
         public event VoidObjectBool CanExecuteChanged;
 
+        /// <summary>
+        /// Can execute.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>The can execute result.</returns>
         public async Task<bool> CanExecute(object parameter)
         {
             if (webView != null)
@@ -164,6 +204,9 @@ using Microsoft.UI.Xaml.Controls;
         }
     }
 
+    /// <summary>
+    /// Represents the reload command type.
+    /// </summary>
     public class ReloadCommand : ISunamoAsyncCommand
     {
         static bool? previousCanExecute = null;
@@ -176,6 +219,11 @@ using Microsoft.UI.Xaml.Controls;
         /// </summary>
         static SunamoBrowser sunamoBrowser = null;
 
+        /// <summary>
+        /// Set.
+        /// </summary>
+        /// <param name="sunamoBrowser2">The sunamo browser 2.</param>
+        /// <returns>The set result.</returns>
         public async static Task< bool> Set(SunamoBrowser sunamoBrowser2)
         {
             ISunamoAsyncCommand currentCommand = SunamoBrowser.Instance.cmdReloadCommand;
@@ -205,6 +253,10 @@ using Microsoft.UI.Xaml.Controls;
             return canExecute;
         }
 
+        /// <summary>
+        /// Raise can execute changed.
+        /// </summary>
+        /// <param name="canNow">The can now.</param>
         public void RaiseCanExecuteChanged(bool canNow)
         {
             if (CanExecuteChanged != null)
@@ -213,8 +265,16 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
+        /// <summary>
+        /// The can execute changed.
+        /// </summary>
         public event VoidObjectBool CanExecuteChanged;
 
+        /// <summary>
+        /// Can execute.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>The can execute result.</returns>
         public async Task<bool> CanExecute(object parameter)
         {
             if (webView != null)
@@ -237,6 +297,9 @@ using Microsoft.UI.Xaml.Controls;
         }
     }
 
+    /// <summary>
+    /// Represents the stop loading command type.
+    /// </summary>
     public class StopLoadingCommand : ISunamoAsyncCommand
     {
         static bool? previousCanExecute = null;
@@ -249,6 +312,11 @@ using Microsoft.UI.Xaml.Controls;
         /// </summary>
         static SunamoBrowser sunamoBrowser = null;
 
+        /// <summary>
+        /// Set.
+        /// </summary>
+        /// <param name="sunamoBrowser2">The sunamo browser 2.</param>
+        /// <returns>The set result.</returns>
         public async static Task<bool> Set(SunamoBrowser sunamoBrowser2)
         {
             ISunamoAsyncCommand currentCommand = SunamoBrowser.Instance.cmdStopLoadingCommand;
@@ -278,6 +346,10 @@ using Microsoft.UI.Xaml.Controls;
             return canExecute;
         }
 
+        /// <summary>
+        /// Raise can execute changed.
+        /// </summary>
+        /// <param name="canNow">The can now.</param>
         public void RaiseCanExecuteChanged(bool canNow)
         {
             if (CanExecuteChanged != null)
@@ -286,8 +358,16 @@ using Microsoft.UI.Xaml.Controls;
             }
         }
 
+        /// <summary>
+        /// The can execute changed.
+        /// </summary>
         public event VoidObjectBool CanExecuteChanged;
 
+        /// <summary>
+        /// Can execute.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>The can execute result.</returns>
         public async Task< bool> CanExecute(object parameter)
         {
             if (webView != null)

@@ -1,5 +1,8 @@
 namespace apps._public;
 
+/// <summary>
+/// Represents the i clipboard monitor type.
+/// </summary>
 public interface IClipboardMonitor
 {
     /// <summary>

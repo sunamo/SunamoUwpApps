@@ -13,8 +13,14 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the wpf app type.
+    /// </summary>
     public  class WpfApp : ThisApp
     {
+        /// <summary>
+        /// Initializes a new instance of the wpf app class.
+        /// </summary>
         public WpfApp()
         {
             StatusSetted += WpfApp_StatusSetted;
@@ -25,20 +31,41 @@ using Microsoft.UI.Xaml.Media;
             SetStatus(TypeOfMessage.Information, message);
         }
 
+        /// <summary>
+        /// The mp.
+        /// </summary>
         public static IEssentialMainPage mp = null;
+        /// <summary>
+        /// The with time.
+        /// </summary>
         public static bool withTime = true;
         
+        /// <summary>
+        /// The cd.
+        /// </summary>
         public static CoreDispatcher cd = null;
+        /// <summary>
+        /// The cdp.
+        /// </summary>
         public static CoreDispatcherPriority cdp = CoreDispatcherPriority.Normal;
 
 
 #if DEBUG
+        /// <summary>
+        /// Write debug.
+        /// </summary>
+        /// <param name="v">The v.</param>
         public static void WriteDebug(string v)
         {
             Debug.WriteLine(v);
         }
 #endif
 
+        /// <summary>
+        /// Set status time meter.
+        /// </summary>
+        /// <param name="timeMeter">The time meter.</param>
+        /// <param name="operation">The operation.</param>
         public static void SetStatusTimeMeter( TimeMeter timeMeter, string operation)
         {
             operation = timeMeter.Stop(operation);
@@ -48,9 +75,20 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// The tb last other message.
+        /// </summary>
         public static TextBlock tbLastOtherMessage;
+        /// <summary>
+        /// The tb last error or warning.
+        /// </summary>
         public static TextBlock tbLastErrorOrWarning;
 
+        /// <summary>
+        /// Set status to text block.
+        /// </summary>
+        /// <param name="messageType">The message type.</param>
+        /// <param name="status">The status.</param>
         public static void SetStatusToTextBlock(TypeOfMessage messageType, string status)
         {
             Color color = LogService.Instance .GetForegroundBrushOfTypeOfMessage(messageType);
@@ -95,6 +133,11 @@ using Microsoft.UI.Xaml.Media;
 
         }
 
+        /// <summary>
+        /// Set foreground.
+        /// </summary>
+        /// <param name="tbLastOtherMessage">The tb last other message.</param>
+        /// <param name="color">The color.</param>
         public static void SetForeground(TextBlock tbLastOtherMessage, Color color)
         {
             if (tbLastOtherMessage != null)
@@ -106,6 +149,11 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Set text.
+        /// </summary>
+        /// <param name="lblStatusDownload">The lbl status download.</param>
+        /// <param name="status">The status.</param>
         public static void SetText(TextBlock lblStatusDownload, string status)
         {
             if (lblStatusDownload != null)
@@ -117,6 +165,11 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Set is enabled.
+        /// </summary>
+        /// <param name="uie">The uie.</param>
+        /// <param name="value">The value.</param>
         public static void SetIsEnabled(Control uie, bool? value)
         {
             if (value.HasValue)
@@ -128,6 +181,11 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Set visibility.
+        /// </summary>
+        /// <param name="uie">The uie.</param>
+        /// <param name="visibility">The visibility.</param>
         public static void SetVisibility(UIElement uie, Visibility? visibility)
         {
             if (visibility.HasValue)
@@ -139,6 +197,11 @@ using Microsoft.UI.Xaml.Media;
             }
         }
 
+        /// <summary>
+        /// Set border brush.
+        /// </summary>
+        /// <param name="borderDoManagePhotogallery">The border do manage photogallery.</param>
+        /// <param name="Value">The value.</param>
         public static void SetBorderBrush(Border borderDoManagePhotogallery, SolidColorBrush Value)
         {
             if(Value != null)

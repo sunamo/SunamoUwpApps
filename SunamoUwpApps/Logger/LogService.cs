@@ -10,11 +10,22 @@ using Windows.Storage;
 using Windows.UI;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the log service type.
+    /// </summary>
     public class LogService : LogServiceAbstract<Color, StorageFile>, IAsync
     {
 static Type type = typeof(LogService);
+        /// <summary>
+        /// The instance.
+        /// </summary>
         public static  LogService Instance = new LogService();
 
+        /// <summary>
+        /// Get background brush of type of message.
+        /// </summary>
+        /// <param name="messageType">The message type.</param>
+        /// <returns>The get background brush of type of message result.</returns>
         public override Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage messageType)
         {
             switch (messageType)
@@ -35,6 +46,11 @@ static Type type = typeof(LogService);
                     return Colors.White;
             }
         }
+        /// <summary>
+        /// Get foreground brush of type of message.
+        /// </summary>
+        /// <param name="messageType">The message type.</param>
+        /// <returns>The get foreground brush of type of message result.</returns>
         public override Color GetForegroundBrushOfTypeOfMessage(TypeOfMessage messageType)
         {
             switch (messageType)
@@ -55,6 +71,9 @@ static Type type = typeof(LogService);
                     return Colors.White;
             }
         }
+        /// <summary>
+        /// Initializes a new instance of the log service class.
+        /// </summary>
         public LogService()
         {
         }
@@ -73,6 +92,11 @@ static Type type = typeof(LogService);
             return null;
         }
 
+        /// <summary>
+        /// Read messages from file.
+        /// </summary>
+        /// <param name="fileStream">The file stream.</param>
+        /// <returns>The read messages from file result.</returns>
         protected override List<LogMessageAbstract<Color, StorageFile>> ReadMessagesFromFile(StorageFile fileStream)
         {
             Stream stream = GetResult<Stream>( fileStream.OpenStreamForReadAsync());
@@ -93,6 +117,13 @@ static Type type = typeof(LogService);
             return result;
         }
      
+        /// <summary>
+        /// Initialize.
+        /// </summary>
+        /// <param name="soubor">The soubor.</param>
+        /// <param name="invariant">The invariant.</param>
+        /// <param name="tssl">The tssl.</param>
+        /// <param name="language">The language.</param>
         public  void Initialize(string soubor, bool invariant, TextBlock tssl, Langs language)
         {
             InitializeAbstract(invariant, language);
@@ -102,19 +133,38 @@ static Type type = typeof(LogService);
         {
             ThrowEx.NotImplementedMethod();
         }
+        /// <summary>
+        /// Create message.
+        /// </summary>
+        /// <returns>The create message result.</returns>
         protected override LogMessageAbstract<Color, StorageFile> CreateMessage()
         {
             return new LogMessage();
         }
+        /// <summary>
+        /// Add.
+        /// </summary>
+        /// <param name="messageType">The message type.</param>
+        /// <param name="status">The status.</param>
+        /// <returns>The add result.</returns>
         public override LogMessageAbstract<Color, StorageFile> Add(TypeOfMessage messageType, string status)
         {
             ThrowEx.NotImplementedMethod();
             return null;
         }
+        /// <summary>
+        /// Save to file.
+        /// </summary>
         public override void SaveToFile()
         {
             ThrowEx.NotImplementedMethod();
         }
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

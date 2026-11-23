@@ -2,6 +2,9 @@ namespace apps._public;
 
 using System.Reflection;
 
+/// <summary>
+/// Represents the font weight 2 type.
+/// </summary>
 public enum FontWeight2 : ushort
 {
     /// <summary>Thin.</summary>

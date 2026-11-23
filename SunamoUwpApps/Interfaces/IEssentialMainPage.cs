@@ -9,6 +9,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 
+/// <summary>
+/// Represents the i essential main page type.
+/// </summary>
 public interface IEssentialMainPage 
 {
     //StackPanel ListBoxLogs { get; }
@@ -20,9 +23,19 @@ public interface IEssentialMainPage
     ///// <param name="alsoLb"></param>
     //Task SetStatus(LogMessageAbstract<Color, StorageFile> logMessage, bool alsoLb);
 
+    /// <summary>
+    /// Gets or sets the popup.
+    /// </summary>
     Popup popup { get; set; }
+    /// <summary>
+    /// Gets or sets the crypt delegates.
+    /// </summary>
     CryptDelegates CryptDelegates { get; set; }
 
+    /// <summary>
+    /// Enable app interface.
+    /// </summary>
+    /// <param name="enabled">The enabled.</param>
     void EnableAppInterface(bool enabled);
 }
 

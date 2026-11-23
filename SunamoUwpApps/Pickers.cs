@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 
+    /// <summary>
+    /// Represents the pickers type.
+    /// </summary>
     public static class Pickers //: IAsync
     {
         /// <summary>
@@ -31,6 +34,13 @@ using Windows.Storage.Pickers;
             return await picker.PickSingleFileAsync().AsTask();
         }
 
+        /// <summary>
+        /// Get files.
+        /// </summary>
+        /// <param name="pvm">The pvm.</param>
+        /// <param name="plid">The plid.</param>
+        /// <param name="exts">The exts.</param>
+        /// <returns>The get files result.</returns>
         public static IReadOnlyList<StorageFile> GetFiles(PickerViewMode pvm, PickerLocationId plid, params string[] exts)
         {
             var picker = new FileOpenPicker();
@@ -44,6 +54,13 @@ using Windows.Storage.Pickers;
             return GetResult<IReadOnlyList<StorageFile>>( picker.PickMultipleFilesAsync().AsTask());
         }
 
+        /// <summary>
+        /// Get folder.
+        /// </summary>
+        /// <param name="pvm">The pvm.</param>
+        /// <param name="plid">The plid.</param>
+        /// <param name="exts">The exts.</param>
+        /// <returns>The get folder result.</returns>
         public static StorageFolder GetFolder( PickerViewMode pvm, PickerLocationId plid, params string[] exts)
         {
             var picker = new FolderPicker();
@@ -57,6 +74,12 @@ using Windows.Storage.Pickers;
             return GetResult<StorageFolder>(picker.PickSingleFolderAsync().AsTask());
         }
 
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public static T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

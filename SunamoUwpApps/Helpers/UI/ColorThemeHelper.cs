@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the color theme helper type.
+    /// </summary>
     public static class ColorThemeHelper
     {
         /// <summary>

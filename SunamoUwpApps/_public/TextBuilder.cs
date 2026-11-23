@@ -1,5 +1,8 @@
 namespace apps._public;
 
+/// <summary>
+/// Represents the text builder type.
+/// </summary>
 public class TextBuilder : ITextBuilder
 {
     private bool canUndo;

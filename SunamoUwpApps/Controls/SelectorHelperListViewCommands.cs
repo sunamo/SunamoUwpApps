@@ -7,8 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+    /// <summary>
+    /// Represents the selector helper list view commands type.
+    /// </summary>
     public class SelectorHelperListViewCommands
     {
+        /// <summary>
+        /// The remove one cmd.
+        /// </summary>
         public RemoveOneCommand RemoveOneCmd
         {
             get
@@ -17,6 +23,9 @@ using System.Windows.Input;
             }
         }
 
+        /// <summary>
+        /// The save to clipboard cmd.
+        /// </summary>
         public SaveToClipboardCommand SaveToClipboardCmd
         {
             get
@@ -25,6 +34,9 @@ using System.Windows.Input;
             }
         }
 
+        /// <summary>
+        /// The run one cmd.
+        /// </summary>
         public RunOneCommand RunOneCmd
         {
             get
@@ -33,15 +45,30 @@ using System.Windows.Input;
             }
         }
 
+        /// <summary>
+        /// Represents the remove one command type.
+        /// </summary>
         public class RemoveOneCommand : ICommand
         {
+            /// <summary>
+            /// The can execute changed.
+            /// </summary>
             public event EventHandler CanExecuteChanged;
 
+            /// <summary>
+            /// Can execute.
+            /// </summary>
+            /// <param name="parameter">The parameter.</param>
+            /// <returns>The can execute result.</returns>
             public bool CanExecute(object parameter)
             {
                 return true;
             }
 
+            /// <summary>
+            /// Execute.
+            /// </summary>
+            /// <param name="parameter">The parameter.</param>
             public void Execute(object parameter)
             {
                 SelectorHelperItem selectorHelperItem = (SelectorHelperItem)parameter;
@@ -50,15 +77,30 @@ using System.Windows.Input;
             }
         }
 
+        /// <summary>
+        /// Represents the save to clipboard command type.
+        /// </summary>
         public class SaveToClipboardCommand : ICommand
         {
+            /// <summary>
+            /// The can execute changed.
+            /// </summary>
             public event EventHandler CanExecuteChanged;
 
+            /// <summary>
+            /// Can execute.
+            /// </summary>
+            /// <param name="parameter">The parameter.</param>
+            /// <returns>The can execute result.</returns>
             public bool CanExecute(object parameter)
             {
                 return true;
             }
 
+            /// <summary>
+            /// Execute.
+            /// </summary>
+            /// <param name="parameter">The parameter.</param>
             public void Execute(object parameter)
             {
                 SelectorHelperItem selectorHelperItem = (SelectorHelperItem)parameter;
@@ -67,15 +109,30 @@ using System.Windows.Input;
             }
         }
 
+        /// <summary>
+        /// Represents the run one command type.
+        /// </summary>
         public class RunOneCommand : ICommand
         {
+            /// <summary>
+            /// The can execute changed.
+            /// </summary>
             public event EventHandler CanExecuteChanged;
 
+            /// <summary>
+            /// Can execute.
+            /// </summary>
+            /// <param name="parameter">The parameter.</param>
+            /// <returns>The can execute result.</returns>
             public bool CanExecute(object parameter)
             {
                 return true;
             }
 
+            /// <summary>
+            /// Execute.
+            /// </summary>
+            /// <param name="parameter">The parameter.</param>
             public void Execute(object parameter)
             {
                 SelectorHelperItem selectorHelperItem = (SelectorHelperItem)parameter;

@@ -1,5 +1,8 @@
 ﻿namespace apps._public;
 
+/// <summary>
+/// Represents the i log message color storage class type.
+/// </summary>
 public interface ILogMessage<Color, StorageClass>
 {
     /// <summary>Background color of the message.</summary>

@@ -12,13 +12,31 @@ using Microsoft.UI.Xaml;
 using System.Windows.Input;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the sunamo browser controls type.
+    /// </summary>
     public partial class SunamoBrowserControls : UserControl
     {
+        /// <summary>
+        /// The back button click.
+        /// </summary>
         public event VoidVoid BackButtonClick;
+        /// <summary>
+        /// The next button click.
+        /// </summary>
         public event VoidVoid NextButtonClick;
+        /// <summary>
+        /// The stop button click.
+        /// </summary>
         public event VoidVoid StopButtonClick;
+        /// <summary>
+        /// The reload button click.
+        /// </summary>
         public event VoidVoid ReloadButtonClick;
         //public event VoidVoid CloseButtonClick;
+        /// <summary>
+        /// The custom button click.
+        /// </summary>
         public event VoidVoid CustomButtonClick;
 
         /// <summary>
@@ -39,6 +57,9 @@ using Microsoft.UI.Xaml.Controls;
             Loaded += SunamoBrowserControls_Loaded;    
         }
 
+        /// <summary>
+        /// Gets or sets the main page.
+        /// </summary>
         public ISunamoBrowser<Control> MainPage { get; set; }
 
         private void SunamoBrowserControls_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs eventArgs)
@@ -46,7 +67,13 @@ using Microsoft.UI.Xaml.Controls;
              Initialize(apps._public.RL.l, "");
         }
 
+        /// <summary>
+        /// The new uri entered.
+        /// </summary>
         public event VoidUri NewUriEntered;
+        /// <summary>
+        /// The new search requested.
+        /// </summary>
         public event VoidString NewSearchRequested;
 
         /// <summary>
@@ -81,6 +108,10 @@ using Microsoft.UI.Xaml.Controls;
              AwesomeFontControls.SetAwesomeFontSymbol(afBtnNext, otf, Brushes.Orange, (ActualHeight / 2 / nextDivide) - 6, null);
         }
 
+        /// <summary>
+        /// Set uri.
+        /// </summary>
+        /// <param name="uri">The uri.</param>
         public void SetUri(string uri)
         {
             txtAddress.Text = uri;

@@ -2,6 +2,9 @@ namespace apps._public;
 
 using HtmlAgilityPack;
 
+/// <summary>
+/// Represents the i sunamo browser type.
+/// </summary>
 public interface ISunamoBrowser
 {
     /// <summary>

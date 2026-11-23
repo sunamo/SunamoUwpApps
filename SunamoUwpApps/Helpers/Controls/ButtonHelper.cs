@@ -9,8 +9,18 @@ using System.Windows.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
+    /// <summary>
+    /// Represents the button helper type.
+    /// </summary>
     public static class ButtonHelper
     {
+        /// <summary>
+        /// Get.
+        /// </summary>
+        /// <param name="orientation">The orientation.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="handler">The handler.</param>
+        /// <returns>The get result.</returns>
         public static Button Get(Orientation orientation, object content, RoutedEventHandler handler)
         {
             Button button = Get(Orientation.Horizontal, content);
@@ -18,6 +28,13 @@ using Microsoft.UI.Xaml.Controls;
             return button;
         }
 
+        /// <summary>
+        /// Get.
+        /// </summary>
+        /// <param name="orientation">The orientation.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="command">The command.</param>
+        /// <returns>The get result.</returns>
         public static Button Get(Orientation orientation, object content, ICommand command)
         {
             Button button = Get(Orientation.Horizontal, content);
@@ -25,6 +42,13 @@ using Microsoft.UI.Xaml.Controls;
             return button;
         }
 
+        /// <summary>
+        /// Get.
+        /// </summary>
+        /// <param name="orientation">The orientation.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="command">The command.</param>
+        /// <returns>The get result.</returns>
         public static Button Get(Orientation orientation, object content, ISunamoAsyncCommand command)
         {
             Button button = Get(Orientation.Horizontal, content);

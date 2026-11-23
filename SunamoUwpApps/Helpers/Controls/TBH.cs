@@ -12,15 +12,35 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 
+    /// <summary>
+    /// Represents the TBH type.
+    /// </summary>
     public class TBH : TextBlockHelperBase
     {
+        /// <summary>
+        /// The fa.
+        /// </summary>
         public FontArgs fa = FontArgs.DefaultRun();
         TextBlock tb = null;
+        /// <summary>
+        /// Initializes a new instance of the TBH class.
+        /// </summary>
+        /// <param name="textBlock">The text block.</param>
         public TBH(TextBlock textBlock)
         {
             this.tb = textBlock;
         }
 
+        /// <summary>
+        /// Divide string to rows.
+        /// </summary>
+        /// <param name="fontFamily">The font family.</param>
+        /// <param name="fontSize">The font size.</param>
+        /// <param name="fontStyle">The font style.</param>
+        /// <param name="fontStretch">The font stretch.</param>
+        /// <param name="fontWeight">The font weight.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="maxSize">The max size.</param>
         public void DivideStringToRows(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, FontWeight fontWeight, string text, Size maxSize)
         {
             FontArgs fontArgs = new FontArgs(fontFamily, fontSize, fontStyle, fontStretch, fontWeight);
@@ -37,6 +57,10 @@ using Microsoft.UI.Xaml.Media;
 
         
 
+        /// <summary>
+        /// H 1.
+        /// </summary>
+        /// <param name="text">The text.</param>
         public void H1(string text)
         {
             Bold bold = new Bold();
@@ -50,16 +74,28 @@ using Microsoft.UI.Xaml.Media;
             tb.Inlines.Add(bold);
         }
 
+        /// <summary>
+        /// Run.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void Run(string value)
         {
             tb.Inlines.Add(GetRun(value, fa));
         }
 
+        /// <summary>
+        /// Bold.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void Bold(string value)
         {
             tb.Inlines.Add(GetBold(value, fa));
         }
 
+        /// <summary>
+        /// H 3.
+        /// </summary>
+        /// <param name="text">The text.</param>
         public void H3(string text)
         {
             Italic italic = new Italic();
@@ -81,6 +117,9 @@ using Microsoft.UI.Xaml.Media;
         {
         }
 
+        /// <summary>
+        /// Line break.
+        /// </summary>
         public void LineBreak()
         {
             tb.Inlines.Add(new LineBreak());
@@ -88,6 +127,11 @@ using Microsoft.UI.Xaml.Media;
 
         
 
+        /// <summary>
+        /// Key value.
+        /// </summary>
+        /// <param name="first">The first.</param>
+        /// <param name="second">The second.</param>
         public void KeyValue(string first, string second)
         {
              second = second.Trim();
@@ -102,12 +146,20 @@ using Microsoft.UI.Xaml.Media;
 
         
 
+        /// <summary>
+        /// Error.
+        /// </summary>
+        /// <param name="path">The path.</param>
         public void Error(string path)
         {
             tb.Inlines.Add(GetError(path, FontArgs.DefaultRun()));
             LineBreak();
         }
 
+        /// <summary>
+        /// Bullet.
+        /// </summary>
+        /// <param name="path">The path.</param>
         public void Bullet(string path)
         {
             Inline inline = GetBullet(path, fa);
@@ -116,6 +168,10 @@ using Microsoft.UI.Xaml.Media;
             LineBreak();
         }
 
+        /// <summary>
+        /// Italic.
+        /// </summary>
+        /// <param name="path">The path.</param>
         public void Italic(string path)
         {
             tb.Inlines.Add(GetItalic(path, fa));

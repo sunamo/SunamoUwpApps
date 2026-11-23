@@ -19,11 +19,20 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the login dialog type.
+    /// </summary>
     public sealed partial class LoginDialog : UserControl, IPopupResponsive, IPopupDialogResult, IAsync
     {
 static Type type = typeof(LoginDialog);
+        /// <summary>
+        /// The change dialog result.
+        /// </summary>
         public event VoidBoolNullable ChangeDialogResult;
         static string loadedPassword = string.Empty;
+        /// <summary>
+        /// The loaded password.
+        /// </summary>
         public static string LoadedPassword
         {
             get
@@ -39,6 +48,9 @@ static Type type = typeof(LoginDialog);
                 loadedPassword = value;
             }
         }
+        /// <summary>
+        /// The loaded login.
+        /// </summary>
         public static string LoadedLogin = null;
         StorageApplicationData storageApplicationData = StorageApplicationData.NoWhere;
         private LoginDialog()
@@ -63,14 +75,23 @@ static Type type = typeof(LoginDialog);
                 ChangeDialogResult(false);
             }
         }
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
+        /// <summary>
+        /// The background brush.
+        /// </summary>
         public Brush BackgroundBrush
         {
             set { border.Background = value; }
         }
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -82,6 +103,9 @@ static Type type = typeof(LoginDialog);
                 FrameworkElementHelper.SetMaxContentSize(this, value);
             }
         }
+        /// <summary>
+        /// The li.
+        /// </summary>
         public static string li
         {
             get
@@ -90,6 +114,9 @@ static Type type = typeof(LoginDialog);
                 
             }
         }
+        /// <summary>
+        /// The pw.
+        /// </summary>
         public static string pw
         {
             get
@@ -97,6 +124,9 @@ static Type type = typeof(LoginDialog);
                 return LoadedPassword;
             }
         }
+        /// <summary>
+        /// The login.
+        /// </summary>
         public  string Login
         {
             get
@@ -108,6 +138,9 @@ static Type type = typeof(LoginDialog);
                 return text ;
             }
         }
+        /// <summary>
+        /// The password.
+        /// </summary>
         public  string Password
         {
             get
@@ -130,6 +163,11 @@ static Type type = typeof(LoginDialog);
             }
         }
         string salt = null;
+        /// <summary>
+        /// Initializes a new instance of the login dialog class.
+        /// </summary>
+        /// <param name="injectedCryptDelegates">The injected crypt delegates.</param>
+        /// <param name="salt">The salt.</param>
         public LoginDialog(CryptDelegates injectedCryptDelegates, string salt) : this()
         {
             this.cryptDelegates = injectedCryptDelegates;
@@ -137,6 +175,13 @@ static Type type = typeof(LoginDialog);
             chbAutoLogin.Checked += chbAutoLogin_Checked;
             chbRememberLogin.Unchecked += chbRememberLogin_Unchecked;
         }
+        /// <summary>
+        /// Initializes a new instance of the login dialog class.
+        /// </summary>
+        /// <param name="cryptDelegates">The crypt delegates.</param>
+        /// <param name="salt">The salt.</param>
+        /// <param name="storageApplicationData">The storage application data.</param>
+        /// <param name="borderBrush">The border brush.</param>
         public LoginDialog(CryptDelegates cryptDelegates, string salt, StorageApplicationData storageApplicationData, Brush borderBrush)
             : this(cryptDelegates, salt)
         {
@@ -373,6 +418,10 @@ static Type type = typeof(LoginDialog);
                 ThrowExceptionSavingConfigInOtherWayIsntSupportedInWindowsStoreAppsNotSupported();
             }
         }
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
@@ -381,6 +430,12 @@ static Type type = typeof(LoginDialog);
         {
             ChangeDialogResult(null);
         }
+        /// <summary>
+        /// Get result t.
+        /// </summary>
+        /// <typeparam name="T">The type T.</typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>The get result t result.</returns>
         public  T GetResult<T>(Task<T> task)
         {
             return AsyncHelper.ci.GetResult<T>(task);

@@ -9,6 +9,9 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 
+    /// <summary>
+    /// Represents the image helper type.
+    /// </summary>
     public static class ImageHelper
     {
         /// <summary>
@@ -22,6 +25,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return ReturnImage(bitmapSource);
         }
 
+        /// <summary>
+        /// Ms appx.
+        /// </summary>
+        /// <param name="relPath">The rel path.</param>
+        /// <returns>The ms appx result.</returns>
         public static Image MsAppx(string relPath)
         {
             BitmapSource bitmapSource = new BitmapImage(new Uri("ms-appx:///" + relPath));
@@ -36,6 +44,12 @@ using Microsoft.UI.Xaml.Media.Imaging;
             return image;
         }
 
+        /// <summary>
+        /// Ms appx.
+        /// </summary>
+        /// <param name="disabled">The disabled.</param>
+        /// <param name="appPic">The app pic.</param>
+        /// <returns>The ms appx result.</returns>
         public static Image MsAppx(bool disabled, AppPics appPic)
         {
             return ReturnImage(BitmapImageHelper.MsAppx(disabled, appPic));

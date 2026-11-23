@@ -15,10 +15,19 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+    /// <summary>
+    /// Represents the error listing type.
+    /// </summary>
     public sealed partial class ErrorListing : UserControl, IPopupResponsive, IPopupEvents<object>
     {
+        /// <summary>
+        /// The click OK.
+        /// </summary>
         public event VoidT<object> ClickOK;
 
+        /// <summary>
+        /// The title.
+        /// </summary>
         public string Title
         {
             set
@@ -27,6 +36,9 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// The max content size.
+        /// </summary>
         public Size MaxContentSize
         {
             get
@@ -70,6 +82,9 @@ using Microsoft.UI.Xaml.Navigation;
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the error listing class.
+        /// </summary>
         public ErrorListing()
         {
             this.InitializeComponent();
@@ -80,14 +95,24 @@ using Microsoft.UI.Xaml.Navigation;
             ClickOK(null);
         }
 
+        /// <summary>
+        /// The popup border brush.
+        /// </summary>
         public Brush PopupBorderBrush
         {
             set { border.BorderBrush = value; }
         }
 
 
+        /// <summary>
+        /// The click cancel.
+        /// </summary>
         public event VoidT<object> ClickCancel;
 
+        /// <summary>
+        /// Apply color theme.
+        /// </summary>
+        /// <param name="colorTheme">The color theme.</param>
         public void ApplyColorTheme(ColorTheme colorTheme)
         {
             ColorThemeHelper.ApplyColorTheme(border, colorTheme);
