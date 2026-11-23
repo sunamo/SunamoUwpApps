@@ -35,7 +35,6 @@ global using apps.PopupsNoResponsive;
 global using apps.Secure;
 global using apps.Storage;
 global using apps.UniversalWebControl;
-global using apps.UniversalWriteableBitmap;
 global using apps.UserControls;
 global using apps.XmlStorage;
 global using apps._public;
